@@ -271,3 +271,4 @@ footer p {
 .comment-list-wrapper>li>ul{ margin-left:40px !important; }
 .comment-text{ font-size:110% }
 .controls>input { width:50% }
+.photos>img { margin: 5px; margin-top: 5px; }

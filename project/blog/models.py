@@ -45,18 +45,19 @@ def imagePath(instance, filename):
 
 class Post(models.Model):
     author = models.ForeignKey(User, related_name='post_author', verbose_name=_("Author"))
-    created = models.DateTimeField(auto_now=True, verbose_name=_("Creation time"))
+    # created = models.DateTimeField(auto_now=True, editable=True, blank=True, verbose_name=_("Creation time"))
+    created = models.DateTimeField(editable=True, blank=True, verbose_name=_("Creation time"))
     headImage = models.ImageField(upload_to=imagePath, height_field=None, width_field=None, max_length=100)
     titleImage = models.ImageField(upload_to=imagePath, height_field=None, width_field=None, max_length=100)
     title = models.CharField(max_length=150, verbose_name=_("Title"))
     slug = models.SlugField(max_length=150, verbose_name=_("Slug"))
     post = models.TextField(blank=True, null=True, verbose_name=_("Post body"))
-    tags = models.ManyToManyField(Tag, verbose_name=_("Tags"))
-    metaTitle = models.CharField(max_length=150, verbose_name=_("Meta title"))
-    metaDesc = models.CharField(max_length=150, verbose_name=_("Meta description"))
+    tags = models.ManyToManyField(Tag, blank=True, verbose_name=_("Tags"))
+    metaTitle = models.CharField(max_length=150, blank=True, verbose_name=_("Meta title"))
+    metaDesc = models.CharField(max_length=150, blank=True, verbose_name=_("Meta description"))
     draft = models.BooleanField(default=True, blank=True, verbose_name=_("Is draft"))
     mapSize = models.IntegerField(blank=True, null=True)
-    site = models.ForeignKey(Site)
+    site = models.ForeignKey(Site, blank=True)
 
     class Meta:
         verbose_name = _("Post")

@@ -13,7 +13,7 @@
             <div class="carousel-inner">
               <div class="item active">
                 <a href="{% url 'page_redirect' post.id %}">
-                  {% thumbnail post.headImage "750x250" crop="center" as im %}
+                  {% thumbnail post.headImage "x300" crop="center" as im %}
                   <img class="img-responsive img-full" src="{{ im.url }}" alt="Image for {{ post.title }}">
                   {% endthumbnail %}
                   <span class="photo_desc photo_head">

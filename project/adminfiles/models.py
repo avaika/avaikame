@@ -9,6 +9,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
 from project.adminfiles import settings
+import uuid
+from datetime import datetime
 
 if 'tagging' in django_settings.INSTALLED_APPS:
     from tagging.fields import TagField
@@ -16,9 +18,16 @@ else:
     TagField = None
 
 
+def imagePath(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "avaika_%s.%s" % (str(uuid.uuid4())[1:8], ext)
+    now = datetime.now()
+    return "%d/%d/%s" % (now.year, now.month, filename)
+
+
 class FileUpload(models.Model):
     upload_date = models.DateTimeField(_('upload date'), auto_now_add=True)
-    upload = models.FileField(_('file'), upload_to=settings.ADMINFILES_UPLOAD_TO)
+    upload = models.FileField(_('file'), upload_to=imagePath)
     content_type = models.CharField(editable=False, max_length=100)
     sub_type = models.CharField(editable=False, max_length=100)
 

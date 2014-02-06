@@ -32,6 +32,7 @@ class MapInline(admin.StackedInline):
 
 class PostAdmin(tags_input_admin.TagsInputAdmin, FilePickerAdmin):
     list_display = ('id', 'title', 'slug', 'created', 'draft')
+    list_editable = ('title', 'slug', 'draft')
     search_fields = ['id', 'title', 'post']
     prepopulated_fields = {'slug': ['title']}
     adminfiles_fields = ('post',)
