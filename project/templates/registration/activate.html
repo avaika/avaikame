@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% load staticfiles i18n %}
+
+{% comment %} Page to login. Actually is should not be used, as there is no link to it. {% endcomment %}
+
+{% block login_top %}{% endblock %}
+{% block registration %}{% endblock %}
+{% block content %}
+<section class="content">
+<div style="height: 400px">
+<div class="wr">
+	<div class="log" style="text-align:center">
+	{% if account %}
+		<p>{% trans "Ваш аккаунт успешно активирован. Для входа введите логин (почту) и пароль." %}</p>
+		{% include "boxes/login.html" %}
+	{% else %}
+		<p>{% trans "Активация аккаунта прошла неудачно. Попробуйте зарегистрироваться еще раз. <br/>Если ошибка появилась опять, то свяжитесь с нами по почте <a href="mailto:partner@audio-reclama.ru" %}</p>
+	{% endif %}
+	</div>
+</div>
+</div>
+</section>
+{% endblock %}

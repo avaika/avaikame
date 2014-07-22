@@ -1,0 +1,45 @@
+{# include "boxes/social_log.html" #}{% load static %}
+<form action="{% url 'registration_register' %}" method="post">
+
+	{% csrf_token %}
+
+  <div class="col2 with-margin bottom-line">
+  </div>
+
+  <div class="col2 with-margin bottom-line">
+      <div>
+          <label for="email">Ваш e-mail:</label>
+          <div class="control">
+	            {{ form.email.errors }}
+              <input id="id_email" maxlength="30" name="email" type="text" />
+          </div>
+      </div>
+      <div>
+          <label for="name">Ваши ФИО:</label>
+          <div class="control">
+	            {{ form.firstname.errors }}
+              <input id="id_name" maxlength="30" name="name" type="text" />
+          </div>
+      </div>
+  </div>
+  <div class="col2 with-margin bottom-line">
+      <div>
+          <label for="email">Пароль:</label>
+          <div class="control">
+	            {{ form.password1.errors }}
+              <input id="id_password1" name="password1" type="password" />
+          </div>
+      </div>
+      <div>
+          <label for="email">Повторите пароль:</label>
+          <div class="control">
+	            {{ form.password2.errors }}
+              <input id="id_password2" name="password2" type="password" />
+          </div>
+      </div>
+  </div>
+
+  <div class="center register">
+    <button type="submit" style="background-color:transparent; border-color:transparent;"> <img src="{% static "base/img/register.png" %}"/></button>
+  </div>
+</form>
