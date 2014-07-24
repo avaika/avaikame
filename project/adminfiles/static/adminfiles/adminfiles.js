@@ -80,6 +80,7 @@ $(function(){
                   insertText = START + insertText + END;
                   }
               insertAtCursor(FIELD, insertText);
+	      $(this).parents('.item').hide();
 	      $(this).parents('.popup').hide();
 	      return false;
 	});

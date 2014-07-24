@@ -1,4 +1,5 @@
 import urllib
+import datetime
 
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse
@@ -77,8 +78,10 @@ class AllView(BaseView):
 
     def get_context_data(self, **kwargs):
         context = super(AllView, self).get_context_data(**kwargs)
+        now = datetime.datetime.now()
+        earlier = now - datetime.timedelta(days=3)
         context.update({
-            'files': self.files().order_by(*settings.ADMINFILES_THUMB_ORDER)
+            'files': self.files().filter(upload_date__gt=earlier).order_by(*settings.ADMINFILES_THUMB_ORDER)
         })
         return context
 
@@ -87,7 +90,9 @@ class ImagesView(AllView):
     link_text = _('Images')
 
     def files(self):
-        return super(ImagesView, self).files().filter(content_type='image')
+        now = datetime.datetime.now()
+        earlier = now - datetime.timedelta(minutes=40)
+        return super(ImagesView, self).files().filter(content_type='image', upload_date__gt=earlier)
 
 
 class AudioView(AllView):
