@@ -16,6 +16,7 @@ urlpatterns = patterns(
     url(r'^comments/', include('django.contrib.comments.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^adminfiles/', include('project.adminfiles.urls')),
+    url(r'^tags_input/', include('tags_input.urls', namespace='tags_input')),
     url(r'^accounts/passwordsent/$', 'django.contrib.auth.views.password_reset_done', name='password_reset_done'),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

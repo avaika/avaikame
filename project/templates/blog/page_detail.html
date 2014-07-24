@@ -1,11 +1,13 @@
-{% extends 'base.html' %}{% load thumbnail i18n %}
+{% extends 'base.html' %}{% load thumbnail i18n adminfiles_tags staticfiles %}
 {% block title %}{{ post.title }}{% endblock %}
+{% block addlink %}<link href="{% static "base/css/lightbox.css" %}" rel="stylesheet" />{% endblock %}
 {% block postscript %}
 <script>
   // workaround for FF caching urls ((
   var _theframe = document.getElementById("map");
   _theframe.contentWindow.location.href = _theframe.src;
 </script>
+<script src="{% static "base/js/lightbox.min.js" %}"></script>
 {% endblock %}
 {% block content %}
 <div class="container">
@@ -27,8 +29,11 @@
         {% endif %}
       </div>
       <div class="clearfix"></div>
+      <br />
       <div class="col-lg-12">
-        {{ post.post }}
+        <div class="jumbotron">
+          {{ post.post|render_uploads|safe }}
+        </div>
       </div>
       <div class="clearfix"></div>
     </div>

@@ -4,6 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 from models import User, Post, Tag, Comment, PostMap
 from forms import UserCreationForm
 from project.adminfiles.admin import FilePickerAdmin
+from tags_input import admin as tags_input_admin
 
 
 class ProfileUserAdmin(UserAdmin):
@@ -16,8 +17,7 @@ class ProfileUserAdmin(UserAdmin):
 
 
 class TagAdmin(admin.ModelAdmin):
-    list_display = ('id', 'tagType', 'value')
-    list_filter = ('tagType',)
+    list_display = ('id', 'value')
     search_fields = ['id', 'value']
 
 
@@ -30,12 +30,12 @@ class MapInline(admin.StackedInline):
     )
 
 
-class PostAdmin(FilePickerAdmin):
+class PostAdmin(tags_input_admin.TagsInputAdmin, FilePickerAdmin):
     list_display = ('id', 'title', 'slug', 'created', 'draft')
     search_fields = ['id', 'title', 'post']
     prepopulated_fields = {'slug': ['title']}
     adminfiles_fields = ('post',)
-    filter_horizontal = ('tags',)
+    # filter_horizontal = ('tags',)
     inlines = [MapInline, ]
     save_as = True
 

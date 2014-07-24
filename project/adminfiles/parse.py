@@ -3,7 +3,7 @@ import re
 from project.adminfiles import settings
 from project.adminfiles.models import FileUpload
 
-# Upload references look like: <<< upload-slug : key=val : key2=val2 >>>
+# Upload references look like: <<< upload-id : key=val : key2=val2 >>>
 # Spaces are optional, key-val opts are optional, can be any number
 # extra indirection is for testability
 
@@ -22,7 +22,7 @@ def get_uploads(text):
     """
     for match in UPLOAD_RE.finditer(text):
         try:
-            upload = FileUpload.objects.get(slug=match.group(1))
+            upload = FileUpload.objects.get(id=match.group(1))
         except FileUpload.DoesNotExist:
             continue
         yield upload
@@ -50,7 +50,7 @@ def parse_match(match):
 
     """
     try:
-        upload = FileUpload.objects.get(slug=match.group(1))
+        upload = FileUpload.objects.get(id=match.group(1))
     except FileUpload.DoesNotExist:
         upload = None
     options = parse_options(match.group(2))

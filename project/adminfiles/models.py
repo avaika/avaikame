@@ -88,6 +88,17 @@ class FileUpload(models.Model):
         return ('http://www.stdicon.com/%s/%s?size=64'
                 % (settings.ADMINFILES_STDICON_SET, self.mime_type()))
 
+    def imagem(self):
+        from sorl.thumbnail import get_thumbnail
+
+        if self.is_image:
+            try:
+                im = get_thumbnail(self.img, '200x200', quality=80)
+                return im.url
+            except:
+                return ''
+        return ''
+
 
 class FileUploadReference(models.Model):
     """

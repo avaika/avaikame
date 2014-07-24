@@ -28,9 +28,13 @@ ADMINFILES_INSERT_LINKS = getattr(
     settings,
     'ADMINFILES_INSERT_LINKS',
     {'': [(_('Insert Link'), {})],
-     'image': [(_('Insert'), {}),
-               (_('Insert (align left)'), {'class': 'left'}),
-               (_('Insert (align right)'), {'class': 'right'})]
+     'image': [(_('Insert normal'), {'type': 'normal'}),
+               (_('Insert right'), {'type': 'normal',
+                                    'class': 'pull-right'}),
+               (_('Insert vertical'), {'type': 'vertical'}),
+               (_('Insert vright'), {'type': 'vertical',
+                                     'class': 'pull-right'}),
+               (_('Insert panorama'), {'type': 'panorama'}), ]
      },
     )
 

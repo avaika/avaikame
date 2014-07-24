@@ -25,7 +25,7 @@
   </li>
   {% endfor %}
   <li class="upload">
-    <a href="{% url "admin:adminfiles_fileupload_add" %}" class="addlink" id="add_id_uploads" onclick="return showAddUploadPopup(this);">{% trans "Upload" %}</a>
+    <a href="/admin/adminfiles/fileupload/multiupload/" class="addlink" id="add_id_uploads" onclick="return showAddUploadPopup(this);">{% trans "Upload" %}</a>
   </li>
   <li>
     <a id="refresh" href="#"><img src="{% static 'adminfiles/icon_refreshlink.gif' %}" /> {% trans "Refresh" %}</a>

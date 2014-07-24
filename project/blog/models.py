@@ -6,14 +6,6 @@ from datetime import datetime
 import uuid
 
 
-TAG_CHOICES = (
-    ('TCI', _("Travel city")),
-    ('TCO', _("Travel country")),
-    ('ITT', _("IT technology")),
-    ('ITS', _("IT subject")),
-)
-
-
 class User(AbstractUser):
     notifyEmail = models.EmailField(max_length=150, blank=True, null=True, verbose_name=_("email for notifications"))
     notifyGlobal = models.BooleanField(default=False, verbose_name=_("send global notifications"))
@@ -32,7 +24,6 @@ class User(AbstractUser):
 
 
 class Tag(models.Model):
-    tagType = models.CharField(max_length=3, choices=TAG_CHOICES, verbose_name=_("Tag type"))
     value = models.CharField(max_length=150, verbose_name=_("Title"))
 
     class Meta:
@@ -40,7 +31,7 @@ class Tag(models.Model):
         verbose_name_plural = _("Tags")
 
     def __unicode__(self):
-        return self.tagType + ' : ' + self.value
+        return self.value
 
 
 def imagePath(instance, filename):

@@ -85,9 +85,9 @@ INTERNAL_IPS = ('109.173.96.30', '127.0.0.1', )
 INSTALLED_APPS = (
     'south',
     'timezones',
-    'multiupload',
     'sorl.thumbnail',
     'social',
+    'tags_input',
     # 'threadedcomments',
     'django.contrib.auth',
     'django.contrib.sessions',
@@ -107,7 +107,15 @@ INSTALLED_APPS = (
     'grappelli',
     'django_extensions',
     'django.contrib.admin',
+    'multiupload',
 )
+
+TAGS_INPUT_MAPPINGS = {
+    'blog.Tag': {
+        'field': 'value', 'create_missing': True,
+    },
+}
+TAGS_INPUT_INCLUDE_JQUERY = True
 
 LOGIN_URL = '/accounts/login/'
 LOGIN_ERROR_URL = '/accounts/login-failed/'

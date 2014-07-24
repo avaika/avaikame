@@ -18,10 +18,10 @@ def render_uploads(content, template_path="adminfiles/render/"):
     So if "<<<my-uploaded-file:key=val:key2=val2>>>" is found in the
     content string, it will be replaced with the results of rendering
     the selected template with ``upload`` set to the ``FileUpload``
-    instance with slug "my-uploaded-file" and ``options`` set to
+    instance with id "my-uploaded-file" and ``options`` set to
     {'key': 'val', 'key2': 'val2'}.
 
-    If the given slug is not found, the reference is replaced with the
+    If the given id is not found, the reference is replaced with the
     empty string.
 
     If ``djangoembed`` or ``django-oembed`` is installed, also replaces OEmbed

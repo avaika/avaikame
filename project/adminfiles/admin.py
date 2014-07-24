@@ -5,9 +5,17 @@ from django.contrib import admin
 from project.adminfiles.models import FileUpload
 from project.adminfiles.settings import JQUERY_URL
 from project.adminfiles.listeners import register_listeners
+from multiupload.admin import MultiUploadAdmin
 
 
-class FileUploadAdmin(admin.ModelAdmin):
+class FileUploadAdmin(MultiUploadAdmin):
+    change_form_template = 'multiupload/change_form.html'
+    change_list_template = 'multiupload/change_list.html'
+    multiupload_template = 'multiupload/upload.html'
+    multiupload_list = True
+    multiupload_form = True
+    multiupload_acceptedformats = ("image/jpeg",
+                                   "image/png",)
     list_display = ['upload_date', 'upload', 'mime_type']
 
     def response_change(self, request, obj):
@@ -35,6 +43,14 @@ class FileUploadAdmin(admin.ModelAdmin):
         return super(FileUploadAdmin, self).response_add(request,
                                                          *args,
                                                          **kwargs)
+
+    def process_uploaded_file(self, uploaded, object, **kwargs):
+        f = self.model(upload=uploaded)
+        f.save()
+        return {'url': f.imagem(),
+                'thumbnail_url': f.imagem(),
+                'name': f.id,
+                'id': f.id}
 
 
 class FilePickerAdmin(admin.ModelAdmin):
