@@ -55,6 +55,6 @@ class FilePickerAdmin(admin.ModelAdmin):
         return field
 
     class Media:
-        js = [JQUERY_URL, 'adminfiles/model.js']
+        js = [JQUERY_URL, 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places', 'adminfiles/model.js', 'adminfiles/maps.js']
 
 admin.site.register(FileUpload, FileUploadAdmin)

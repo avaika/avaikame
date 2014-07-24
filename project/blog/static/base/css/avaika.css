@@ -1,0 +1,267 @@
+body {
+  background: url(../img/bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 400;
+}
+
+p {
+  font-size: 1.25em;
+  line-height: 1.6;
+  color: #000;
+}
+
+hr {
+  border-color: #999999;
+  max-width: 400px;
+}
+
+.brand,
+.address-bar {
+  display: none;
+}
+
+
+.navbar-brand {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 900;
+}
+
+.navbar-nav {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 400;
+}
+
+.img-full {
+  min-width: 100%;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 1.5em;
+  text-transform: capitalize;
+  letter-spacing: normal;
+}
+
+.tagline-divider {
+  margin: 15px auto 3px;
+  border-color: #999999;
+  max-width: 250px;
+}
+
+.box {
+  background: #fff;
+  background: rgba(255,255,255,0.9);
+  margin-bottom: 20px;
+  padding: 30px 15px;
+}
+
+.intro-text {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.25em;
+  font-weight: 400;
+}
+
+.img-border {
+  float: none;
+  margin: 0 auto 0;
+  border: #999999 solid 1px;
+}
+
+.img-left {
+  float: none;
+  margin: 0 auto 0;
+}
+
+footer {
+  background: #fff;
+  background: rgba(255,255,255,0.9);
+}
+
+footer p {
+  margin: 0;
+  padding: 5px 0;
+}
+
+@media screen and (min-width: 768px) {
+
+.brand {
+  display: inherit;
+  font-weight: 700;
+  font-size: 5em;
+  line-height: normal;
+  text-align: center;
+  margin: 0;
+  padding: 30px 0 10px;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.top-divider {
+  margin-top: 0;
+}
+
+.img-left {
+  float: left;
+  margin-right: 25px;
+}
+
+.address-bar {
+  display: inherit;
+  text-align: center;
+  margin: 0;
+  padding: 0 0 40px;
+  font-size: 1.25em;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 400;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.navbar {
+  border-radius: 0;
+}
+
+.navbar-header {
+  display: none;
+}
+
+.navbar {
+  min-height: 0;
+}
+
+.navbar-default {
+  background: #fff;
+  background: rgba(255,255,255,0.9);
+  border: none;
+}
+
+.nav>li>a {
+  padding: 5px;
+}
+
+.navbar-nav>li>a {
+  line-height: normal;
+}
+
+.navbar-nav {
+  float: none;
+  margin: 0 auto;
+  display: table;
+  table-layout: fixed;
+  font-size: 1.25em;
+}
+
+@media screen and (min-width: 1200px) {
+    .box:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+.date_desc {
+  position:absolute;
+  top:0;
+  right:0px;
+  background-color:rgba(255, 255, 255, 0.4);
+}
+
+.photo_desc {
+  position:absolute;
+  display:block;
+  bottom:0;
+  width:100%;
+  text-align: left;
+  background-color:rgba(255, 255, 255, 0.4);
+}
+.date_multi {
+  right:15px;
+}
+
+.photo_multi {
+  width: -moz-calc(100% - 30px);
+  width: -webkit-calc(100% - 30px);
+  width: calc(100% - 30px);
+}
+
+.photo_dark {
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+}
+
+.photo_dark:hover {
+  opacity: 0.7;
+}
+
+@font-face {
+  font-family: 'avaika';
+  src: url('../font/avaika.eot?97891229');
+  src: url('../font/avaika.eot?97891229#iefix') format('embedded-opentype'),
+       url('../font/avaika.woff?97891229') format('woff'),
+       url('../font/avaika.ttf?97891229') format('truetype'),
+       url('../font/avaika.svg?97891229#avaika') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+ 
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "avaika";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+     
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  font-size: 110%;
+}
+ 
+.icon-camera:before { content: '\e800'; }
+.icon-videocam:before { content: '\e801'; }
+.icon-facebook:before { content: '\e802'; }
+.icon-vkontakte:before { content: '\e803'; }
+.icon-twitter:before { content: '\e804'; }
+.icon-road:before { content: '\e805'; }
+.icon-location:before { content: '\e806'; }
+.icon-paw:before { content: '\e807'; }
+.hidden-li { display:none !important; }
+
+@media (max-width: 768px) {
+  .hidden-li { display:inherit; }
+}
+
+.login_btn {
+    display: inline ;
+    font-size: 140%;
+}

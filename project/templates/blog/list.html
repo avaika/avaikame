@@ -1,0 +1,69 @@
+{% extends 'base.html' %}{% load static i18n thumbnail %}
+
+{% block title %}Avaika{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="box">
+      {% for post in posts %}
+        {% if forloop.first %}
+        <div class="col-lg-12 text-center">
+          <div id="carousel-example-generic" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="item active">
+                <a href="{% url 'page_redirect' post.id %}">
+                  {% thumbnail post.headImage "750x250" crop="center" as im %}
+                  <img class="img-responsive img-full" src="{{ im.url }}" alt="Image for {{ post.title }}">
+                  {% endthumbnail %}
+                  <span class="photo_desc photo_head">
+                    <h2>{{ post.title }}</h2>
+                  </span>
+                  <span class="date_desc date_head">
+                    <h2>{{ post.created|date:"d E Y" }}</h2>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <h2></h2>
+          </div>
+        </div>
+        {% else %}
+        <div class="col-sm-4 text-center photo_dark">
+          <a href="{% url 'page_redirect' post.id %}">
+            {% thumbnail post.titleImage "750x450" as im %}
+            <img class="img-responsive" src="{{ im.url }}" alt="Image for {{ post.title }}">
+            {% endthumbnail %}
+            <span class="photo_desc photo_multi">
+              <p>{{ post.title }}</p>
+            </span>
+            <span class="date_desc date_multi">
+                <p>{{ post.created|date:"d E Y" }}</p>
+            </span>
+          </a>
+        </div>
+          {% if forloop.counter == 4 or forloop.counter == 7 %}
+            <div class="clearfix"></div>
+            <h2></h2>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      {% if is_paginated and page_obj %}
+        {% if page_obj.has_previous or page_obj.has_next %}
+          <div class="col-lg-12 text-center">
+            <ul class="pager">
+              {% if page_obj.has_previous %}
+                <li class="previous"><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">&larr; Older</a></li>
+              {% endif %}
+              <li><a href="#" onclick="return false;" class="select">{{ page_obj.number }}</a></li>
+              {% if page_obj.has_next %}
+                <li class="next"><a href="{{ request.path }}?page={{ page_obj.next_page_number }}">Newer &rarr;</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endif %}
+      </div>
+  </div>
+</div>
+{% endblock content %}

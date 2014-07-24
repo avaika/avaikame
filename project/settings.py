@@ -87,9 +87,13 @@ INSTALLED_APPS = (
     'timezones',
     'multiupload',
     'sorl.thumbnail',
+    'social',
+    # 'threadedcomments',
     'django.contrib.auth',
     'django.contrib.sessions',
-    'django.contrib.messages',
+    # 'django.contrib.messages',
+    # 'django.contrib.comments',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'django.contrib.contenttypes',
     # partner installed apps
@@ -107,7 +111,13 @@ INSTALLED_APPS = (
 
 LOGIN_URL = '/accounts/login/'
 LOGIN_ERROR_URL = '/accounts/login-failed/'
-LOGIN_REDIRECT_URL = '/accounts/user_redirect/'
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
