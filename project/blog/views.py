@@ -1,5 +1,6 @@
 # from django.core.urlresolvers import reverse
 # from django.http import Http404, HttpResponseRedirect, HttpResponse
+from django.http import Http404
 # from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.conf import settings
@@ -25,7 +26,10 @@ class PageRedirectView(RedirectView):
     pattern_name = 'page_display'
 
     def get_redirect_url(self, *args, **kwargs):
-        page = get_object_or_404(Post, pk=kwargs['pk'], draft=False)
+        if self.request.user.is_superuser:
+            page = get_object_or_404(Post, pk=kwargs['pk'])
+        else:
+            page = get_object_or_404(Post, pk=kwargs['pk'], draft=False)
         kwargs['slug'] = page.slug
         return super(PageRedirectView, self).get_redirect_url(*args, **kwargs)
 
@@ -36,6 +40,13 @@ class PageDetailView(DetailView):
     model = Post
     context_object_name = "post"
     template_name = 'blog/page_detail.html'
+
+    def get_object(self):
+        object = super(PageDetailView, self).get_object()
+        if object.draft:
+            if not self.request.user.is_superuser:
+                raise Http404
+        return object
 
     def get_context_data(self, **kwargs):
         context = super(PageDetailView, self).get_context_data(**kwargs)
