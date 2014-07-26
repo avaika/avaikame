@@ -18,8 +18,13 @@ SITE_ID = 1
 
 TIME_ZONE = 'Europe/Moscow'
 USE_TZ = True
+USE_I18N = True
 
-LANGUAGE_CODE = 'ru-RU'
+LANGUAGES = (
+    ('ru', 'Russian'),
+)
+LANGUAGE_CODE = 'ru'
+
 USE_I18N = True
 USE_L10N = True
 
@@ -55,6 +60,7 @@ TEMPLATE_LOADERS = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

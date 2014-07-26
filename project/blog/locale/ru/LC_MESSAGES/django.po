@@ -101,3 +101,9 @@ msgstr "Маршрут"
 #: models.py:80
 msgid "Post map directions"
 msgstr "Маршруты"
+
+msgid "Comments"
+msgstr "Комментарии"
+
+msgid "Random posts"
+msgstr "Случайные записи"

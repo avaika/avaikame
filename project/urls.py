@@ -20,5 +20,5 @@ urlpatterns = patterns(
     url(r'^accounts/passwordsent/$', 'django.contrib.auth.views.password_reset_done', name='password_reset_done'),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-handler404 = 'project.partner.views.error404'
-handler500 = 'project.partner.views.error500'
+handler404 = 'project.blog.views.error404'
+handler500 = 'project.blog.views.error500'
