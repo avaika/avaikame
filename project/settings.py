@@ -128,6 +128,7 @@ TAGS_INPUT_MAPPINGS = {
 TAGS_INPUT_INCLUDE_JQUERY = True
 
 LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_ERROR_URL = '/accounts/login-failed/'
 
 AUTHENTICATION_BACKENDS = (
