@@ -265,3 +265,8 @@ footer p {
     display: inline ;
     font-size: 140%;
 }
+.comment_wrapper{ width: 100%; }
+.comment_wrapper textarea{ width:100%; resize: none; }
+.comment_wrapper>div>label{ display:none }
+.comment-text{ font-size:110% }
+.controls>input { width:50% }

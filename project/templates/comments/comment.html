@@ -1,0 +1,36 @@
+{% comment %}
+  Something that django.contrib.comments does not provide:
+  An individual template for a single comment, to easily be reused.
+
+  This include is also used by the Ajax comments view.
+  The div id should be "c{id}", because the comment.get_absolute_url() points to it.
+
+  NOTE: to override the displayed date format, don't replace this template.
+  Instead, define DATETIME_FORMAT in a locale file. Requires setting:
+
+   FORMAT_MODULE_PATH = 'settings.locale'
+
+  Then create 'settings/locale/XY/formats.py' with:
+
+   DATETIME_FORMAT = '...'
+
+  This should give you consistent dates across all views.
+{% endcomment %}
+{% load i18n %}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div{% if preview %} id="comment-preview"{% else %} id="c{{ comment.id }}"{% endif %} class="comment-item">
+      {% if preview %}<h4>{% trans "Preview of your comment" %}</h4>{% endif %}
+      <h5>
+        {% if comment.name %}{{ comment.name }}{% else %}{% trans "Anonymous" %}{% endif %}
+        ({{ comment.submit_date|date:"d/m/Y h:i" }})
+        {% if USE_THREADEDCOMMENTS and not preview and user.is_authenticated %}<a href="#c{{ comment.id }}" data-comment-id="{{ comment.id }}" class="comment-reply-link">{% trans "ответить" %}</a>{% endif %}
+      </h5>
+      {% if comment.user.is_superuser %}
+        {{ comment.comment|linebreaksbr|safe }}
+      {% else %}
+        {{ comment.comment|linebreaksbr }}
+      {% endif %}
+    </div>
+  </div>
+</div>

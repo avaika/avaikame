@@ -1,6 +1,9 @@
-{% extends 'base.html' %}{% load thumbnail i18n adminfiles_tags staticfiles %}
+{% extends 'base.html' %}{% load thumbnail i18n adminfiles_tags staticfiles comments %}
 {% block title %}{{ post.title }}{% endblock %}
-{% block addlink %}<link href="{% static "base/css/lightbox.css" %}" rel="stylesheet" />{% endblock %}
+{% block addlink %}
+<link href="{% static "base/css/lightbox.css" %}" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static "fluent_comments/css/ajaxcomments.css" %}" />
+{% endblock %}
 {% block postscript %}
 <script>
   // workaround for FF caching urls ((
@@ -8,6 +11,7 @@
   _theframe.contentWindow.location.href = _theframe.src;
 </script>
 <script src="{% static "base/js/lightbox.min.js" %}"></script>
+<script type="text/javascript" src="{% static "fluent_comments/js/ajaxcomments.js" %}"></script>
 {% endblock %}
 {% block content %}
 <div class="container">
@@ -44,24 +48,8 @@
     <div class="box">
       <div class="col-lg-12">
         <h2 class="intro-text text-center">Comments</h2>
-        <div class="input-group">
-          {% if user.is_authenticated %}
-            <textarea class="form-control"></textarea>
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Go!</button>
-            </span>
-          {% else %}
-            {% trans "To comment you have to login:" %}
-            <div class="login_btn">
-              <a href="{% url 'django.contrib.auth.views.login' %}"><span class="icon-paw" title="{% trans "Login via avaika" %}"></span></a>
-              <a href="{% url 'social:begin' "facebook" %}"><span class="icon-facebook" title="{% trans "Login via facebook" %}"></span></a>
-              <a href="{% url 'social:begin' "twitter" %}"><span class="icon-twitter" title="{% trans "Login via twitter" %}"></span></a>
-            </div>
-              <li class="hidden-li"><a href="{% url 'django.contrib.auth.views.login' %}">Avaika</a></li>
-              <li class="hidden-li"><a href="{% url 'social:begin' "facebook" %}">Facebook</a></li>
-              <li class="hidden-li"><a href="{% url 'social:begin' "twitter" %}">Twitter</a></li>
-          {% endif %}
-        </div>
+         {% render_comment_list for object %}
+         {% render_comment_form for object %}
       </div>
       <div class="clearfix"></div>
     </div>

@@ -18,6 +18,10 @@ class FileUploadAdmin(MultiUploadAdmin):
                                    "image/png",)
     list_display = ['upload_date', 'upload', 'mime_type']
 
+    # uncomment for snipshot photo editing feature
+    # class Media:
+    #    js = (JQUERY_URL, 'adminfiles/photo-edit.js')
+
     def response_change(self, request, obj):
         if request.POST.has_key("_popup"):
             return HttpResponse('<script type="text/javascript">'

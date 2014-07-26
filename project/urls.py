@@ -13,7 +13,7 @@ urlpatterns = patterns(
     (r'^accounts/', include('project.registration.backends.default.urls')),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^', include('project.blog.urls')),
-    url(r'^comments/', include('django.contrib.comments.urls')),
+    url(r'^comments/', include('fluent_comments.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^adminfiles/', include('project.adminfiles.urls')),
     url(r'^tags_input/', include('tags_input.urls', namespace='tags_input')),

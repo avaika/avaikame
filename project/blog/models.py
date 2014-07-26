@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.sites.models import Site
 from django.contrib.auth.models import AbstractUser
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -55,6 +56,7 @@ class Post(models.Model):
     metaDesc = models.CharField(max_length=150, verbose_name=_("Meta description"))
     draft = models.BooleanField(default=True, blank=True, verbose_name=_("Is draft"))
     mapSize = models.IntegerField(blank=True, null=True)
+    site = models.ForeignKey(Site)
 
     class Meta:
         verbose_name = _("Post")
@@ -76,23 +78,7 @@ class PostMap(models.Model):
     class Meta:
         verbose_name = _("Post map direction")
         verbose_name_plural = _("Post map directions")
-        ordering = ('order',)
+        ordering = ('order', '-id')
 
     def __unicode__(self):
         return self.place
-
-
-class Comment(models.Model):
-    author = models.ForeignKey(User, related_name='comment_author', verbose_name=_("Comment author"))
-    post = models.ForeignKey(Post, verbose_name=_("Post"))
-    text = models.TextField(blank=True, null=True, verbose_name=_("Comment body"))
-    created = models.DateTimeField(auto_now=True, verbose_name=_("Creation time"))
-    repliedTo = models.ForeignKey('self', blank=True, null=True, verbose_name=_("Replied to"))
-
-    class Meta:
-        verbose_name = _("Comment")
-        verbose_name_plural = _("Comments")
-        ordering = ('-created', 'id')
-
-    def __unicode__(self):
-        return self.post

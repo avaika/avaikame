@@ -28,7 +28,7 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
 
 LOCALE_PATHS = (
-    os.path.join(PROJECT_ROOT, 'locale'),
+    os.path.join(PROJECT_ROOT, 'locale', 'templates/locale'),
 )
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static/')
@@ -69,6 +69,8 @@ ROOT_URLCONF = 'project.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'project.wsgi.application'
+FLUENT_COMMENTS_EXCLUDE_FIELDS = ('title', 'name', 'email', 'url')
+COMMENTS_APP = 'fluent_comments'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, 'templates')
@@ -88,11 +90,13 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'social',
     'tags_input',
-    # 'threadedcomments',
+    'fluent_comments',
+    'crispy_forms',
+    'threadedcomments',
     'django.contrib.auth',
     'django.contrib.sessions',
     # 'django.contrib.messages',
-    # 'django.contrib.comments',
+    'django.contrib.comments',
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'django.contrib.contenttypes',

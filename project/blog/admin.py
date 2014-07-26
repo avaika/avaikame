@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from models import User, Post, Tag, Comment, PostMap
+from models import User, Post, Tag, PostMap
 from forms import UserCreationForm
 from project.adminfiles.admin import FilePickerAdmin
 from tags_input import admin as tags_input_admin
@@ -40,13 +40,6 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, FilePickerAdmin):
     save_as = True
 
 
-class CommentAdmin(admin.ModelAdmin):
-    list_display = ('id', 'author', 'created')
-    list_filter = ('author', 'post')
-    search_fields = ['id', 'author', 'text']
-
-
 admin.site.register(User, ProfileUserAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Post, PostAdmin)
-admin.site.register(Comment, CommentAdmin)

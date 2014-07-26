@@ -36,7 +36,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/"><span class="icon-paw"></span> me.avaika.me</a> </li>
                     {% if user.is_authenticated %}
-                      <li><a href="/">{% trans "Settings" %}</a></li>
+                      {# <li><a href="/">{% trans "Settings" %}</a></li> #}
                       <li><a href="{% url 'auth_logout' %}"><span class="icon-paw"></span> {% trans "Exit" %}</a> </li>
                     {% else %}
                       <li>{% trans "Login" %} :

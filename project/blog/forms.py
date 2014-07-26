@@ -1,4 +1,3 @@
-# from captcha.fields import ReCaptchaField
 from models import User
 from django import forms
 
