@@ -1,16 +1,16 @@
 {% load thumbnail %}
 {% spaceless %}
-  {% thumbnail upload.upload "1200x1200" as im %}
+  {% thumbnail upload.upload "x1200" as im %}
     <a href="/media/{{ im }}" data-lightbox="roadtrip" class="photos">
   {% endthumbnail %}
-  {% thumbnail upload.upload "450x300" as im %}
-    {% if options.type == 'panorama' %}
+  {% if options.type == 'panorama' %}
+    {% thumbnail upload.upload "x400" as im %}
       <img src="/media/{{ im }}" class="img-responsive img-full" alt="Photo {{ upload.id }}"/>
-    {% elif options.type == 'vertical' %}
+    {% endthumbnail %}
+  {% else %}
+    {% thumbnail upload.upload "450x300" as im %}
       <img src="/media/{{ im }}" class="{{ options.class }}" alt="Photo {{ upload.id }}"/>
-    {% else %}
-      <img src="/media/{{ im }}" class="{{ options.class }}" alt="Photo {{ upload.id }}"/>
-    {% endif %}
-  {% endthumbnail %}
+    {% endthumbnail %}
+  {% endif %}
     </a>
 {% endspaceless %}

@@ -17,6 +17,7 @@ class FileUploadAdmin(MultiUploadAdmin):
     multiupload_acceptedformats = ("image/jpeg",
                                    "image/png",)
     list_display = ['upload_date', 'upload', 'mime_type']
+    multiupload_maxfilesize = 10 * 2 ** 20
 
     # uncomment for snipshot photo editing feature
     # class Media:
