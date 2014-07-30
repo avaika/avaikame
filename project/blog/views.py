@@ -16,6 +16,18 @@ class BlogListView(ListView):
 main = BlogListView.as_view()
 
 
+class TagView(TemplateView):
+    context_object_name = "posts"
+    template_name = 'blog/list_tag.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TagView, self).get_context_data(**kwargs)
+        context['posts'] = Post.objects.filter(draft=False, tags__value__contains=kwargs['tag'])
+        return context
+
+tag = TagView.as_view()
+
+
 class PageRedirectView(RedirectView):
     pattern_name = 'page_display'
 

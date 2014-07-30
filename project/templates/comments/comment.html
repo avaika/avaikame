@@ -27,7 +27,7 @@
         {% if USE_THREADEDCOMMENTS and not preview and user.is_authenticated %}<a href="#c{{ comment.id }}" data-comment-id="{{ comment.id }}" class="comment-reply-link">{% trans "ответить" %}</a>{% endif %}
       </h5>
       {% if comment.user.is_superuser %}
-        {{ comment.comment|linebreaksbr|safe }}
+        {{ comment.comment|safe|linebreaksbr }}
       {% else %}
         {{ comment.comment|linebreaksbr }}
       {% endif %}

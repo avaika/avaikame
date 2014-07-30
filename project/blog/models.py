@@ -40,6 +40,7 @@ def imagePath(instance, filename):
     ext = filename.split('.')[-1]
     filename = "avaika_%s.%s" % (str(uuid.uuid4())[1:8], ext)
     now = datetime.now()
+    return "2012/9/%s" % (filename)
     return "%d/%d/%s" % (now.year, now.month, filename)
 
 
