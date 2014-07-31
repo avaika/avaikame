@@ -36,11 +36,17 @@ class Tag(models.Model):
         return self.value
 
 
+def headImagePath(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "avaika_head_%s.%s" % (str(uuid.uuid4())[1:8], ext)
+    now = datetime.now()
+    return "%d/%d/%s" % (now.year, now.month, filename)
+
+
 def imagePath(instance, filename):
     ext = filename.split('.')[-1]
-    filename = "avaika_%s.%s" % (str(uuid.uuid4())[1:8], ext)
+    filename = "avaika_title_%s.%s" % (str(uuid.uuid4())[1:8], ext)
     now = datetime.now()
-    return "2012/9/%s" % (filename)
     return "%d/%d/%s" % (now.year, now.month, filename)
 
 
@@ -48,7 +54,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, related_name='post_author', verbose_name=_("Author"))
     # created = models.DateTimeField(auto_now=True, editable=True, blank=True, verbose_name=_("Creation time"))
     created = models.DateTimeField(editable=True, blank=True, verbose_name=_("Creation time"))
-    headImage = models.ImageField(upload_to=imagePath, blank=True, height_field=None, width_field=None, max_length=100)
+    headImage = models.ImageField(upload_to=headImagePath, blank=True, height_field=None, width_field=None, max_length=100)
     titleImage = models.ImageField(upload_to=imagePath, blank=True, height_field=None, width_field=None, max_length=100)
     title = models.CharField(max_length=150, verbose_name=_("Title"))
     slug = models.SlugField(max_length=150, verbose_name=_("Slug"))

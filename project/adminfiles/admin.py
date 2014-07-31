@@ -15,6 +15,7 @@ class FileUploadAdmin(MultiUploadAdmin):
     multiupload_list = True
     multiupload_form = True
     multiupload_acceptedformats = ("image/jpeg",
+                                   "image/gif",
                                    "image/png",)
     list_display = ['upload_date', 'upload', 'mime_type']
     multiupload_maxfilesize = 10 * 2 ** 20

@@ -81,7 +81,7 @@ class AllView(BaseView):
         now = datetime.datetime.now()
         earlier = now - datetime.timedelta(days=3)
         context.update({
-            'files': self.files().filter(upload_date__gt=earlier).order_by(*settings.ADMINFILES_THUMB_ORDER)
+            'files': self.files().filter(upload_date__gt=earlier, upload_date__lt=now).order_by(*settings.ADMINFILES_THUMB_ORDER)
         })
         return context
 
