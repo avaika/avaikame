@@ -22,3 +22,7 @@ six==1.7.3
 sorl-thumbnail==11.12
 timezones==1.7
 wsgiref==0.1.2
+django_extensions
+threadedcomments
+django-crispy-forms
+django-fluent-comments
