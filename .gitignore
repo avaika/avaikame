@@ -1,0 +1,6 @@
+.env
+project/media/
+project/static/
+project/local_settings.py
+*.swp
+*.pyc
