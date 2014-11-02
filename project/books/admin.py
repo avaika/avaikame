@@ -5,7 +5,8 @@ from tags_input import admin as tags_input_admin
 
 
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('id', 'value')
+    list_display = ('id', 'value', 'wiki_url', 'wiki_url_en')
+    list_editable = ('value', 'wiki_url', 'wiki_url_en')
     search_fields = ['id', 'value']
 
 
