@@ -10,7 +10,7 @@
       $(function(){
           $("#books").tablesorter(
               { theme : 'default', 
-                sortList : [[2,0],[3,1],[6,1]],
+                sortList : [[1,0],[5,1]],
                 headerTemplate : '{content}{icon}',
                 widgets : ["columns"],
                 widgetOptions : { columns : [ "read", "author" ] }
@@ -37,30 +37,24 @@
                 <thead>
                   <tr>
                     <th data-field="id">Book</th>
-                    <th data-field="link">Wiki link</th>
                     <th data-field="author">Author</th>
                     <th data-field="year">Year</th>
                     <th data-field="genre">Genre</th>
                     <th data-field="desc">Description</th>
                     <th data-field="read">Read?</th>
+                    <th data-field="read">Recommend?</th>
                   </tr>
                 </thead>
             {% endif %}
                 <tr>
-                  <td>{{ book.title }} / {{ book.title_orig }}</td>
                   <td>
-                    {% if book.wiki_url %}<a href="{{ book.wiki_url }}">ru</a>{% endif %}
-                    {% if book.wiki_url and book.wiki_url_en %}|{% endif %}
-                    {% if book.wiki_url_en %}<a href="{{ book.wiki_url_en }}">en</a>{% endif %}
+                    {% if book.wiki_url %}<a href="{{ book.wiki_url }}">{% endif %}{{ book.title }}{% if book.wiki_url %}</a>{% endif %} / 
+                    {% if book.wiki_url_en %}<a href="{{ book.wiki_url_en }}">{% endif %}{{ book.title_orig }}{% if book.wiki_url_en %}</a>{% endif %}
                   </td>
                   <td>
                   {% for author in  book.author.all %}
-                    {{ author }}
-                    {% if author.wiki_url or author.wiki_url_en %}({% endif %}
-                    {% if author.wiki_url %}<a href="{{ author.wiki_url }}">ru</a>{% endif %}
-                    {% if author.wiki_url and author.wiki_url_en %}|{% endif %}
-                    {% if author.wiki_url_en %}<a href="{{ author.wiki_url_en }}">en</a>{% endif %}
-                    {% if author.wiki_url or author.wiki_url_en %}){% endif %}
+                    {% if author.wiki_url %}<a href="{{ author.wiki_url }}">{% endif %}{{ author }}{% if author.wiki_url %}</a>{% endif %}
+                    {% if author.wiki_url_en %}(<a href="{{ author.wiki_url_en }}">en</a>){% endif %}
                     {% if not forloop.last %},{% endif %}
                   {% endfor %}
                   </td>
@@ -70,6 +64,7 @@
                   </td>
                   <td>{{ book.about }}</td>
                   <td>{{ book.read|yesno:"Да, Нет" }}</td>
+                  <td>{% if book.read %}{{ book.recommend|yesno:"Да, Нет" }} {% endif %}</td>
                 </tr>
               {% if forloop.last %}
               </table>
