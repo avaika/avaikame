@@ -61,6 +61,7 @@
                     {% if author.wiki_url and author.wiki_url_en %}|{% endif %}
                     {% if author.wiki_url_en %}<a href="{{ author.wiki_url_en }}">en</a>{% endif %}
                     {% if author.wiki_url or author.wiki_url_en %}){% endif %}
+                    {% if not forloop.last %},{% endif %}
                   {% endfor %}
                   </td>
                   <td>{{ book.year }}</td>
