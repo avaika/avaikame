@@ -1,4 +1,4 @@
-from project.blog import views
+from project.me import views
 from django.conf.urls import url, patterns
 
 urlpatterns = patterns(
@@ -8,6 +8,4 @@ urlpatterns = patterns(
     url(r'^tag/(?P<tag>.*)/$', views.tag, name='tag_list'),
     url(r'^page/(?P<pk>[0-9]+)/(?P<slug>.*)/$', views.page_display, name='page_display'),
     url(r'^directions/(?P<post>[0-9]+)/$', views.directions, name='directions'),
-    # url(r'^contacts/$', views.contact, name='contacts'),
-    # url(r'^contacts/thanks/$', views.contact_thank, name='contacts_thanks'),
 )

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}{% load thumbnail i18n adminfiles_tags staticfiles comments %}
+{% block title %}Avaika home{% endblock %}
+{% block addlink %}
+<link href="{% static "base/css/lightbox.css" %}" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static "fluent_comments/css/ajaxcomments.css" %}" />
+{% endblock %}
+{% block content %}
+<div class="container">
+
+  {# Post #}
+  <div class="row">
+    <div class="box">
+      <div class="col-lg-12">
+        <h2 class="intro-text text-center">Hi there</h2>
+        <hr>
+      </div>
+      <div class="clearfix"></div>
+      <br />
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            Hey, friend, you're hanging around probably just by a coincidence.<br />
+            Feel free to dig around a while, though there is just a couple of posts about some IT related stuff (just cause I've awful memory)<br /> <br />
+            If you want to get in touch with me, feel free to email me to site ( at ) avaika.me. <br /> <br />
+            And anyway enjoy your day :) <br /> <br />
+            P.S. non-IT related stuff is not in English, sorry for that, but there is no reason to translate it anyway.
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Kind regards, avaika.
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+  {# Random posts #}
+  <div class="row">
+    <div class="box">
+      <div class="col-lg-12">
+        <h2 class="intro-text text-center">{% trans "Random posts" %}</h2>
+        <hr>
+      </div>
+        <div class="col-sm-4 text-center photo_dark">
+          <a href="/it/">
+          {% thumbnail "index/it.jpg" "750x450" as im %}
+            <img class="img-responsive" src="{{ im.url }}" alt="Image for {{ post.title }}">
+          {% endthumbnail %}
+          <span class="photo_desc photo_multi">
+             <p>IT</p>
+          </span>
+          </a>
+        </div>
+        <div class="col-sm-4 text-center photo_dark">
+          <a href="/books/">
+          {% thumbnail "index/books.jpg" "750x450" as im %}
+            <img class="img-responsive" src="{{ im.url }}" alt="Image for {{ post.title }}">
+          {% endthumbnail %}
+          <span class="photo_desc photo_multi">
+             <p>Books</p>
+          </span>
+          </a>
+        </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

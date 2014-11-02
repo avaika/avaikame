@@ -11,14 +11,14 @@ class BlogListView(ListView):
     queryset = Post.objects.filter(draft=False)
     paginate_by = 10
     context_object_name = "posts"
-    template_name = 'blog/list.html'
+    template_name = 'me/list.html'
 
 main = BlogListView.as_view()
 
 
 class TagView(TemplateView):
     context_object_name = "posts"
-    template_name = 'blog/list_tag.html'
+    template_name = 'me/list_tag.html'
 
     def get_context_data(self, **kwargs):
         context = super(TagView, self).get_context_data(**kwargs)
@@ -45,7 +45,7 @@ page_redirect = PageRedirectView.as_view()
 class PageDetailView(DetailView):
     model = Post
     context_object_name = "post"
-    template_name = 'blog/page_detail.html'
+    template_name = 'me/page_detail.html'
 
     def get_object(self):
         object = super(PageDetailView, self).get_object()
@@ -64,7 +64,7 @@ page_display = PageDetailView.as_view()
 
 
 class DirectionView(TemplateView):
-    template_name = "blog/directions.html"
+    template_name = "me/directions.html"
     context_object_name = "waypts"
 
     def get_context_data(self, **kwargs):

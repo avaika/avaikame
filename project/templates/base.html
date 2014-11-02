@@ -8,7 +8,7 @@
     <meta name="description" content="{% block meta_description %}{% endblock %}">
     <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
 
-    <title>{% block title %}Avaika{% endblock %} - me.avaika.me</title>
+    <title>{% block title %}Avaika{% endblock %} - avaika.me</title>
 
     {# <!-- Bootstrap core CSS --> #}
     <link href="{% static "base/css/bootstrap.css" %}" rel="stylesheet">
@@ -28,13 +28,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">me.avaika.me</a>
+                <a class="navbar-brand" href="/">avaika.me</a>
             </div>
 
             {# Collect the nav links, forms, and other content for toggling #}
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/"><span class="icon-paw"></span> me.avaika.me</a> </li>
+                    <li><a href="/"><span class="icon-paw"></span> avaika.me</a> </li>
                     {% if user.is_authenticated %}
                       {# <li><a href="/">{% trans "Settings" %}</a></li> #}
                       <li><a href="{% url 'auth_logout' %}"><span class="icon-paw"></span> {% trans "Exit" %}</a> </li>

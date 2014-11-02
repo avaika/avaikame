@@ -5,13 +5,7 @@ PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
-)
-
-MANAGERS = ADMINS
-
-SECRET_KEY = 'fryRacErnicnapyingawzgaxDeldatjuvNoquamaiPhlis'
+SECRET_KEY = 'just_a_secret_key_to_replace_my_boy'
 
 ALLOWED_HOSTS = ['*']
 SITE_ID = 1
@@ -22,6 +16,7 @@ USE_I18N = True
 
 LANGUAGES = (
     ('ru', 'Russian'),
+    ('en', 'English'),
 )
 LANGUAGE_CODE = 'ru'
 
@@ -40,7 +35,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static/')
 STATIC_URL = '/static/'
 
 ACCOUNT_ACTIVATION_DAYS = 7
-AUTH_USER_MODEL = 'blog.User'
+AUTH_USER_MODEL = 'me.User'
 GRAPPELLI_ADMIN_TITLE = u'avaika_me'
 
 STATICFILES_DIRS = (
@@ -79,7 +74,7 @@ FLUENT_COMMENTS_EXCLUDE_FIELDS = ('title', 'name', 'email', 'url')
 COMMENTS_APP = 'fluent_comments'
 
 TEMPLATE_DIRS = (
-    os.path.join(PROJECT_ROOT, 'templates')
+    os.path.join(PROJECT_ROOT, 'templates'),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -87,8 +82,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "django.core.context_processors.media",
 )
-
-INTERNAL_IPS = ('109.173.96.30', '127.0.0.1', )
 
 INSTALLED_APPS = (
     'south',
@@ -108,7 +101,9 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     # partner installed apps
     'project.adminfiles',
-    'project.blog',
+    'project.it',
+    'project.me',
+    'project.books',
     'project.registration',
     # end partner installed apps
     # Need to put apps below in the end
@@ -121,7 +116,13 @@ INSTALLED_APPS = (
 )
 
 TAGS_INPUT_MAPPINGS = {
-    'blog.Tag': {
+    'me.Tag': {
+        'field': 'value', 'create_missing': True,
+    },
+    'books.Author': {
+        'field': 'value', 'create_missing': True,
+    },
+    'books.Genre': {
         'field': 'value', 'create_missing': True,
     },
 }

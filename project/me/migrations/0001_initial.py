@@ -9,7 +9,7 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'User'
-        db.create_table(u'blog_user', (
+        db.create_table(u'me_user', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('password', self.gf('django.db.models.fields.CharField')(max_length=128)),
             ('last_login', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
@@ -27,37 +27,37 @@ class Migration(SchemaMigration):
             ('notifyReplied', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('registered', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
         ))
-        db.send_create_signal(u'blog', ['User'])
+        db.send_create_signal(u'me', ['User'])
 
         # Adding M2M table for field groups on 'User'
-        m2m_table_name = db.shorten_name(u'blog_user_groups')
+        m2m_table_name = db.shorten_name(u'me_user_groups')
         db.create_table(m2m_table_name, (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('user', models.ForeignKey(orm[u'blog.user'], null=False)),
+            ('user', models.ForeignKey(orm[u'me.user'], null=False)),
             ('group', models.ForeignKey(orm[u'auth.group'], null=False))
         ))
         db.create_unique(m2m_table_name, ['user_id', 'group_id'])
 
         # Adding M2M table for field user_permissions on 'User'
-        m2m_table_name = db.shorten_name(u'blog_user_user_permissions')
+        m2m_table_name = db.shorten_name(u'me_user_user_permissions')
         db.create_table(m2m_table_name, (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('user', models.ForeignKey(orm[u'blog.user'], null=False)),
+            ('user', models.ForeignKey(orm[u'me.user'], null=False)),
             ('permission', models.ForeignKey(orm[u'auth.permission'], null=False))
         ))
         db.create_unique(m2m_table_name, ['user_id', 'permission_id'])
 
         # Adding model 'Tag'
-        db.create_table(u'blog_tag', (
+        db.create_table(u'me_tag', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('value', self.gf('django.db.models.fields.CharField')(max_length=150)),
         ))
-        db.send_create_signal(u'blog', ['Tag'])
+        db.send_create_signal(u'me', ['Tag'])
 
         # Adding model 'Post'
-        db.create_table(u'blog_post', (
+        db.create_table(u'me_post', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('author', self.gf('django.db.models.fields.related.ForeignKey')(related_name='post_author', to=orm['blog.User'])),
+            ('author', self.gf('django.db.models.fields.related.ForeignKey')(related_name='post_author', to=orm['me.User'])),
             ('created', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
             ('headImage', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
             ('titleImage', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
@@ -70,48 +70,48 @@ class Migration(SchemaMigration):
             ('mapSize', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
             ('site', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['sites.Site'])),
         ))
-        db.send_create_signal(u'blog', ['Post'])
+        db.send_create_signal(u'me', ['Post'])
 
         # Adding M2M table for field tags on 'Post'
-        m2m_table_name = db.shorten_name(u'blog_post_tags')
+        m2m_table_name = db.shorten_name(u'me_post_tags')
         db.create_table(m2m_table_name, (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('post', models.ForeignKey(orm[u'blog.post'], null=False)),
-            ('tag', models.ForeignKey(orm[u'blog.tag'], null=False))
+            ('post', models.ForeignKey(orm[u'me.post'], null=False)),
+            ('tag', models.ForeignKey(orm[u'me.tag'], null=False))
         ))
         db.create_unique(m2m_table_name, ['post_id', 'tag_id'])
 
         # Adding model 'PostMap'
-        db.create_table(u'blog_postmap', (
+        db.create_table(u'me_postmap', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('post', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['blog.Post'])),
+            ('post', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['me.Post'])),
             ('place', self.gf('django.db.models.fields.CharField')(max_length=150)),
             ('order', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
         ))
-        db.send_create_signal(u'blog', ['PostMap'])
+        db.send_create_signal(u'me', ['PostMap'])
 
 
     def backwards(self, orm):
         # Deleting model 'User'
-        db.delete_table(u'blog_user')
+        db.delete_table(u'me_user')
 
         # Removing M2M table for field groups on 'User'
-        db.delete_table(db.shorten_name(u'blog_user_groups'))
+        db.delete_table(db.shorten_name(u'me_user_groups'))
 
         # Removing M2M table for field user_permissions on 'User'
-        db.delete_table(db.shorten_name(u'blog_user_user_permissions'))
+        db.delete_table(db.shorten_name(u'me_user_user_permissions'))
 
         # Deleting model 'Tag'
-        db.delete_table(u'blog_tag')
+        db.delete_table(u'me_tag')
 
         # Deleting model 'Post'
-        db.delete_table(u'blog_post')
+        db.delete_table(u'me_post')
 
         # Removing M2M table for field tags on 'Post'
-        db.delete_table(db.shorten_name(u'blog_post_tags'))
+        db.delete_table(db.shorten_name(u'me_post_tags'))
 
         # Deleting model 'PostMap'
-        db.delete_table(u'blog_postmap')
+        db.delete_table(u'me_postmap')
 
 
     models = {
@@ -128,9 +128,9 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
-        u'blog.post': {
+        u'me.post': {
             'Meta': {'ordering': "('-created',)", 'object_name': 'Post'},
-            'author': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'post_author'", 'to': u"orm['blog.User']"}),
+            'author': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'post_author'", 'to': u"orm['me.User']"}),
             'created': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
             'draft': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'headImage': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
@@ -141,23 +141,23 @@ class Migration(SchemaMigration):
             'post': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'site': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['sites.Site']"}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '150'}),
-            'tags': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['blog.Tag']", 'symmetrical': 'False'}),
+            'tags': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['me.Tag']", 'symmetrical': 'False'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '150'}),
             'titleImage': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'})
         },
-        u'blog.postmap': {
+        u'me.postmap': {
             'Meta': {'ordering': "('order', '-id')", 'object_name': 'PostMap'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'order': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
             'place': ('django.db.models.fields.CharField', [], {'max_length': '150'}),
-            'post': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['blog.Post']"})
+            'post': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['me.Post']"})
         },
-        u'blog.tag': {
+        u'me.tag': {
             'Meta': {'object_name': 'Tag'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'value': ('django.db.models.fields.CharField', [], {'max_length': '150'})
         },
-        u'blog.user': {
+        u'me.user': {
             'Meta': {'ordering': "('-registered', 'id')", 'object_name': 'User'},
             'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
             'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
@@ -193,4 +193,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['blog']
+    complete_apps = ['me']
