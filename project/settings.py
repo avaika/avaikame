@@ -125,6 +125,9 @@ TAGS_INPUT_MAPPINGS = {
     'books.Genre': {
         'field': 'value', 'create_missing': True,
     },
+    'it.ITTag': {
+        'field': 'value', 'create_missing': True,
+    },
 }
 TAGS_INPUT_INCLUDE_JQUERY = True
 

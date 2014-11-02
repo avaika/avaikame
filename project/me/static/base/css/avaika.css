@@ -178,6 +178,13 @@ footer p {
   background-color:rgba(255, 255, 255, 0.6);
 }
 
+.date_it {
+  position:absolute;
+  top:2px;
+  right:0px;
+  margin-right:5px;
+}
+
 .photo_desc {
   position:absolute;
   display:block;

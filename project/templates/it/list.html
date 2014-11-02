@@ -1,0 +1,56 @@
+{% extends 'base.html' %}{% load static i18n thumbnail %}
+
+{% block title %}IT{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="box">
+      <div class="col-md-9">
+        {% for post in posts %}
+          <div class="col-lg-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h2><a href="{% url 'it_page_redirect' post.id %}">{{ post.title }}</a></h2>
+                <p>{{ post.post }}</p>
+                <span class="date_it date_multi">
+                  <p>{{ post.created|date:"d E Y" }}</p>
+                </span>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>Tags</h4>
+            <p>
+              {% for tag in tags %}
+                <a href="{% url 'it_tag_list' tag %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+              {% endfor %}
+            <p>
+          </div>
+        </div>
+      </div>
+      {% if is_paginated and page_obj %}
+        {% if page_obj.has_previous or page_obj.has_next %}
+          <div class="col-lg-12 text-center">
+            <ul class="pager">
+              {% if page_obj.has_previous %}
+                <li class="previous"><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">&larr; Назад</a></li>
+                <li><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}" class="select">{{ page_obj.previous_page_number }}</a></li>
+              {% endif %}
+              <li><a href="#" onclick="return false;" class="select">{{ page_obj.number }}</a></li>
+              {% if page_obj.has_next %}
+                <li><a href="{{ request.path }}?page={{ page_obj.next_page_number }}" class="select">{{ page_obj.next_page_number }}</a></li>
+                <li class="next"><a href="{{ request.path }}?page={{ page_obj.next_page_number }}">Вперёд &rarr;</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endif %}
+      </div>
+  </div>
+</div>
+{% endblock content %}
