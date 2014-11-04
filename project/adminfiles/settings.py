@@ -34,7 +34,8 @@ ADMINFILES_INSERT_LINKS = getattr(
                (_('Insert vertical'), {'type': 'vertical'}),
                (_('Insert vright'), {'type': 'vertical',
                                      'class': 'pull-right'}),
-               (_('Insert panorama'), {'type': 'panorama'}), ]
+               (_('Insert panorama'), {'type': 'panorama'}),
+               (_('Insert small'), {'type': 'small'}), ]
      },
     )
 
