@@ -42,7 +42,7 @@
   <div class="row">
     <div class="box">
         <div class="col-sm-4 text-center photo_dark">
-          <a href="/it/">
+          <a href="{% url 'category' 'it' %}">
           {% thumbnail "index/it.jpg" "750x450" as im %}
             <img class="img-responsive" src="{{ im.url }}" alt="Image for {{ post.title }}">
           {% endthumbnail %}
@@ -58,6 +58,16 @@
           {% endthumbnail %}
           <span class="photo_desc photo_multi">
              <p>Books</p>
+          </span>
+          </a>
+        </div>
+        <div class="col-sm-4 text-center photo_dark">
+          <a href="{% url 'category' 'hi' %}">
+          {% thumbnail "index/hi.jpg" "750x450" as im %}
+            <img class="img-responsive" src="{{ im.url }}" alt="Image for {{ post.title }}">
+          {% endthumbnail %}
+          <span class="photo_desc photo_multi">
+             <p>История</p>
           </span>
           </a>
         </div>
