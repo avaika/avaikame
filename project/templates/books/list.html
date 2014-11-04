@@ -48,8 +48,8 @@
             {% endif %}
                 <tr>
                   <td>
-                    {% if book.wiki_url %}<a href="{{ book.wiki_url }}">{% endif %}{{ book.title }}{% if book.wiki_url %}</a>{% endif %} / 
-                    {% if book.wiki_url_en %}<a href="{{ book.wiki_url_en }}">{% endif %}{{ book.title_orig }}{% if book.wiki_url_en %}</a>{% endif %}
+                    {% if book.wiki_url %}<a href="{{ book.wiki_url }}">{% endif %}{{ book.title }}{% if book.wiki_url %}</a>{% endif %} 
+                    {% if book.wiki_url_en %}/ <a href="{{ book.wiki_url_en }}">{{ book.title_orig }}</a>{% endif %}
                   </td>
                   <td>
                   {% for author in  book.author.all %}
