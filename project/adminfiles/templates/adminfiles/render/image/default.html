@@ -8,7 +8,7 @@
       <img src="/media/{{ im }}" class="img-responsive img-full" alt="Photo {{ upload.id }}"/>
     {% endthumbnail %}
   {% elif options.type == 'small' %}
-    {% thumbnail upload.upload "300" as im %}
+    {% thumbnail upload.upload "x190" as im %}
       <img src="/media/{{ im }}" class="{{ options.class }}" alt="Photo {{ upload.id }}"/>
     {% endthumbnail %}
   {% else %}
