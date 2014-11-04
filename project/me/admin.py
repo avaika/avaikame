@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from models import User, Post, Tag, PostMap
+from models import User, Post, Tag, PostMap, Category
 from forms import UserCreationForm
 from project.adminfiles.admin import FilePickerAdmin
 from tags_input import admin as tags_input_admin
@@ -14,6 +14,11 @@ class ProfileUserAdmin(UserAdmin):
         ('User data', {'fields': ('notifyEmail', )}),
     )
     add_form = UserCreationForm
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'slug')
+    search_fields = ['id', 'title']
 
 
 class TagAdmin(admin.ModelAdmin):
@@ -31,7 +36,7 @@ class MapInline(admin.StackedInline):
 
 
 class PostAdmin(tags_input_admin.TagsInputAdmin, FilePickerAdmin):
-    list_display = ('id', 'title', 'slug', 'created', 'draft')
+    list_display = ('id', 'title', 'slug', 'category', 'created', 'draft')
     list_editable = ('title', 'slug', 'draft')
     search_fields = ['id', 'title', 'post']
     prepopulated_fields = {'slug': ['title']}
@@ -42,5 +47,6 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, FilePickerAdmin):
 
 
 admin.site.register(User, ProfileUserAdmin)
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Post, PostAdmin)

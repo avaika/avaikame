@@ -41,7 +41,7 @@
             <h4>Tags</h4>
             <p> 
               {% for tag in tags %}
-                  <a href="{% url 'it_tag_list' tag %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                  <a href="{% url 'tag_list' tag %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
               {% endfor %}
             <p> 
           </div>

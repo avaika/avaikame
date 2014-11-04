@@ -1,27 +1,55 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import RedirectView, TemplateView, DetailView, ListView
-from models import Post, PostMap
+from models import Post, PostMap, Tag, Category
 
 # from django.contrib.auth import get_user_model
 # User = get_user_model()
+TRAVEL_CAT = 1
+TRAVEL_SLUG = 'me'
 
 
-class BlogListView(ListView):
-    queryset = Post.objects.filter(draft=False)
+class CategoryListView(ListView):
+    model = Post
     paginate_by = 10
     context_object_name = "posts"
-    template_name = 'me/list.html'
 
-main = BlogListView.as_view()
+    def get_queryset(self):
+        qs = super(CategoryListView, self).get_queryset()
+        return qs.filter(draft=False, category__slug=self.kwargs['slug'])
+
+    def get_template_names(self, *args, **kwargs):
+        if self.kwargs['slug'] == TRAVEL_SLUG:
+            return 'me/list.html'
+        else:
+            return 'it/list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CategoryListView, self).get_context_data(**kwargs)
+        slug = self.kwargs['slug']
+        if slug != TRAVEL_SLUG:
+            cat = Category.objects.get(slug=slug)
+            context['tags'] = Tag.objects.filter(category=cat)
+        return context
+
+category = CategoryListView.as_view()
 
 
 class TagView(TemplateView):
     context_object_name = "posts"
-    template_name = 'me/list_tag.html'
+
+    def get_template_names(self):
+        tag = Tag.objects.get(value=self.kwargs['tag'])
+        if tag.category_id == TRAVEL_CAT:
+            return 'me/list_tag.html'
+        else:
+            return 'it/list_tag.html'
 
     def get_context_data(self, **kwargs):
         context = super(TagView, self).get_context_data(**kwargs)
+        tag = Tag.objects.get(value=self.kwargs['tag'])
+        if tag.category_id != TRAVEL_CAT:
+            context['tags'] = Tag.objects.filter(category=tag.category)
         context['posts'] = Post.objects.filter(draft=False, tags__value__contains=kwargs['tag'])
         return context
 
@@ -45,7 +73,13 @@ page_redirect = PageRedirectView.as_view()
 class PageDetailView(DetailView):
     model = Post
     context_object_name = "post"
-    template_name = 'me/page_detail.html'
+
+    def get_template_names(self):
+        post = self.get_object()
+        if post.category_id == TRAVEL_CAT:
+            return 'me/page_detail.html'
+        else:
+            return 'it/page_detail.html'
 
     def get_object(self):
         object = super(PageDetailView, self).get_object()
@@ -57,7 +91,11 @@ class PageDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(PageDetailView, self).get_context_data(**kwargs)
         obj = super(PageDetailView, self).get_object()
-        context['random_posts'] = Post.objects.filter(draft=False).exclude(pk=obj.pk).order_by('?')[:3]
+        if obj.category_id != TRAVEL_CAT:
+            context['tags'] = Tag.objects.filter(category=obj.category)
+            context['random_post'] = Post.objects.filter(draft=False, category=obj.category).exclude(pk=obj.pk).order_by('?')[:1]
+        else:
+            context['random_posts'] = Post.objects.filter(draft=False, category=obj.category).exclude(pk=obj.pk).order_by('?')[:3]
         return context
 
 page_display = PageDetailView.as_view()

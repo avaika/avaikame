@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.sites.models import Site
 from django.contrib.auth.models import AbstractUser
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -25,17 +24,6 @@ class User(AbstractUser):
         return unicode(self.username)
 
 
-class Tag(models.Model):
-    value = models.CharField(max_length=150, verbose_name=_("Title"))
-
-    class Meta:
-        verbose_name = _("Tag")
-        verbose_name_plural = _("Tags")
-
-    def __unicode__(self):
-        return self.value
-
-
 def headImagePath(instance, filename):
     ext = filename.split('.')[-1]
     filename = "avaika_head_%s.%s" % (str(uuid.uuid4())[1:8], ext)
@@ -50,8 +38,46 @@ def imagePath(instance, filename):
     return "%d/%d/%s" % (now.year, now.month, filename)
 
 
+class Category(models.Model):
+    headImage = models.ImageField(upload_to=headImagePath, blank=True, height_field=None, width_field=None, max_length=100)
+    title = models.CharField(max_length=150, verbose_name=_("Title"))
+    slug = models.SlugField(max_length=150, verbose_name=_("Slug"))
+    metaTitle = models.CharField(max_length=150, blank=True, verbose_name=_("Meta title"))
+    metaDesc = models.CharField(max_length=150, blank=True, verbose_name=_("Meta description"))
+
+    class Meta:
+        verbose_name = _("Category")
+        verbose_name_plural = _("Categories")
+        ordering = ('-title',)
+
+    def __unicode__(self):
+        return self.title
+
+    # def get_absolute_url(self):
+    #    return reverse('category', kwargs={'pk': self.id})
+
+
+class Tag(models.Model):
+    value = models.CharField(max_length=150, verbose_name=_("Title"))
+    category = models.ForeignKey(Category, verbose_name=_("Category"))
+
+    class Meta:
+        verbose_name = _("Tag")
+        verbose_name_plural = _("Tags")
+
+    def save(self, *args, **kwargs):
+        cat = self.value.find('_')
+        self.category = Category.objects.get(slug=self.value[:cat])
+        self.value = self.value[cat+1:]
+        super(Tag, self).save(*args, **kwargs)
+
+    def __unicode__(self):
+        return self.value
+
+
 class Post(models.Model):
     author = models.ForeignKey(User, related_name='post_author', verbose_name=_("Author"))
+    category = models.ForeignKey(Category, verbose_name=_("Category"))
     created = models.DateTimeField(editable=True, blank=True, verbose_name=_("Creation time"))
     headImage = models.ImageField(upload_to=headImagePath, blank=True, height_field=None, width_field=None, max_length=100)
     titleImage = models.ImageField(upload_to=imagePath, blank=True, height_field=None, width_field=None, max_length=100)
@@ -63,7 +89,6 @@ class Post(models.Model):
     metaDesc = models.CharField(max_length=150, blank=True, verbose_name=_("Meta description"))
     draft = models.BooleanField(default=True, blank=True, verbose_name=_("Is draft"))
     mapSize = models.IntegerField(blank=True, null=True)
-    site = models.ForeignKey(Site, blank=True)
 
     class Meta:
         verbose_name = _("Post")

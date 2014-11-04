@@ -101,7 +101,6 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     # partner installed apps
     'project.adminfiles',
-    'project.it',
     'project.me',
     'project.books',
     'project.registration',
@@ -125,7 +124,7 @@ TAGS_INPUT_MAPPINGS = {
     'books.Genre': {
         'field': 'value', 'create_missing': True,
     },
-    'it.ITTag': {
+    'me.AllTag': {
         'field': 'value', 'create_missing': True,
     },
 }
