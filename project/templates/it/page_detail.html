@@ -34,6 +34,13 @@
             {% endfor %}
           </div>
         </div>
+        {% if post.sources %}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            {{ post.sources|safe }}
+          </div>
+        </div>
+        {% endif %}
       </div>
       <div class="col-md-3">
         <div class="panel panel-default">
