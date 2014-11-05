@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import RedirectView, TemplateView, DetailView, ListView
-from models import Post, PostMap, Tag, Category
+from models import Post, PostMap, Tag
 
 # from django.contrib.auth import get_user_model
 # User = get_user_model()
@@ -28,8 +28,7 @@ class CategoryListView(ListView):
         context = super(CategoryListView, self).get_context_data(**kwargs)
         slug = self.kwargs['slug']
         if slug != TRAVEL_SLUG:
-            cat = Category.objects.get(slug=slug)
-            context['tags'] = Tag.objects.filter(category=cat)
+            context['tags'] = Tag.objects.filter(category__slug=slug)
         return context
 
 category = CategoryListView.as_view()
