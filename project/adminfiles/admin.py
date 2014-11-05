@@ -50,7 +50,7 @@ class FileUploadAdmin(MultiUploadAdmin):
                                                          *args,
                                                          **kwargs)
 
-    def process_uploaded_file(self, uploaded, object, **kwargs):
+    def process_uploaded_file(self, uploaded, object, request, **kwargs):
         f = self.model(upload=uploaded)
         f.save()
         return {'url': f.imagem(),
