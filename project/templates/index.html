@@ -52,7 +52,7 @@
           </a>
         </div>
         <div class="col-sm-4 text-center photo_dark">
-          <a href="/me/">
+          <a href="{% url 'category' 'me' %}">
           {% thumbnail "index/me.jpg" "750x450" as im %}
             <img class="img-responsive" src="{{ im.url }}" alt="Image for {{ post.title }}">
           {% endthumbnail %}
