@@ -3,5 +3,5 @@ from django.conf.urls import url, patterns
 
 urlpatterns = patterns(
     '',
-    url(r'^$', views.book_main),
+    url(r'^$', views.book_main, name="books"),
 )
