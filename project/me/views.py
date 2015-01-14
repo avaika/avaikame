@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import RedirectView, TemplateView, DetailView, ListView
-from models import Post, PostMap, Tag
+from models import Post, PostMap, Tag, PostPhoto
 
 # from django.contrib.auth import get_user_model
 # User = get_user_model()
@@ -90,6 +90,7 @@ class PageDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(PageDetailView, self).get_context_data(**kwargs)
         obj = super(PageDetailView, self).get_object()
+        context['text_chunks'] = PostPhoto.objects.filter(post_id=context['post'].id)
         if obj.category_id != TRAVEL_CAT:
             context['tags'] = Tag.objects.filter(category=obj.category)
             context['random_post'] = Post.objects.filter(draft=False, category=obj.category).exclude(pk=obj.pk).order_by('?')[:1]

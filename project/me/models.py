@@ -28,14 +28,14 @@ def headImagePath(instance, filename):
     ext = filename.split('.')[-1]
     filename = "avaika_head_%s.%s" % (str(uuid.uuid4())[1:8], ext)
     now = datetime.now()
-    return "%d/%d/%s" % (now.year, now.month, filename)
+    return "%d/%d/%d/%s" % (now.year, now.month, now.day, filename)
 
 
 def imagePath(instance, filename):
     ext = filename.split('.')[-1]
     filename = "avaika_title_%s.%s" % (str(uuid.uuid4())[1:8], ext)
     now = datetime.now()
-    return "%d/%d/%s" % (now.year, now.month, filename)
+    return "%d/%d/%d/%s" % (now.year, now.month, now.day, filename)
 
 
 class Category(models.Model):
@@ -101,6 +101,17 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('page_redirect', kwargs={'pk': self.id})
+
+
+class PostPhoto(models.Model):
+    post = models.ForeignKey(Post)
+    text = models.TextField(blank=True, null=True, verbose_name=_("Post body"))
+    photo = models.ImageField(upload_to=imagePath, blank=True, height_field=None, width_field=None, max_length=100)
+    panorama = models.BooleanField(default=False, blank=True, verbose_name=_("Is panorama"))
+    private = models.BooleanField(default=False, blank=True, verbose_name=_("Is private"))
+    photoRight = models.ImageField(upload_to=imagePath, blank=True, height_field=None, width_field=None, max_length=100)
+    panoramaRight = models.BooleanField(default=False, blank=True, verbose_name=_("Is panorama"))
+    privateRight = models.BooleanField(default=False, blank=True, verbose_name=_("Is private"))
 
 
 class PostMap(models.Model):

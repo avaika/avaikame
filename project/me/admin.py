@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from models import User, Post, Tag, PostMap, Category
+from models import User, Post, Tag, PostMap, Category, PostPhoto
 from forms import UserCreationForm
-from project.adminfiles.admin import FilePickerAdmin
+# from project.adminfiles.admin import FilePickerAdmin
 from tags_input import admin as tags_input_admin
 
 
@@ -35,7 +35,12 @@ class MapInline(admin.StackedInline):
     )
 
 
-class PostAdmin(tags_input_admin.TagsInputAdmin, FilePickerAdmin):
+class PostPhotoAdmin(admin.StackedInline):
+    model = PostPhoto
+    extra = 2
+
+
+class PostAdmin(tags_input_admin.TagsInputAdmin):
     list_display = ('id', 'title', 'slug', 'category', 'created', 'draft')
     list_editable = ('title', 'slug', 'draft')
     search_fields = ['id', 'title', 'post']
@@ -44,6 +49,7 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, FilePickerAdmin):
     # filter_horizontal = ('tags',)
     inlines = [MapInline, ]
     save_as = True
+    inlines = [PostPhotoAdmin]
 
 
 admin.site.register(User, ProfileUserAdmin)
