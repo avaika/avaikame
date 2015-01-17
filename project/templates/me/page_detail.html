@@ -41,7 +41,7 @@
               {{ post.post|render_uploads|safe }}
             {% else %}
               {% for chunk in text_chunks %}
-                {{ chunk.text }}
+                {{ chunk.text|safe }}
                 {% if chunk.photo or chunk.photoRight %}<p>
                   {% if chunk.photo %}
                     {% thumbnail chunk.photo "x1200" as photo_big %}
