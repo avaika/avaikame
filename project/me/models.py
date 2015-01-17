@@ -53,8 +53,8 @@ class Category(models.Model):
     def __unicode__(self):
         return self.title
 
-    # def get_absolute_url(self):
-    #    return reverse('category', kwargs={'pk': self.id})
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'pk': self.id})
 
 
 class Tag(models.Model):
@@ -79,8 +79,12 @@ class Post(models.Model):
     author = models.ForeignKey(User, related_name='post_author', verbose_name=_("Author"))
     category = models.ForeignKey(Category, verbose_name=_("Category"))
     created = models.DateTimeField(editable=True, blank=True, verbose_name=_("Creation time"))
-    headImage = models.ImageField(upload_to=headImagePath, blank=True, height_field=None, width_field=None, max_length=100)
-    titleImage = models.ImageField(upload_to=imagePath, blank=True, height_field=None, width_field=None, max_length=100)
+    headImage = models.ImageField(upload_to=headImagePath, blank=True, height_field=None,
+                                  width_field=None, max_length=100,
+                                  verbose_name="Head image 3863x1524")
+    titleImage = models.ImageField(upload_to=imagePath, blank=True, height_field=None,
+                                   width_field=None, max_length=100,
+                                   verbose_name="Title image 1980x1315")
     title = models.CharField(max_length=150, verbose_name=_("Title"))
     slug = models.SlugField(max_length=150, verbose_name=_("Slug"))
     post = models.TextField(blank=True, null=True, verbose_name=_("Post body"))
@@ -102,6 +106,22 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('page_redirect', kwargs={'pk': self.id})
 
+    def headImage_tag(self):
+        if self.headImage:
+            return u'<img src="/media/%s" height="100px" />' % self.headImage
+        else:
+            return
+    headImage_tag.short_description = 'Image'
+    headImage_tag.allow_tags = True
+
+    def titleImage_tag(self):
+        if self.titleImage:
+            return u'<img src="/media/%s" height="100px" />' % self.titleImage
+        else:
+            return
+    titleImage_tag.short_description = 'Image'
+    titleImage_tag.allow_tags = True
+
 
 class PostPhoto(models.Model):
     post = models.ForeignKey(Post)
@@ -112,6 +132,22 @@ class PostPhoto(models.Model):
     photoRight = models.ImageField(upload_to=imagePath, blank=True, height_field=None, width_field=None, max_length=100)
     panoramaRight = models.BooleanField(default=False, blank=True, verbose_name=_("Is panorama"))
     privateRight = models.BooleanField(default=False, blank=True, verbose_name=_("Is private"))
+
+    def photo_tag(self):
+        if self.photo:
+            return u'<img src="/media/%s" height="100px" />' % self.photo
+        else:
+            return
+    photo_tag.short_description = 'Image'
+    photo_tag.allow_tags = True
+
+    def photoRight_tag(self):
+        if self.photoRight:
+            return u'<img src="/media/%s" height="100px" />' % self.photoRight
+        else:
+            return
+    photoRight_tag.short_description = 'Image'
+    photoRight_tag.allow_tags = True
 
 
 class PostMap(models.Model):

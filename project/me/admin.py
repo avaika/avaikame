@@ -38,6 +38,12 @@ class MapInline(admin.StackedInline):
 class PostPhotoAdmin(admin.StackedInline):
     model = PostPhoto
     extra = 2
+    fieldsets = (
+        ('Text', {'fields': ('text', )}),
+        ('Photo', {'fields': ('photo', 'photo_tag', 'panorama', 'private')}),
+        ('Photo Right', {'fields': ('photoRight', 'photoRight_tag', 'panoramaRight', 'privateRight')}),
+    )
+    readonly_fields = ('photo_tag', 'photoRight_tag')
 
 
 class PostAdmin(tags_input_admin.TagsInputAdmin):
@@ -45,12 +51,17 @@ class PostAdmin(tags_input_admin.TagsInputAdmin):
     list_editable = ('title', 'slug', 'draft')
     search_fields = ['id', 'title', 'post']
     prepopulated_fields = {'slug': ['title']}
-    adminfiles_fields = ('post',)
+    # adminfiles_fields = ('post',)
     # filter_horizontal = ('tags',)
     inlines = [MapInline, ]
     save_as = True
     inlines = [PostPhotoAdmin]
-
+    fieldsets = (
+        ('Technical', {'fields': ('author', 'category', 'created', 'draft', 'mapSize',)}),
+        ('Titles', {'fields': ('title', 'slug', 'tags', )}),
+        ('Post', {'fields': ('headImage', 'headImage_tag', 'titleImage', 'titleImage_tag', 'sources', 'post')}),
+    )
+    readonly_fields = ('headImage_tag', 'titleImage_tag')
 
 admin.site.register(User, ProfileUserAdmin)
 admin.site.register(Category, CategoryAdmin)
