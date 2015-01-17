@@ -110,9 +110,13 @@
       {% for post in random_posts %}
         <div class="col-sm-4 text-center photo_dark">
           <a href="{% url 'page_redirect' post.id %}">
-          {% thumbnail post.titleImage "750x450" as im %}
-            <img class="img-responsive" src="{{ im.url }}" alt="Image for {{ post.title }}">
-          {% endthumbnail %}
+          {% if post.titleImage %}
+            {% thumbnail post.titleImage "750x450" as im %}
+              <img class="img-responsive" src="{{ im.url }}" alt="Image for {{ post.title }}">
+            {% endthumbnail %}
+          {% else %}
+            <img class="img-responsive" src="{% static "base/img/no-picture.png" %}" alt="Image for {{ post.title }}">
+          {% endif %}
           <span class="photo_desc photo_multi">
              <p>{{ post.title }}</p>
           </span>
