@@ -91,6 +91,12 @@ class PageDetailView(DetailView):
         context = super(PageDetailView, self).get_context_data(**kwargs)
         obj = super(PageDetailView, self).get_object()
         context['text_chunks'] = PostPhoto.objects.filter(post_id=context['post'].id)
+        next_item = Post.objects.filter(pk__gt=context['post'].id, category=context['post'].category).order_by('created')
+        if next_item:
+            context['next'] = next_item[0]
+        prev_item = Post.objects.filter(pk__lt=context['post'].id, category=context['post'].category).order_by('-created')
+        if prev_item:
+            context['prev'] = prev_item[0]
         if obj.category_id != TRAVEL_CAT:
             context['tags'] = Tag.objects.filter(category=obj.category)
             context['random_post'] = Post.objects.filter(draft=False, category=obj.category).exclude(pk=obj.pk).order_by('?')[:1]
