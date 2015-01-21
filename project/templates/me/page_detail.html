@@ -52,7 +52,7 @@
                           {% endthumbnail %}
                         {% else %}
                           {% thumbnail chunk.photo "450x300" as photo_thumb %}
-                            <img alt="Photo {{ chunk.id }}" class="" src="/media/{{ photo_thumb }}">
+                            <img alt="Photo {{ chunk.id }}" class="img-responsive" src="/media/{{ photo_thumb }}">
                           {% endthumbnail %}
                         {% endif %}
                       </a>
@@ -67,7 +67,7 @@
                           {% endthumbnail %}
                         {% else %}
                           {% thumbnail chunk.photoRight "450x300" as photo_thumb %}
-                            <img alt="Photo {{ chunk.id }}" class="" src="/media/{{ photo_thumb }}">
+                            <img alt="Photo {{ chunk.id }}" class="img-responsive" src="/media/{{ photo_thumb }}">
                           {% endthumbnail %}
                         {% endif %}
                       </a>
