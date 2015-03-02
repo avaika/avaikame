@@ -53,9 +53,8 @@ class PostAdmin(tags_input_admin.TagsInputAdmin):
     prepopulated_fields = {'slug': ['title']}
     # adminfiles_fields = ('post',)
     # filter_horizontal = ('tags',)
-    inlines = [MapInline, ]
     save_as = True
-    inlines = [PostPhotoAdmin]
+    inlines = [PostPhotoAdmin, MapInline, ]
     fieldsets = (
         ('Technical', {'fields': ('author', 'category', 'created', 'draft', 'mapSize',)}),
         ('Titles', {'fields': ('title', 'slug', 'tags', )}),
