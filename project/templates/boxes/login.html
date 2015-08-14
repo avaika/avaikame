@@ -1,29 +1,11 @@
-{% load url from future %}{# include "boxes/social_log.html" #}{% load static %}
-<form action="{% url 'django.contrib.auth.views.login' %}" method="post">
-{% csrf_token %}
-	<div class="col2 with-margin bottom-line">
-  </div>
-  <div class="col2 with-margin bottom-line">
-      <div>
-          <label for="username">Ваш e-mail:</label>
-          <div class="control">
-	            {{ form.email.errors }}
-              <input id="id_username" maxlength="30" name="username" type="text" />
-          </div>
-      </div>
-      <div>
-          <label for="name">Ваш пароль:</label>
-          <div class="control">
-	            {{ form.firstname.errors }}
-              <input id="password" name="password" type="password" value="">
-          </div>
-      </div>
-  </div>
-	<div style="text-align:center;">
-    <button type="submit" style="background-color:transparent; border-color:transparent;"> <img src="{% static "base/img/login.png" %}"/></button>
-  </div>
-	<div style="text-align:center;">
-    <a href="{% url 'django.contrib.auth.views.password_reset' %}">забыли пароль?</a>
-  </div>
-</form>
-{# include "boxes/social_log.html" #}{% load static %}
+{% load url from future %}
+
+{% include "boxes/social_log.html" %}
+
+{% load crispy_forms_tags %}
+{% if login_form %}
+    <div class="bg-danger">
+      {{ form.errors }}
+    </div>
+    {% crispy login_form login_form.helper %}
+{% endif %}

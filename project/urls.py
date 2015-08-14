@@ -8,9 +8,9 @@ admin.autodiscover()
 urlpatterns = patterns(
     '',
     (r'^grappelli/', include('grappelli.urls')),
-    (r'^favicon\.ico$', RedirectView.as_view(url='/static/base/img/favicon.ico')),
-    (r'^robots\.txt$', RedirectView.as_view(url='/static/robots.txt')),
-    (r'^accounts/', include('project.registration.backends.default.urls')),
+    (r'^favicon\.ico$', RedirectView.as_view(url='/static/base/img/favicon.ico', permanent=True)),
+    (r'^robots\.txt$', RedirectView.as_view(url='/static/robots.txt', permanent=True)),
+    (r'^accounts/', include('allauth.urls')),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^$', TemplateView.as_view(template_name='index.html')),
     url(r'^i/', include('project.me.urls')),

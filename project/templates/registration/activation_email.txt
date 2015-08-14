@@ -1,7 +1,0 @@
-{% load i18n %}
-{% trans "Для активации аккаунта на сайте" %} {{ site.name }}:
-{% trans "перейдите по ссылке:" %}
-
-http://{{ site.domain }}{% url 'registration_activate' activation_key %}
-
-{% blocktrans %}Ссылка будет активна еще {{ expiration_days }} дней.{% endblocktrans %}

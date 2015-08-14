@@ -1,0 +1,5 @@
+{% autoescape off %}
+Спасибо за подтверждение почтового адреса.
+
+avaika
+{% endautoescape %}

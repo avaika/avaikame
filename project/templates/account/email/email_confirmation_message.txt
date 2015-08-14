@@ -1,0 +1,9 @@
+{% load account %}{% user_display user as user_display %}{% load i18n %}{% autoescape off %}Привет от авайки!
+
+Вы получили это письмо, потому что на сайте avaika.me была произведене регистрация пользователя {{ user_display }} на этот почтовый адрес.
+
+Для подтверждения регистрации, подалуйста, пройдите по адреса: {{ activate_url }}.
+
+С уважением,
+avaika
+{% endautoescape %}

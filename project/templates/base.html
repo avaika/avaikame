@@ -40,14 +40,14 @@
                     <li><a href="{% url 'books' %}"><span class="icon-paw"></span> books</a> </li>
                     {% if user.is_authenticated %}
                       {# <li><a href="/">{% trans "Settings" %}</a></li> #}
-                      <li><a href="{% url 'auth_logout' %}"><span class="icon-paw"></span> {% trans "Exit" %}</a> </li>
+                      <li><a href="{% url 'account_logout' %}"><span class="icon-paw"></span> {% trans "Exit" %}</a> </li>
                     {% else %}
                       <li>{% trans "Login" %} :
-                        <a href="{% url 'django.contrib.auth.views.login' %}"><span class="icon-paw" title="{% trans "Login via avaika" %}"></span></a>
+                        <a href="{% url 'account_login' %}"><span class="icon-paw" title="{% trans "Login via avaika" %}"></span></a>
                         <a href="{% url 'social:begin' "facebook" %}"><span class="icon-facebook" title="{% trans "Login via facebook" %}"></span></a>
                         <a href="{% url 'social:begin' "twitter" %}"><span class="icon-twitter" title="{% trans "Login via twitter" %}"></span></a>
                       </li>
-                      <li class="hidden-li"><a href="{% url 'django.contrib.auth.views.login' %}">Avaika</a></li>
+                      <li class="hidden-li"><a href="{% url 'account_login' %}">Avaika</a></li>
                       <li class="hidden-li"><a href="{% url 'social:begin' "facebook" %}">Facebook</a></li>
                       <li class="hidden-li"><a href="{% url 'social:begin' "twitter" %}">Twitter</a></li>
                     {% endif %}
@@ -67,7 +67,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                  <p>Copyleft {% now "Y" %}. Check blog source on <a href='https://github.com/avaika/avaikame'>github</a> if you like.</p>
+                  <p>Copyleft {% now "Y" %}. Check blog source on <a href='//github.com/avaika/avaikame'>github</a> if you like.</p>
                 </div>
             </div>
         </div>

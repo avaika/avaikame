@@ -66,7 +66,7 @@ class PageRedirectView(RedirectView):
         kwargs['slug'] = page.slug
         return super(PageRedirectView, self).get_redirect_url(*args, **kwargs)
 
-page_redirect = PageRedirectView.as_view()
+page_redirect = PageRedirectView.as_view(permanent=True)
 
 
 class PageDetailView(DetailView):

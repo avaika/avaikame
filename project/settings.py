@@ -47,12 +47,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-    # 'django.template.loaders.eggs.Loader',
-)
-
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -73,29 +67,42 @@ WSGI_APPLICATION = 'project.wsgi.application'
 FLUENT_COMMENTS_EXCLUDE_FIELDS = ('title', 'name', 'email', 'url')
 COMMENTS_APP = 'fluent_comments'
 
-TEMPLATE_DIRS = (
-    os.path.join(PROJECT_ROOT, 'templates'),
-)
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.request",
-    "django.core.context_processors.media",
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(PROJECT_ROOT, 'templates'), ],
+        # 'APP_DIRS': ,
+        'OPTIONS': {
+            'context_processors': [
+                # Already defined
+                # Django-related contexts here
+                # `allauth` needs this from django
+                'django.template.context_processors.request',
+                "django.contrib.auth.context_processors.auth",
+                "django.core.context_processors.request",
+                "django.core.context_processors.media",
+                ],
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+                # 'django.template.loaders.eggs.Loader',
+                ],
+            },
+    },
+]
 
 INSTALLED_APPS = (
-    'south',
     'timezones',
     'sorl.thumbnail',
     'social',
     'tags_input',
-    'fluent_comments',
     'crispy_forms',
-    'threadedcomments',
     'django.contrib.auth',
     'django.contrib.sessions',
     # 'django.contrib.messages',
-    'django.contrib.comments',
+    'django_comments',
+    'fluent_comments',
+    'threadedcomments',
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'django.contrib.contenttypes',
@@ -103,7 +110,6 @@ INSTALLED_APPS = (
     'project.adminfiles',
     'project.me',
     'project.books',
-    'project.registration',
     # end partner installed apps
     # Need to put apps below in the end
     # to be able to override static from it
@@ -111,7 +117,13 @@ INSTALLED_APPS = (
     'grappelli',
     'django_extensions',
     'django.contrib.admin',
-    'multiupload',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.vk',
 )
 
 TAGS_INPUT_MAPPINGS = {
@@ -130,14 +142,15 @@ TAGS_INPUT_MAPPINGS = {
 }
 TAGS_INPUT_INCLUDE_JQUERY = True
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_ERROR_URL = '/accounts/login-failed/'
 
 AUTHENTICATION_BACKENDS = (
-    'social.backends.twitter.TwitterOAuth',
-    'social.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 
