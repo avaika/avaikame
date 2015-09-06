@@ -97,6 +97,7 @@ INSTALLED_APPS = (
     'social',
     'tags_input',
     'crispy_forms',
+    'modeltranslation',
     'django.contrib.auth',
     'django.contrib.sessions',
     # 'django.contrib.messages',
@@ -147,6 +148,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_ERROR_URL = '/accounts/login-failed/'
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',

@@ -5,6 +5,7 @@ from models import User, Post, Tag, PostMap, Category, PostPhoto
 from forms import UserCreationForm
 # from project.adminfiles.admin import FilePickerAdmin
 from tags_input import admin as tags_input_admin
+from modeltranslation.admin import TranslationStackedInline, TranslationAdmin
 
 
 class ProfileUserAdmin(UserAdmin):
@@ -35,7 +36,7 @@ class MapInline(admin.StackedInline):
     )
 
 
-class PostPhotoAdmin(admin.StackedInline):
+class PostPhotoAdmin(TranslationStackedInline):
     model = PostPhoto
     extra = 2
     fieldsets = (
@@ -46,7 +47,7 @@ class PostPhotoAdmin(admin.StackedInline):
     readonly_fields = ('photo_tag', 'photoRight_tag')
 
 
-class PostAdmin(tags_input_admin.TagsInputAdmin):
+class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
     list_display = ('id', 'title', 'slug', 'category', 'created', 'draft')
     list_editable = ('title', 'slug', 'draft')
     search_fields = ['id', 'title', 'post']

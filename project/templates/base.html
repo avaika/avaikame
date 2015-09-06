@@ -1,4 +1,4 @@
-{% spaceless %}{% load static i18n %}
+{% spaceless %}{% load static i18n me_tags %}
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -38,6 +38,10 @@
                     <li><a href="{% url 'category' "it" %}"><span class="icon-paw"></span> IT</a> </li>
                     <li><a href="{% url 'category' "me" %}"><span class="icon-paw"></span> me</a> </li>
                     <li><a href="{% url 'books' %}"><span class="icon-paw"></span> books</a> </li>
+                    {% get_available_languages as languages %}
+                    {% for lang_code, lang_name in languages %}
+                        <li><a href="{% change_lang lang_code %}">[ {{ lang_code }} ]</a></li>
+                    {% endfor %}
                     {% if user.is_authenticated %}
                       {# <li><a href="/">{% trans "Settings" %}</a></li> #}
                       <li><a href="{% url 'account_logout' %}"><span class="icon-paw"></span> {% trans "Exit" %}</a> </li>
