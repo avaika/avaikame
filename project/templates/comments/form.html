@@ -21,6 +21,6 @@
           <input type="submit" name="preview" class="btn" value="{% trans "Preview" %}" />
         </div>
       </div>
-      {% ajax_comment_tags %}
+      {% ajax_comment_tags for object %}
     </form>
 {% endif %}
