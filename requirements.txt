@@ -12,3 +12,4 @@ timezones
 python-social-auth
 django-tags-input
 git+git://github.com/gkuhn1/django-admin-multiupload.git
+django-modeltranslation==0.10.1
