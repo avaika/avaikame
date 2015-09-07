@@ -1,49 +1,68 @@
-{% extends 'base.html' %}{% load thumbnail i18n adminfiles_tags staticfiles comments %}
-{% block title %}Avaika home{% endblock %}
+{% extends 'base.html' %}{% load thumbnail i18n adminfiles_tags staticfiles comments me_tags %}
+{% block title %}{% trans "Avaika home" %}{% endblock %}
 {% block addlink %}
-<link href="{% static "base/css/lightbox.css" %}" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="{% static "fluent_comments/css/ajaxcomments.css" %}" />
+  <link href="{% static "base/css/lightbox.css" %}" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="{% static "fluent_comments/css/ajaxcomments.css" %}" />
 {% endblock %}
 {% block content %}
 <div class="container">
-
   {# Post #}
   <div class="row">
     <div class="box">
       <div class="col-lg-6">
         <div class="panel panel-default">
           <div class="panel-heading text-center">
-            Hi there,<br />
-            This is yet another home page for some stuff about my journeys, some fun facts and IT related stuff<br /> <br />
-            Probably all non-IT related info is in russian, as mostly all my readers speak Russian much better than English. Sorry for that.<br /> <br />
-            Anyway if you want to get in touch with me feel free to email me to site ( at ) avaika.me. <br /> <br />
-            And just enjoy your day :) 
+            {% get_current_language as lang %}
+            {% blocktrans %}
+                Hi, I'm Rush (read as Roosh)<br />
+                As you're here I bet you already know me. Even if not, just enjoy :)<br />
+                Here you can find yet another home page where I share some notes about my travels, funny facts and IT related stuff to my friends<br /> <br />
+                Some content is not yet translated, though I'm working on that. If you want to read always latest news, you might learn some Russian :)<br /><br />
+                To get in touch with me feel free to email to site ( at ) avaika.me. <br /> <br />
+                Wish you a nice day (:
+            {% endblocktrans %}
+            {% comment %}{###
+                Привет,<br />
+                Раз ты попал на эту страничку, скорее всего ты со мной знаком, так что ты знаешь что где и почему здесь находится (:<br />
+                Если нет - не расстраивайся. Это самая обычная домашняя страничка с небольшим набором постов про мои зарубежные приключения и пара забавных фактов из мировой истории.<br /><br />
+                Если ты решил со мной связаться, но не знаешь как -- пиши сюда: site ( at ) avaika.me. <br /> <br />
+                Хорошего дня :)
+            ###}{% endcomment %}
           </div>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="panel panel-default">
           <div class="panel-heading text-center">
-            Привет,<br />
-            Раз ты попал на эту страничку, скорее всего ты со мной знаком, так что ты знаешь что где и почему здесь находится (:<br />
-            Если нет - не расстраивайся. Это самая обычная домашняя страничка с небольшим набором постов про мои зарубежные приключения и пара забавных фактов из мировой истории.<br /><br />
-            Если ты решил со мной связаться, но не знаешь как -- пиши сюда: site ( at ) avaika.me. <br /> <br />
-            Хорошего дня :)
-          </div>
-        </div>
-      </div>
-      <div class="clearfix"></div>
-      <div class="col-lg-6">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Kind regards, avaika.
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            С наилучшими пожеланиями, avaika.
+            <table class="table table-bordered" id="books">
+              <tr>
+                <td>
+                <a href="{% url 'category' 'it' %}">
+                  <img class="img-responsive" style="height:75px" src="{% static "base/img/main/it.jpg" %}" alt="Image for {{ post.title }}">
+                  {% trans "IT" %}
+                </a>
+                </td>
+                <td>
+                <a href="{% url 'category' 'me' %}">
+                  <img class="img-responsive" style="height:75px" src="{% static "base/img/main/me.jpg" %}" alt="Image for {{ post.title }}">
+                  {% trans "Travels" %}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="{% url 'category' 'he' %}">
+                  <img class="img-responsive" style="height:75px" src="{% static "base/img/main/hi.jpg" %}" alt="Image for {{ post.title }}"> 
+                  {% trans "amazing facts" %}
+                </a>
+              </td>
+              <td>
+              <a href="{% url 'books' %}">
+                <img class="img-responsive" style="height:75px" src="{% static "base/img/main/books.jpg" %}" alt="Image for {{ post.title }}"> 
+                {% trans "Books" %}
+              </td>
+            </tr>
+          </table>
           </div>
         </div>
       </div>
@@ -51,49 +70,33 @@
     </div>
   </div>
 
-  {# Random posts #}
+  {# Latest posts #}
   <div class="row">
     <div class="box">
+      <div class="col-lg-12">
+        <h2 class="intro-text text-center">{% trans "Latest posts" %}</h2>
+        <hr>
+      </div>
+      {% latest_posts as posts %}
+      {% for post in posts %}
         <div class="col-sm-4 text-center photo_dark">
-          <a href="{% url 'category' 'it' %}">
-          {# thumbnail "index/it.jpg" "750x450" as im #}
-            <img class="img-responsive" src="{% static "base/img/main/it.jpg" %}" alt="Image for {{ post.title }}">
-          {# endthumbnail #}
+          <a href="{% url 'page_redirect' post.id %}">
+          {% if post.titleImage %}
+              {% thumbnail post.titleImage "750x450" as im %}
+              <img class="img-responsive" src="{{ im.url }}" alt="Image for {{ post.title }}">
+            {% endthumbnail %}
+          {% else %}
+              <img class="img-responsive" src="{% static "base/img/no-picture.png" %}" alt="Image for {{ post.title }}">
+          {% endif %}
           <span class="photo_desc photo_multi">
-             <p>IT</p>
+             <p>{{ post.title }}</p>
+          </span>
+          <span class="date_desc date_multi">
+            <p>{{ post.created|date:"d E Y" }}</p>
           </span>
           </a>
         </div>
-        <div class="col-sm-4 text-center photo_dark">
-          <a href="{% url 'category' 'me' %}">
-          {# thumbnail "index/me.jpg" "750x450" as im #}
-            <img class="img-responsive" src="{% static "base/img/main/me.jpg" %}" alt="Image for {{ post.title }}">
-          {# endthumbnail #}
-          <span class="photo_desc photo_multi">
-             <p>Travels // Путешествия</p>
-          </span>
-          </a>
-        </div>
-        <div class="col-sm-4 text-center photo_dark">
-          <a href="{% url 'category' 'hi' %}">
-          {# thumbnail "index/hi.jpg" "750x450" as im #}
-            <img class="img-responsive" src="{% static "base/img/main/hi.jpg" %}" alt="Image for {{ post.title }}">
-          {# endthumbnail #}
-          <span class="photo_desc photo_multi">
-             <p>Удивительные вещи</p>
-          </span>
-          </a>
-        </div>
-       <div class="clearfix"></div>
-       <h2></h2>
-        <div class="col-sm-4 text-center photo_dark">
-          <a href="{% url 'books' %}">
-            <img class="img-responsive" src="{% static "base/img/main/books.jpg" %}" alt="Image for {{ post.title }}">
-          <span class="photo_desc photo_multi">
-             <p>Books // Книги</p>
-          </span>
-          </a>
-        </div>
+      {% endfor %}
       <div class="clearfix"></div>
     </div>
   </div>

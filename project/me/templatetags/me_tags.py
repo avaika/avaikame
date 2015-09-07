@@ -1,6 +1,7 @@
 from django.template import Library
 from django.core.urlresolvers import resolve, reverse
 from django.utils.translation import activate, get_language
+from ..models import Post
 
 register = Library()
 
@@ -29,3 +30,9 @@ def change_lang(context, lang=None, *args, **kwargs):
     else:
         url = "/" + str(lang) + "/"
     return "%s" % url
+
+
+@register.assignment_tag()
+def latest_posts():
+    latest_posts = Post.objects.filter(draft=False).order_by('-created')[:3]
+    return latest_posts
