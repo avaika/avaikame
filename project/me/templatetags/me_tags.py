@@ -36,3 +36,9 @@ def change_lang(context, lang=None, *args, **kwargs):
 def latest_posts():
     latest_posts = Post.objects.filter(draft=False).order_by('-created')[:3]
     return latest_posts
+
+
+@register.simple_tag()
+def count_posts(category):
+    num = Post.objects.filter(draft=False, category__slug=category).count()
+    return num

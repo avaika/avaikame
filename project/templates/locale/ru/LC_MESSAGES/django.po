@@ -1,0 +1,504 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015
+# This file is distributed under the same license as the me package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-08 01:27+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: ru\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: account/account_inactive.html:5 account/account_inactive.html.py:8
+msgid "Account Inactive"
+msgstr "Аккаунт неактивен"
+
+#: account/account_inactive.html:10
+msgid "This account is inactive."
+msgstr "Этот аккаунт неактивен"
+
+#: account/email.html:5
+msgid "Account"
+msgstr "Аккаунт"
+
+#: account/email.html:14
+msgid "E-mail Addresses"
+msgstr "email адреса"
+
+#: account/email.html:19
+msgid "The following e-mail addresses are associated with your account:"
+msgstr "Email адрес связанные с вашим аккаунтом:"
+
+#: account/email.html:30
+msgid "Verified"
+msgstr "Проверенный"
+
+#: account/email.html:32
+msgid "Unverified"
+msgstr "Непроверенный"
+
+#: account/email.html:34
+msgid "Primary"
+msgstr "Основной"
+
+#: account/email.html:39
+msgid "Make Primary"
+msgstr "Сделать основным"
+
+#: account/email.html:40
+msgid "Re-send Verification"
+msgstr "Выслать заново"
+
+#: account/email.html:41
+msgid "Remove"
+msgstr "Удалить"
+
+#: account/email.html:46
+msgid "Warning:"
+msgstr "Внимание:"
+
+#: account/email.html:46
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+
+#: account/email.html:49
+msgid "Add E-mail Address"
+msgstr "Добавить email"
+
+#: account/email.html:53 account/login.html:18 account/signup.html:18
+msgid "email"
+msgstr "email"
+
+#: account/email.html:56
+msgid "Add E-mail"
+msgstr "Добавить email"
+
+#: account/email.html:72
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr "Вы действительно хотите удалить выбранный email?"
+
+#: account/email_confirm.html:11 account/email_confirmed.html:6
+#: account/email_confirmed.html.py:11
+msgid "Confirm E-mail Address"
+msgstr "Подтвердить email"
+
+#: account/email_confirm.html:17
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+
+#: account/email_confirm.html:21
+msgid "Confirm"
+msgstr "Подтвердить"
+
+#: account/email_confirm.html:28
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: account/email_confirmed.html:15
+#, python-format
+msgid ""
+"You have confirmed that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-"
+"mail address for user %(user_display)s."
+msgstr ""
+
+#: account/login.html:2 account/login.html.py:10 account/login.html.py:28
+#: base.html:45
+msgid "Login"
+msgstr "Войти"
+
+#: account/login.html:23 account/signup.html:28 account/signup.html.py:33
+msgid "Password"
+msgstr "Пароль"
+
+#: account/login.html:28 account/signup.html:38 base.html:46
+#: comments/form.html:8
+msgid "Login via avaika"
+msgstr "Войти через сайт"
+
+#: account/login.html:31 account/login.html.py:46 account/login.html.py:52
+#: account/signup.html:55 base.html:48 comments/form.html:10
+msgid "Login via twitter"
+msgstr "Войти черех twitter"
+
+#: account/login.html:31
+msgid "Forgot pass?"
+msgstr "Забыли пароль?"
+
+#: account/login.html:39 account/signup.html:47
+msgid "Login via social networks."
+msgstr "Вход через социальные сети."
+
+#: account/login.html:43 account/signup.html:52 base.html:47
+#: comments/form.html:9
+msgid "Login via facebook"
+msgstr "Войти через facebook"
+
+#: account/login.html:50
+msgid "Don't have an account?"
+msgstr "Нет аккаунта?"
+
+#: account/login.html:52
+msgid "Register"
+msgstr "Регистрация"
+
+#: account/logout.html:5 account/logout.html.py:15
+msgid "Sign Out"
+msgstr "Выход"
+
+#: account/logout.html:9
+msgid "Are you sure you want to sign out?"
+msgstr "Вы действительно хотите выйти?"
+
+#: account/messages/cannot_delete_primary_email.txt:2
+#, python-format
+msgid "You cannot remove your primary e-mail address (%(email)s)."
+msgstr "Вы не можете удалить основной email (%(email)s)."
+
+#: account/messages/email_confirmation_sent.txt:2
+#, python-format
+msgid "Confirmation e-mail sent to %(email)s."
+msgstr ""
+
+#: account/messages/email_deleted.txt:2
+#, python-format
+msgid "Removed e-mail address %(email)s."
+msgstr ""
+
+#: account/messages/logged_in.txt:4
+#, python-format
+msgid "Successfully signed in as %(name)s."
+msgstr ""
+
+#: account/messages/logged_out.txt:2
+msgid "You have signed out."
+msgstr "Вы вышли"
+
+#: account/messages/password_changed.txt:2
+msgid "Password successfully changed."
+msgstr "Пароль успешно изменён"
+
+#: account/messages/password_set.txt:2
+msgid "Password successfully set."
+msgstr "Пароль успешно установлен"
+
+#: account/messages/primary_email_set.txt:2
+msgid "Primary e-mail address set."
+msgstr "Основной email установлен"
+
+#: account/messages/unverified_primary_email.txt:2
+msgid "Your primary e-mail address must be verified."
+msgstr "Ваш основной email должен быть подтверждён"
+
+#: account/password_change.html:5 account/password_change.html.py:8
+#: account/password_change.html:13 account/password_reset_from_key.html:4
+#: account/password_reset_from_key.html:7
+#: account/password_reset_from_key_done.html:4
+#: account/password_reset_from_key_done.html:7
+msgid "Change Password"
+msgstr "Поменять пароль"
+
+#: account/password_reset.html:10 account/password_reset_done.html:6
+#: account/password_reset_done.html.py:9
+msgid "Password Reset"
+msgstr "Сбросить пароль"
+
+#: account/password_reset.html:15
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+
+#: account/password_reset.html:20
+msgid "Reset My Password"
+msgstr "Сбросить мой пароль"
+
+#: account/password_reset_done.html:15
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: account/password_reset_from_key.html:7
+msgid "Bad Token"
+msgstr ""
+
+#: account/password_reset_from_key.html:11
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: account/password_reset_from_key.html:17
+msgid "change password"
+msgstr "изменить пароль"
+
+#: account/password_reset_from_key.html:20
+#: account/password_reset_from_key_done.html:8
+msgid "Your password is now changed."
+msgstr "Ваш пароль изменён"
+
+#: account/password_set.html:5 account/password_set.html.py:8
+#: account/password_set.html:13
+msgid "Set Password"
+msgstr "Установить пароль"
+
+#: account/signup.html:2 account/signup.html.py:10
+msgid "Registration"
+msgstr "Регистрация"
+
+#: account/signup.html:23
+msgid "name"
+msgstr "имя"
+
+#: account/signup.html:46
+msgid "Too lazy to type all this stuff?"
+msgstr "Слишком лень заполнить всё?"
+
+#: account/signup.html:48
+msgid "Just two clicks and you're here."
+msgstr "Всего два клика и вы тут"
+
+#: account/signup_closed.html:5 account/signup_closed.html.py:8
+msgid "Sign Up Closed"
+msgstr ""
+
+#: account/signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr "Наши извинения, но регистрация уже закрыта"
+
+#: account/snippets/already_logged_in.html:5
+msgid "Note"
+msgstr "Заметка"
+
+#: account/snippets/already_logged_in.html:5
+#, python-format
+msgid "you are already logged in as %(user_display)s."
+msgstr "вы уже авторизовались как  %(user_display)s."
+
+#: account/verification_sent.html:5 account/verification_sent.html.py:8
+#: account/verified_email_required.html:5
+#: account/verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: account/verification_sent.html:10
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+
+#: account/verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: account/verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+"<strong>Подсказка</strong>: вы всё ещё можете <a href=\"%(email_url)s"
+"\">заменить email адрес</a>."
+
+#: base.html:26
+msgid "Toggle navigation"
+msgstr "Переключить навигацию"
+
+#: base.html:38 index.html:39
+msgid "IT"
+msgstr ""
+
+#: base.html:39
+msgid "me"
+msgstr ""
+
+#: base.html:40
+msgid "books"
+msgstr "книги"
+
+#: base.html:43
+msgid "Exit"
+msgstr "Выход"
+
+#: base.html:79
+msgid ""
+"Check blog source on <a href='//github.com/avaika/avaikame'>github</a> if "
+"you like."
+msgstr ""
+"Можно проверить исходники на <a href='//github.com/avaika/avaikame'>гитхабе</"
+"a>, если есть желание"
+
+#: comments/comment.html:23 comments/preview.html:12
+msgid "Preview of your comment"
+msgstr "Предпросмотр вашего комментария"
+
+#: comments/comment.html:25
+msgid "Anonymous"
+msgstr "Аноним"
+
+#: comments/comment.html:27
+msgid "ответить"
+msgstr ""
+
+#: comments/deleted.html:4
+msgid "Thanks for removing"
+msgstr ""
+
+#: comments/deleted.html:12
+msgid "Thanks for removing the comment"
+msgstr ""
+
+#: comments/deleted.html:14 comments/flagged.html:14
+msgid ""
+"\n"
+"      Thanks for taking the time to improve the quality of discussion on our "
+"site.<br/>\n"
+"      You will be sent back to the article...\n"
+"    "
+msgstr ""
+
+#: comments/deleted.html:20 comments/flagged.html:20 comments/posted.html:24
+msgid "Back to the article"
+msgstr "Обратно к записи"
+
+#: comments/flagged.html:4
+msgid "Thanks for flagging"
+msgstr ""
+
+#: comments/flagged.html:12
+msgid "Thanks for flagging the comment"
+msgstr ""
+
+#: comments/form.html:4
+msgid "To comment you have to login:"
+msgstr "Для того, чтобы оставить комментарий, вам нужно авторизоваться: "
+
+#: comments/form.html:22 comments/preview.html:26
+msgid "Post"
+msgstr "Отправить"
+
+#: comments/form.html:23 comments/preview.html:27
+msgid "Preview"
+msgstr "Предпросмотр"
+
+#: comments/posted.html:3
+msgid "Thanks for commenting"
+msgstr "Спасибо за ваш комментарий"
+
+#: comments/posted.html:11
+msgid "Thanks for posting your comment"
+msgstr "Спасибо за ваш комментарий"
+
+#: comments/posted.html:13
+msgid ""
+"\n"
+"      We have received your comment, and posted it on the web site.<br/>\n"
+"      You will be sent back to the article...\n"
+"      "
+msgstr ""
+
+#: comments/preview.html:3
+msgid "Preview your comment"
+msgstr "Предпросмотр комментария"
+
+#: comments/preview.html:10
+msgid "Please correct the error below"
+msgid_plural "Please correct the errors below"
+msgstr[0] "Пожалуйста, исправьте ошибку"
+msgstr[1] "Пожалуйста, исправьте ошибки"
+
+#: comments/preview.html:17
+msgid "Post your comment"
+msgstr "Написать комментарий"
+
+#: comments/preview.html:20
+msgid "Or make changes"
+msgstr ""
+
+#: index.html:2
+msgid "Avaika home"
+msgstr "Главная авайки"
+
+#: index.html:16
+msgid ""
+"\n"
+"                Hi, I'm Rush (read as Roosh)<br />\n"
+"                As you're here I bet you already know me. Even if not, just "
+"enjoy :)<br />\n"
+"                Here you can find yet another home page where I share some "
+"notes about my travels, funny facts and IT related stuff to my friends<br /> "
+"<br />\n"
+"                Some content is not yet translated, though I'm working on "
+"that. If you want to read always latest news, you might learn some "
+"Russian :)<br /><br />\n"
+"                To get in touch with me feel free to email to site ( at ) "
+"avaika.me. <br /> <br />\n"
+"                Wish you a nice day (:\n"
+"            "
+msgstr ""
+"\n"
+"               Привет, я Руш<br />\n"
+"               Раз ты попал на эту страничку, скорее всего ты со мной знаком, так что ты знаешь что где и почему здесь находится (:<br />\n"
+"               Если нет - не расстраивайся. Это самая обычная домашняя страничка с небольшим набором постов про мои зарубежные приключения и парой забавных фактов из     мировой истории.<br /><br />\n"
+"               Если ты хочешь со мной связаться, но не знаешь как -- пиши сюда: site ( at ) avaika.me. <br /> <br />\n"
+"               Хорошего дня :)\n"
+"            "
+
+#: index.html:43
+msgid "Travels"
+msgstr "Путешествия"
+
+#: index.html:47
+msgid "Funny facts"
+msgstr "Забавные факты"
+
+#: index.html:51
+msgid "Books"
+msgstr "Книги"
+
+#: index.html:63
+msgid "Latest posts"
+msgstr "Последние записи"
+
+#: it/page_detail.html:65 me/page_detail.html:105
+msgid "Comments"
+msgstr "Комментарии"
+
+#: it/page_detail.html:77
+msgid "Random post"
+msgstr "Случайная запись"
+
+#: me/page_detail.html:117
+msgid "Random posts"
+msgstr "Случайные записи"

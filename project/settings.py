@@ -28,7 +28,7 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
 
 LOCALE_PATHS = (
-    os.path.join(PROJECT_ROOT, 'locale', 'templates/locale'),
+    os.path.join(PROJECT_ROOT, 'templates/locale'),
 )
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static/')
