@@ -13,22 +13,19 @@ def change_lang(context, lang=None, *args, **kwargs):
     Usage: {% change_lang 'en' %}
     """
 
-    path = context['request'].path
-    url_parts = resolve(path)
-    url = path
     cur_language = get_language()
+    path = context['request'].path
+    try:
+        url_parts = resolve(path)
+    except:
+        url_parts = resolve("/" + str(cur_language) + path)
+    url = path
 
-    # Actually this dirty hack is applied due to some issues with reverse
-    # TemplateView urls.
-    # Will check a bit more detailed later.
-    if url_parts.url_name != "index":
-        try:
-            activate(lang)
-            url = reverse(url_parts.view_name, kwargs=url_parts.kwargs)
-        finally:
-            activate(cur_language)
-    else:
-        url = "/" + str(lang) + "/"
+    try:
+        activate(lang)
+        url = reverse(url_parts.view_name, kwargs=url_parts.kwargs)
+    finally:
+        activate(cur_language)
     return "%s" % url
 
 
