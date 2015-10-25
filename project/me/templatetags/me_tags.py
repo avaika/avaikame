@@ -18,7 +18,8 @@ def change_lang(context, lang=None, *args, **kwargs):
     try:
         url_parts = resolve(path)
     except:
-        url_parts = resolve("/" + str(cur_language) + path)
+        # need to finish here. e.g. for 404
+        return ""
     url = path
 
     try:
