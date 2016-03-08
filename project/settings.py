@@ -12,12 +12,12 @@ SITE_ID = 1
 
 TIME_ZONE = 'Europe/Moscow'
 USE_TZ = True
-USE_I18N = True
 
 LANGUAGES = (
     ('ru', 'Russian'),
     ('en', 'English'),
 )
+DEFAULT_LANGUAGE = 2
 LANGUAGE_CODE = 'ru'
 
 USE_I18N = True
@@ -131,6 +131,12 @@ TAGS_INPUT_MAPPINGS = {
     'me.Tag': {
         'field': 'value', 'create_missing': True,
     },
+    'me.Country': {
+        'field': 'value', 'create_missing': True,
+    },
+    'me.City': {
+        'field': 'value', 'create_missing': True,
+    },
     'books.Author': {
         'field': 'value', 'create_missing': True,
     },
@@ -149,7 +155,7 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_ERROR_URL = '/accounts/login-failed/'
 
-MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
