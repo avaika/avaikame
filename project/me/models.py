@@ -57,6 +57,32 @@ class Category(models.Model):
         return reverse('category', kwargs={'pk': self.id})
 
 
+class Country(models.Model):
+    value = models.CharField(max_length=150, verbose_name=_("Title"))
+    flag = models.ImageField(upload_to='flags/', height_field=None,
+                             blank=True, null=True,
+                             width_field=None, max_length=100,
+                             verbose_name="Country flag")
+
+    class Meta:
+        verbose_name = _("Country")
+        verbose_name_plural = _("Countries")
+
+    def __unicode__(self):
+        return self.value
+
+
+class City(models.Model):
+    value = models.CharField(max_length=150, verbose_name=_("Title"))
+
+    class Meta:
+        verbose_name = _("City")
+        verbose_name_plural = _("Cities")
+
+    def __unicode__(self):
+        return self.value
+
+
 class Tag(models.Model):
     value = models.CharField(max_length=150, verbose_name=_("Title"))
     category = models.ForeignKey(Category, verbose_name=_("Category"))
@@ -88,6 +114,9 @@ class Post(models.Model):
     title = models.CharField(max_length=150, verbose_name=_("Title"))
     slug = models.SlugField(max_length=150, verbose_name=_("Slug"))
     post = models.TextField(blank=True, null=True, verbose_name=_("Post body"))
+    tags = models.ManyToManyField(Tag, blank=True, verbose_name=_("Tags"))
+    country = models.ForeignKey(Country, verbose_name=_("Country"))
+    cities = models.ManyToManyField(City, blank=True, verbose_name=_("Cities"))
     tags = models.ManyToManyField(Tag, blank=True, verbose_name=_("Tags"))
     metaTitle = models.CharField(max_length=150, blank=True, verbose_name=_("Meta title"))
     metaDesc = models.CharField(max_length=150, blank=True, verbose_name=_("Meta description"))

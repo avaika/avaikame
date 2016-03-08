@@ -58,7 +58,7 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
     inlines = [PostPhotoAdmin, MapInline, ]
     fieldsets = (
         ('Technical', {'fields': ('author', 'category', 'created', 'draft', 'mapSize',)}),
-        ('Titles', {'fields': ('title', 'slug', 'tags', )}),
+        ('Titles', {'fields': ('title', 'slug', 'country', 'cities', 'tags', )}),
         ('Post', {'fields': ('headImage', 'headImage_tag', 'titleImage', 'titleImage_tag', 'sources', 'post')}),
     )
     readonly_fields = ('headImage_tag', 'titleImage_tag')
