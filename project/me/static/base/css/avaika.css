@@ -284,13 +284,13 @@ footer p {
 .flag-thumb {
     display: inline-block;
     max-width: 100%;
-    height: auto;
+    height: 30px;
     padding: 1px; 
 }
 
 .flag-nopad {
     display: inline-block;
     max-width: 100%;
-    height: auto;
+    height: 35px;
     padding: 0px; 
 }
