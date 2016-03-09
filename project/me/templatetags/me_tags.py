@@ -45,9 +45,15 @@ def flags():
     posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('country__value', 'country__flag')
     flags = []
     for item in posts:
-        if len(flags) == 0:
+        # exclude default for migration time. then it's not needed and can be
+        # removed
+        if len(flags) == 0 and item['country__value'] != "default":
             flags.append(item)
-        else:
-            if flags[-1] != item:
+        elif len(flags) > 0:
+            if flags[-1] != item and item['country__value'] != "default":
                 flags.append(item)
+    # limited to 23 until slider will be developed in front end part
+    print len(flags)
+    if len(flags) > 23:
+        flags = flags[:23]
     return flags
