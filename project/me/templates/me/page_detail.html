@@ -1,0 +1,144 @@
+{% extends 'base.html' %}{% load thumbnail i18n adminfiles_tags staticfiles comments %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block addlink %}
+<link href="{% static "base/css/lightbox.css" %}" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static "fluent_comments/css/ajaxcomments.css" %}" />
+{% endblock %}
+{% block postscript %}
+<script>
+  // workaround for FF caching urls ((
+  var _theframe = document.getElementById("map");
+  _theframe.contentWindow.location.href = _theframe.src;
+</script>
+<script src="{% static "base/js/lightbox.min.js" %}"></script>
+<script type="text/javascript" src="{% static "fluent_comments/js/ajaxcomments.js" %}"></script>
+{% endblock %}
+{% block content %}
+<div class="container">
+
+  {# Post #}
+  <div class="row">
+    <div class="box">
+      <div class="col-lg-12">
+        <h2 class="intro-text text-center">{{ post.title }}</h2>
+        <hr>
+      </div>
+      <div class="col-lg-12 heading-image">
+        {% if post.mapSize %}
+          <iframe src="{% url 'directions' post.id %}" id="map" frameborder="0" height="{{ post.mapSize }}px" scrolling="no" width="100%"></iframe>
+        {% else %}
+          {% thumbnail post.headImage "x900" crop="left" as im %}
+            <img class="img-responsive img-full" src="{{ im.url }}" alt="Image for {{ post.title }}">
+          {% endthumbnail %}
+        {% endif %}
+      </div>
+      <div class="clearfix"></div>
+      <br />
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            {% if post.post %}
+              {{ post.post|render_uploads|safe }}
+            {% else %}
+              {% for chunk in text_chunks %}
+                {{ chunk.text|safe }}
+                {% if chunk.photo or chunk.photoRight %}<p>
+                  {% if chunk.photo %}
+                    {% thumbnail chunk.photo "x1200" as photo_big %}
+                      <a class="photos" data-lightbox="roadtrip" href="/media/{{ photo_big }}">
+                        {% if chunk.panorama %}
+                          {% thumbnail chunk.photo "x400" as photo_thumb %}
+                            <img alt="Photo {{ chunk.id }}" class="img-responsive img-full" src="/media/{{ photo_thumb }}">
+                          {% endthumbnail %}
+                        {% else %}
+                          {% thumbnail chunk.photo "450x300" as photo_thumb %}
+                            <img alt="Photo {{ chunk.id }}" class="img-responsive" src="/media/{{ photo_thumb }}">
+                          {% endthumbnail %}
+                        {% endif %}
+                      </a>
+                    {% endthumbnail %}
+                  {% endif %}
+                  {% if chunk.photoRight %}
+                    {% thumbnail chunk.photoRight "x1200" as photo_big %}
+                      <a class="photos" data-lightbox="roadtrip" href="/media/{{ photo_big }}">
+                        {% if chunk.panoramaRight %}
+                          {% thumbnail chunk.photoRight "x400" as photo_thumb %}
+                            <img alt="Photo {{ chunk.id }}" class="img-responsive img-full" src="/media/{{ photo_thumb }}">
+                          {% endthumbnail %}
+                        {% else %}
+                          {% thumbnail chunk.photoRight "450x300" as photo_thumb %}
+                            <img alt="Photo {{ chunk.id }}" class="img-responsive" src="/media/{{ photo_thumb }}">
+                          {% endthumbnail %}
+                        {% endif %}
+                      </a>
+                    {% endthumbnail %}
+                  {% endif %}
+                </p>{% endif %}
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div class="col-lg-12 text-center">
+            <ul class="pager">
+              {% if next %}
+                <li class="previous"><a href="{% url 'page_redirect' next.id %}">&larr; {{ next.title|slice:"20" }}...</a></li>
+              {% endif %}
+              <li>
+                {% for tag in post.tags.all %}
+                  <a href="{% url "tag_list" tag %}">{{ tag }}</a>
+                {% endfor %}
+              </li>
+              {% if prev %}
+                <li class="next"><a href="{% url 'page_redirect' prev.id %}">{{ prev.title|slice:"20" }}... &rarr;</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+  {# Comments #}
+  <div class="row">
+    <div class="box">
+      <div class="col-lg-12">
+        <h2 class="intro-text text-center">{% trans "Comments" %}</h2>
+         {% render_comment_list for object %}
+         {% render_comment_form for object %}
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+  {# Random posts #}
+  <div class="row">
+    <div class="box">
+      <div class="col-lg-12">
+        <h2 class="intro-text text-center">{% trans "Random posts" %}</h2>
+        <hr>
+      </div>
+      {% for post in random_posts %}
+        <div class="col-sm-4 text-center photo_dark">
+          <a href="{% url 'page_redirect' post.id %}">
+          {% if post.titleImage %}
+            {% thumbnail post.titleImage "750x450" as im %}
+              <img class="img-responsive" src="{{ im.url }}" alt="Image for {{ post.title }}">
+            {% endthumbnail %}
+          {% else %}
+            <img class="img-responsive" src="{% static "base/img/no-picture.png" %}" alt="Image for {{ post.title }}">
+          {% endif %}
+          <span class="photo_desc photo_multi">
+             <p>{{ post.title }}</p>
+          </span>
+          <span class="date_desc date_multi">
+            <p>{{ post.created|date:"d E Y" }}</p>
+          </span>
+          </a>
+        </div>
+      {% endfor %}
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
