@@ -53,7 +53,6 @@ def flags():
             if flags[-1] != item and item['country__value'] != "default":
                 flags.append(item)
     # limited to 23 until slider will be developed in front end part
-    print len(flags)
     if len(flags) > 23:
         flags = flags[:23]
     return flags
