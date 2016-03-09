@@ -280,3 +280,17 @@ footer p {
 .controls>input { width:50% }
 .photos>img { margin: 5px; margin-top: 5px; }
 .heading-image { max-height: 300px; margin-bottom: 5px; }
+
+.flag-thumb {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    padding: 1px; 
+}
+
+.flag-nopad {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    padding: 0px; 
+}

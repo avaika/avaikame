@@ -1,4 +1,4 @@
-{% extends 'base.html' %}{% load static i18n thumbnail %}
+{% extends 'base.html' %}{% load static i18n thumbnail me_tags %}
 
 {% block title %}me{% endblock %}
 
@@ -6,6 +6,12 @@
 <div class="container">
   <div class="row">
     <div class="box">
+        <div class="col-lg-12">
+          {% flags as post_flags %}
+          {% for flag in post_flags %}
+            <a href="{% url "tag_list" flag.country__value %}"><img class="flag-thumb" src="{{ MEDIA_URL }}{{ flag.country__flag }}" width="45px" /></a>
+          {% endfor %}
+        </div>
       {% for post in posts %}
         {% if forloop.first %}
         <div class="col-lg-12 text-center">
@@ -19,7 +25,10 @@
                   <img class="img-responsive img-full" src="{% static "base/img/no-picture.png" %}" alt="Image for {{ post.title }}">
                   {% endthumbnail %}
                   <span class="photo_desc photo_head">
-                    <h2>{{ post.title }}</h2>
+                    <h2>
+                      {% if post.country.flag %}<img class="flag-nopad" src="{{ MEDIA_URL }}{{ post.country.flag }}" width="50px"/>{% endif %}
+                      {{ post.title }}
+                    </h2>
                   </span>
                   <span class="date_desc date_head">
                     <h2>{{ post.created|date:"d E Y" }}</h2>
@@ -45,7 +54,10 @@
               {% endthumbnail %}
             {% endif %}
             <span class="photo_desc photo_multi">
-              <p>{{ post.title }}</p>
+              <p>
+                {% if post.country.flag %}<img src="{{ MEDIA_URL }}{{ post.country.flag }}" width="50px"/>{% endif %}
+                {{ post.title }}
+              </p>
             </span>
             <span class="date_desc date_multi">
                 <p>{{ post.created|date:"d E Y" }}</p>

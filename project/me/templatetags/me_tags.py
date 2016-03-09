@@ -32,11 +32,22 @@ def change_lang(context, lang=None, *args, **kwargs):
 
 @register.assignment_tag()
 def latest_posts():
-    latest_posts = Post.objects.filter(draft=False).order_by('-created')[:3]
-    return latest_posts
+    return Post.objects.filter(draft=False).order_by('-created')[:3]
 
 
 @register.simple_tag()
 def count_posts(category):
-    num = Post.objects.filter(draft=False, category__slug=category).count()
-    return num
+    return Post.objects.filter(draft=False, category__slug=category).count()
+
+
+@register.assignment_tag()
+def flags():
+    posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('country__value', 'country__flag')
+    flags = []
+    for item in posts:
+        if len(flags) == 0:
+            flags.append(item)
+        else:
+            if flags[-1] != item:
+                flags.append(item)
+    return flags

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from models import User, Post, Tag, PostMap, Category, PostPhoto
+from models import User, Post, Tag, PostMap, Category, PostPhoto,\
+    Country, City
 from forms import UserCreationForm
 # from project.adminfiles.admin import FilePickerAdmin
 from tags_input import admin as tags_input_admin
@@ -67,3 +68,5 @@ admin.site.register(User, ProfileUserAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Post, PostAdmin)
+admin.site.register(Country)
+admin.site.register(City)
