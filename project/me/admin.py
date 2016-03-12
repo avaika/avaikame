@@ -57,6 +57,10 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
     # filter_horizontal = ('tags',)
     save_as = True
     inlines = [PostPhotoAdmin, MapInline, ]
+    raw_id_fields = ('country',)
+    autocomplete_lookup_fields = {
+        'fk': ['value'],
+    }
     fieldsets = (
         ('Technical', {'fields': ('author', 'category', 'created', 'draft', 'mapSize',)}),
         ('Titles', {'fields': ('title', 'slug', 'country', 'cities', 'tags', )}),
