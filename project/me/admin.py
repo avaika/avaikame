@@ -28,6 +28,11 @@ class TagAdmin(admin.ModelAdmin):
     search_fields = ['id', 'value']
 
 
+class CountryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'value')
+    search_fields = ['value']
+
+
 class MapInline(admin.StackedInline):
     model = PostMap
     extra = 10
@@ -59,7 +64,7 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
     inlines = [PostPhotoAdmin, MapInline, ]
     raw_id_fields = ('country',)
     autocomplete_lookup_fields = {
-        'fk': ['value'],
+        'fk': ['country'],
     }
     fieldsets = (
         ('Technical', {'fields': ('author', 'category', 'created', 'draft', 'mapSize',)}),
@@ -72,5 +77,5 @@ admin.site.register(User, ProfileUserAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Post, PostAdmin)
-admin.site.register(Country)
+admin.site.register(Country, CountryAdmin)
 admin.site.register(City)

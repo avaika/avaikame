@@ -64,6 +64,10 @@ class Country(models.Model):
                              width_field=None, max_length=100,
                              verbose_name="Country flag")
 
+    @staticmethod
+    def autocomplete_search_fields():
+        return ("id__iexact", "value__icontains",)
+
     class Meta:
         verbose_name = _("Country")
         verbose_name_plural = _("Countries")
