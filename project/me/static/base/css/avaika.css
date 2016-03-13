@@ -270,7 +270,7 @@ footer p {
     padding: 0px; 
 }
 
-.flag-head {
+.flag-nopad, .flag-head {
     display: inline-block;
     height: 50px;
     padding: 0px; 
