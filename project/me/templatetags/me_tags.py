@@ -41,6 +41,8 @@ def count_posts(category):
 
 
 def get_flag_current(item, first, last):
+    if not first:
+        return item
     if item['created'] <= first.created and item['created'] >= last.created:
         item['current'] = True
     else:
@@ -49,15 +51,14 @@ def get_flag_current(item, first, last):
 
 
 @register.assignment_tag()
-def flags(first, last):
+def flags(first=False, last=False):
     posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('created', 'country__value', 'country__flag')
     flags = []
     for item in posts:
-        print item
         if len(flags) > 0:
             if flags[-1]['country__value'] == item['country__value']:
                 # needed in case flag already popped up on prev page
-                if not flags[-1]['current']:
+                if first and not flags[-1]['current']:
                     flags[-1] = get_flag_current(item, first, last)
                 continue
         item = get_flag_current(item, first, last)
