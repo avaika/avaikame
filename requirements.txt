@@ -1,5 +1,5 @@
 BeautifulSoup==3.2.1
-Django==1.9.4
+Django
 django-allauth==0.25.0
 django-celery==3.1.17
 django-contrib-comments==1.6.2
