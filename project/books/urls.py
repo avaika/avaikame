@@ -1,7 +1,6 @@
 from project.books import views
-from django.conf.urls import url, patterns
+from django.conf.urls import url
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^$', views.book_main, name="books"),
-)
+]

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}{% load thumbnail i18n adminfiles_tags staticfiles comments %}
+{% extends 'base.html' %}{% load thumbnail i18n staticfiles comments %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block addlink %}
 <link href="{% static "base/css/lightbox.css" %}" rel="stylesheet" />
@@ -37,9 +37,6 @@
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            {% if post.post %}
-              {{ post.post|render_uploads|safe }}
-            {% else %}
               {% for chunk in text_chunks %}
                 {{ chunk.text|safe }}
                 {% if chunk.photo or chunk.photoRight %}<p>
@@ -75,7 +72,6 @@
                   {% endif %}
                 </p>{% endif %}
               {% endfor %}
-            {% endif %}
           </div>
           <div class="col-lg-12 text-center">
             <ul class="pager">

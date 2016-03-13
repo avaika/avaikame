@@ -1,8 +1,7 @@
-{% load comments i18n crispy_forms_tags fluent_comments_tags %}{% load url from future %}
+{% load comments i18n crispy_forms_tags fluent_comments_tags %}
 
 {% if not user.is_authenticated %}
     {% trans "To comment you have to login:" %}
-      {% load url from future %}
 
     <div class="login_btn">
       <a href="{% url 'account_login' %}"><span class="icon-paw" title="{% trans "Login via avaika" %}"></span></a>

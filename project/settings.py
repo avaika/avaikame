@@ -3,7 +3,6 @@ import os
 PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 DEBUG = False
-TEMPLATE_DEBUG = DEBUG
 
 SECRET_KEY = 'just_a_secret_key_to_replace_my_boy'
 
@@ -71,7 +70,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(PROJECT_ROOT, 'templates'), ],
-        # 'APP_DIRS': ,
         'OPTIONS': {
             'context_processors': [
                 # Already defined
@@ -108,7 +106,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.contenttypes',
     # partner installed apps
-    'project.adminfiles',
     'project.me',
     'project.books',
     # end partner installed apps

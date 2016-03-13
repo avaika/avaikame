@@ -16,7 +16,6 @@ urlpatterns = patterns(
     url(r'^$', TemplateView.as_view(template_name='index.html'), name="index"),
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^comments/', include('fluent_comments.urls')),
-    url(r'^adminfiles/', include('project.adminfiles.urls')),
     url(r'^tags_input/', include('tags_input.urls', namespace='tags_input')),
     url(r'^sudo/', include(admin.site.urls)),
 )
