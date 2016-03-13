@@ -1,0 +1,19 @@
+{% load static i18n thumbnail me_tags %}
+<div class="col-sm-4 photo_dark">
+  <a href="{% url 'page_redirect' post.id %}">
+    {% thumbnail post.titleImage "750x450" as im %}
+      <img class="img-responsive" src="{{ im.url }}" alt="Image for {{ post.title }}">
+    {% empty %}
+      <img class="img-responsive img-full" src="{% static "base/img/no-picture.png" %}" alt="Image for {{ post.title }}">
+    {% endthumbnail %}
+    <span class="photo_desc photo_multi">
+      <p>
+        {% if post.country.flag %}<img class="flag-title" src="{{ MEDIA_URL }}{{ post.country.flag }}" />{% endif %}
+        {{ post.title }}
+      </p>
+    </span>
+    <span class="date_desc date_multi">
+        <p>{{ post.created|date:"d E Y" }}</p>
+    </span>
+  </a>
+</div>
