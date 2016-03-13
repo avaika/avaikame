@@ -16,3 +16,4 @@ timezones==1.9.6
 python-social-auth
 git+git://github.com/gkuhn1/django-admin-multiupload.git
 git+git://github.com/HonzaKral/django-threadedcomments
+pytest
