@@ -68,7 +68,7 @@
       {% endfor %}
       <div class="clearfix"></div><br />
       <div class="col-lg-12 hidden-xs hidden-sm">
-          {% flags as post_flags %}
+          {% uniq_flags as post_flags %}
           {% for flag in post_flags %}
             <a href="{% url "country_list" flag.country__value %}">
               <img class="flag-thumb" src="{{ MEDIA_URL }}{{ flag.country__flag }}" />
