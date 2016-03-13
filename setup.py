@@ -3,7 +3,7 @@ import sys
 import setuptools
 from setuptools.command.test import test as TestCommand
 
-from tags_input import metadata
+from project import metadata
 
 if os.path.isfile('README.md'):
     long_description = open('README.md').read()
