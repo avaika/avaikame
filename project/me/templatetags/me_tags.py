@@ -40,19 +40,26 @@ def count_posts(category):
     return Post.objects.filter(draft=False, category__slug=category).count()
 
 
+def get_flag_current(item, first, last):
+    if item['created'] <= first.created and item['created'] >= last.created:
+        item['current'] = True
+    else:
+        item['current'] = False
+    return item
+
+
 @register.assignment_tag()
-def flags():
-    posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('country__value', 'country__flag')
+def flags(first, last):
+    posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('created', 'country__value', 'country__flag')
     flags = []
     for item in posts:
-        # exclude default for migration time. then it's not needed and can be
-        # removed
-        if len(flags) == 0 and item['country__value'] != "default":
-            flags.append(item)
-        elif len(flags) > 0:
-            if flags[-1] != item and item['country__value'] != "default":
-                flags.append(item)
-    # limited to 23 until slider will be developed in front end part
-    if len(flags) > 23:
-        flags = flags[:23]
+        print item
+        if len(flags) > 0:
+            if flags[-1]['country__value'] == item['country__value']:
+                # needed in case flag already popped up on prev page
+                if not flags[-1]['current']:
+                    flags[-1] = get_flag_current(item, first, last)
+                continue
+        item = get_flag_current(item, first, last)
+        flags.append(item)
     return flags

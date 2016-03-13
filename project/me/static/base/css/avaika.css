@@ -254,6 +254,16 @@ footer p {
     padding: 1px; 
 }
 
+.flag-current {
+    border:1px solid blue;
+}
+
+.flags {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 .flag-title {
     display: inline-block;
     height: 30px;

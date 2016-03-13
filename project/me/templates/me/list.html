@@ -7,11 +7,13 @@
   <div class="row">
     <div class="box">
         <div class="col-lg-12 hidden-xs hidden-sm">
-          {% flags as post_flags %}
+          <div class="flags">
+          {% flags posts.0 posts.9 as post_flags %}
           {% for flag in post_flags %}
-            <a href="{% url "country_list" flag.country__value %}"><img class="flag-thumb" src="{{ MEDIA_URL }}{{ flag.country__flag }}" /></a>
+            <a href="{% url "country_list" flag.country__value %}"><img class="flag-thumb{% if flag.current %} flag-current{% endif %}" src="{{ MEDIA_URL }}{{ flag.country__flag }}" /></a>
             {% if forloop.last %} ... {% endif %}
           {% endfor %}
+          </div>
         </div>
       {% for post in posts %}
         {% if forloop.first %}
