@@ -40,7 +40,7 @@ class TagView(TemplateView):
     def get_template_names(self):
         tag = Tag.objects.get(value=self.kwargs['tag'])
         if tag.category_id == TRAVEL_CAT:
-            return 'me/list_tag.html'
+            return 'me/list_search.html'
         else:
             return 'it/list_tag.html'
 
@@ -53,6 +53,18 @@ class TagView(TemplateView):
         return context
 
 tag = TagView.as_view()
+
+
+class CountryView(TemplateView):
+    context_object_name = "posts"
+    template_name = "me/list_search.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(CountryView, self).get_context_data(**kwargs)
+        context['posts'] = Post.objects.filter(country__value=self.kwargs['country'], draft=False)
+        return context
+
+country = CountryView.as_view()
 
 
 class PageRedirectView(RedirectView):
