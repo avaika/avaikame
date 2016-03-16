@@ -269,6 +269,10 @@ footer p {
     height: 30px;
     padding: 0px; 
 }
+.flag-h2 {
+    height: 18px;
+    padding-bottom: 3px;
+}
 
 .flag-nopad, .flag-head {
     display: inline-block;
