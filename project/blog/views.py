@@ -4,6 +4,24 @@ from django.views.generic import RedirectView, TemplateView, DetailView, ListVie
 from models import Post, Tag
 
 
+class AllListView(ListView):
+    model = Post
+    paginate_by = 10
+    context_object_name = "posts"
+    template_name = "blog/list_tag.html"
+
+    def get_queryset(self):
+        qs = super(AllListView, self).get_queryset()
+        return qs.filter(draft=False)
+
+    def get_context_data(self, **kwargs):
+        context = super(AllListView, self).get_context_data(**kwargs)
+        context['tags'] = Tag.objects.all()
+        return context
+
+all_posts = AllListView.as_view()
+
+
 class CategoryListView(ListView):
     model = Post
     paginate_by = 10

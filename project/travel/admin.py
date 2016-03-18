@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from models import User, Post, Tag, PostMap, Category, PostPhoto,\
+from models import User, Post, Tag, PostMap, PostPhoto,\
     Country, City
 from forms import UserCreationForm
 # from project.adminfiles.admin import FilePickerAdmin
@@ -16,11 +16,6 @@ class ProfileUserAdmin(UserAdmin):
         ('User data', {'fields': ('notifyEmail', )}),
     )
     add_form = UserCreationForm
-
-
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'slug')
-    search_fields = ['id', 'title']
 
 
 class TagAdmin(admin.ModelAdmin):
@@ -54,7 +49,7 @@ class PostPhotoAdmin(TranslationStackedInline):
 
 
 class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
-    list_display = ('id', 'title', 'slug', 'category', 'created', 'draft')
+    list_display = ('id', 'title', 'slug', 'created', 'draft')
     list_editable = ('title', 'slug', 'draft')
     search_fields = ['id', 'title', 'post']
     prepopulated_fields = {'slug': ['title']}
@@ -67,14 +62,13 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
         'fk': ['country'],
     }
     fieldsets = (
-        ('Technical', {'fields': ('author', 'category', 'created', 'draft', 'mapSize',)}),
+        ('Technical', {'fields': ('author', 'created', 'draft', 'mapSize',)}),
         ('Titles', {'fields': ('title', 'slug', 'country', 'cities', 'tags', )}),
         ('Post', {'fields': ('headImage', 'headImage_tag', 'titleImage', 'titleImage_tag', 'sources', 'post')}),
     )
     readonly_fields = ('headImage_tag', 'titleImage_tag')
 
 admin.site.register(User, ProfileUserAdmin)
-admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Country, CountryAdmin)

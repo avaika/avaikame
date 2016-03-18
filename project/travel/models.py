@@ -38,25 +38,6 @@ def imagePath(instance, filename):
     return "%d/%d/%d/%s" % (now.year, now.month, now.day, filename)
 
 
-class Category(models.Model):
-    headImage = models.ImageField(upload_to=headImagePath, blank=True, height_field=None, width_field=None, max_length=100)
-    title = models.CharField(max_length=150, verbose_name=_("Title"))
-    slug = models.SlugField(max_length=150, verbose_name=_("Slug"))
-    metaTitle = models.CharField(max_length=150, blank=True, verbose_name=_("Meta title"))
-    metaDesc = models.CharField(max_length=150, blank=True, verbose_name=_("Meta description"))
-
-    class Meta:
-        verbose_name = _("Category")
-        verbose_name_plural = _("Categories")
-        ordering = ('-title',)
-
-    def __unicode__(self):
-        return self.title
-
-    def get_absolute_url(self):
-        return reverse('category', kwargs={'pk': self.id})
-
-
 class Country(models.Model):
     value = models.CharField(max_length=150, verbose_name=_("Title"))
     flag = models.ImageField(upload_to='flags/', height_field=None,
@@ -89,17 +70,10 @@ class City(models.Model):
 
 class Tag(models.Model):
     value = models.CharField(max_length=150, verbose_name=_("Title"))
-    category = models.ForeignKey(Category, verbose_name=_("Category"))
 
     class Meta:
         verbose_name = _("Tag")
         verbose_name_plural = _("Tags")
-
-    def save(self, *args, **kwargs):
-        cat = self.value.find('_')
-        self.category = Category.objects.get(slug=self.value[:cat])
-        self.value = self.value[cat+1:]
-        super(Tag, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return self.value
@@ -107,7 +81,6 @@ class Tag(models.Model):
 
 class Post(models.Model):
     author = models.ForeignKey(User, related_name='post_author', verbose_name=_("Author"))
-    category = models.ForeignKey(Category, verbose_name=_("Category"))
     created = models.DateTimeField(editable=True, blank=True, verbose_name=_("Creation time"))
     headImage = models.ImageField(upload_to=headImagePath, blank=True, height_field=None,
                                   width_field=None, max_length=100,
@@ -117,8 +90,6 @@ class Post(models.Model):
                                    verbose_name="Title image 1980x1315")
     title = models.CharField(max_length=150, verbose_name=_("Title"))
     slug = models.SlugField(max_length=150, verbose_name=_("Slug"))
-    post = models.TextField(blank=True, null=True, verbose_name=_("Post body"))
-    tags = models.ManyToManyField(Tag, blank=True, verbose_name=_("Tags"))
     country = models.ForeignKey(Country, verbose_name=_("Country"))
     cities = models.ManyToManyField(City, blank=True, verbose_name=_("Cities"))
     tags = models.ManyToManyField(Tag, blank=True, verbose_name=_("Tags"))
