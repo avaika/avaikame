@@ -1,4 +1,4 @@
-from project.me import views
+from project.travel import views
 from django.conf.urls import url
 
 urlpatterns = [

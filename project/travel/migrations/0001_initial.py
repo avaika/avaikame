@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import project.me.models
+import project.travel.models
 import django.contrib.auth.models
 import django.utils.timezone
 from django.conf import settings
@@ -52,7 +52,7 @@ class Migration(migrations.Migration):
             name='Category',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('headImage', models.ImageField(upload_to=project.me.models.headImagePath, blank=True)),
+                ('headImage', models.ImageField(upload_to=project.travel.models.headImagePath, blank=True)),
                 ('title', models.CharField(max_length=150, verbose_name='Title')),
                 ('slug', models.SlugField(max_length=150, verbose_name='Slug')),
                 ('metaTitle', models.CharField(max_length=150, verbose_name='Meta title', blank=True)),
@@ -69,8 +69,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('created', models.DateTimeField(verbose_name='Creation time', blank=True)),
-                ('headImage', models.ImageField(upload_to=project.me.models.headImagePath, verbose_name=b'Head image 3863x1524', blank=True)),
-                ('titleImage', models.ImageField(upload_to=project.me.models.imagePath, verbose_name=b'Title image 1980x1315', blank=True)),
+                ('headImage', models.ImageField(upload_to=project.travel.models.headImagePath, verbose_name=b'Head image 3863x1524', blank=True)),
+                ('titleImage', models.ImageField(upload_to=project.travel.models.imagePath, verbose_name=b'Title image 1980x1315', blank=True)),
                 ('title', models.CharField(max_length=150, verbose_name='Title')),
                 ('slug', models.SlugField(max_length=150, verbose_name='Slug')),
                 ('post', models.TextField(null=True, verbose_name='Post body', blank=True)),
@@ -80,7 +80,7 @@ class Migration(migrations.Migration):
                 ('mapSize', models.IntegerField(null=True, blank=True)),
                 ('sources', models.TextField(null=True, verbose_name='Sources', blank=True)),
                 ('author', models.ForeignKey(related_name='post_author', verbose_name='Author', to=settings.AUTH_USER_MODEL)),
-                ('category', models.ForeignKey(verbose_name='Category', to='me.Category')),
+                ('category', models.ForeignKey(verbose_name='Category', to='travel.Category')),
             ],
             options={
                 'ordering': ('-created',),
@@ -94,7 +94,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('place', models.CharField(max_length=150, verbose_name='Place')),
                 ('order', models.IntegerField(null=True, blank=True)),
-                ('post', models.ForeignKey(verbose_name='Post', to='me.Post')),
+                ('post', models.ForeignKey(verbose_name='Post', to='travel.Post')),
             ],
             options={
                 'ordering': ('order', '-id'),
@@ -107,13 +107,13 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('text', models.TextField(null=True, verbose_name='Post body', blank=True)),
-                ('photo', models.ImageField(upload_to=project.me.models.imagePath, blank=True)),
+                ('photo', models.ImageField(upload_to=project.travel.models.imagePath, blank=True)),
                 ('panorama', models.BooleanField(default=False, verbose_name='Is panorama')),
                 ('private', models.BooleanField(default=False, verbose_name='Is private')),
-                ('photoRight', models.ImageField(upload_to=project.me.models.imagePath, blank=True)),
+                ('photoRight', models.ImageField(upload_to=project.travel.models.imagePath, blank=True)),
                 ('panoramaRight', models.BooleanField(default=False, verbose_name='Is panorama')),
                 ('privateRight', models.BooleanField(default=False, verbose_name='Is private')),
-                ('post', models.ForeignKey(to='me.Post')),
+                ('post', models.ForeignKey(to='travel.Post')),
             ],
         ),
         migrations.CreateModel(
@@ -121,7 +121,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('value', models.CharField(max_length=150, verbose_name='Title')),
-                ('category', models.ForeignKey(verbose_name='Category', to='me.Category')),
+                ('category', models.ForeignKey(verbose_name='Category', to='travel.Category')),
             ],
             options={
                 'verbose_name': 'Tag',
@@ -131,6 +131,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='post',
             name='tags',
-            field=models.ManyToManyField(to='me.Tag', verbose_name='Tags', blank=True),
+            field=models.ManyToManyField(to='travel.Tag', verbose_name='Tags', blank=True),
         ),
     ]

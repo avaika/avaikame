@@ -17,7 +17,7 @@ def load_fixture(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('me', '0002_auto_20150907_0103'),
+        ('travel', '0002_auto_20150907_0103'),
     ]
 
     operations = [
@@ -47,12 +47,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='post',
             name='cities',
-            field=models.ManyToManyField(to='me.City', verbose_name='Cities', blank=True),
+            field=models.ManyToManyField(to='travel.City', verbose_name='Cities', blank=True),
         ),
         migrations.AddField(
             model_name='post',
             name='country',
-            field=models.ForeignKey(default=1, verbose_name='Country', to='me.Country'),
+            field=models.ForeignKey(default=1, verbose_name='Country', to='travel.Country'),
             preserve_default=False,
         ),
         migrations.RunPython(load_fixture),

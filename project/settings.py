@@ -34,7 +34,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static/')
 STATIC_URL = '/static/'
 
 ACCOUNT_ACTIVATION_DAYS = 7
-AUTH_USER_MODEL = 'me.User'
+AUTH_USER_MODEL = 'travel.User'
 GRAPPELLI_ADMIN_TITLE = u'avaika_me'
 
 STATICFILES_DIRS = (
@@ -106,7 +106,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.contenttypes',
     # partner installed apps
-    'project.me',
+    'project.travel',
     'project.books',
     # end partner installed apps
     # Need to put apps below in the end
@@ -125,13 +125,13 @@ INSTALLED_APPS = (
 )
 
 TAGS_INPUT_MAPPINGS = {
-    'me.Tag': {
+    'travel.Tag': {
         'field': 'value', 'create_missing': True,
     },
-    'me.Country': {
+    'travel.Country': {
         'field': 'value', 'create_missing': True,
     },
-    'me.City': {
+    'travel.City': {
         'field': 'value', 'create_missing': True,
     },
     'books.Author': {
@@ -140,7 +140,7 @@ TAGS_INPUT_MAPPINGS = {
     'books.Genre': {
         'field': 'value', 'create_missing': True,
     },
-    'me.AllTag': {
+    'travel.AllTag': {
         'field': 'value', 'create_missing': True,
     },
 }

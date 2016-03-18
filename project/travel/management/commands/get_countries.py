@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.core.management.base import NoArgsCommand
 from BeautifulSoup import BeautifulSoup
-from project.me.models import Country
+from project.travel.models import Country
 from django.conf import settings
 import urllib2
 import json

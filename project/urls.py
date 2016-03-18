@@ -24,10 +24,10 @@ urlpatterns += i18n_patterns('',
                              (r'^accounts/', include('allauth.urls')),
                              url(r'^accounts/passwordsent/$', 'django.contrib.auth.views.password_reset_done', name='password_reset_done'),
                              url(r'^$', TemplateView.as_view(template_name='index.html'), name="index"),
-                             url(r'^i/', include('project.me.urls')),
+                             url(r'^i/', include('project.travel.urls')),
                              url(r'^books/', include('project.books.urls')),
                              )
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-handler404 = 'project.me.views.error404'
-handler500 = 'project.me.views.error500'
+handler404 = 'project.travel.views.error404'
+handler500 = 'project.travel.views.error500'
