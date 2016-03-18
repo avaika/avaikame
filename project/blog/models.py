@@ -30,12 +30,6 @@ class Tag(models.Model):
         verbose_name = _("Tag")
         verbose_name_plural = _("Tags")
 
-    def save(self, *args, **kwargs):
-        cat = self.value.find('_')
-        self.category = Category.objects.get(slug=self.value[:cat])
-        self.value = self.value[cat+1:]
-        super(Tag, self).save(*args, **kwargs)
-
     def __unicode__(self):
         return self.value
 
