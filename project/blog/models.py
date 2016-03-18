@@ -24,7 +24,6 @@ class Category(models.Model):
 
 class Tag(models.Model):
     value = models.CharField(max_length=150, verbose_name=_("Title"))
-    category = models.ForeignKey(Category, verbose_name=_("Category"))
 
     class Meta:
         verbose_name = _("Tag")
