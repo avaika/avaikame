@@ -36,8 +36,8 @@ def latest_posts():
 
 
 @register.simple_tag()
-def count_posts(category):
-    return Post.objects.filter(draft=False, category__slug=category).count()
+def travel_count_posts():
+    return Post.objects.filter(draft=False).count()
 
 
 def get_flag_current(item, first, last):

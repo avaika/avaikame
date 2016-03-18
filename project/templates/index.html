@@ -1,4 +1,4 @@
-{% extends 'base.html' %}{% load thumbnail i18n staticfiles comments me_tags %}
+{% extends 'base.html' %}{% load thumbnail i18n staticfiles comments blog_tags me_tags %}
 {% block title %}{% trans "Avaika home" %}{% endblock %}
 {% block addlink %}
   <link href="{% static "base/css/lightbox.css" %}" rel="stylesheet" />
@@ -33,18 +33,20 @@
       </div>
       <div class="col-lg-4">
         <div class="list-group">
-          <a href="{% url 'category' 'it' %}" class="list-group-item">
+          <a href="{% url 'blog_all_posts' %}" class="list-group-item">
             <img class="img-responsive" style="height:35px" src="{% static "base/img/main/it.jpg" %}" alt="Image for it"> 
-            {% trans "IT" %}<span class="badge">{% count_posts "it" %}</span>
+            {% trans "Blog" %}<span class="badge">{% blog_count_posts %}</span>
           </a>
-          <a href="{% url 'category' 'me' %}" class="list-group-item">
+          <a href="{% url 'travel_list' %}" class="list-group-item">
             <img class="img-responsive" style="height:35px" src="{% static "base/img/main/me.jpg" %}" alt="Image for me"> 
-            {% trans "Travels" %}<span class="badge">{% count_posts "me" %}</span>
+            {% trans "Travels" %}<span class="badge">{% travel_count_posts %}</span>
           </a>
-          <a href="{% url 'category' 'he' %}" class="list-group-item">
+          {% comment %}
+          <a href="{% url 'blog_category' 'people' %}" class="list-group-item">
             <img class="img-responsive" style="height:35px" src="{% static "base/img/main/hi.jpg" %}" alt="Image for hi"> 
-            {% trans "Funny facts" %}<span class="badge">{% count_posts "hi" %}</span>
+            {% trans "Funny facts" %}<span class="badge">{% count_posts %}</span>
           </a>
+          {% endcomment %}
           <a href="{% url 'books' %}" class="list-group-item">
             <img class="img-responsive" style="height:35px" src="{% static "base/img/main/books.jpg" %}" alt="Image for books"> 
             {% trans "Books" %}
