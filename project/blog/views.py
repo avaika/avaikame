@@ -43,7 +43,7 @@ category = CategoryListView.as_view()
 
 class TagView(TemplateView):
     context_object_name = "posts"
-    template_name = "posts/list_tag.html"
+    template_name = "blog/list_tag.html"
 
     def get_context_data(self, **kwargs):
         context = super(TagView, self).get_context_data(**kwargs)
