@@ -19,7 +19,7 @@ class Category(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('category', kwargs={'pk': self.id})
+        return reverse('blog_category', kwargs={'pk': self.id})
 
 
 class Tag(models.Model):
@@ -57,7 +57,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('page_redirect', kwargs={'pk': self.id})
+        return reverse('blog_page_redirect', kwargs={'pk': self.id})
 
     def titleImage_tag(self):
         if self.titleImage:

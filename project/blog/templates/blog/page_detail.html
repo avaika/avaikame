@@ -1,17 +1,10 @@
-{% extends 'base.html' %}{% load thumbnail i18n staticfiles comments %}
+{% extends 'base.html' %}{% load thumbnail i18n staticfiles %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block addlink %}
 <link href="{% static "base/css/lightbox.css" %}" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="{% static "fluent_comments/css/ajaxcomments.css" %}" />
 {% endblock %}
 {% block postscript %}
-<script>
-  // workaround for FF caching urls ((
-  var _theframe = document.getElementById("map");
-  _theframe.contentWindow.location.href = _theframe.src;
-</script>
 <script src="{% static "base/js/lightbox.min.js" %}"></script>
-<script type="text/javascript" src="{% static "fluent_comments/js/ajaxcomments.js" %}"></script>
 {% endblock %}
 {% block content %}
 <div class="container">
@@ -26,7 +19,7 @@
       <div class="col-md-9">
         <div class="panel panel-default">
           <div class="panel-heading">
-            {{ post.post|render_uploads|safe }}
+            {{ post.post|safe }}
           </div>
           <div class="pull-right">
             {% for tag in post.tags.all %}
@@ -48,7 +41,7 @@
             <h4>Tags</h4>
             <p> 
               {% for tag in tags %}
-                  <a href="{% url 'tag_list' tag %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                  <a href="{% url 'blog_tag_list' tag %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
               {% endfor %}
             <p> 
           </div>
@@ -58,26 +51,16 @@
     </div>
   </div>
 
-  {# Comments #}
-  <div class="row">
-    <div class="box">
-      <div class="col-lg-12">
-        <h2 class="intro-text text-center">{% trans "Comments" %}</h2>
-         {% render_comment_list for object %}
-         {% render_comment_form for object %}
-      </div>
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
+  {% comment %}
   {# Random posts #}
   <div class="row">
     <div class="box">
       <div class="col-lg-12">
-        <h3 class="intro-text text-center"><a href="{% url 'page_redirect' post.id %}">{% trans "Random post" %} : {{ random_post.title }}</a></h3>
+        <h3 class="intro-text text-center"><a href="{% url 'blog_page_redirect' post.id %}">{% trans "Random post" %} : {{ random_post.title }}</a></h3>
       </div>
     </div>
   </div>
+  {% endcomment %}
 
 </div>
 {% endblock %}

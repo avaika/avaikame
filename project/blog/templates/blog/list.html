@@ -11,7 +11,7 @@
           <div class="col-lg-12">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h2><a href="{% url 'page_redirect' post.id %}">{{ post.title }}</a></h2>
+                <h2><a href="{% url 'blog_page_redirect' post.id %}">{{ post.title }}</a></h2>
                 <p>{{ post.post|safe|truncatewords:25 }}</p>
                 <span class="date_it date_multi">
                   <p>{{ post.created|date:"d E Y" }}</p>
@@ -27,7 +27,7 @@
             <h4>Tags</h4>
             <p>
               {% for tag in tags %}
-                <a href="{% url 'tag_list' tag %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                <a href="{% url 'blog_tag_list' tag %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
               {% endfor %}
             <p>
           </div>

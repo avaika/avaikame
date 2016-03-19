@@ -47,8 +47,7 @@ class TagView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(TagView, self).get_context_data(**kwargs)
-        tag = Tag.objects.get(value=self.kwargs['tag'])
-        context['tags'] = Tag.objects.filter(category=tag.category)
+        context['tags'] = Tag.objects.all()
         context['posts'] = Post.objects.filter(draft=False, tags__value__contains=kwargs['tag'])
         return context
 
@@ -56,7 +55,7 @@ tag = TagView.as_view()
 
 
 class PageRedirectView(RedirectView):
-    pattern_name = 'page_display'
+    pattern_name = 'blog_page_display'
 
     def get_redirect_url(self, *args, **kwargs):
         if self.request.user.is_superuser:
@@ -72,7 +71,7 @@ page_redirect = PageRedirectView.as_view(permanent=True)
 class PageDetailView(DetailView):
     model = Post
     context_object_name = "post"
-    template_name = "posts/page_detail.html"
+    template_name = "blog/page_detail.html"
 
     def get_object(self):
         object = super(PageDetailView, self).get_object()
@@ -90,7 +89,7 @@ class PageDetailView(DetailView):
         prev_item = Post.objects.filter(pk__lt=context['post'].id, category=context['post'].category).order_by('-created')
         if prev_item:
             context['prev'] = prev_item[0]
-        context['tags'] = Tag.objects.filter(category=obj.category)
+        context['tags'] = Tag.objects.all()
         context['random_post'] = Post.objects.filter(draft=False, category=obj.category).exclude(pk=obj.pk).order_by('?')[:1]
         return context
 
