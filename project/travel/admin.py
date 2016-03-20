@@ -63,7 +63,7 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
     fieldsets = (
         ('Technical', {'fields': ('author', 'created', 'draft', 'mapSize',)}),
         ('Titles', {'fields': ('title', 'slug', 'country', 'cities', 'tags', )}),
-        ('Post', {'fields': ('headImage', 'headImage_tag', 'titleImage', 'titleImage_tag', 'sources', 'post')}),
+        ('Post', {'fields': ('headImage', 'headImage_tag', 'titleImage', 'titleImage_tag', 'sources', )}),
     )
     readonly_fields = ('headImage_tag', 'titleImage_tag')
 
