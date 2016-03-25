@@ -203,3 +203,5 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+TEMPLATES[0]['OPTIONS']['debug'] = True
