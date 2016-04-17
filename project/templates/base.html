@@ -35,7 +35,7 @@
             {# Collect the nav links, forms, and other content for toggling #}
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/"><span class="icon-paw"></span> avaika.me</a> </li>
+                    <li><a href="/">avaika.me</a> </li>
                     <li class="hidden-sm"><a href="{% url 'blog_all_posts' %}"><span class="icon-paw"></span>blog</a> </li>
                     <li><a href="{% url 'travel_list' %}"><span class="icon-paw"></span>travel</a> </li>
                     <li class="hidden-sm"><a href="{% url 'books' %}"><span class="icon-paw"></span> {% trans "books" %}</a> </li>
@@ -43,11 +43,10 @@
                       {# <li><a href="/">{% trans "Settings" %}</a></li> #}
                       <li><a href="{% url 'account_logout' %}"><span class="icon-paw"></span> {% trans "Exit" %}</a> </li>
                     {% else %}
-                      <li>{% trans "Login" %} :
-                        <a href="{% url 'account_login' %}"><span class="icon-paw" title="{% trans "Login via avaika" %}"></span></a>
-                        <a href="{% url 'social:begin' "facebook" %}"><span class="icon-facebook" title="{% trans "Login via facebook" %}"></span></a>
-                        <a href="{% url 'social:begin' "twitter" %}"><span class="icon-twitter" title="{% trans "Login via twitter" %}"></span></a>
-                      </li>
+                      <li><a href="{% url 'account_login' %}">{% trans "Login" %}:</a></li>
+                      <li><a href="{% url 'account_login' %}"><span class="icon-paw" title="{% trans "Login via avaika" %}"></span></a></li>
+                      <li><a href="{% url 'social:begin' "facebook" %}"><span class="icon-facebook" title="{% trans "Login via facebook" %}"></span></a></li>
+                      <li><a href="{% url 'social:begin' "twitter" %}"><span class="icon-twitter" title="{% trans "Login via twitter" %}"></span></a></li>
                       <li class="hidden-li"><a href="{% url 'account_login' %}">Avaika</a></li>
                       <li class="hidden-li"><a href="{% url 'social:begin' "facebook" %}">Facebook</a></li>
                       <li class="hidden-li"><a href="{% url 'social:begin' "twitter" %}">Twitter</a></li>
