@@ -15,4 +15,8 @@ update django_migrations set app = 'travel' where app = 'me' ;
 drop table `south_migrationhistory` ;
 drop table `adminfiles_fileuploadreference` ;
 drop table `adminfiles_fileupload` ;
-
+delete from auth_permission where content_type_id in (select id from django_content_type where app_label = 'adminfiles');
+delete from django_content_type where app_label = 'adminfiles' ;
+delete from auth_permission where content_type_id in (select id from django_content_type where app_label = 'blog');
+delete from django_admin_log where content_type_id in (select id from django_content_type where app_label = 'blog');
+delete from django_content_type where app_label = 'blog' ;
