@@ -291,8 +291,6 @@ footer p {
 
 @media (max-width: 768px) {
     .hidden-li { display:inherit; }
-    .flag-title { height: 30px !important; }
-    .flag-head { height: 50px !important; }
     .photo_desc {
       position:absolute;
       display:block;

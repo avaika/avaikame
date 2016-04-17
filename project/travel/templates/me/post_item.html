@@ -8,11 +8,15 @@
     {% endthumbnail %}
     <span class="photo_desc photo_multi">
       <p>
-        {% if post.country.flag %}<img class="flag-title" src="{{ MEDIA_URL }}{{ post.country.flag }}" />{% endif %}
-        {{ post.title }}
+      {% if post.country.flag %}
+        {% thumbnail post.country.flag "73" as im %}
+          <img class="flag-title" src="{{ im.url }}" />
+        {% endthumbnail %}
+      {% endif %}
+      {{ post.title }} 
       </p>
     </span>
-    <span class="date_desc date_multi">
+    <span class="date_desc date_multi hidden-xs">
         <p>{{ post.created|date:"d E Y" }}</p>
     </span>
   </a>
