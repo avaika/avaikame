@@ -11,7 +11,7 @@
     <title>{% block title %}Avaika{% endblock %} - avaika.me</title>
 
     {# <!-- Bootstrap core CSS --> #}
-    <link href="{% static "base/css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "base/css/bootstrap.min.css" %}" rel="stylesheet">
 
     {# <!-- Add custom CSS here --> #}
     <link href="{% static "base/css/avaika.css" %}" rel="stylesheet">
@@ -85,8 +85,8 @@
     {% endblock footer %}
 
     {# JavaScript #}
-    <script src="{% static "base/js/jquery-1.10.2.js" %}"></script>
-    <script src="{% static "base/js/bootstrap.js" %}"></script>
+    <script src="{% static "base/js/jquery-1.12.3.min.js" %}"></script>
+    <script src="{% static "base/js/bootstrap.min.js" %}"></script>
     {% block postscript %}{% endblock %}
 
 </body>
