@@ -36,7 +36,7 @@
         {% if post.mapSize %}
           <iframe src="{% url 'directions' post.id %}" id="map" frameborder="0" height="{{ post.mapSize }}px" scrolling="no" width="100%"></iframe>
         {% else %}
-          {% thumbnail post.headImage "x900" crop="left" as im %}
+          {% thumbnail post.headImage "x400" crop="left" as im %}
             <img class="img-responsive img-full" src="{{ im.url }}" alt="Image for {{ post.title }}">
           {% endthumbnail %}
         {% endif %}
