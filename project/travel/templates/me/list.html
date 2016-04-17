@@ -26,7 +26,7 @@
             <div class="carousel-inner">
               <div class="item active">
                 <a href="{% url 'page_redirect' post.id %}">
-                  {% thumbnail post.headImage "x600" crop="center" as im %}
+                  {% thumbnail post.headImage "x400" crop="center" as im %}
                   <img class="img-responsive img-full" src="{{ im.url }}" alt="Image for {{ post.title }}">
                   {% empty %}
                   <img class="img-responsive img-full" src="{% static "base/img/no-picture.png" %}" alt="Image for {{ post.title }}">
