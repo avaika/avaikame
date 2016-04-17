@@ -10,7 +10,11 @@
           <div class="flags">
           {% flags posts as post_flags %}
           {% for flag in post_flags %}
-            <a href="{% url "country_list" flag.country__value %}"><img class="flag-thumb{% if flag.current %} flag-current{% endif %}" src="{{ MEDIA_URL }}{{ flag.country__flag }}" /></a>
+            <a href="{% url "country_list" flag.country__value %}">
+              {% thumbnail flag.country__value "100" as im %}
+                <img class="flag-thumb{% if flag.current %} flag-current{% endif %}" src="{{ im.url }}" />
+              {% endthumbnail %}
+            </a>
             {% if forloop.last %} ... {% endif %}
           {% endfor %}
           </div>
