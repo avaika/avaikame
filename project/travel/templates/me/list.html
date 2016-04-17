@@ -6,12 +6,12 @@
 <div class="container">
   <div class="row">
     <div class="box">
-        <div class="col-lg-12 hidden-xs hidden-sm">
+        <div class="col-lg-12 hidden-xs">
           <div class="flags">
           {% flags posts as post_flags %}
           {% for flag in post_flags %}
             <a href="{% url "country_list" flag.country__value %}">
-              {% thumbnail flag.country__value "100" as im %}
+              {% thumbnail flag.country__flag "70" format="PNG" as im %}
                 <img class="flag-thumb{% if flag.current %} flag-current{% endif %}" src="{{ im.url }}" />
               {% endthumbnail %}
             </a>
