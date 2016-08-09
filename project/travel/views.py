@@ -71,10 +71,10 @@ class PageDetailView(DetailView):
         context = super(PageDetailView, self).get_context_data(**kwargs)
         obj = super(PageDetailView, self).get_object()
         context['text_chunks'] = PostPhoto.objects.filter(post_id=context['post'].id)
-        next_item = Post.objects.filter(pk__gt=context['post'].id).order_by('created')
+        next_item = Post.objects.filter(created__gt=context['post'].created, draft=False).order_by('created')
         if next_item:
             context['next'] = next_item[0]
-        prev_item = Post.objects.filter(pk__lt=context['post'].id).order_by('-created')
+        prev_item = Post.objects.filter(created__lt=context['post'].created, draft=False).order_by('-created')
         if prev_item:
             context['prev'] = prev_item[0]
         context['random_posts'] = Post.objects.filter(draft=False).exclude(pk=obj.pk).order_by('?')[:3]
