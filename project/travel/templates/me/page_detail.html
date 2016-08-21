@@ -47,18 +47,18 @@
         <div class="panel panel-default">
           <div class="panel-heading">
               {% for chunk in text_chunks %}
-                {{ chunk.text|safe }}
+                {% if chunk.text %}{{ chunk.text|safe }}{% endif %}
                 {% if chunk.photo or chunk.photoRight %}<p>
                   {% if chunk.photo %}
                     {% thumbnail chunk.photo "x1200" as photo_big %}
-                      <a class="photos" data-lightbox="roadtrip" href="/media/{{ photo_big }}">
+                      <a class="photos" data-lightbox="roadtrip" href="{{ MEDIA_URL }}{{ photo_big }}">
                         {% if chunk.panorama %}
                           {% thumbnail chunk.photo "x400" as photo_thumb %}
-                            <img alt="Photo {{ chunk.id }}" class="img-responsive img-full" src="/media/{{ photo_thumb }}">
+                          <img alt="Photo {{ chunk.id }}" class="img-responsive img-full" src="{{ MEDIA_URL }}{{ photo_thumb }}">
                           {% endthumbnail %}
                         {% else %}
                           {% thumbnail chunk.photo "450x300" as photo_thumb %}
-                            <img alt="Photo {{ chunk.id }}" class="img-responsive" src="/media/{{ photo_thumb }}">
+                          <img alt="Photo {{ chunk.id }}" class="img-responsive" src="{{ MEDIA_URL }}{{ photo_thumb }}">
                           {% endthumbnail %}
                         {% endif %}
                       </a>
@@ -66,14 +66,14 @@
                   {% endif %}
                   {% if chunk.photoRight %}
                     {% thumbnail chunk.photoRight "x1200" as photo_big %}
-                      <a class="photos" data-lightbox="roadtrip" href="/media/{{ photo_big }}">
+                      <a class="photos" data-lightbox="roadtrip" href="{{ MEDIA_URL }}{{ photo_big }}">
                         {% if chunk.panoramaRight %}
                           {% thumbnail chunk.photoRight "x400" as photo_thumb %}
-                            <img alt="Photo {{ chunk.id }}" class="img-responsive img-full" src="/media/{{ photo_thumb }}">
+                            <img alt="Photo {{ chunk.id }}" class="img-responsive img-full" src="{{ MEDIA_URL }}{{ photo_thumb }}">
                           {% endthumbnail %}
                         {% else %}
                           {% thumbnail chunk.photoRight "450x300" as photo_thumb %}
-                            <img alt="Photo {{ chunk.id }}" class="img-responsive" src="/media/{{ photo_thumb }}">
+                            <img alt="Photo {{ chunk.id }}" class="img-responsive" src="{{ MEDIA_URL }}{{ photo_thumb }}">
                           {% endthumbnail %}
                         {% endif %}
                       </a>
