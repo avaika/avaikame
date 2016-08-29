@@ -25,7 +25,7 @@ class TagView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(TagView, self).get_context_data(**kwargs)
-        context['posts'] = Post.objects.filter(draft=False, tags__value__contains=kwargs['tag'])
+        context['posts'] = Post.objects.filter(draft=False, tags__value__contains=kwargs['tag']).distinct()
         context['tag'] = kwargs['tag']
         return context
 
