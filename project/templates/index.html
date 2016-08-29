@@ -74,7 +74,7 @@
           {% for flag in post_flags %}
           <a href="{% url "country_list" flag.country__value %}">
           {% thumbnail flag.country__flag "x40" format="PNG" as im %}
-          <img class="flag-thumb{% if flag.current %} flag-current{% endif %}" src="{{ im.url }}" />
+            <img class="flag-thumb{% if flag.current %} flag-current{% endif %}" alt="Flag {{ flag.country__value }}" src="{{ im.url }}" />
           {% endthumbnail %}
           </a>
           {% if forloop.last %} ... {% endif %}
