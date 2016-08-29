@@ -10,7 +10,7 @@
       <p>
       {% if post.country.flag %}
         {% thumbnail post.country.flag "73" as im %}
-          <img class="flag-title" src="{{ im.url }}" />
+          <img class="flag-title" alt="Flag {{ flag.country__value }}" src="{{ im.url }}" />
         {% endthumbnail %}
       {% endif %}
       {{ post.title }} 
