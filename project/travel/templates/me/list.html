@@ -12,7 +12,7 @@
           {% for flag in post_flags %}
             <a href="{% url "country_list" flag.country__value %}">
               {% thumbnail flag.country__flag "70" format="PNG" as im %}
-                <img class="flag-thumb{% if flag.current %} flag-current{% endif %}" alt="Flag {{ flag.country__value }}" src="{{ im.url }}" />
+                <img class="flag-thumb{% if flag.current %} flag-current{% endif %}" alt="Flag {{ flag.country__value }}" title="{{ flag.country__value }}" src="{{ im.url }}" />
               {% endthumbnail %}
             </a>
             {% if forloop.last %} ... {% endif %}
@@ -34,7 +34,7 @@
                   <span class="photo_desc photo_head hidden-xs">
                     <p>
                     {% if post.country.flag %}
-                      <img class="flag-title" alt="Flag {{ flag.country__value }}" src="{{ MEDIA_URL }}{{ post.country.flag }}" />
+                      <img class="flag-title" alt="Flag {{ post.country }}" title="{{ post.country }}" src="{{ MEDIA_URL }}{{ post.country.flag }}" />
                     {% endif %}
                       {{ post.title }}
                     </p>
@@ -43,7 +43,7 @@
                     <p>
                     {% if post.country.flag %}
                       {% thumbnail post.country.flag "75" as im %}
-                        <img class="flag-title" alt="Flag {{ flag.country__value }}" src="{{ im.url }}" />
+                        <img class="flag-title" alt="Flag {{ post.country }}" title="{{ post.country }}" src="{{ im.url }}" />
                       {% endthumbnail %}
                     {% endif %}
                       {{ post.title }}
