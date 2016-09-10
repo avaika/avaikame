@@ -10,7 +10,7 @@ urlpatterns = patterns(
     '',
     (r'^grappelli/', include('grappelli.urls')),
     (r'^favicon\.ico$', RedirectView.as_view(url='/static/base/img/favicon.ico', permanent=True)),
-    (r'^robots\.txt$', RedirectView.as_view(url='/static/robots.txt', permanent=True)),
+    (r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
     url('', include('social.apps.django_app.urls', namespace='social')),
     # to be replaced by redirect
     url(r'^$', TemplateView.as_view(template_name='index.html'), name="index"),

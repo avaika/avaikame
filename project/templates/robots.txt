@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /accounts
+Disallow: /en/accounts
+Disallow: /ru/accounts
+Disallow: /login/
+Disallow: /en/login/
+Disallow: /ru/login/
