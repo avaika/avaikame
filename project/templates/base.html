@@ -9,6 +9,7 @@
     <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
 
     <title>{% block title %}Avaika{% endblock %} - avaika.me</title>
+    <link rel="alternate" hreflang="{{ lang_code }}" href="{% change_lang lang_code %}" />
 
     {# <!-- Bootstrap core CSS --> #}
     <link href="{% static "base/css/bootstrap.min.css" %}" rel="stylesheet">
