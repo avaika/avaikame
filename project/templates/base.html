@@ -9,7 +9,13 @@
     <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
 
     <title>{% block title %}Avaika{% endblock %} - avaika.me</title>
-    <link rel="alternate" hreflang="{{ lang_code }}" href="{% change_lang lang_code %}" />
+    {% get_available_languages as languages %}
+    {% get_current_language as lang %}
+    {% for lang_code, lang_name in languages %}
+      {% if lang_code != lang %}
+        <link rel="alternate" hreflang="{{ lang_code }}" href="{% change_lang lang_code %}" />
+      {% endif %}
+    {% endfor %}
 
     {# <!-- Bootstrap core CSS --> #}
     <link href="{% static "base/css/bootstrap.min.css" %}" rel="stylesheet">
@@ -51,8 +57,6 @@
                       <li class="hidden-li"><a href="{% url 'social:begin' "facebook" %}">Facebook</a></li>
                       <li class="hidden-li"><a href="{% url 'social:begin' "twitter" %}">Twitter</a></li>
                     {% endif %}
-                    {% get_available_languages as languages %}
-                    {% get_current_language as lang %}
                     {% for lang_code, lang_name in languages %}
                       <li class="pull-rght">
                         <a href="{% change_lang lang_code %}">
