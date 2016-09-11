@@ -1,6 +1,6 @@
 {% extends 'base.html' %}{% load static i18n thumbnail me_tags %}
 
-{% block title %}me{% endblock %}
+{% block title %}Avaika travel{% if page_obj.number != 1 %} - page page_obj.number{% endif %}{% endblock %}
 
 {% block content %}
 <div class="container">
