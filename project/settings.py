@@ -202,3 +202,5 @@ except ImportError:
     pass
 
 TEMPLATES[0]['OPTIONS']['debug'] = True
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+SOCIAL_AUTH_USER_MODEL = 'travel.User'
