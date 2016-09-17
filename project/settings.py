@@ -118,11 +118,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.twitter',
-    'allauth.socialaccount.providers.vk',
 )
 
 TAGS_INPUT_MAPPINGS = {
@@ -161,6 +156,8 @@ MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.twitter.TwitterOAuth',
 )
 
 
