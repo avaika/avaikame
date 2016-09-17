@@ -79,6 +79,8 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.core.context_processors.request",
                 "django.core.context_processors.media",
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
                 ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -92,7 +94,7 @@ TEMPLATES = [
 INSTALLED_APPS = (
     'timezones',
     'sorl.thumbnail',
-    'social',
+    'social.apps.django_app.default',
     'tags_input',
     'crispy_forms',
     'modeltranslation',
