@@ -1,6 +1,6 @@
 {% extends 'base.html' %}{% load static i18n thumbnail %}
 
-{% block title %}Blog{% endblock %}
+{% block title %}{% trans "Avaika blog" %}{% if tag %}{% trans " - search" %}{% endif %}{% endblock %}
 
 {% block content %}
 <div class="container">

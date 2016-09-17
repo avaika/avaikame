@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-07 21:01+0300\n"
+"POT-Creation-Date: 2016-09-17 19:46+0300\n"
 "PO-Revision-Date: 2014-07-26 13:04+0400\n"
 "Last-Translator: avaika <blog@avaika.me>\n"
 "Language: ru\n"
@@ -60,88 +60,129 @@ msgstr "Пользователь"
 msgid "Users"
 msgstr "Пользователи"
 
-#: models.py:43 models.py:61 models.py:88
+#: models.py:42 models.py:61 models.py:72 models.py:91
 msgid "Title"
 msgstr "Заголовок"
 
-#: models.py:44 models.py:89
-msgid "Slug"
-msgstr "Адрес"
+#: models.py:53 models.py:93
+msgid "Country"
+msgstr "Страна"
 
-#: models.py:45 models.py:92
-msgid "Meta title"
-msgstr "Meta заголовок"
-
-#: models.py:46 models.py:93
-msgid "Meta description"
-msgstr "Мета описание"
-
-#: models.py:49 models.py:62 models.py:80
-msgid "Category"
-msgstr "Категория"
-
-#: models.py:50
-msgid "Categories"
+#: models.py:54
+#, fuzzy
+#| msgid "Categories"
+msgid "Countries"
 msgstr "Категории"
 
-#: models.py:65
+#: models.py:64
+msgid "City"
+msgstr "Город"
+
+#: models.py:65 models.py:94
+msgid "Cities"
+msgstr "Города"
+
+#: models.py:75 templates/me/list_search.html.py:10
 msgid "Tag"
 msgstr "Тэг"
 
-#: models.py:66 models.py:91
+#: models.py:76 models.py:95
 msgid "Tags"
 msgstr "Тэги"
 
-#: models.py:79
+#: models.py:83
 msgid "Author"
 msgstr "Автор"
 
-#: models.py:81
+#: models.py:84
 msgid "Creation time"
 msgstr "Дата создания"
 
-#: models.py:90 models.py:128
-msgid "Post body"
-msgstr "Пост"
+#: models.py:92
+msgid "Slug"
+msgstr "Адрес"
 
-#: models.py:94
+#: models.py:96
+msgid "Meta title"
+msgstr "Meta заголовок"
+
+#: models.py:97
+msgid "Meta description"
+msgstr "Мета описание"
+
+#: models.py:98
 msgid "Is draft"
 msgstr "Черновик"
 
-#: models.py:96
+#: models.py:100
 msgid "Sources"
 msgstr "Источники"
 
-#: models.py:99 models.py:154
+#: models.py:103 models.py:158
 msgid "Post"
 msgstr "Пост"
 
-#: models.py:100
+#: models.py:104
 msgid "Posts"
 msgstr "Посты"
 
-#: models.py:130 models.py:133
+#: models.py:132
+msgid "Post body"
+msgstr "Пост"
+
+#: models.py:134 models.py:137
 msgid "Is panorama"
 msgstr "Панорама"
 
-#: models.py:131 models.py:134
+#: models.py:135 models.py:138
 msgid "Is private"
 msgstr "Скрытая"
 
-#: models.py:155
+#: models.py:159
 msgid "Place"
 msgstr "Место"
 
-#: models.py:159
+#: models.py:163
 msgid "Post map direction"
 msgstr "Маршрут"
 
-#: models.py:160
+#: models.py:164
 msgid "Post map directions"
 msgstr "Маршруты"
 
-#~ msgid "Comments"
-#~ msgstr "Комментарии"
+#: templates/me/list.html:3 templates/me/list_search.html.py:3
+msgid "Avaika travel"
+msgstr "Путешествия авайки"
 
-#~ msgid "Random posts"
-#~ msgstr "Случайные записи"
+#: templates/me/list_search.html:3
+#, fuzzy
+#| msgid "Tag"
+msgid "tag"
+msgstr "Тэг"
+
+#: templates/me/list_search.html:25
+msgid "Older"
+msgstr "Назад"
+
+#: templates/me/list_search.html:31
+msgid "Newer"
+msgstr "Вперёд"
+
+#: templates/me/page_detail.html:120
+msgid "Comments"
+msgstr "Комментарии"
+
+#: templates/me/page_detail.html:132
+msgid "Random posts"
+msgstr "Случайные записи"
+
+#: templates/me/pagination.html:5
+msgid "Back"
+msgstr "Назад"
+
+#: templates/me/pagination.html:21
+msgid "Forward"
+msgstr "Вперёд"
+
+#~ msgid "Category"
+#~ msgstr "Категория"
