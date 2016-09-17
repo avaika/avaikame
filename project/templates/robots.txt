@@ -5,3 +5,4 @@ Disallow: /ru/accounts
 Disallow: /login/
 Disallow: /en/login/
 Disallow: /ru/login/
+Host: https://avaika.me/
