@@ -1,4 +1,4 @@
-{% extends 'base.html' %}{% load thumbnail i18n staticfiles comments %}
+{% extends 'base.html' %}{% load thumbnail i18n staticfiles comments social_share %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block addlink %}
 <link href="{% static "base/css/lightbox.css" %}" rel="stylesheet" />
@@ -14,6 +14,7 @@
 {% endif %}
 <script src="{% static "base/js/lightbox.min.js" %}"></script>
 <script type="text/javascript" src="{% static "fluent_comments/js/ajaxcomments.js" %}"></script>
+<script type="text/javascript" src="{% static "base/js/share_buttons.js" %}"></script>
 {% endblock %}
 {% block content %}
 <div class="container">
@@ -81,6 +82,17 @@
                   {% endif %}
                 </p>{% endif %}
               {% endfor %}
+          {# Social #}
+          <hr />
+          <div class="avaika-share col-lg-12 text-center" data-site="{{ site }}" >
+            <div class="avaika-share-item vk" title="vkontakte" data-article="{{ post.title }} - avaika.me" data-link={{ site }}{{ post.get_absolute_url }} data-image="{{ MEDIA_URL }}{{ post.titleImage }}">&nbsp;</div>
+            <div class="avaika-share-item fb" title="facebook" data-article="{{ post.title }} - avaika.me" data-link={{ site }}{{ post.get_absolute_url }} data-image="{{ MEDIA_URL }}{{ post.titleImage }}">&nbsp;</div>
+            <div class="avaika-share-item ok" title="odnoklassniki" data-article="{{ post.title }} - avaika.me" data-link={{ site }}{{ post.get_absolute_url }} data-image="{{ MEDIA_URL }}{{ post.titleImage }}">&nbsp;</div>
+            <div class="avaika-share-item tw" title="twitter" data-article="{{ post.title }} - avaika.me" data-link={{ site }}{{ post.get_absolute_url }} data-image="{{ MEDIA_URL }}{{ post.titleImage }}">&nbsp;</div>
+            <div class="avaika-share-item gp" title="google" data-article="{{ post.title }} - avaika.me" data-link={{ site }}{{ post.get_absolute_url }} data-image="{{ MEDIA_URL }}{{ post.titleImage }}">&nbsp;</div>
+          </div>
+          <div class="clearfix"></div>
+          {# End Social #}
           </div>
           <div class="col-lg-12 text-center">
             <ul class="pager">
@@ -98,16 +110,6 @@
             </ul>
           </div>
         </div>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-  {# Social #}
-  <div class="row">
-    <div class="box">
-      <div class="col-lg-12">
-        {% include 'social.html' %}
       </div>
       <div class="clearfix"></div>
     </div>

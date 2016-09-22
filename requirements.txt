@@ -17,3 +17,4 @@ python-social-auth
 git+git://github.com/gkuhn1/django-admin-multiupload.git
 git+git://github.com/HonzaKral/django-threadedcomments
 pytest
+django-social-share

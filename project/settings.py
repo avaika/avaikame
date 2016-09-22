@@ -73,14 +73,13 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 # Already defined
-                # Django-related contexts here
-                # `allauth` needs this from django
                 'django.template.context_processors.request',
                 "django.contrib.auth.context_processors.auth",
                 "django.core.context_processors.request",
                 "django.core.context_processors.media",
                 'social.apps.django_app.context_processors.backends',
                 'social.apps.django_app.context_processors.login_redirect',
+                "project.travel.context_processors.site_processor",
                 ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -120,6 +119,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'allauth',
     'allauth.account',
+    'django_social_share',
 )
 
 TAGS_INPUT_MAPPINGS = {
