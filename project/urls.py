@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
+from django.contrib.auth import views as auth_views
 admin.autodiscover()
 
 urlpatterns = [
@@ -21,7 +22,7 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^accounts/passwordsent/$', 'django.contrib.auth.views.password_reset_done', name='password_reset_done'),
+    url(r'^accounts/passwordsent/$', auth_views.password_reset_done, name='password_reset_done'),
     url(r'^$', TemplateView.as_view(template_name='index.html'), name="index"),
     url(r'^i/', include('project.travel.urls')),
     url(r'^blog/', include('project.blog.urls')),
