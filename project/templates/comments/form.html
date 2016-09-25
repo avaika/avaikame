@@ -1,6 +1,7 @@
 {% load comments i18n crispy_forms_tags fluent_comments_tags %}
 
 {% if not user.is_authenticated %}
+  <div class="text-center">
     {% trans "To comment you have to login:" %}
 
     <div class="login_btn">
@@ -11,6 +12,7 @@
     <li class="hidden-li"><a href="{% url 'account_login' %}">Avaika</a></li>
     <li class="hidden-li"><a href="{% url 'social:begin' "facebook" %}">Facebook</a></li>
     <li class="hidden-li"><a href="{% url 'social:begin' "twitter" %}">Twitter</a></li>
+  </div>
 {% else %}
     <form action="{% comment_form_target %}" method="post" class="js-comments-form comments-form form-horizontal"
           data-ajax-action="{% url 'comments-post-comment-ajax' %}">{% csrf_token %}
