@@ -73,7 +73,6 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 # Already defined
-                'django.template.context_processors.request',
                 "django.contrib.auth.context_processors.auth",
                 "django.template.context_processors.request",
                 "django.template.context_processors.media",
