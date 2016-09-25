@@ -75,8 +75,8 @@ TEMPLATES = [
                 # Already defined
                 'django.template.context_processors.request',
                 "django.contrib.auth.context_processors.auth",
-                "django.core.context_processors.request",
-                "django.core.context_processors.media",
+                "django.template.context_processors.request",
+                "django.template.context_processors.media",
                 'social.apps.django_app.context_processors.backends',
                 'social.apps.django_app.context_processors.login_redirect',
                 "project.travel.context_processors.site_processor",
