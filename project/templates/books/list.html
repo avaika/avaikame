@@ -63,8 +63,8 @@
                     {% for genre in  book.genre.all %}{{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}
                   </td>
                   <td>{{ book.about }}</td>
-                  <td>{{ book.read|yesno:"&#10003;, &times;" }}</td>
-                  <td>{% if book.read %}{{ book.recommend|yesno:"&#10003;, &times;" }} {% endif %}</td>
+                  <td>{{ book.read|yesno:"&#10003;, &times;"|safe }}</td>
+                  <td>{% if book.read %}{{ book.recommend|yesno:"&#10003;, &times;"|safe }} {% endif %}</td>
                 </tr>
               {% if forloop.last %}
               </table>
