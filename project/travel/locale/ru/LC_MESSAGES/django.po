@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-17 19:46+0300\n"
+"POT-Creation-Date: 2016-10-07 00:41+0300\n"
 "PO-Revision-Date: 2014-07-26 13:04+0400\n"
 "Last-Translator: avaika <blog@avaika.me>\n"
 "Language: ru\n"
@@ -82,7 +82,7 @@ msgstr "Город"
 msgid "Cities"
 msgstr "Города"
 
-#: models.py:75 templates/me/list_search.html.py:10
+#: models.py:75 templates/me/list_search.html:10
 msgid "Tag"
 msgstr "Тэг"
 
@@ -150,9 +150,13 @@ msgstr "Маршрут"
 msgid "Post map directions"
 msgstr "Маршруты"
 
-#: templates/me/list.html:3 templates/me/list_search.html.py:3
+#: templates/me/list.html:3 templates/me/list_search.html:3
 msgid "Avaika travel"
 msgstr "Путешествия авайки"
+
+#: templates/me/list.html:3
+msgid "page"
+msgstr "страница"
 
 #: templates/me/list_search.html:3
 #, fuzzy
@@ -168,11 +172,11 @@ msgstr "Назад"
 msgid "Newer"
 msgstr "Вперёд"
 
-#: templates/me/page_detail.html:120
+#: templates/me/page_detail.html:132
 msgid "Comments"
 msgstr "Комментарии"
 
-#: templates/me/page_detail.html:132
+#: templates/me/page_detail.html:144
 msgid "Random posts"
 msgstr "Случайные записи"
 

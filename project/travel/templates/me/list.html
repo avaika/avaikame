@@ -1,6 +1,6 @@
 {% extends 'base.html' %}{% load static i18n thumbnail me_tags %}
 
-{% block title %}{% trans "Avaika travel" %}{% if page_obj.number != 1 %} - page page_obj.number{% endif %}{% endblock %}
+{% block title %}{% trans "Avaika travel" %}{% if page_obj.number != 1 %} - {% trans "page" %} {{ page_obj.number }}{% endif %}{% endblock %}
 
 {% block content %}
 <div class="container">
