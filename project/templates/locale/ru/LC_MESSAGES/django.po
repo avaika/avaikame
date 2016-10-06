@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-08 01:44+0300\n"
+"POT-Creation-Date: 2016-10-07 01:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: account/account_inactive.html:5 account/account_inactive.html.py:8
+#: account/account_inactive.html:5 account/account_inactive.html:8
 msgid "Account Inactive"
 msgstr "Аккаунт неактивен"
 
@@ -90,7 +90,7 @@ msgid "Do you really want to remove the selected e-mail address?"
 msgstr "Вы действительно хотите удалить выбранный email?"
 
 #: account/email_confirm.html:11 account/email_confirmed.html:6
-#: account/email_confirmed.html.py:11
+#: account/email_confirmed.html:11
 msgid "Confirm E-mail Address"
 msgstr "Подтвердить email"
 
@@ -119,22 +119,22 @@ msgid ""
 "mail address for user %(user_display)s."
 msgstr ""
 
-#: account/login.html:2 account/login.html.py:10 account/login.html.py:28
-#: base.html:45
+#: account/login.html:2 account/login.html:10 account/login.html:28
+#: base.html:50
 msgid "Login"
 msgstr "Войти"
 
-#: account/login.html:23 account/signup.html:28 account/signup.html.py:33
+#: account/login.html:23 account/signup.html:28 account/signup.html:33
 msgid "Password"
 msgstr "Пароль"
 
-#: account/login.html:28 account/signup.html:38 base.html:46
+#: account/login.html:28 account/signup.html:38 base.html:51
 #: comments/form.html:8
 msgid "Login via avaika"
 msgstr "Войти через сайт"
 
-#: account/login.html:31 account/login.html.py:46 account/login.html.py:52
-#: account/signup.html:55 base.html:48 comments/form.html:10
+#: account/login.html:31 account/login.html:46 account/login.html:52
+#: account/signup.html:55 base.html:53 comments/form.html:10
 msgid "Login via twitter"
 msgstr "Войти черех twitter"
 
@@ -146,7 +146,7 @@ msgstr "Забыли пароль?"
 msgid "Login via social networks."
 msgstr "Вход через социальные сети."
 
-#: account/login.html:43 account/signup.html:52 base.html:47
+#: account/login.html:43 account/signup.html:52 base.html:52
 #: comments/form.html:9
 msgid "Login via facebook"
 msgstr "Войти через facebook"
@@ -159,7 +159,7 @@ msgstr "Нет аккаунта?"
 msgid "Register"
 msgstr "Регистрация"
 
-#: account/logout.html:5 account/logout.html.py:15
+#: account/logout.html:5 account/logout.html:15
 msgid "Sign Out"
 msgstr "Выход"
 
@@ -207,7 +207,7 @@ msgstr "Основной email установлен"
 msgid "Your primary e-mail address must be verified."
 msgstr "Ваш основной email должен быть подтверждён"
 
-#: account/password_change.html:5 account/password_change.html.py:8
+#: account/password_change.html:5 account/password_change.html:8
 #: account/password_change.html:13 account/password_reset_from_key.html:4
 #: account/password_reset_from_key.html:7
 #: account/password_reset_from_key_done.html:4
@@ -216,7 +216,7 @@ msgid "Change Password"
 msgstr "Поменять пароль"
 
 #: account/password_reset.html:10 account/password_reset_done.html:6
-#: account/password_reset_done.html.py:9
+#: account/password_reset_done.html:9
 msgid "Password Reset"
 msgstr "Сбросить пароль"
 
@@ -257,12 +257,12 @@ msgstr "изменить пароль"
 msgid "Your password is now changed."
 msgstr "Ваш пароль изменён"
 
-#: account/password_set.html:5 account/password_set.html.py:8
+#: account/password_set.html:5 account/password_set.html:8
 #: account/password_set.html:13
 msgid "Set Password"
 msgstr "Установить пароль"
 
-#: account/signup.html:2 account/signup.html.py:10
+#: account/signup.html:2 account/signup.html:10
 msgid "Registration"
 msgstr "Регистрация"
 
@@ -278,7 +278,7 @@ msgstr "Слишком лень заполнить всё?"
 msgid "Just two clicks and you're here."
 msgstr "Всего два клика и вы тут"
 
-#: account/signup_closed.html:5 account/signup_closed.html.py:8
+#: account/signup_closed.html:5 account/signup_closed.html:8
 msgid "Sign Up Closed"
 msgstr ""
 
@@ -295,7 +295,7 @@ msgstr "Заметка"
 msgid "you are already logged in as %(user_display)s."
 msgstr "вы уже авторизовались как  %(user_display)s."
 
-#: account/verification_sent.html:5 account/verification_sent.html.py:8
+#: account/verification_sent.html:5 account/verification_sent.html:8
 #: account/verified_email_required.html:5
 #: account/verified_email_required.html:8
 msgid "Verify Your E-mail Address"
@@ -331,27 +331,19 @@ msgstr ""
 "<strong>Подсказка</strong>: вы всё ещё можете <a href=\"%(email_url)s"
 "\">заменить email адрес</a>."
 
-#: base.html:26
+#: base.html:31
 msgid "Toggle navigation"
 msgstr "Переключить навигацию"
 
-#: base.html:38 index.html:39
-msgid "IT"
-msgstr ""
-
-#: base.html:39
-msgid "me"
-msgstr ""
-
-#: base.html:40
+#: base.html:45
 msgid "books"
 msgstr "книги"
 
-#: base.html:43
+#: base.html:48
 msgid "Exit"
 msgstr "Выход"
 
-#: base.html:79
+#: base.html:83
 msgid ""
 "Check blog source on <a href='//github.com/avaika/avaikame'>github</a> if "
 "you like."
@@ -400,15 +392,15 @@ msgstr ""
 msgid "Thanks for flagging the comment"
 msgstr ""
 
-#: comments/form.html:4
+#: comments/form.html:5
 msgid "To comment you have to login:"
 msgstr "Для того, чтобы оставить комментарий, вам нужно авторизоваться: "
 
-#: comments/form.html:22 comments/preview.html:26
+#: comments/form.html:23 comments/preview.html:26
 msgid "Post"
 msgstr "Отправить"
 
-#: comments/form.html:23 comments/preview.html:27
+#: comments/form.html:24 comments/preview.html:27
 msgid "Preview"
 msgstr "Предпросмотр"
 
@@ -451,6 +443,7 @@ msgid "Avaika home"
 msgstr "Главная авайки"
 
 #: index.html:16
+#, fuzzy
 msgid ""
 "\n"
 "                Hi, I'm Rush (read as Roosh)<br />\n"
@@ -459,9 +452,6 @@ msgid ""
 "                Here you can find yet another home page where I share some "
 "notes about my travels, funny facts and IT related stuff to my friends<br /> "
 "<br />\n"
-"                Some content is not yet translated, though I'm working on "
-"that. If you want to read always latest news, you might learn some "
-"Russian :)<br /><br />\n"
 "                To get in touch with me feel free to email to site ( at ) "
 "avaika.me. <br /> <br />\n"
 "                Wish you a nice day (:\n"
@@ -479,38 +469,18 @@ msgstr ""
 "               Хорошего дня :)\n"
 "            "
 
-#: index.html:43
+#: index.html:30
+msgid "Blog"
+msgstr "Блог"
+
+#: index.html:34
 msgid "Travels"
 msgstr "Путешествия"
 
-#: index.html:47
-msgid "Funny facts"
-msgstr "Забавные факты"
-
-#: index.html:51
+#: index.html:45
 msgid "Books"
 msgstr "Книги"
 
-#: index.html:63
+#: index.html:57
 msgid "Latest posts"
 msgstr "Последние записи"
-
-#: it/page_detail.html:65 me/page_detail.html:105
-msgid "Comments"
-msgstr "Комментарии"
-
-#: it/page_detail.html:77
-msgid "Random post"
-msgstr "Случайная запись"
-
-#: me/page_detail.html:117
-msgid "Random posts"
-msgstr "Случайные записи"
-
-#: me/pagination.html:5
-msgid "Back"
-msgstr "Назад"
-
-#: me/pagination.html:21
-msgid "Forward"
-msgstr "Вперёд"
