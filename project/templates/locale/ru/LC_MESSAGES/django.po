@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-07 01:36+0300\n"
+"POT-Creation-Date: 2016-10-07 01:46+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru\n"
@@ -351,6 +351,51 @@ msgstr ""
 "Можно проверить исходники на <a href='//github.com/avaika/avaikame'>гитхабе</"
 "a>, если есть желание"
 
+#: books/list.html:3 index.html:45
+msgid "Books"
+msgstr "Книги"
+
+#: books/list.html:28
+#| msgid "Books"
+msgid "Books list"
+msgstr "Список книг"
+
+#: books/list.html:39
+msgid "Book"
+msgstr "Книга"
+
+#: books/list.html:40
+msgid "Author"
+msgstr "Автор"
+
+#: books/list.html:41
+msgid "Year"
+msgstr "Год"
+
+#: books/list.html:42
+msgid "Genre"
+msgstr "Жанр"
+
+#: books/list.html:43
+msgid "Description"
+msgstr "Описание"
+
+#: books/list.html:44
+msgid "Read?"
+msgstr "Прочитано?"
+
+#: books/list.html:45
+msgid "Recommend?"
+msgstr "Рекомендую?"
+
+#: books/list.html:79
+msgid "Back"
+msgstr "Назад"
+
+#: books/list.html:85
+msgid "Forward"
+msgstr "Вперёд"
+
 #: comments/comment.html:23 comments/preview.html:12
 msgid "Preview of your comment"
 msgstr "Предпросмотр вашего комментария"
@@ -436,14 +481,13 @@ msgstr "Написать комментарий"
 
 #: comments/preview.html:20
 msgid "Or make changes"
-msgstr ""
+msgstr "Или сделать изменения"
 
 #: index.html:2
 msgid "Avaika home"
 msgstr "Главная авайки"
 
 #: index.html:16
-#, fuzzy
 msgid ""
 "\n"
 "                Hi, I'm Rush (read as Roosh)<br />\n"
@@ -476,10 +520,6 @@ msgstr "Блог"
 #: index.html:34
 msgid "Travels"
 msgstr "Путешествия"
-
-#: index.html:45
-msgid "Books"
-msgstr "Книги"
 
 #: index.html:57
 msgid "Latest posts"
