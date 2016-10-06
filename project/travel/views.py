@@ -39,7 +39,7 @@ class CountryView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(CountryView, self).get_context_data(**kwargs)
         context['posts'] = Post.objects.filter(country__value=self.kwargs['country'], draft=False)
-        context['tag'] = kwargs['country']
+        context['country'] = kwargs['country']
         return context
 
 country = CountryView.as_view()
