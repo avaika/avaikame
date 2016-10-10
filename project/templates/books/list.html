@@ -49,12 +49,10 @@
                 <tr>
                   <td>
                     {% if book.wiki_url %}<a href="{{ book.wiki_url }}">{% endif %}{{ book.title }}{% if book.wiki_url %}</a>{% endif %} 
-                    {% if book.wiki_url_en %}/ <a href="{{ book.wiki_url_en }}">{{ book.title_orig }}</a>{% endif %}
                   </td>
                   <td>
                   {% for author in  book.author.all %}
                     {% if author.wiki_url %}<a href="{{ author.wiki_url }}">{% endif %}{{ author }}{% if author.wiki_url %}</a>{% endif %}
-                    {% if author.wiki_url_en %}(<a href="{{ author.wiki_url_en }}">en</a>){% endif %}
                     {% if not forloop.last %},{% endif %}
                   {% endfor %}
                   </td>
@@ -62,7 +60,7 @@
                   <td>
                     {% for genre in  book.genre.all %}{{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}
                   </td>
-                  <td>{{ book.about }}</td>
+                  <td>{% if book.about %}{{ book.about }}{% endif %}</td>
                   <td>{{ book.read|yesno:"&#10003;, &times;"|safe }}</td>
                   <td>{% if book.read %}{{ book.recommend|yesno:"&#10003;, &times;"|safe }} {% endif %}</td>
                 </tr>

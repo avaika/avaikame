@@ -7,7 +7,6 @@ from django.db import models
 class Author(models.Model):
     value = models.CharField(max_length=150, verbose_name=_("Author"))
     wiki_url = models.TextField(blank=True, null=True, verbose_name=_("Wikipedia url"))
-    wiki_url_en = models.TextField(blank=True, null=True, verbose_name=_("Wikipedia url english"))
 
     class Meta:
         verbose_name = _("Author")
@@ -31,10 +30,8 @@ class Genre(models.Model):
 class Book(models.Model):
     created = models.DateTimeField(auto_now=True, verbose_name=_("Creation time"))
     title = models.CharField(max_length=250, verbose_name=_("Title"))
-    title_orig = models.CharField(max_length=250, verbose_name=_("Title in original language"))
     year = models.PositiveIntegerField(verbose_name=_("Year"))
     wiki_url = models.TextField(blank=True, null=True, verbose_name=_("Wikipedia url"))
-    wiki_url_en = models.TextField(blank=True, null=True, verbose_name=_("Wikipedia url english"))
     about = models.TextField(blank=True, null=True, verbose_name=_("Short description about"))
     author = models.ManyToManyField(Author, blank=True, verbose_name=_("Author"))
     genre = models.ManyToManyField(Genre, blank=True, verbose_name=_("Genre"))
