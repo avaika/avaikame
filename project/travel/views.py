@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import RedirectView, TemplateView, DetailView, ListView, UpdateView
-from models import Post, PostMap, PostPhoto
+from models import Post, PostMap, PostPhoto, Tag
 from django.core.urlresolvers import reverse
 from django.forms import modelform_factory
 
@@ -26,7 +26,7 @@ class TagView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(TagView, self).get_context_data(**kwargs)
         context['posts'] = Post.objects.filter(draft=False, tags__slug__contains=kwargs['tag']).distinct()
-        context['tag'] = kwargs['tag']
+        context['tag'] = Tag.objects.get(slug=kwargs['tag'])
         return context
 
 tag = TagView.as_view()
