@@ -101,7 +101,7 @@
               {% endif %}
               <li>
                 {% for tag in post.tags.all %}
-                  <a href="{% url "tag_list" tag %}">{{ tag }}</a>
+                  <a href="{% url "tag_list" tag.slug %}">{{ tag.value }}</a>
                 {% endfor %}
               </li>
               {% if prev %}

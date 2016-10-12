@@ -69,14 +69,24 @@ class City(models.Model):
 
 
 class Tag(models.Model):
-    value = models.CharField(max_length=150, verbose_name=_("Title"))
+    value = models.CharField(max_length=150, blank=True, null=True, verbose_name=_("Title"))
+    slug = models.CharField(max_length=150, verbose_name=_("Tag url"))
 
     class Meta:
         verbose_name = _("Tag")
         verbose_name_plural = _("Tags")
 
     def __unicode__(self):
-        return self.value
+        return self.slug
+
+    def save(self, *args, **kwargs):
+        if not self.value_en:
+            self.value_en = self.slug
+        if not self.value_ru:
+            self.value_ru = self.slug
+        if " " in self.slug:
+            self.slug = self.slug.replace(" ", "_")
+        super(Tag, self).save(*args, **kwargs)
 
 
 class Post(models.Model):

@@ -18,9 +18,9 @@ class ProfileUserAdmin(UserAdmin):
     add_form = UserCreationForm
 
 
-class TagAdmin(admin.ModelAdmin):
-    list_display = ('id', 'value')
-    search_fields = ['id', 'value']
+class TagAdmin(TranslationAdmin):
+    list_display = ('id', 'value', 'slug')
+    search_fields = ['id', 'value', 'slug']
 
 
 class CountryAdmin(admin.ModelAdmin):

@@ -124,7 +124,7 @@ INSTALLED_APPS = (
 
 TAGS_INPUT_MAPPINGS = {
     'travel.Tag': {
-        'field': 'value', 'create_missing': True,
+        'field': 'slug', 'create_missing': True,
     },
     'travel.Country': {
         'field': 'value', 'create_missing': True,

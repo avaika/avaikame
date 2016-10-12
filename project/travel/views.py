@@ -25,24 +25,11 @@ class TagView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(TagView, self).get_context_data(**kwargs)
-        context['posts'] = Post.objects.filter(draft=False, tags__value__contains=kwargs['tag']).distinct()
+        context['posts'] = Post.objects.filter(draft=False, tags__slug__contains=kwargs['tag']).distinct()
         context['tag'] = kwargs['tag']
         return context
 
 tag = TagView.as_view()
-
-
-class CountryView(TemplateView):
-    context_object_name = "posts"
-    template_name = "me/list_search.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(CountryView, self).get_context_data(**kwargs)
-        context['posts'] = Post.objects.filter(country__value=self.kwargs['country'], draft=False)
-        context['country'] = kwargs['country']
-        return context
-
-country = CountryView.as_view()
 
 
 class PageRedirectView(RedirectView):

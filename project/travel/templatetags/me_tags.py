@@ -62,6 +62,7 @@ def flags(page_posts):
                     flags[-1] = get_flag_current(item, first, last)
                 continue
         item = get_flag_current(item, first, last)
+        item['flag_url'] = item['country__value'].lower().replace(" ", "_")
         flags.append(item)
     return flags
 
@@ -71,6 +72,7 @@ def uniq_flags(first=False, last=False):
     posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('country__value', 'country__flag')
     flags = []
     for item in posts:
+        item['flag_url'] = item['country__value'].lower().replace(" ", "_")
         if item not in flags:
             flags.append(item)
     return flags
