@@ -79,6 +79,7 @@ TEMPLATES = [
                 'social.apps.django_app.context_processors.backends',
                 'social.apps.django_app.context_processors.login_redirect',
                 "project.travel.context_processors.site_processor",
+                "project.travel.context_processors.debug_processor",
                 ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
