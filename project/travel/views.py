@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import RedirectView, TemplateView, DetailView, ListView, UpdateView
 from models import Post, PostMap, PostPhoto, Tag
 from django.core.urlresolvers import reverse
@@ -23,10 +23,17 @@ class TagView(TemplateView):
     context_object_name = "posts"
     template_name = "me/list_search.html"
 
+    def dispatch(self, *args, **kwargs):
+        # Temporary workaround for after migration time to new tags
+        # TODO: remove me later
+        if " " in str(kwargs['tag']):
+            return redirect('tag_list', str(kwargs['tag']).replace(" ", "_"))
+        return super(TagView, self).dispatch(*args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super(TagView, self).get_context_data(**kwargs)
+        context['tag'] = get_object_or_404(Tag, slug=kwargs['tag'])
         context['posts'] = Post.objects.filter(draft=False, tags__slug__contains=kwargs['tag']).distinct()
-        context['tag'] = Tag.objects.get(slug=kwargs['tag'])
         return context
 
 tag = TagView.as_view()
