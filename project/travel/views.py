@@ -1,9 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import RedirectView, TemplateView, DetailView, ListView, UpdateView
+from django.views.generic import RedirectView, TemplateView, DetailView, ListView
 from models import Post, PostMap, PostPhoto, Tag
-from django.core.urlresolvers import reverse
-from django.forms import modelform_factory
 
 
 class CategoryListView(ListView):
@@ -101,34 +99,6 @@ class DirectionView(TemplateView):
         return context
 
 directions = DirectionView.as_view()
-
-
-class TranslateView(UpdateView):
-    model = PostPhoto
-    context_object_name = "text"
-
-    def get_template_names(self):
-        raise NotImplementedError  # TODO
-
-    def dispatch(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        if not request.user.is_superuser:
-            raise Http404()
-        return super(TranslateView, self).dispatch(request, *args, **kwargs)
-
-    def get_success_url(self):
-        return reverse('translate', None, kwargs={})
-
-    def get_form_fields(self):
-        fields = ['text', 'comment', 'music', 'dictor']
-        if self.object.techReqs is not None:
-            fields.append('techReqs')
-        if self.object.chrono is not None:
-            fields.append('chrono')
-        return fields
-
-    def get_form_class(self):
-        return modelform_factory(PostPhoto, fields=self.get_form_fields())
 
 
 def error404(request, template='404.html'):
