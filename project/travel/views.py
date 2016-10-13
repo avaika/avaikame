@@ -24,10 +24,9 @@ class TagView(TemplateView):
     template_name = "me/list_search.html"
 
     def dispatch(self, *args, **kwargs):
-        # Temporary workaround for after migration time to new tags
-        # TODO: remove me later
-        if " " in str(kwargs['tag']):
-            return redirect('tag_list', str(kwargs['tag']).replace(" ", "_"))
+        # Remove spaces and convert to lower
+        if " " in str(kwargs['tag']) or str(kwargs['tag']) != str(kwargs['tag']).lower():
+            return redirect('tag_list', str(kwargs['tag']).lower().replace(" ", "_"))
         return super(TagView, self).dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -37,6 +36,17 @@ class TagView(TemplateView):
         return context
 
 tag = TagView.as_view()
+
+
+class CountryRedirectView(RedirectView):
+    pattern_name = 'tag_list'
+
+    def get_redirect_url(self, *args, **kwargs):
+        kwargs['tag'] = kwargs['country']
+        del kwargs['country']
+        return super(CountryRedirectView, self).get_redirect_url(*args, **kwargs)
+
+country_redirect = CountryRedirectView.as_view(permanent=True)
 
 
 class PageRedirectView(RedirectView):
