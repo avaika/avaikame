@@ -48,7 +48,10 @@ class Country(models.Model):
                              blank=True, null=True,
                              width_field=None, max_length=100,
                              verbose_name="Country ball")
-    example = models.TextField(blank=True, null=True, verbose_name=_("Url to example"))
+    example = models.ImageField(upload_to='ball_examples/', height_field=None,
+                             blank=True, null=True,
+                             width_field=None, max_length=100,
+                             verbose_name="Country ball")
     description = models.TextField(blank=True, null=True, verbose_name=_("Description"))
     worky = models.BooleanField(default=False, blank=True, verbose_name=_("Scheduled?"))
     ready = models.BooleanField(default=False, blank=True, verbose_name=_("Ready?"))

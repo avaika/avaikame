@@ -1,6 +1,6 @@
 {% extends 'base.html' %}{% load static i18n thumbnail %}
 
-{% block title %}{% trans "Books" %}{% endblock %}
+{% block title %}Страны{% endblock %}
 {% block postscript %}
   <link rel="stylesheet" type="text/css" href="{% static "base/css/theme.default.css" %}" />
   <script type="text/javascript" src="{% static "base/js/jquery.tablesorter.min.js" %}"></script>
@@ -50,16 +50,16 @@
                      {{ ball.value }}
                   </td>
                   <td>
-                    <img src="{{ MEDIA_URL }}{{ ball.flag }}" alt="{{ ball.value }}" height="40px" />
+                    <img src="{{ MEDIA_URL }}{{ ball.flag }}" alt="{{ ball.value }}" height="50px" />
                   </td>
                   <td>
-                    {% if ball.example %}<img src="{{ ball.example }}" alt="{{ ball.value }}" height="40px" />{% endif %}
+                    {% if ball.example %}<img src="{{ MEDIA_URL }}{{ ball.example }}" alt="{{ ball.value }}" height="50px" />{% endif %}
                   </td>
                   <td>
                     {{ ball.description }}
                   </td>
                   <td>
-                    {% if ball.ball %}<img src="{{ ball.ball }}" alt="{{ ball.value }}" height="40px" />{% endif %}
+                    {% if ball.ball %}<img src="{{ MEDIA_URL }}{{ ball.ball }}" alt="{{ ball.value }}" height="50px" />{% endif %}
                   </td>
                   <td>{{ ball.ready|yesno:"&#10003;, &times;"|safe }}</td>
                 </tr>
