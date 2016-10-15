@@ -53,13 +53,14 @@
                     <img src="{{ MEDIA_URL }}{{ ball.flag }}" alt="{{ ball.value }}" height="50px" />
                   </td>
                   <td>
-                    {% if ball.example %}<img src="{{ MEDIA_URL }}{{ ball.example }}" alt="{{ ball.value }}" height="50px" />{% endif %}
+                    {% if ball.example %}<img src="{{ MEDIA_URL }}{{ ball.example }}" alt="{{ ball.value }}" height="100px" />{% endif %}
+                    <a download="{{ ball.value }}.jpg" href="{{ MEDIA_URL }}{{ ball.example }}" title="ImageName">Скачать</a>
                   </td>
                   <td>
                     {{ ball.description }}
                   </td>
                   <td>
-                    {% if ball.ball %}<img src="{{ MEDIA_URL }}{{ ball.ball }}" alt="{{ ball.value }}" height="50px" />{% endif %}
+                    {% if ball.ball %}<img src="{{ MEDIA_URL }}{{ ball.ball }}" alt="{{ ball.value }}" height="100px" />{% endif %}
                   </td>
                   <td>{{ ball.ready|yesno:"&#10003;, &times;"|safe }}</td>
                 </tr>
