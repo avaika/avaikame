@@ -1,0 +1,93 @@
+{% extends 'base.html' %}{% load static i18n thumbnail %}
+
+{% block title %}{% trans "Books" %}{% endblock %}
+{% block postscript %}
+  <link rel="stylesheet" type="text/css" href="{% static "base/css/theme.default.css" %}" />
+  <script type="text/javascript" src="{% static "base/js/jquery.tablesorter.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "base/js/jquery.tablesorter.widgets.min.js" %}"></script>
+  <script>{# function to sort table contents #}
+  $(document).ready(function(){
+      $(function(){
+          $("#books").tablesorter(
+              { theme : 'default', 
+                sortList : [[1,0],[5,1]],
+                headerTemplate : '{content}{icon}',
+                widgets : ["columns"],
+                widgetOptions : { columns : [ "read", "author" ] }
+                });
+          });
+      });
+  </script>
+{% endblock postscript %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="box">
+      <div class="col-lg-12">
+        <h2 class="intro-text text-center">Страны</h2>
+        <hr>
+      </div>
+      <div class="col-lg-12 text-center">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          {% for ball in balls %}
+            {% if forloop.first %}
+              <table class="table table-bordered table-striped table-hover table-heading table-datatable" id="books">
+                <thead>
+                  <tr>
+                    <th data-field="id">Страна</th>
+                    <th data-field="author">Флаг</th>
+                    <th data-field="year">Пример</th>
+                    <th data-field="genre">Комментарий</th>
+                    <th data-field="desc">Результат</th>
+                    <th data-field="read">Готово?</th>
+                  </tr>
+                </thead>
+            {% endif %}
+                <tr class="{% if ball.ready == True %}success{% else %}warning{% endif %}">
+                  <td>
+                     {{ ball.value }}
+                  </td>
+                  <td>
+                    <img src="{{ MEDIA_URL }}{{ ball.flag }}" alt="{{ ball.value }}" height="40px" />
+                  </td>
+                  <td>
+                    {% if ball.example %}<img src="{{ ball.example }}" alt="{{ ball.value }}" height="40px" />{% endif %}
+                  </td>
+                  <td>
+                    {{ ball.description }}
+                  </td>
+                  <td>
+                    {% if ball.ball %}<img src="{{ ball.ball }}" alt="{{ ball.value }}" height="40px" />{% endif %}
+                  </td>
+                  <td>{{ ball.ready|yesno:"&#10003;, &times;"|safe }}</td>
+                </tr>
+              {% if forloop.last %}
+              </table>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% if is_paginated and page_obj %}
+            {% if page_obj.has_previous or page_obj.has_next %}
+              <div class="col-lg-12 text-center">
+                <ul class="pager">
+                  {% if page_obj.has_previous %}
+                    <li class="previous"><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">&larr; {% trans "Back" %}</a></li>
+                    <li><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}" class="select">{{ page_obj.previous_page_number }}</a></li>
+                  {% endif %}
+                  <li><a href="#" onclick="return false;" class="select">{{ page_obj.number }}</a></li>
+                  {% if page_obj.has_next %}
+                    <li><a href="{{ request.path }}?page={{ page_obj.next_page_number }}" class="select">{{ page_obj.next_page_number }}</a></li>
+                    <li class="next"><a href="{{ request.path }}?page={{ page_obj.next_page_number }}">{% trans "Forward" %} &rarr;</a></li>
+                  {% endif %}
+                </ul>
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import RedirectView, TemplateView, DetailView, ListView
-from models import Post, PostMap, PostPhoto, Tag
+from models import Post, PostMap, PostPhoto, Tag, Country
 
 
 class CategoryListView(ListView):
@@ -99,6 +99,16 @@ class DirectionView(TemplateView):
         return context
 
 directions = DirectionView.as_view()
+
+
+class BallsListView(ListView):
+    queryset = Country.objects.filter(worky=True)
+    model = Country
+    paginate_by = 100
+    context_object_name = "balls"
+    template_name = 'me/balls.html'
+
+balls = BallsListView.as_view()
 
 
 def error404(request, template='404.html'):
