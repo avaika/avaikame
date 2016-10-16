@@ -29,13 +29,17 @@ class Tag(models.Model):
         verbose_name = _("Tag")
         verbose_name_plural = _("Tags")
 
+    def get_absolute_url(self):
+        return reverse('blog_tag_list', kwargs={'tag': self.value})
+
     def __unicode__(self):
         return self.value
 
 
 class Post(models.Model):
     category = models.ForeignKey(Category, verbose_name=_("Category"))
-    created = models.DateTimeField(editable=True, blank=True, verbose_name=_("Creation time"))
+    created = models.DateTimeField(auto_now_add=True, verbose_name=_("Creation time"))
+    updated = models.DateTimeField(auto_now=True, verbose_name=_("Update time"))
     titleImage = models.ImageField(upload_to="blog_posts/", blank=True, height_field=None,
                                    width_field=None, max_length=100,
                                    verbose_name="Title image")
@@ -57,7 +61,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('blog_page_redirect', kwargs={'pk': self.id})
+        return reverse('blog_page_display', kwargs={'pk': self.id, 'slug': self.slug})
 
     def titleImage_tag(self):
         if self.titleImage:

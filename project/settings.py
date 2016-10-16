@@ -104,6 +104,7 @@ INSTALLED_APPS = (
     'fluent_comments',
     'threadedcomments',
     'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'django.contrib.contenttypes',
     # partner installed apps
@@ -203,6 +204,6 @@ try:
 except ImportError:
     pass
 
-TEMPLATES[0]['OPTIONS']['debug'] = True
+# TEMPLATES[0]['OPTIONS']['debug'] = True
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 SOCIAL_AUTH_USER_MODEL = 'travel.User'

@@ -50,10 +50,11 @@ class PostPhotoAdmin(TranslationStackedInline):
 
 
 class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
-    list_display = ('id', 'title', 'slug', 'created', 'draft')
+    list_display = ('id', 'title', 'slug', 'created', 'updated', 'draft')
     list_editable = ('title', 'slug', 'draft')
     search_fields = ['id', 'title', ]
     prepopulated_fields = {'slug': ['title']}
+    readonly_fields = ('updated')
     # filter_horizontal = ('tags',)
     save_as = True
     inlines = [PostPhotoAdmin, MapInline, ]

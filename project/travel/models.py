@@ -49,9 +49,9 @@ class Country(models.Model):
                              width_field=None, max_length=100,
                              verbose_name="Country ball")
     example = models.ImageField(upload_to='ball_examples/', height_field=None,
-                             blank=True, null=True,
-                             width_field=None, max_length=100,
-                             verbose_name="Example")
+                                blank=True, null=True,
+                                width_field=None, max_length=100,
+                                verbose_name="Example")
     description = models.TextField(blank=True, null=True, verbose_name=_("Description"))
     worky = models.BooleanField(default=False, blank=True, verbose_name=_("Scheduled?"))
     ready = models.BooleanField(default=False, blank=True, verbose_name=_("Ready?"))
@@ -90,6 +90,9 @@ class Tag(models.Model):
     def __unicode__(self):
         return self.slug
 
+    def get_absolute_url(self):
+        return reverse('tag_list', kwargs={'tag': self.slug})
+
     def save(self, *args, **kwargs):
         if not self.value_en:
             self.value_en = self.slug
@@ -103,6 +106,7 @@ class Tag(models.Model):
 class Post(models.Model):
     author = models.ForeignKey(User, related_name='post_author', verbose_name=_("Author"))
     created = models.DateTimeField(editable=True, blank=True, verbose_name=_("Creation time"))
+    updated = models.DateTimeField(auto_now=True, blank=True, verbose_name=_("Update time"))
     headImage = models.ImageField(upload_to=headImagePath, blank=True, height_field=None,
                                   width_field=None, max_length=100,
                                   verbose_name="Head image 3863x1524")
@@ -129,7 +133,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('page_redirect', kwargs={'pk': self.id})
+        return reverse('page_display', kwargs={'pk': self.id, 'slug': self.slug})
 
     def headImage_tag(self):
         if self.headImage:
