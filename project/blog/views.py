@@ -65,14 +65,14 @@ class PageDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(PageDetailView, self).get_context_data(**kwargs)
         obj = super(PageDetailView, self).get_object()
-        next_item = Post.objects.filter(pk__gt=context['post'].id, category=context['post'].category).order_by('created')
+        next_item = Post.objects.filter(draft=False, pk__gt=context['post'].id).order_by('created')
         if next_item:
             context['next'] = next_item[0]
-        prev_item = Post.objects.filter(pk__lt=context['post'].id, category=context['post'].category).order_by('-created')
+        prev_item = Post.objects.filter(draft=False, pk__lt=context['post'].id).order_by('-created')
         if prev_item:
             context['prev'] = prev_item[0]
         context['tags'] = Tag.objects.all()
-        context['random_post'] = Post.objects.filter(draft=False, category=obj.category).exclude(pk=obj.pk).order_by('?')[:1]
+        context['random_post'] = Post.objects.filter(draft=False).exclude(pk=obj.pk).order_by('?')[:1]
         return context
 
 page_display = PageDetailView.as_view()

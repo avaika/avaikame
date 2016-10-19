@@ -4,24 +4,6 @@ from django.core.urlresolvers import reverse
 from django.db import models
 
 
-class Category(models.Model):
-    title = models.CharField(max_length=150, verbose_name=_("Title"))
-    slug = models.SlugField(max_length=150, verbose_name=_("Slug"))
-    metaTitle = models.CharField(max_length=150, blank=True, verbose_name=_("Meta title"))
-    metaDesc = models.CharField(max_length=150, blank=True, verbose_name=_("Meta description"))
-
-    class Meta:
-        verbose_name = _("Category")
-        verbose_name_plural = _("Categories")
-        ordering = ('-title',)
-
-    def __unicode__(self):
-        return self.title
-
-    def get_absolute_url(self):
-        return reverse('blog_category', kwargs={'pk': self.id})
-
-
 class Tag(models.Model):
     value = models.CharField(max_length=150, verbose_name=_("Title"))
     slug = models.SlugField(max_length=150, verbose_name=_("Slug"))
@@ -38,7 +20,6 @@ class Tag(models.Model):
 
 
 class Post(models.Model):
-    category = models.ForeignKey(Category, verbose_name=_("Category"))
     created = models.DateTimeField(auto_now_add=True, verbose_name=_("Creation time"))
     updated = models.DateTimeField(auto_now=True, verbose_name=_("Update time"))
     titleImage = models.ImageField(upload_to="blog_posts/", blank=True, height_field=None,
