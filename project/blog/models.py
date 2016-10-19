@@ -24,16 +24,17 @@ class Category(models.Model):
 
 class Tag(models.Model):
     value = models.CharField(max_length=150, verbose_name=_("Title"))
+    slug = models.SlugField(max_length=150, verbose_name=_("Slug"))
 
     class Meta:
         verbose_name = _("Tag")
         verbose_name_plural = _("Tags")
 
     def get_absolute_url(self):
-        return reverse('blog_tag_list', kwargs={'tag': self.value})
+        return reverse('blog_tag_list', kwargs={'tag': self.slug})
 
     def __unicode__(self):
-        return self.value
+        return self.slug
 
 
 class Post(models.Model):

@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 from modeltranslation.translator import translator, TranslationOptions
-from .models import Post
+from .models import Post, Tag
 
 
 class PostTranslationOptions(TranslationOptions):
         fields = ('title', 'post', 'metaTitle', 'metaDesc', 'sources', )
 translator.register(Post, PostTranslationOptions)
+
+
+class TagTranslationOptions(TranslationOptions):
+        fields = ('value', )
+translator.register(Tag, TagTranslationOptions)

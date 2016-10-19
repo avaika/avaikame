@@ -1,6 +1,6 @@
 {% extends 'base.html' %}{% load static i18n thumbnail %}
 
-{% block title %}{% trans "Blog" %} IT{% endblock %}
+{% block title %}{% trans "Avaika blog" %}{% if page_obj.number != 1 %} - {% trans "page" %} {{ page_obj.number }}{% endif %}{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -21,30 +21,19 @@
           </div>
         {% endfor %}
       </div>
-      <div class="col-md-3">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4>Tags</h4>
-            <p>
-              {% for tag in tags %}
-                <a href="{% url 'blog_tag_list' tag %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
-              {% endfor %}
-            <p>
-          </div>
-        </div>
-      </div>
+      {% include "blog/tags.html" %}
       {% if is_paginated and page_obj %}
         {% if page_obj.has_previous or page_obj.has_next %}
           <div class="col-lg-12 text-center">
             <ul class="pager">
               {% if page_obj.has_previous %}
-                <li class="previous"><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">&larr; Назад</a></li>
+                <li class="previous"><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">&larr; {% trans "Back" %}</a></li>
                 <li><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}" class="select">{{ page_obj.previous_page_number }}</a></li>
               {% endif %}
               <li><a href="#" onclick="return false;" class="select">{{ page_obj.number }}</a></li>
               {% if page_obj.has_next %}
                 <li><a href="{{ request.path }}?page={{ page_obj.next_page_number }}" class="select">{{ page_obj.next_page_number }}</a></li>
-                <li class="next"><a href="{{ request.path }}?page={{ page_obj.next_page_number }}">Вперёд &rarr;</a></li>
+                <li class="next"><a href="{{ request.path }}?page={{ page_obj.next_page_number }}">{% trans "Forward" %} &rarr;</a></li>
               {% endif %}
             </ul>
           </div>

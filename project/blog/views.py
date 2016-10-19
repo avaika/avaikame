@@ -22,25 +22,6 @@ class AllListView(ListView):
 all_posts = AllListView.as_view()
 
 
-class CategoryListView(ListView):
-    model = Post
-    paginate_by = 10
-    context_object_name = "posts"
-    template_name = "blog/list_tag.html"
-
-    def get_queryset(self):
-        qs = super(CategoryListView, self).get_queryset()
-        return qs.filter(draft=False, category__slug=self.kwargs['slug'])
-
-    def get_context_data(self, **kwargs):
-        context = super(CategoryListView, self).get_context_data(**kwargs)
-        slug = self.kwargs['slug']
-        context['tags'] = Tag.objects.filter(category__slug=slug)
-        return context
-
-category = CategoryListView.as_view()
-
-
 class TagView(TemplateView):
     context_object_name = "posts"
     template_name = "blog/list_tag.html"
@@ -48,7 +29,8 @@ class TagView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(TagView, self).get_context_data(**kwargs)
         context['tags'] = Tag.objects.all()
-        context['posts'] = Post.objects.filter(draft=False, tags__value__contains=kwargs['tag'])
+        context['current_tag'] = get_object_or_404(Tag, slug=kwargs['tag'])
+        context['posts'] = Post.objects.filter(draft=False, tags__slug__contains=kwargs['tag'])
         return context
 
 tag = TagView.as_view()

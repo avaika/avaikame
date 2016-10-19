@@ -10,9 +10,10 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ['id', 'title']
 
 
-class TagAdmin(admin.ModelAdmin):
-    list_display = ('id', 'value')
-    search_fields = ['id', 'value']
+class TagAdmin(TranslationAdmin):
+    list_display = ('id', 'value', 'slug')
+    list_editable = ('value', 'slug')
+    search_fields = ['id', 'value', 'slug']
 
 
 class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
