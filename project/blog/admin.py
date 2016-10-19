@@ -16,15 +16,16 @@ class TagAdmin(admin.ModelAdmin):
 
 
 class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
-    list_display = ('id', 'title', 'slug', 'category', 'created', 'draft', )
+    list_display = ('id', 'title', 'slug', 'category', 'created', 'updated', 'draft', )
     list_editable = ('title', 'slug', 'draft', )
     search_fields = ['id', 'title', 'post', ]
     prepopulated_fields = {'slug': ['title']}
     save_as = True
     fieldsets = (
-        ('Technical', {'fields': ('category', 'created', 'draft', )}),
+        ('Technical', {'fields': ('category', 'draft', )}),
         ('Titles', {'fields': ('title', 'slug', 'tags', )}),
         ('Post', {'fields': ('titleImage', 'titleImage_tag', 'post', 'sources', )}),
+        ('Meta', {'fields': ('metaTitle', 'metaDesc', )}),
     )
     readonly_fields = ('titleImage_tag', )
 

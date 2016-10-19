@@ -25,7 +25,7 @@ class TagAdmin(TranslationAdmin):
 
 
 class CountryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'value')
+    list_display = ('id', 'value', 'worky', 'ready')
     search_fields = ['value']
 
 
@@ -55,7 +55,6 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
     search_fields = ['id', 'title', ]
     prepopulated_fields = {'slug': ['title']}
     readonly_fields = ('updated')
-    # filter_horizontal = ('tags',)
     save_as = True
     inlines = [PostPhotoAdmin, MapInline, ]
     raw_id_fields = ('country',)
@@ -66,6 +65,7 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
         ('Technical', {'fields': ('author', 'created', 'draft', 'mapSize',)}),
         ('Titles', {'fields': ('title', 'slug', 'country', 'cities', 'tags', )}),
         ('Post', {'fields': ('headImage', 'headImage_tag', 'titleImage', 'titleImage_tag', 'sources', )}),
+        ('Meta', {'fields': ('metaTitle', 'metaDesc', )}),
     )
     readonly_fields = ('headImage_tag', 'titleImage_tag')
 
