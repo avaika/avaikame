@@ -97,7 +97,7 @@ class Tag(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.value_en:
-            self.value_en = self.slug
+            self.value_en = self.slug.title()
         if not self.value_ru:
             self.value_ru = self.slug
         if " " in self.slug:

@@ -143,7 +143,7 @@ TAGS_INPUT_MAPPINGS = {
         'field': 'value', 'create_missing': True,
     },
     'blog.Tag': {
-        'field': 'value', 'create_missing': True,
+        'field': 'slug', 'create_missing': True,
     },
 }
 TAGS_INPUT_INCLUDE_JQUERY = True

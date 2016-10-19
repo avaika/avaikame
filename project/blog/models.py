@@ -18,6 +18,15 @@ class Tag(models.Model):
     def __unicode__(self):
         return self.slug
 
+    def save(self, *args, **kwargs):
+        if not self.value_en:
+            self.value_en = self.slug.title()
+        if not self.value_ru:
+            self.value_ru = self.slug
+        if " " in self.slug:
+            self.slug = self.slug.replace(" ", "_")
+        super(Tag, self).save(*args, **kwargs)
+
 
 class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name=_("Creation time"))
