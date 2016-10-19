@@ -1,0 +1,13 @@
+{% load i18n %}
+<div class="col-md-3">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>{% trans "Tags" %}</h4>
+      <p>
+        {% for tag in tags %}
+          <a href="{% url 'blog_tag_list' tag.slug %}">{{ tag.value }}</a>{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+      <p>
+    </div>
+  </div>
+</div>
