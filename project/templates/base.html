@@ -1,6 +1,7 @@
 {% spaceless %}{% load static i18n me_tags %}
 <!DOCTYPE html>
-<html lang="ru">
+{% get_current_language as lang %}
+<html lang="{{ lang }}">
 
 <head>
     <meta charset="utf-8">
