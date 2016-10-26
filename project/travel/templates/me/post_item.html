@@ -7,7 +7,7 @@
     {% empty %}
       <img class="img-responsive img-full" src="{% static "base/img/no-picture.png" %}" alt="Image for {{ post.title }}">
     {% endthumbnail %}
-    <span class="photo_desc photo_multi">
+    <div class="photo_desc photo_multi">
       <p>
       {% if post.country.flag %}
         {% thumbnail post.country.flag "73" as im %}
@@ -16,10 +16,10 @@
       {% endif %}
       {{ post.title }} 
       </p>
-    </span>
-    <span class="date_desc date_multi">
+    </div>
+    <div class="date_desc date_multi">
         <p>{{ post.created|date:"d E Y" }}</p>
-    </span>
+    </div>
   </a>
   </div>
 </div>

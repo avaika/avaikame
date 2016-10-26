@@ -31,15 +31,15 @@
                   {% empty %}
                   <img class="img-responsive img-full" src="{% static "base/img/no-picture.png" %}" alt="Image for {{ post.title }}">
                   {% endthumbnail %}
-                  <span class="photo_desc photo_head hidden-xs">
+                  <div class="photo_desc photo_head hidden-xs">
                     <p>
                     {% if post.country.flag %}
                       <img class="flag-title" alt="Flag {{ post.country }}" title="{{ post.country }}" src="{{ MEDIA_URL }}{{ post.country.flag }}" />
                     {% endif %}
                       {{ post.title }}
                     </p>
-                  </span>
-                  <span class="photo_desc photo_head visible-xs">
+                  </div>
+                  <div class="photo_desc photo_head visible-xs">
                     <p>
                     {% if post.country.flag %}
                       {% thumbnail post.country.flag "75" as im %}
@@ -48,21 +48,20 @@
                     {% endif %}
                       {{ post.title }}
                     </p>
-                  </span>
-                  <span class="date_desc date_head hidden-xs">
+                  </div>
+                  <div class="date_desc date_head hidden-xs">
                     <h2>{{ post.created|date:"d E Y" }}</h2>
-                  </span>
+                  </div>
                 </a>
               </div>
             </div>
-            <h2></h2>
+            <br />
           </div>
         </div>
         {% else %}
           {% include 'me/post_item.html' %}
           {% if forloop.counter == 4 or forloop.counter == 7 %}
             <div class="clearfix"></div>
-            <h2></h2>
           {% endif %}
         {% endif %}
       {% endfor %}
