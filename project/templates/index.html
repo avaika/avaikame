@@ -61,12 +61,12 @@
         {% include 'me/post_item.html' %}
       {% endfor %}
       <div class="clearfix"></div><br />
-      <div class="col-lg-12 hidden-xs">
+      <div class="col-lg-12">
           {% uniq_flags as post_flags %}
           {% for flag in post_flags %}
           <a href="{% url "tag_list" flag.flag_url %}">
-          {% thumbnail flag.country__ball "x70" format="PNG" as im %}
-            <img class="flag-thumb{% if flag.current %} flag-current{% endif %}" alt="Flag {{ flag.country__value }}" title="{{ flag.country__value }}" src="{{ im.url }}" />
+          {% thumbnail flag.country__ball "x73" format="PNG" as im %}
+            <img alt="Flag {{ flag.country__value }}" title="{{ flag.country__value }}" src="{{ im.url }}" />
           {% endthumbnail %}
           </a>
           {% if forloop.last %} ... {% endif %}
