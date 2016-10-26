@@ -246,6 +246,7 @@ footer p {
 .img-responsive {
         display: inline;
 }
+}
 
 /* media content below */
 @media screen and (min-width: 1200px) {
@@ -333,3 +334,21 @@ footer p {
 .icon-location:before { content: '\e806'; }
 .icon-paw:before { content: '\e807'; }
 .hidden-li { display:none !important; }
+
+.photo_dark { margin-bottom: 10px; }
+.photo_dark .wrapper { position: relative; }
+.photo_dark .wrapper p { margin: 0; }
+.photo_dark .wrapper .photo_desc,
+.photo_dark .wrapper .date_desc {
+  position: absolute;
+  background-color: rgba(255,255,255,.6);
+}
+.photo_dark .wrapper .photo_desc {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.photo_dark .wrapper .date_desc {
+  top: 0;
+  right: 0;
+}

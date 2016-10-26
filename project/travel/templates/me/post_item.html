@@ -1,5 +1,6 @@
 {% load static i18n thumbnail me_tags %}
 <div class="col-sm-4 photo_dark">
+  <div class="wrapper">
   <a href="{% url 'page_redirect' post.id %}">
     {% thumbnail post.titleImage "500x300" as im %}
       <img class="img-responsive" src="{{ im.url }}" alt="Image for {{ post.title }}">
@@ -16,8 +17,9 @@
       {{ post.title }} 
       </p>
     </span>
-    <span class="date_desc date_multi hidden-xs">
+    <span class="date_desc date_multi">
         <p>{{ post.created|date:"d E Y" }}</p>
     </span>
   </a>
+  </div>
 </div>
