@@ -336,6 +336,7 @@ footer p {
 .hidden-li { display:none !important; }
 
 .photo_dark { margin-bottom: 10px; }
+.photo_dark .img-responsive { width: 100%; }
 .photo_dark .wrapper { position: relative; }
 .photo_dark .wrapper p { margin: 0; }
 .photo_dark .wrapper .photo_desc,
