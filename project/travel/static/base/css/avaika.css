@@ -277,6 +277,12 @@ footer p {
       width: -webkit-calc(100% - 30px);
       width: calc(100% - 30px);
     }
+    ul.pager > li {
+      clear: both;
+      display: block;
+    }
+    ul.pager > li.previous { float: left; }
+    ul.pager > li.next { float: right; }
 }
 
 @font-face {
