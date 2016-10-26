@@ -49,12 +49,9 @@
                       <li><a href="{% url 'account_logout' %}"><span class="icon-paw"></span> {% trans "Exit" %}</a> </li>
                     {% else %}
                       <li><a href="{% url 'account_login' %}">{% trans "Login" %}:</a></li>
-                      <li><a href="{% url 'account_login' %}"><span class="icon-paw" title="{% trans "Login via avaika" %}"></span></a></li>
-                      <li><a href="{% url 'social:begin' 'facebook' %}"><span class="icon-facebook" title="{% trans "Login via facebook" %}"></span></a></li>
-                      <li><a href="{% url 'social:begin' 'twitter' %}"><span class="icon-twitter" title="{% trans "Login via twitter" %}"></span></a></li>
-                      <li class="hidden-li"><a href="{% url 'account_login' %}">Avaika</a></li>
-                      <li class="hidden-li"><a href="{% url 'social:begin' 'facebook' %}">Facebook</a></li>
-                      <li class="hidden-li"><a href="{% url 'social:begin' 'twitter' %}">Twitter</a></li>
+                      <li><a href="{% url 'account_login' %}"><span class="icon-paw"></span><span class="hidden-md hidden-lg">Avaika</span></a></li>
+                      <li><a href="{% url 'social:begin' 'facebook' %}"><span class="icon-facebook"></span><span class="hidden-md hidden-lg">Facebook</span></a></li>
+                      <li><a href="{% url 'social:begin' 'twitter' %}"><span class="icon-twitter"></span><span class="hidden-md hidden-lg">Twitter</span></a></li>
                     {% endif %}
                     {% for lang_code, lang_name in languages %}
                       <li class="pull-rght">
