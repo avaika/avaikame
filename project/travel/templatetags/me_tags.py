@@ -50,7 +50,7 @@ def get_flag_current(item, first, last):
 
 @register.assignment_tag()
 def flags(page_posts):
-    posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('created', 'country__value', 'country__flag')
+    posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('created', 'country__value', 'country__flag', 'country_ball')
     first = page_posts[0]
     last = page_posts[len(page_posts) - 1]
     flags = []
@@ -69,7 +69,7 @@ def flags(page_posts):
 
 @register.assignment_tag()
 def uniq_flags(first=False, last=False):
-    posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('country__value', 'country__flag')
+    posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('country__value', 'country__flag', 'country__ball')
     flags = []
     for item in posts:
         item['flag_url'] = item['country__value'].lower().replace(" ", "_")
