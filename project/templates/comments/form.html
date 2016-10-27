@@ -9,9 +9,6 @@
       <a href="{% url 'social:begin' "facebook" %}"><span class="icon-facebook" title="{% trans "Login via facebook" %}"></span></a>
       <a href="{% url 'social:begin' "twitter" %}"><span class="icon-twitter" title="{% trans "Login via twitter" %}"></span></a>
     </div>
-    <li class="hidden-li"><a href="{% url 'account_login' %}">Avaika</a></li>
-    <li class="hidden-li"><a href="{% url 'social:begin' "facebook" %}">Facebook</a></li>
-    <li class="hidden-li"><a href="{% url 'social:begin' "twitter" %}">Twitter</a></li>
   </div>
 {% else %}
     <form action="{% comment_form_target %}" method="post" class="js-comments-form comments-form form-horizontal"
