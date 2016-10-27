@@ -353,3 +353,39 @@ footer p {
   top: 0;
   right: 0;
 }
+
+.flags {
+	white-space: nowrap;
+	overflow: hidden;
+	padding: 0 0 0 30px;
+}
+.flag-thumb {
+	display: inline-block;
+	height: 30px;
+	padding: 1px;
+}
+
+.owl-item {
+	display: inline-block;
+}
+.owl-nav {
+	text-align: center;
+}
+.owl-next, .owl-prev {
+	display: inline-block;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	padding: 4px 5px;
+}
+.owl-next:hover, .owl-prev:hover { background-color: #eee; }
+
+.owl-stage-outer { overflow: hidden; }
+.owl-prev, .owl-next {
+	position: absolute;
+	top: 0;
+	margin: 0;
+	margin: 0;
+}
+.owl-prev { left: 15px; }
+.owl-next { right: 15px; }
