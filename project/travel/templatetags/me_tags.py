@@ -45,6 +45,7 @@ def get_flag_current(item, first, last):
         item['current'] = True
     else:
         item['current'] = False
+    item['flag_url'] = item['country__value'].lower().replace(" ", "_")
     return item
 
 
@@ -62,7 +63,6 @@ def flags(page_posts):
                     flags[-1] = get_flag_current(item, first, last)
                 continue
         item = get_flag_current(item, first, last)
-        item['flag_url'] = item['country__value'].lower().replace(" ", "_")
         flags.append(item)
     return flags
 
