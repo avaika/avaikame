@@ -76,7 +76,7 @@ class PageDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(PageDetailView, self).get_context_data(**kwargs)
         obj = super(PageDetailView, self).get_object()
-        context['text_chunks'] = PostPhoto.objects.filter(post_id=context['post'].id)
+        context['text_chunks'] = PostPhoto.objects.filter(post_id=context['post'].id).order_by('id')
         next_item = Post.objects.filter(created__gt=context['post'].created, draft=False).order_by('created')
         if next_item:
             context['next'] = next_item[0]
