@@ -55,5 +55,5 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(default=1, verbose_name='Country', to='travel.Country'),
             preserve_default=False,
         ),
-        migrations.RunPython(load_fixture),
+        # migrations.RunPython(load_fixture),
     ]
