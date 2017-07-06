@@ -66,11 +66,11 @@
           {% for flag in post_flags %}
           <a href="{% url "tag_list" flag.flag_url %}">
           {% if flag.country__ball %}
-            {% thumbnail flag.country__ball "x73" format="png" as im %}
+            {% thumbnail flag.country__ball "x73" format="PNG" as im %}
               <img alt="flag {{ flag.country__value }}" title="{{ flag.country__value }}" src="{{ im.url }}" />
             {% endthumbnail %}
           {% else %}
-            {% thumbnail flag.country__ball "x73" format="png" as im %}
+            {% thumbnail flag.country__flag "x35" format="PNG" as im %}
               <img alt="flag {{ flag.country__value }}" title="{{ flag.country__value }}" src="{{ im.url }}" />
             {% endthumbnail %}
           {% endif %}
