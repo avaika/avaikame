@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     'allauth',
     'allauth.account',
     'django_social_share',
+    'raven.contrib.django.raven_compat',
 )
 
 TAGS_INPUT_MAPPINGS = {

@@ -1,3 +1,6 @@
+import os
+import raven
+
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
@@ -20,11 +23,20 @@ DATABASES = {
         'PASSWORD': '',
         'HOST':     '',
         'PORT':     '',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        }
+        # not needed anymore due to migration to postgres
+        # 'OPTIONS': {
+        #    'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        # }
     }
 }
+
+RAVEN_CONFIG = {
+    'dsn': '',
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(os.path.dirname(__file__)),
+}
+
 
 # Email setting
 EMAIL_USE_TLS = True
