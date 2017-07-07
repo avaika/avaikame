@@ -16,3 +16,5 @@ sqlparse==0.2.1
 timezones==1.9.6
 git+git://github.com/HonzaKral/django-threadedcomments
 python-social-auth==0.2.21
+jsonfield
+raven
