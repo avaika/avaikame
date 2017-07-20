@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-21 00:17+0300\n"
+"POT-Creation-Date: 2017-07-21 00:19+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru\n"
@@ -468,7 +468,6 @@ msgid "Avaika home"
 msgstr "Главная авайки"
 
 #: index.html:16
-#, fuzzy
 msgid ""
 "\n"
 "                Hi, I'm Rush (read as Roosh) which is a short version for "
