@@ -83,13 +83,30 @@
           Visited but not posted yet...
         {% endblocktrans %}
         <br />
-        <img alt="flag Armenia" title="Armenia" src="/media/balls/am.png" />
-        <img alt="flag Russia" title="" src="/media/balls/ru.png" />
-        <img alt="flag Sweden" title="" src="/media/balls/swd.png" />
-        <img alt="flag Latvia" title="" src="/media/balls/lt.png" />
-        <img alt="flag Lithuania" title="" src="/media/balls/li.png" />
-        <img alt="flag Belarus" title="Belarus" src="/media/balls/be.png" />
-        <img alt="flag United Arab Emirates" title="United Arab Emirates" src="/media/balls/usa.png" />
+        {% thumbnail "balls/am.png" "x73" format="PNG" as im %}
+          <img alt="flag Armenia" title="Armenia" src="{{ im.url }}" />
+        {% endthumbnail %}
+        {% thumbnail "balls/ru.png" "x73" format="PNG" as im %}
+        <img alt="flag Russia" title="" src="{{ im.url }}" />
+        {% endthumbnail %}
+        {% thumbnail "balls/li.png" "x73" format="PNG" as im %}
+        <img alt="flag Lithuania" title="" src="{{ im.url }}" />
+        {% endthumbnail %}
+        {% thumbnail "balls/fi.png" "x73" format="PNG" as im %}
+        <img alt="flag Finlandia" title="" src="{{ im.url }}" />
+        {% endthumbnail %}
+        {% thumbnail "balls/swd.png" "x73" format="PNG" as im %}
+        <img alt="flag Sweden" title="" src="{{ im.url }}" />
+        {% endthumbnail %}
+        {% thumbnail "balls/lt.png" "x73" format="PNG" as im %}
+        <img alt="flag Latvia" title="" src="{{ im.url }}" />
+        {% endthumbnail %}
+        {% thumbnail "balls/be.png" "x73" format="PNG" as im %}
+        <img alt="flag Belarus" title="Belarus" src="{{ im.url }}" />
+        {% endthumbnail %}
+        {% thumbnail "balls/uae.png" "x73" format="PNG" as im %}
+        <img alt="flag United Arab Emirates" title="United Arab Emirates" src="{{ im.url }}" />
+        {% endthumbnail %}
       </div>
     </div>
   </div>
