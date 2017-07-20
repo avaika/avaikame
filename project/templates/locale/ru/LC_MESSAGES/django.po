@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-06 23:36+0300\n"
+"POT-Creation-Date: 2017-07-20 23:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru\n"
@@ -120,7 +120,6 @@ msgid ""
 msgstr ""
 
 #: account/login.html:2 account/login.html:10 account/login.html:28
-#: base.html:51
 msgid "Login"
 msgstr "Войти"
 
@@ -333,18 +332,6 @@ msgstr ""
 msgid "Toggle navigation"
 msgstr "Переключить навигацию"
 
-#: base.html:46
-msgid "books"
-msgstr "книги"
-
-#: base.html:49
-msgid "Exit"
-msgstr "Выход"
-
-#: base.html:81
-msgid "Blog source on <a href='//github.com/avaika/avaikame'>github</a>."
-msgstr "Исходники на <a href='//github.com/avaika/avaikame'>гитхабе</a>."
-
 #: books/list.html:3 index.html:45
 msgid "Books"
 msgstr "Книги"
@@ -517,3 +504,22 @@ msgstr "Путешествия"
 #: index.html:57
 msgid "Latest posts"
 msgstr "Последние записи"
+
+#: index.html:83
+msgid ""
+"\n"
+"          Visited but not posted yet...\n"
+"        "
+msgstr ""
+"\n"
+"          Побывал, но ещё не записал...\n"
+"        "
+
+#~ msgid "books"
+#~ msgstr "книги"
+
+#~ msgid "Exit"
+#~ msgstr "Выход"
+
+#~ msgid "Blog source on <a href='//github.com/avaika/avaikame'>github</a>."
+#~ msgstr "Исходники на <a href='//github.com/avaika/avaikame'>гитхабе</a>."
