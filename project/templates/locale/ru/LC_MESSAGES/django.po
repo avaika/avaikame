@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-21 00:19+0300\n"
+"POT-Creation-Date: 2017-07-21 01:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru\n"
@@ -357,8 +357,8 @@ msgid "Genre"
 msgstr "Жанр"
 
 #: books/list.html:43
-msgid "Description"
-msgstr "Описание"
+msgid "Impression"
+msgstr "Впечатление"
 
 #: books/list.html:44
 msgid "Read?"
@@ -515,6 +515,9 @@ msgstr ""
 "\n"
 "          Побывал, но ещё не записал...\n"
 "        "
+
+#~ msgid "Description"
+#~ msgstr "Описание"
 
 #~ msgid "books"
 #~ msgstr "книги"

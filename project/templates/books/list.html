@@ -40,7 +40,7 @@
                     <th data-field="author">{% trans "Author" %}</th>
                     <th data-field="year">{% trans "Year" %}</th>
                     <th data-field="genre">{% trans "Genre" %}</th>
-                    <th data-field="desc">{% trans "Description" %}</th>
+                    <th data-field="desc">{% trans "Impression" %}</th>
                     <th data-field="read">{% trans "Read?" %}</th>
                     <th data-field="read">{% trans "Recommend?" %}</th>
                   </tr>
@@ -60,7 +60,7 @@
                   <td>
                     {% for genre in  book.genre.all %}{{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}
                   </td>
-                  <td>{% if book.about %}{{ book.about }}{% endif %}</td>
+                  <td>{% if book.about %}{{ book.about|safe }}{% endif %}</td>
                   <td>{{ book.read|yesno:"&#10003;, &times;"|safe }}</td>
                   <td>{% if book.read %}{{ book.recommend|yesno:"&#10003;, &times;"|safe }} {% endif %}</td>
                 </tr>
