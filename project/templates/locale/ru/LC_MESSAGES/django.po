@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-21 01:03+0300\n"
+"POT-Creation-Date: 2017-07-21 19:40+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru\n"
@@ -506,15 +506,14 @@ msgstr "Путешествия"
 msgid "Latest posts"
 msgstr "Последние записи"
 
-#: index.html:83
-msgid ""
-"\n"
-"          Visited but not posted yet...\n"
-"        "
-msgstr ""
-"\n"
-"          Побывал, но ещё не записал...\n"
-"        "
+#: index.html:66
+msgid "Visited and posted:"
+msgstr "Побывал и записал:"
+
+#: index.html:84
+msgid "Visited but not posted yet:"
+msgstr "Побывал, но ещё не записал:"
+
 
 #~ msgid "Description"
 #~ msgstr "Описание"
