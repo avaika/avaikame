@@ -52,8 +52,8 @@ class Country(models.Model):
                                 blank=True, null=True,
                                 width_field=None, max_length=100,
                                 verbose_name="Example")
-    psdfile = models.ImageField(upload_to='ball_psd/', blank=True, null=True,
-                                max_length=100, verbose_name="PSD file")
+    psdfile = models.FileField(upload_to='ball_psd/', blank=True, null=True,
+                               max_length=100, verbose_name="PSD file")
     description = models.TextField(blank=True, null=True, verbose_name=_("Description"))
     worky = models.BooleanField(default=False, blank=True, verbose_name=_("Scheduled?"))
     ready = models.BooleanField(default=False, blank=True, verbose_name=_("Ready?"))
