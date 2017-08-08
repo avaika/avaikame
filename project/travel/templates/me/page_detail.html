@@ -1,5 +1,23 @@
 {% extends 'base.html' %}{% load thumbnail i18n staticfiles comments social_share %}
 {% block title %}{{ post.title }}{% endblock %}
+{% block meta_keywords %}{{ post.metaTitle }}{% endblock %}
+{% block meta_description %}{{ post.metaDesc }}{% endblock %}
+{% block ogmeta %}
+  <meta property="og:title" content="{{ post.title }}" />
+  <meta property="og:description" content="{{ post.metaDesc }}" />
+  <meta property="og:url" content="{{ request.get_full_path }}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="avaika.me" />
+  {% thumbnail post.titleImage "x400" as im %}
+    <meta property="og:image:secure_url" content="{{ im.url }}" />
+  {% endthumbnail %}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ post.title }}">
+  <meta name="twitter:description" content="{{ post.metaDesc }}">
+  {% thumbnail post.titleImage "x400" as im %}
+    <meta name="twitter:image:src" content="{{ im.url }}">
+  {% endthumbnail %}
+{% endblock %}
 {% block addlink %}
 <link href="{% static "base/css/lightbox.css" %}" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="{% static "fluent_comments/css/ajaxcomments.css" %}" />

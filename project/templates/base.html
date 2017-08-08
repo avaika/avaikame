@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% block meta_description %}{% endblock %}">
     <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+    {% block ogmeta %}{% endblock %}
 
     <title>{% block title %}Avaika{% endblock %} - avaika.me</title>
     {% get_available_languages as languages %}
