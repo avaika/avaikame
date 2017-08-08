@@ -5,17 +5,17 @@
 {% block ogmeta %}
   <meta property="og:title" content="{{ post.title }}" />
   <meta property="og:description" content="{{ post.metaDesc }}" />
-  <meta property="og:url" content="{{ request.get_full_path }}" />
+  <meta property="og:url" content="https://avaika.me{{ request.get_full_path }}" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="avaika.me" />
   {% thumbnail post.titleImage "x400" as im %}
-    <meta property="og:image:secure_url" content="{{ im.url }}" />
+    <meta property="og:image:secure_url" content="https://avaika.me{{ im.url }}" />
   {% endthumbnail %}
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{{ post.title }}">
   <meta name="twitter:description" content="{{ post.metaDesc }}">
   {% thumbnail post.titleImage "x400" as im %}
-    <meta name="twitter:image:src" content="{{ im.url }}">
+    <meta name="twitter:image:src" content="https://avaika.me{{ im.url }}">
   {% endthumbnail %}
 {% endblock %}
 {% block addlink %}
