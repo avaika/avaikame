@@ -6,3 +6,4 @@ Disallow: /login/
 Disallow: /en/login/
 Disallow: /ru/login/
 Host: https://avaika.me/
+Sitemap: https://avaika.me/sitemap.xml

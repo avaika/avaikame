@@ -18,7 +18,7 @@ class StaticSitemap(Sitemap):
 
 
 class TravelPostSitemap(Sitemap):
-    changefreq = "yearly"
+    changefreq = "weekly"
     protocol = 'https'
     priority = 0.5
     i18n = True
@@ -41,7 +41,7 @@ class TravelTagSitemap(Sitemap):
 
 
 class BlogPostSitemap(Sitemap):
-    changefreq = "yearly"
+    changefreq = "weekly"
     protocol = 'https'
     priority = 0.5
     i18n = True
