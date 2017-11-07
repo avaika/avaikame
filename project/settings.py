@@ -118,6 +118,7 @@ INSTALLED_APPS = (
     'grappelli',
     'django_extensions',
     'django.contrib.admin',
+    'dbbackup',
     'allauth',
     'allauth.account',
     'django_social_share',
@@ -212,3 +213,9 @@ except ImportError:
 # TEMPLATES[0]['OPTIONS']['debug'] = True
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 SOCIAL_AUTH_USER_MODEL = 'travel.User'
+
+# Backup options
+BACKUP_DIR = os.path.join(PROJECT_ROOT, 'db')
+if not os.path.exists(BACKUP_DIR):
+    os.makedirs(BACKUP_DIR)
+DBBACKUP_STORAGE_OPTIONS = {'location': BACKUP_DIR}
