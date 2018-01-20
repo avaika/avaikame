@@ -29,13 +29,16 @@ class Command(BaseCommand):
         except:
             book_year = 0
         book_en = soup.find('li', attrs={'class': 'interlanguage-link interwiki-en'}).contents[0]
-        book_name_en = book_en['title'][:-13]
-        book_link_en = book_en['href']
-        genre, _ = Genre.objects.get_or_create(value_ru=book_genre, value_en='change_me')
+        book_name_en = book_en['title'][:-13].encode('utf-8')
+        book_link_en = book_en['href'].encode('utf-8')
+        try:
+            genre = Genre.objects.get(value_ru=book_genre)
+        except:
+            genre, _ = Genre.objects.get_or_create(value_ru=book_genre, value_en='change_me')
         author_en = urlopen(Request(author_link_ru))
         result = BeautifulSoup(author_en)
         author_en_raw = result.find('li', attrs={'class': 'interlanguage-link interwiki-en'}).contents[0]
-        author_name_en = author_en_raw['title'][:-13]
+        author_name_en = author_en_raw['title'][:-13].encode('utf-8')
         author_link_en = author_en_raw['href']
         author, _ = Author.objects.get_or_create(value_ru=author_name_ru,
                                                  wiki_url_ru=author_link_ru,
