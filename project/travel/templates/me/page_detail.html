@@ -52,13 +52,9 @@
         <hr>
       </div>
       <div class="col-lg-12 heading-image">
-        {% if post.mapSize %}
-          <iframe src="{% url 'directions' post.id %}" id="map" frameborder="0" height="{{ post.mapSize }}px" scrolling="no" width="100%"></iframe>
-        {% else %}
           {% thumbnail post.headImage "x400" crop="left" as im %}
             <img class="img-responsive img-full" src="{{ im.url }}" alt="Image for {{ post.title }}">
           {% endthumbnail %}
-        {% endif %}
       </div>
       <div class="clearfix"></div>
       <br />
@@ -100,6 +96,9 @@
                   {% endif %}
                 </p>{% endif %}
               {% endfor %}
+              {% if post.mapDirections %}
+                <iframe src="{{ post.mapDirections }}" id="map" frameborder="0" height="420px" scrolling="no" frameborder="0" style="border:0" allowfullscreen width="100%"></iframe>
+              {% endif %}
           {# Social #}
           <hr />
           <div class="avaika-share col-lg-12 text-center" data-site="{{ site }}" >

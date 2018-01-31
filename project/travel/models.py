@@ -133,8 +133,8 @@ class Post(models.Model):
     metaTitle = models.CharField(max_length=150, blank=True, verbose_name=_("Meta title"))
     metaDesc = models.CharField(max_length=150, blank=True, verbose_name=_("Meta description"))
     draft = models.BooleanField(default=True, blank=True, verbose_name=_("Is draft"))
-    mapSize = models.IntegerField(blank=True, null=True)
     sources = models.TextField(blank=True, null=True, verbose_name=_("Sources"))
+    mapDirections = models.TextField(blank=True, null=True, verbose_name=_("Map link"))
 
     class Meta:
         verbose_name = _("Post")
