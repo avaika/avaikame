@@ -328,8 +328,6 @@ msgid "blog"
 msgstr "блог"
 
 #: base.html:47
-#, fuzzy
-#| msgid "Travels"
 msgid "travel"
 msgstr "Поездки"
 
