@@ -1,9 +1,11 @@
-avaikame
+avaika.me
 ========
 
-This is yet another personal webpage.
-Mostly it was written just for fun and django exercises. Nothing special.
+A simple django based blog to post some bits on my travel and some random experience.
+Mostly it was written just for fun. Nothing special at all. I didn't even cover it with tests...
 
-You can find running example at https://avaika.me
+A running copy is available at https://avaika.me
 
-If you see some crazy things must be fixed feel free to make a pull request :)
+If you see some ugly stuff which makes you cry, feel free to send a pull request :)
+
+PS. One day I will release automated server configuration / deployment part. It's way too raw to be released right now.
