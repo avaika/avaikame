@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-21 19:40+0300\n"
+"POT-Creation-Date: 2018-01-31 23:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru\n"
@@ -131,30 +131,13 @@ msgstr "Пароль"
 msgid "Login via avaika"
 msgstr "Войти через сайт"
 
-#: account/login.html:31 account/login.html:46 account/login.html:52
-#: account/signup.html:55 comments/form.html:10
+#: account/login.html:31 account/signup.html:55 comments/form.html:10
 msgid "Login via twitter"
 msgstr "Войти черех twitter"
 
 #: account/login.html:31
 msgid "Forgot pass?"
 msgstr "Забыли пароль?"
-
-#: account/login.html:39 account/signup.html:47
-msgid "Login via social networks."
-msgstr "Вход через социальные сети."
-
-#: account/login.html:43 account/signup.html:52 comments/form.html:9
-msgid "Login via facebook"
-msgstr "Войти через facebook"
-
-#: account/login.html:50
-msgid "Don't have an account?"
-msgstr "Нет аккаунта?"
-
-#: account/login.html:52
-msgid "Register"
-msgstr "Регистрация"
 
 #: account/logout.html:5 account/logout.html:15
 msgid "Sign Out"
@@ -271,9 +254,17 @@ msgstr "имя"
 msgid "Too lazy to type all this stuff?"
 msgstr "Слишком лень заполнить всё?"
 
+#: account/signup.html:47
+msgid "Login via social networks."
+msgstr "Вход через социальные сети."
+
 #: account/signup.html:48
 msgid "Just two clicks and you're here."
 msgstr "Всего два клика и вы тут"
+
+#: account/signup.html:52 comments/form.html:9
+msgid "Login via facebook"
+msgstr "Войти через facebook"
 
 #: account/signup_closed.html:5 account/signup_closed.html:8
 msgid "Sign Up Closed"
@@ -328,51 +319,73 @@ msgstr ""
 "<strong>Подсказка</strong>: вы всё ещё можете <a href=\"%(email_url)s"
 "\">заменить email адрес</a>."
 
-#: base.html:32
+#: base.html:34
 msgid "Toggle navigation"
 msgstr "Переключить навигацию"
+
+#: base.html:46
+msgid "blog"
+msgstr "блог"
+
+#: base.html:47
+#, fuzzy
+#| msgid "Travels"
+msgid "travel"
+msgstr "Поездки"
+
+#: base.html:48
+msgid "books"
+msgstr "книги"
+
+#: base.html:50
+msgid "Exit"
+msgstr "Выход"
+
+#: base.html:79
+msgid "Blog source on <a href='//github.com/avaika/avaikame'>github</a>."
+msgstr "Исходники на <a href='//github.com/avaika/avaikame'>гитхабе</a>."
 
 #: books/list.html:3 index.html:45
 msgid "Books"
 msgstr "Книги"
 
-#: books/list.html:28
+#: books/list.html:27
 msgid "Books list"
 msgstr "Список книг"
 
-#: books/list.html:39
+#: books/list.html:38
 msgid "Book"
 msgstr "Книга"
 
-#: books/list.html:40
+#: books/list.html:39
 msgid "Author"
 msgstr "Автор"
 
-#: books/list.html:41
+#: books/list.html:40
 msgid "Year"
 msgstr "Год"
 
-#: books/list.html:42
+#: books/list.html:41
 msgid "Genre"
 msgstr "Жанр"
 
-#: books/list.html:43
+#: books/list.html:42
 msgid "Impression"
 msgstr "Впечатление"
 
-#: books/list.html:44
+#: books/list.html:43
 msgid "Read?"
 msgstr "Прочитано?"
 
-#: books/list.html:45
+#: books/list.html:44
 msgid "Recommend?"
 msgstr "Рекомендую?"
 
-#: books/list.html:77
+#: books/list.html:76
 msgid "Back"
 msgstr "Назад"
 
-#: books/list.html:83
+#: books/list.html:82
 msgid "Forward"
 msgstr "Вперёд"
 
@@ -500,7 +513,7 @@ msgstr "Блог"
 
 #: index.html:34
 msgid "Travels"
-msgstr "Путешествия"
+msgstr "Поездки"
 
 #: index.html:57
 msgid "Latest posts"
@@ -510,19 +523,15 @@ msgstr "Последние записи"
 msgid "Visited and posted:"
 msgstr "Побывал и записал:"
 
-#: index.html:84
+#: index.html:85
 msgid "Visited but not posted yet:"
-msgstr "Побывал, но ещё не записал:"
+msgstr "Побывал, но всё ещё не записал:"
 
+#~ msgid "Don't have an account?"
+#~ msgstr "Нет аккаунта?"
+
+#~ msgid "Register"
+#~ msgstr "Регистрация"
 
 #~ msgid "Description"
 #~ msgstr "Описание"
-
-#~ msgid "books"
-#~ msgstr "книги"
-
-#~ msgid "Exit"
-#~ msgstr "Выход"
-
-#~ msgid "Blog source on <a href='//github.com/avaika/avaikame'>github</a>."
-#~ msgstr "Исходники на <a href='//github.com/avaika/avaikame'>гитхабе</a>."
