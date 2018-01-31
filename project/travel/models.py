@@ -3,16 +3,22 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import AbstractUser
 from django.core.urlresolvers import reverse
 from django.db import models
+from sorl.thumbnail import get_thumbnail
 from datetime import datetime
 import uuid
 
 
 class User(AbstractUser):
-    notifyEmail = models.EmailField(max_length=150, blank=True, null=True, verbose_name=_("email for notifications"))
-    notifyGlobal = models.BooleanField(default=False, verbose_name=_("send global notifications"))
-    notifyNewposts = models.BooleanField(default=False, verbose_name=_("send new posts notifications"))
-    notifyReplied = models.BooleanField(default=False, verbose_name=_("send replied comments notifications"))
-    registered = models.DateTimeField(auto_now=True, editable=False, verbose_name="Время регистрации")
+    notifyEmail = models.EmailField(max_length=150, blank=True, null=True,
+                                    verbose_name=_("email for notifications"))
+    notifyGlobal = models.BooleanField(default=False,
+                                       verbose_name=_("send global notifications"))
+    notifyNewposts = models.BooleanField(default=False,
+                                         verbose_name=_("send new posts notifications"))
+    notifyReplied = models.BooleanField(default=False,
+                                        verbose_name=_("send replied comments notifications"))
+    registered = models.DateTimeField(auto_now=True, editable=False,
+                                      verbose_name="Время регистрации")
 
     class Meta:
         verbose_name = _('User')
@@ -54,9 +60,12 @@ class Country(models.Model):
                                 verbose_name="Example")
     psdfile = models.FileField(upload_to='ball_psd/', blank=True, null=True,
                                max_length=100, verbose_name="PSD file")
-    description = models.TextField(blank=True, null=True, verbose_name=_("Description"))
-    worky = models.BooleanField(default=False, blank=True, verbose_name=_("Scheduled?"))
-    ready = models.BooleanField(default=False, blank=True, verbose_name=_("Ready?"))
+    description = models.TextField(blank=True, null=True,
+                                   verbose_name=_("Description"))
+    worky = models.BooleanField(default=False, blank=True,
+                                verbose_name=_("Scheduled?"))
+    ready = models.BooleanField(default=False, blank=True,
+                                verbose_name=_("Ready?"))
 
     @staticmethod
     def autocomplete_search_fields():
@@ -82,7 +91,8 @@ class City(models.Model):
 
 
 class Tag(models.Model):
-    value = models.CharField(max_length=150, blank=True, null=True, verbose_name=_("Title"))
+    value = models.CharField(max_length=150, blank=True, null=True,
+                             verbose_name=_("Title"))
     slug = models.CharField(max_length=150, verbose_name=_("Tag url"))
 
     class Meta:
@@ -139,7 +149,7 @@ class Post(models.Model):
 
     def headImage_tag(self):
         if self.headImage:
-            return u'<img src="/media/%s" height="100px" />' % self.headImage
+            return u'<img src="%s" height="100px" />' % (get_thumbnail(self.headImage, "150x150", quality=95).url)
         else:
             return
     headImage_tag.short_description = 'Image'
@@ -147,7 +157,7 @@ class Post(models.Model):
 
     def titleImage_tag(self):
         if self.titleImage:
-            return u'<img src="/media/%s" height="100px" />' % self.titleImage
+            return u'<img src="%s" height="100px" />' % (get_thumbnail(self.titleImage, "150x150", quality=95).url)
         else:
             return
     titleImage_tag.short_description = 'Image'
@@ -166,7 +176,7 @@ class PostPhoto(models.Model):
 
     def photo_tag(self):
         if self.photo:
-            return u'<img src="/media/%s" height="100px" />' % self.photo
+            return u'<img src="%s" height="100px" />' % (get_thumbnail(self.photo, "150x150", quality=95).url)
         else:
             return
     photo_tag.short_description = 'Image'
@@ -174,22 +184,8 @@ class PostPhoto(models.Model):
 
     def photoRight_tag(self):
         if self.photoRight:
-            return u'<img src="/media/%s" height="100px" />' % self.photoRight
+            return u'<img src="%s" height="100px" />' % (get_thumbnail(self.photoRight, "150x150", quality=95).url)
         else:
             return
     photoRight_tag.short_description = 'Image'
     photoRight_tag.allow_tags = True
-
-
-class PostMap(models.Model):
-    post = models.ForeignKey(Post, verbose_name=_("Post"))
-    place = models.CharField(max_length=150, verbose_name=_("Place"))
-    order = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        verbose_name = _("Post map direction")
-        verbose_name_plural = _("Post map directions")
-        ordering = ('order', '-id')
-
-    def __unicode__(self):
-        return self.place

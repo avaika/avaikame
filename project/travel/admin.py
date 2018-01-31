@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from models import User, Post, Tag, PostMap, PostPhoto,\
-    Country, City
+from models import User, Post, Tag, PostPhoto, Country, City
 from forms import UserCreationForm
-# from project.adminfiles.admin import FilePickerAdmin
 from tags_input import admin as tags_input_admin
 from modeltranslation.admin import TranslationStackedInline, TranslationAdmin
 
@@ -31,15 +29,6 @@ class CountryAdmin(admin.ModelAdmin):
     search_fields = ['value']
 
 
-class MapInline(admin.StackedInline):
-    model = PostMap
-    extra = 10
-    max_num = 30
-    fieldsets = (
-        (None, {'fields': ('place', 'order')}),
-    )
-
-
 class PostPhotoAdmin(TranslationStackedInline):
     model = PostPhoto
     extra = 2
@@ -58,7 +47,7 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
     prepopulated_fields = {'slug': ['title']}
     readonly_fields = ('updated')
     save_as = True
-    inlines = [PostPhotoAdmin, MapInline, ]
+    inlines = [PostPhotoAdmin, ]
     raw_id_fields = ('country',)
     autocomplete_lookup_fields = {
         'fk': ['country'],
