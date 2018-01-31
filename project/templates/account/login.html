@@ -9,7 +9,7 @@
         <hr>
           <h2 class="intro-text text-center">{% trans "Login" %}</h2>
         <hr>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-12">
           <div class="jumbotron text-center">
             <form action="{% url 'account_login' %}" method="post">
               {% csrf_token %}
@@ -31,27 +31,6 @@
                 <span class="icon-paw" title="{% trans "Login via twitter" %}"></span> {% trans "Forgot pass?" %}
               </a>
             </form>
-          </div>
-        </div>
-        <div class="form-group col-md-6">
-          <div class="jumbotron text-center">
-          <br />
-          <h4>{% trans "Login via social networks." %}</h4>
-          <div class="clearfix"></div>
-          <br />
-          <a href="{% url 'social:begin' "facebook" %}" class="btn btn-default btn-lg">
-            <span class="icon-facebook" title="{% trans "Login via facebook" %}"></span> Facebook
-          </a>&nbsp;
-          <a href="{% url 'social:begin' "twitter" %}" class="btn btn-default btn-lg">
-            <span class="icon-twitter" title="{% trans "Login via twitter" %}"></span> Twitter
-          </a>
-          <div>
-            <br />
-            {% trans "Don't have an account?" %}
-            <a href="{% url 'account_signup' %}" class="btn btn-default btn-lg">
-              <span class="icon-paw" title="{% trans "Login via twitter" %}"></span> {% trans "Register" %}
-            </a>
-          </div>
           </div>
         </div>
         <div class="clearfix"></div>
