@@ -96,9 +96,6 @@
                   {% endif %}
                 </p>{% endif %}
               {% endfor %}
-              {% if post.mapDirections %}
-                <iframe src="{{ post.mapDirections }}" id="map" frameborder="0" height="420px" scrolling="no" frameborder="0" style="border:0" allowfullscreen width="100%"></iframe>
-              {% endif %}
           {# Social #}
           <hr />
           <div class="avaika-share col-lg-12 text-center" data-site="{{ site }}" >
@@ -132,24 +129,25 @@
     </div>
   </div>
 
-  {% for link in links %}
   {# Links #}
-  {% if forloop.first %}
+  {% if post.mapDirections or links|length > 0 %}
   <div class="row">
     <div class="box">
       <div class="col-lg-12">
         <h2 class="intro-text text-center">{% trans "Points of interest and source links" %}</h2>
-        <ul class="pager">
-  {% endif %}
+        {% for link in links %}
+          {% if forloop.first %}<ul class="pager">{% endif %}
           <li><a href="{{ link.url }}">{{ link.description }}</a></li>
-  {% if forloop.last %}
-        </ul>
+          {% if forloop.last %}</ul>{% endif %}
+        {% endfor %}
+        {% if post.mapDirections %}
+          <iframe src="{{ post.mapDirections }}" id="map" frameborder="0" height="420px" scrolling="no" frameborder="0" style="border:0" allowfullscreen width="100%"></iframe>
+        {% endif %}
       </div>
       <div class="clearfix"></div>
     </div>
   </div>
   {% endif %}
-  {% endfor %}
 
   {# Yeah, I know, that hardcode is bad thing #}
   {# But doesn't look I will enable comments back again #}
