@@ -173,6 +173,7 @@ class PostPhoto(models.Model):
     photoRight = models.ImageField(upload_to=imagePath, blank=True, height_field=None, width_field=None, max_length=100)
     panoramaRight = models.BooleanField(default=False, blank=True, verbose_name=_("Is panorama"))
     privateRight = models.BooleanField(default=False, blank=True, verbose_name=_("Is private"))
+    source = models.CharField(max_length=1000, blank=True, null=True, verbose_name=_("Photo source"))
 
     def photo_tag(self):
         if self.photo:
@@ -189,3 +190,11 @@ class PostPhoto(models.Model):
             return
     photoRight_tag.short_description = 'Image'
     photoRight_tag.allow_tags = True
+
+
+class PostLinks(models.Model):
+    post = models.ForeignKey(Post)
+    url = models.CharField(max_length=1000, verbose_name=_("Link"))
+    description = models.CharField(max_length=256, verbose_name=_("Link description"))
+    isPoint = models.BooleanField(default=True, blank=True, verbose_name=_("Is point?"))
+    published = models.BooleanField(default=True, blank=True, verbose_name=_("Is published?"))

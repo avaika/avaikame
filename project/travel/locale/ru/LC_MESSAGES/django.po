@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-07 00:41+0300\n"
+"POT-Creation-Date: 2018-02-04 23:10+0300\n"
 "PO-Revision-Date: 2014-07-26 13:04+0400\n"
 "Last-Translator: avaika <blog@avaika.me>\n"
 "Language: ru\n"
@@ -26,7 +26,7 @@ msgstr "Пользователь"
 
 #: forms.py:69
 msgid "E-mail"
-msgstr ""
+msgstr "E-mail"
 
 #: forms.py:71
 msgid "Password"
@@ -36,119 +36,157 @@ msgstr "Пароль"
 msgid "Password (again)"
 msgstr "Пароль (ещё разок)"
 
-#: models.py:11
+#: models.py:13
 msgid "email for notifications"
 msgstr "email для уведомлений"
 
-#: models.py:12
+#: models.py:15
 msgid "send global notifications"
 msgstr "Отправлять все уведомления"
 
-#: models.py:13
+#: models.py:17
 msgid "send new posts notifications"
 msgstr "Отправлять уведомления о новых постах"
 
-#: models.py:14
+#: models.py:19
 msgid "send replied comments notifications"
 msgstr "Отправлять уведомления о ответах на ваши комментарии"
 
-#: models.py:18
+#: models.py:24
 msgid "User"
 msgstr "Пользователь"
 
-#: models.py:19
+#: models.py:25
 msgid "Users"
 msgstr "Пользователи"
 
-#: models.py:42 models.py:61 models.py:72 models.py:91
+#: models.py:48 models.py:83 models.py:95 models.py:128
 msgid "Title"
 msgstr "Заголовок"
 
-#: models.py:53 models.py:93
+#: models.py:64
+msgid "Description"
+msgstr "Описание"
+
+#: models.py:66
+msgid "Scheduled?"
+msgstr "Запланировано?"
+
+#: models.py:68
+msgid "Ready?"
+msgstr "Готово?"
+
+#: models.py:75 models.py:130
 msgid "Country"
 msgstr "Страна"
 
-#: models.py:54
-#, fuzzy
-#| msgid "Categories"
+#: models.py:76
 msgid "Countries"
-msgstr "Категории"
+msgstr "Страны"
 
-#: models.py:64
+#: models.py:86
 msgid "City"
 msgstr "Город"
 
-#: models.py:65 models.py:94
+#: models.py:87 models.py:131
 msgid "Cities"
 msgstr "Города"
 
-#: models.py:75 templates/me/list_search.html:10
+#: models.py:96
+msgid "Tag url"
+msgstr ""
+
+#: models.py:99
 msgid "Tag"
 msgstr "Тэг"
 
-#: models.py:76 models.py:95
+#: models.py:100 models.py:132
 msgid "Tags"
 msgstr "Тэги"
 
-#: models.py:83
+#: models.py:119
 msgid "Author"
 msgstr "Автор"
 
-#: models.py:84
+#: models.py:120
 msgid "Creation time"
 msgstr "Дата создания"
 
-#: models.py:92
+#: models.py:121
+msgid "Update time"
+msgstr ""
+
+#: models.py:129
 msgid "Slug"
 msgstr "Адрес"
 
-#: models.py:96
+#: models.py:133
 msgid "Meta title"
 msgstr "Meta заголовок"
 
-#: models.py:97
+#: models.py:134
 msgid "Meta description"
 msgstr "Мета описание"
 
-#: models.py:98
+#: models.py:135
 msgid "Is draft"
 msgstr "Черновик"
 
-#: models.py:100
+#: models.py:136
 msgid "Sources"
 msgstr "Источники"
 
-#: models.py:103 models.py:158
+#: models.py:137
+msgid "Map link"
+msgstr "Ссылка на карту"
+
+#: models.py:140
 msgid "Post"
 msgstr "Пост"
 
-#: models.py:104
+#: models.py:141
 msgid "Posts"
 msgstr "Посты"
 
-#: models.py:132
+#: models.py:169
 msgid "Post body"
 msgstr "Пост"
 
-#: models.py:134 models.py:137
+#: models.py:171 models.py:174
 msgid "Is panorama"
 msgstr "Панорама"
 
-#: models.py:135 models.py:138
+#: models.py:172 models.py:175
 msgid "Is private"
 msgstr "Скрытая"
 
-#: models.py:159
-msgid "Place"
-msgstr "Место"
+#: models.py:176
+msgid "Photo source"
+msgstr "Источник фотографии"
 
-#: models.py:163
-msgid "Post map direction"
-msgstr "Маршрут"
+#: models.py:197
+msgid "Link"
+msgstr "Ссылка"
 
-#: models.py:164
-msgid "Post map directions"
-msgstr "Маршруты"
+#: models.py:198
+msgid "Link description"
+msgstr "Описание"
+
+#: models.py:199
+msgid "Is point?"
+msgstr "Достпримечательность?"
+
+#: models.py:200
+msgid "Is published?"
+msgstr "Опубликовано"
+
+#: templates/me/balls.html:77 templates/me/pagination.html:5
+msgid "Back"
+msgstr "Назад"
+
+#: templates/me/balls.html:83 templates/me/pagination.html:21
+msgid "Forward"
+msgstr "Вперёд"
 
 #: templates/me/list.html:3 templates/me/list_search.html:3
 msgid "Avaika travel"
@@ -158,12 +196,6 @@ msgstr "Путешествия авайки"
 msgid "page"
 msgstr "страница"
 
-#: templates/me/list_search.html:3
-#, fuzzy
-#| msgid "Tag"
-msgid "tag"
-msgstr "Тэг"
-
 #: templates/me/list_search.html:25
 msgid "Older"
 msgstr "Назад"
@@ -172,21 +204,14 @@ msgstr "Назад"
 msgid "Newer"
 msgstr "Вперёд"
 
-#: templates/me/page_detail.html:132
+#: templates/me/page_detail.html:141
+msgid "Points of interest and source links"
+msgstr ""
+
+#: templates/me/page_detail.html:161
 msgid "Comments"
 msgstr "Комментарии"
 
-#: templates/me/page_detail.html:144
+#: templates/me/page_detail.html:173
 msgid "Random posts"
 msgstr "Случайные записи"
-
-#: templates/me/pagination.html:5
-msgid "Back"
-msgstr "Назад"
-
-#: templates/me/pagination.html:21
-msgid "Forward"
-msgstr "Вперёд"
-
-#~ msgid "Category"
-#~ msgstr "Категория"

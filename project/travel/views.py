@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import RedirectView, TemplateView, DetailView, ListView
-from models import Post, PostPhoto, Tag, Country
+from models import Post, PostPhoto, Tag, Country, PostLinks
 
 
 class CategoryListView(ListView):
@@ -77,10 +77,14 @@ class PageDetailView(DetailView):
         context = super(PageDetailView, self).get_context_data(**kwargs)
         obj = super(PageDetailView, self).get_object()
         context['text_chunks'] = PostPhoto.objects.filter(post_id=context['post'].id).order_by('id')
-        next_item = Post.objects.filter(created__gt=context['post'].created, draft=False).order_by('created')
+        context['links'] = PostLinks.objects.filter(post_id=context['post'].id,
+                                                    published=True).order_by('isPoint', 'id')
+        next_item = Post.objects.filter(created__gt=context['post'].created,
+                                        draft=False).order_by('created')
         if next_item:
             context['next'] = next_item[0]
-        prev_item = Post.objects.filter(created__lt=context['post'].created, draft=False).order_by('-created')
+        prev_item = Post.objects.filter(created__lt=context['post'].created,
+                                        draft=False).order_by('-created')
         if prev_item:
             context['prev'] = prev_item[0]
         context['random_posts'] = Post.objects.filter(draft=False).exclude(pk=obj.pk).order_by('?')[:3]

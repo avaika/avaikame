@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from models import User, Post, Tag, PostPhoto, Country, City
+from models import User, Post, Tag, PostPhoto, Country, City, PostLinks
 from forms import UserCreationForm
 from tags_input import admin as tags_input_admin
 from modeltranslation.admin import TranslationStackedInline, TranslationAdmin
@@ -40,6 +40,15 @@ class PostPhotoAdmin(TranslationStackedInline):
     readonly_fields = ('photo_tag', 'photoRight_tag')
 
 
+class PostLinksAdmin(TranslationStackedInline):
+    model = PostLinks
+    extra = 2
+    fieldsets = (
+        ('Text', {'fields': ('description', 'url')}),
+        ('Photo Right', {'fields': ('isPoint', 'published')}),
+    )
+
+
 class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
     list_display = ('id', 'title', 'slug', 'created', 'updated', 'draft')
     list_editable = ('title', 'slug', 'draft')
@@ -47,7 +56,7 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
     prepopulated_fields = {'slug': ['title']}
     readonly_fields = ('updated')
     save_as = True
-    inlines = [PostPhotoAdmin, ]
+    inlines = [PostPhotoAdmin, PostLinksAdmin, ]
     raw_id_fields = ('country',)
     autocomplete_lookup_fields = {
         'fk': ['country'],
