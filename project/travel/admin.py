@@ -34,8 +34,8 @@ class PostPhotoAdmin(TranslationStackedInline):
     extra = 2
     fieldsets = (
         ('Text', {'fields': ('text', )}),
-        ('Photo', {'fields': ('photo', 'photo_tag', 'panorama', 'private')}),
-        ('Photo Right', {'fields': ('photoRight', 'photoRight_tag', 'panoramaRight', 'privateRight')}),
+        ('Photo', {'fields': ('photo', 'photo_tag', 'panorama', 'source')}),
+        ('Photo Right', {'fields': ('photoRight', 'photoRight_tag', 'panoramaRight', 'sourceRight')}),
     )
     readonly_fields = ('photo_tag', 'photoRight_tag')
 

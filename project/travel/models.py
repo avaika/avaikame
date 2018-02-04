@@ -169,11 +169,10 @@ class PostPhoto(models.Model):
     text = models.TextField(blank=True, null=True, verbose_name=_("Post body"))
     photo = models.ImageField(upload_to=imagePath, blank=True, height_field=None, width_field=None, max_length=100)
     panorama = models.BooleanField(default=False, blank=True, verbose_name=_("Is panorama"))
-    private = models.BooleanField(default=False, blank=True, verbose_name=_("Is private"))
+    source = models.CharField(max_length=1000, blank=True, null=True, verbose_name=_("Photo source"))
     photoRight = models.ImageField(upload_to=imagePath, blank=True, height_field=None, width_field=None, max_length=100)
     panoramaRight = models.BooleanField(default=False, blank=True, verbose_name=_("Is panorama"))
-    privateRight = models.BooleanField(default=False, blank=True, verbose_name=_("Is private"))
-    source = models.CharField(max_length=1000, blank=True, null=True, verbose_name=_("Photo source"))
+    sourceRight = models.CharField(max_length=1000, blank=True, null=True, verbose_name=_("Photo source"))
 
     def photo_tag(self):
         if self.photo:
