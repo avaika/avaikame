@@ -1,0 +1,11 @@
+{% load static %}
+  <script src="{% static "base/js/owl.carousel.min.js" %}"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.flags').owlCarousel({
+        nav: true,
+        navText: ["<<", ">>"],
+        autoWidth:true
+     });
+   })
+  </script> 

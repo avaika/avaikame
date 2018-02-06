@@ -30,7 +30,15 @@ class TagView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(TagView, self).get_context_data(**kwargs)
         context['tag'] = get_object_or_404(Tag, slug=kwargs['tag'])
-        context['posts'] = Post.objects.filter(draft=False, tags__slug__contains=kwargs['tag']).distinct()
+        posts = Post.objects.filter(draft=False,
+                                    tags__slug__contains=kwargs['tag']).distinct()
+        context['posts'] = posts
+        related_tags = []
+        for post in posts:
+            for tag in post.tags.all():
+                if tag not in related_tags:
+                    related_tags.append(tag)
+        context['related_tags'] = related_tags
         return context
 
 tag = TagView.as_view()

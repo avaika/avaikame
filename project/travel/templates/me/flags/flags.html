@@ -1,0 +1,14 @@
+{% load i18n thumbnail me_tags %}
+
+<div class="col-lg-12">
+  <div class="flags">
+  {% flags posts as post_flags %}
+  {% for flag in post_flags %}
+    <a href="{% url "tag_list" flag.flag_url %}" class="item">
+      {% thumbnail flag.country__flag "70" format="PNG" as im %}
+        <img class="flag-thumb{% if flag.current %} flag-current{% endif %}" alt="Flag {{ flag.country__value }}" title="{{ flag.country__value }}" src="{{ im.url }}" />
+      {% endthumbnail %}
+    </a>
+  {% endfor %}
+  </div>
+</div>

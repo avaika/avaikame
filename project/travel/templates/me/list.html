@@ -1,36 +1,13 @@
 {% extends 'base.html' %}{% load static i18n thumbnail me_tags %}
 
 {% block title %}{% trans "Avaika travel" %}{% if page_obj.number != 1 %} - {% trans "page" %} {{ page_obj.number }}{% endif %}{% endblock %}
-
-{% block postscript %}
-  <script src="{% static "base/js/owl.carousel.min.js" %}"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.flags').owlCarousel({
-        nav: true,
-        navText: ["<<", ">>"],
-        autoWidth:true
-     });
-   })
-  </script> 
-{% endblock %}
+{% block postscript %}{% include "me/flags/js.html" %}{% endblock postscript %}
 
 {% block content %}
 <div class="container">
   <div class="row">
     <div class="box">
-        <div class="col-lg-12">
-          <div class="flags">
-          {% flags posts as post_flags %}
-          {% for flag in post_flags %}
-            <a href="{% url "tag_list" flag.flag_url %}" class="item">
-              {% thumbnail flag.country__flag "70" format="PNG" as im %}
-                <img class="flag-thumb{% if flag.current %} flag-current{% endif %}" alt="Flag {{ flag.country__value }}" title="{{ flag.country__value }}" src="{{ im.url }}" />
-              {% endthumbnail %}
-            </a>
-          {% endfor %}
-          </div>
-        </div>
+      {% include "me/flags/flags.html" %}
       {% for post in posts %}
         {% if forloop.first %}
         <div class="col-lg-12">
