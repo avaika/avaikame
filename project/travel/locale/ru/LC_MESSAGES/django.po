@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-04 23:10+0300\n"
+"POT-Creation-Date: 2018-02-06 20:35+0300\n"
 "PO-Revision-Date: 2014-07-26 13:04+0400\n"
 "Last-Translator: avaika <blog@avaika.me>\n"
 "Language: ru\n"
@@ -157,26 +157,22 @@ msgid "Is panorama"
 msgstr "Панорама"
 
 #: models.py:172 models.py:175
-msgid "Is private"
-msgstr "Скрытая"
-
-#: models.py:176
 msgid "Photo source"
 msgstr "Источник фотографии"
 
-#: models.py:197
+#: models.py:196
 msgid "Link"
 msgstr "Ссылка"
 
-#: models.py:198
+#: models.py:197
 msgid "Link description"
 msgstr "Описание"
 
-#: models.py:199
+#: models.py:198
 msgid "Is point?"
 msgstr "Достпримечательность?"
 
-#: models.py:200
+#: models.py:199
 msgid "Is published?"
 msgstr "Опубликовано"
 
@@ -196,22 +192,29 @@ msgstr "Путешествия авайки"
 msgid "page"
 msgstr "страница"
 
-#: templates/me/list_search.html:25
+#: templates/me/list_search.html:27
 msgid "Older"
 msgstr "Назад"
 
-#: templates/me/list_search.html:31
+#: templates/me/list_search.html:33
 msgid "Newer"
 msgstr "Вперёд"
 
-#: templates/me/page_detail.html:141
-msgid "Points of interest and source links"
-msgstr ""
+#: templates/me/list_search.html:45
+msgid "Related tags"
+msgstr "Связанные тэги"
 
-#: templates/me/page_detail.html:161
+#: templates/me/page_detail.html:137
+msgid "Points of interest and source links"
+msgstr "Точки маршрута и полезные ссылки"
+
+#: templates/me/page_detail.html:160
 msgid "Comments"
 msgstr "Комментарии"
 
-#: templates/me/page_detail.html:173
+#: templates/me/page_detail.html:172
 msgid "Random posts"
 msgstr "Случайные записи"
+
+#~ msgid "Is private"
+#~ msgstr "Скрытая"
