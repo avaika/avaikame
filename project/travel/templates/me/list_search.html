@@ -47,7 +47,7 @@
       </div>
         {% for tag in related_tags %}
           {% if forloop.first %}<ul class="pager">{% endif %}
-          <li><a href="{{ tag.slug }}">{{ tag.value }}</a></li>
+          <li><a href="{% url "tag_list" tag.slug %}">{{ tag.value }}</a></li>
           {% if forloop.last %}</ul>{% endif %}
         {% endfor %}
       <div class="clearfix"></div>
