@@ -8,17 +8,14 @@ from datetime import datetime
 import uuid
 
 
+# I have no idea why I created this model
+# Probably need to check dependencies and remove it one day...
 class User(AbstractUser):
-    notifyEmail = models.EmailField(max_length=150, blank=True, null=True,
-                                    verbose_name=_("email for notifications"))
-    notifyGlobal = models.BooleanField(default=False,
-                                       verbose_name=_("send global notifications"))
-    notifyNewposts = models.BooleanField(default=False,
-                                         verbose_name=_("send new posts notifications"))
-    notifyReplied = models.BooleanField(default=False,
-                                        verbose_name=_("send replied comments notifications"))
-    registered = models.DateTimeField(auto_now=True, editable=False,
-                                      verbose_name="Время регистрации")
+    notifyEmail = models.EmailField(max_length=150, blank=True, null=True)
+    notifyGlobal = models.BooleanField(default=False)
+    notifyNewposts = models.BooleanField(default=False)
+    notifyReplied = models.BooleanField(default=False)
+    registered = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
         verbose_name = _('User')
@@ -116,13 +113,18 @@ class Tag(models.Model):
 
 
 class Post(models.Model):
-    author = models.ForeignKey(User, related_name='post_author', verbose_name=_("Author"))
-    created = models.DateTimeField(editable=True, blank=True, verbose_name=_("Creation time"))
-    updated = models.DateTimeField(auto_now=True, blank=True, verbose_name=_("Update time"))
-    headImage = models.ImageField(upload_to=headImagePath, blank=True, height_field=None,
+    author = models.ForeignKey(User, related_name='post_author',
+                               verbose_name=_("Author"))
+    created = models.DateTimeField(editable=True, blank=True,
+                                   verbose_name=_("Creation time"))
+    updated = models.DateTimeField(auto_now=True, blank=True,
+                                   verbose_name=_("Update time"))
+    headImage = models.ImageField(upload_to=headImagePath, blank=True,
+                                  height_field=None,
                                   width_field=None, max_length=100,
                                   verbose_name="Head image 3863x1524")
-    titleImage = models.ImageField(upload_to=imagePath, blank=True, height_field=None,
+    titleImage = models.ImageField(upload_to=imagePath, blank=True,
+                                   height_field=None,
                                    width_field=None, max_length=100,
                                    verbose_name="Title image 1980x1315")
     title = models.CharField(max_length=150, verbose_name=_("Title"))
@@ -130,11 +132,15 @@ class Post(models.Model):
     country = models.ForeignKey(Country, verbose_name=_("Country"))
     cities = models.ManyToManyField(City, blank=True, verbose_name=_("Cities"))
     tags = models.ManyToManyField(Tag, blank=True, verbose_name=_("Tags"))
-    metaTitle = models.CharField(max_length=150, blank=True, verbose_name=_("Meta title"))
-    metaDesc = models.CharField(max_length=150, blank=True, verbose_name=_("Meta description"))
-    draft = models.BooleanField(default=True, blank=True, verbose_name=_("Is draft"))
+    metaTitle = models.CharField(max_length=150, blank=True,
+                                 verbose_name=_("Meta title"))
+    metaDesc = models.CharField(max_length=150, blank=True,
+                                verbose_name=_("Meta description"))
+    draft = models.BooleanField(default=True, blank=True,
+                                verbose_name=_("Is draft"))
     sources = models.TextField(blank=True, null=True, verbose_name=_("Sources"))
-    mapDirections = models.TextField(blank=True, null=True, verbose_name=_("Map link"))
+    mapDirections = models.TextField(blank=True, null=True,
+                                     verbose_name=_("Map link"))
 
     class Meta:
         verbose_name = _("Post")
@@ -149,7 +155,9 @@ class Post(models.Model):
 
     def headImage_tag(self):
         if self.headImage:
-            return u'<img src="%s" height="100px" />' % (get_thumbnail(self.headImage, "150x150", quality=95).url)
+            return u'<img src="%s" height="100px" />' % (get_thumbnail(self.headImage,
+                                                                       "150x150",
+                                                                       quality=95).url)
         else:
             return
     headImage_tag.short_description = 'Image'
@@ -157,7 +165,9 @@ class Post(models.Model):
 
     def titleImage_tag(self):
         if self.titleImage:
-            return u'<img src="%s" height="100px" />' % (get_thumbnail(self.titleImage, "150x150", quality=95).url)
+            return u'<img src="%s" height="100px" />' % (get_thumbnail(self.titleImage,
+                                                                       "150x150",
+                                                                       quality=95).url)
         else:
             return
     titleImage_tag.short_description = 'Image'
@@ -167,16 +177,26 @@ class Post(models.Model):
 class PostPhoto(models.Model):
     post = models.ForeignKey(Post)
     text = models.TextField(blank=True, null=True, verbose_name=_("Post body"))
-    photo = models.ImageField(upload_to=imagePath, blank=True, height_field=None, width_field=None, max_length=100)
-    panorama = models.BooleanField(default=False, blank=True, verbose_name=_("Is panorama"))
-    source = models.CharField(max_length=1000, blank=True, null=True, verbose_name=_("Photo source"))
-    photoRight = models.ImageField(upload_to=imagePath, blank=True, height_field=None, width_field=None, max_length=100)
-    panoramaRight = models.BooleanField(default=False, blank=True, verbose_name=_("Is panorama"))
-    sourceRight = models.CharField(max_length=1000, blank=True, null=True, verbose_name=_("Photo source"))
+    photo = models.ImageField(upload_to=imagePath, blank=True,
+                              height_field=None, width_field=None,
+                              max_length=100)
+    panorama = models.BooleanField(default=False, blank=True,
+                                   verbose_name=_("Is panorama"))
+    source = models.CharField(max_length=1000, blank=True, null=True,
+                              verbose_name=_("Photo source"))
+    photoRight = models.ImageField(upload_to=imagePath, blank=True,
+                                   height_field=None, width_field=None,
+                                   max_length=100)
+    panoramaRight = models.BooleanField(default=False, blank=True,
+                                        verbose_name=_("Is panorama"))
+    sourceRight = models.CharField(max_length=1000, blank=True, null=True,
+                                   verbose_name=_("Photo source"))
 
     def photo_tag(self):
         if self.photo:
-            return u'<img src="%s" height="100px" />' % (get_thumbnail(self.photo, "150x150", quality=95).url)
+            return u'<img src="%s" height="100px" />' % (get_thumbnail(self.photo,
+                                                                       "150x150",
+                                                                       quality=95).url)
         else:
             return
     photo_tag.short_description = 'Image'
@@ -184,7 +204,9 @@ class PostPhoto(models.Model):
 
     def photoRight_tag(self):
         if self.photoRight:
-            return u'<img src="%s" height="100px" />' % (get_thumbnail(self.photoRight, "150x150", quality=95).url)
+            return u'<img src="%s" height="100px" />' % (get_thumbnail(self.photoRight,
+                                                                       "150x150",
+                                                                       quality=95).url)
         else:
             return
     photoRight_tag.short_description = 'Image'
@@ -194,6 +216,9 @@ class PostPhoto(models.Model):
 class PostLinks(models.Model):
     post = models.ForeignKey(Post)
     url = models.CharField(max_length=1000, verbose_name=_("Link"))
-    description = models.CharField(max_length=256, verbose_name=_("Link description"))
-    isPoint = models.BooleanField(default=True, blank=True, verbose_name=_("Is point?"))
-    published = models.BooleanField(default=True, blank=True, verbose_name=_("Is published?"))
+    description = models.CharField(max_length=256,
+                                   verbose_name=_("Link description"))
+    isPoint = models.BooleanField(default=True, blank=True,
+                                  verbose_name=_("Is point?"))
+    published = models.BooleanField(default=True, blank=True,
+                                    verbose_name=_("Is published?"))
