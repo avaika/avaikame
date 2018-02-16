@@ -142,7 +142,7 @@
           {% if forloop.last %}</ul>{% endif %}
         {% endfor %}
         {% if post.mapDirections %}
-          <iframe src="{{ post.mapDirections }}" id="map" frameborder="0" height="420px" scrolling="no" frameborder="0" style="border:0" allowfullscreen width="100%"></iframe>
+          <iframe src="{{ post.mapDirections|safe }}" id="map" frameborder="0" height="420px" scrolling="no" frameborder="0" style="border:0" allowfullscreen width="100%"></iframe>
         {% endif %}
       </div>
       <div class="clearfix"></div>
