@@ -76,17 +76,6 @@ class Country(models.Model):
         return self.value
 
 
-class City(models.Model):
-    value = models.CharField(max_length=150, verbose_name=_("Title"))
-
-    class Meta:
-        verbose_name = _("City")
-        verbose_name_plural = _("Cities")
-
-    def __unicode__(self):
-        return self.value
-
-
 class Tag(models.Model):
     value = models.CharField(max_length=150, blank=True, null=True,
                              verbose_name=_("Title"))
@@ -130,7 +119,6 @@ class Post(models.Model):
     title = models.CharField(max_length=150, verbose_name=_("Title"))
     slug = models.SlugField(max_length=150, verbose_name=_("Slug"))
     country = models.ForeignKey(Country, verbose_name=_("Country"))
-    cities = models.ManyToManyField(City, blank=True, verbose_name=_("Cities"))
     tags = models.ManyToManyField(Tag, blank=True, verbose_name=_("Tags"))
     metaTitle = models.CharField(max_length=150, blank=True,
                                  verbose_name=_("Meta title"))

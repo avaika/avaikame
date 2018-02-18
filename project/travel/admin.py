@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from models import User, Post, Tag, PostPhoto, Country, City, PostLinks
+from models import User, Post, Tag, PostPhoto, Country, PostLinks
 from forms import UserCreationForm
 from tags_input import admin as tags_input_admin
 from modeltranslation.admin import TranslationStackedInline, TranslationAdmin
@@ -74,4 +74,3 @@ admin.site.register(User, ProfileUserAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Country, CountryAdmin)
-admin.site.register(City)
