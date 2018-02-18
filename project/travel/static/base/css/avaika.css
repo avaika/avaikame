@@ -38,6 +38,8 @@ hr {
 
 .img-full { min-width: 100%; }
 .psto-photo { max-height: 345px; }
+.psto-block { display: inline; }
+.psto-photo-credits { display:block; text-align:right; }
 
 .brand-name {
   font-weight: 700;

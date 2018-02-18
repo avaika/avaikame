@@ -62,38 +62,10 @@
         <div class="panel panel-default">
           <div class="panel-heading">
               {% for chunk in text_chunks %}
-                {% if chunk.text %}{{ chunk.text|safe }}{% endif %}
+                {% if chunk.text %}<p>{{ chunk.text|safe }}</p>{% endif %}
                 {% if chunk.photo or chunk.photoRight %}<p>
-                  {% if chunk.photo %}
-                    {% thumbnail chunk.photo "x1200" as photo_big %}
-                      <a class="photos" data-lightbox="roadtrip" href="{{ MEDIA_URL }}{{ photo_big }}">
-                        {% if chunk.panorama %}
-                          {% thumbnail chunk.photo "x400" as photo_thumb %}
-                          <img alt="Photo {{ chunk.id }}" class="img-responsive img-full" src="{{ MEDIA_URL }}{{ photo_thumb }}">
-                          {% endthumbnail %}
-                        {% else %}
-                          {% thumbnail chunk.photo "520" as photo_thumb %}
-                          <img alt="Photo {{ chunk.id }}" class="img-responsive psto-photo" src="{{ MEDIA_URL }}{{ photo_thumb }}">
-                          {% endthumbnail %}
-                        {% endif %}
-                      </a>
-                    {% endthumbnail %}
-                  {% endif %}
-                  {% if chunk.photoRight %}
-                    {% thumbnail chunk.photoRight "x1200" as photo_big %}
-                      <a class="photos" data-lightbox="roadtrip" href="{{ MEDIA_URL }}{{ photo_big }}">
-                        {% if chunk.panoramaRight %}
-                          {% thumbnail chunk.photoRight "x400" as photo_thumb %}
-                            <img alt="Photo {{ chunk.id }}" class="img-responsive img-full" src="{{ MEDIA_URL }}{{ photo_thumb }}">
-                          {% endthumbnail %}
-                        {% else %}
-                          {% thumbnail chunk.photoRight "520" as photo_thumb %}
-                            <img alt="Photo {{ chunk.id }}" class="img-responsive psto-photo" src="{{ MEDIA_URL }}{{ photo_thumb }}">
-                          {% endthumbnail %}
-                        {% endif %}
-                      </a>
-                    {% endthumbnail %}
-                  {% endif %}
+                  {% if chunk.photo %}{% include "me/post_photo.html" with photo=chunk.photo panorama=chunk.panorama %}{% endif %}
+                  {% if chunk.photoRight %}{% include "me/post_photo.html" with photo=chunk.photoRight panorama=chunk.panoramaRight %}{% endif %}
                 </p>{% endif %}
               {% endfor %}
           {# Social #}

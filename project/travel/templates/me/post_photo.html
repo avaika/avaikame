@@ -1,0 +1,18 @@
+{% load thumbnail i18n staticfiles %}
+{% if photo %}
+  {% thumbnail photo "x1200" as photo_big %}
+  <div class="psto-block">
+    <a class="photos" data-lightbox="roadtrip" href="{{ MEDIA_URL }}{{ photo_big }}">
+      {% if panorama %}
+        {% thumbnail photo "x400" as photo_thumb %}
+        <img alt="Photo {{ chunk.id }}" class="img-responsive img-full" src="{{ MEDIA_URL }}{{ photo_thumb }}">
+        {% endthumbnail %}
+      {% else %}
+        {% thumbnail photo "520" as photo_thumb %}
+        <img alt="Photo {{ chunk.id }}" class="img-responsive psto-photo" src="{{ MEDIA_URL }}{{ photo_thumb }}">
+        {% endthumbnail %}
+      {% endif %}
+    </a>
+  </div>
+  {% endthumbnail %}
+{% endif %}
