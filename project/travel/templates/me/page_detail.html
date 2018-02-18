@@ -72,8 +72,8 @@
                           <img alt="Photo {{ chunk.id }}" class="img-responsive img-full" src="{{ MEDIA_URL }}{{ photo_thumb }}">
                           {% endthumbnail %}
                         {% else %}
-                          {% thumbnail chunk.photo "450x300" as photo_thumb %}
-                          <img alt="Photo {{ chunk.id }}" class="img-responsive" src="{{ MEDIA_URL }}{{ photo_thumb }}">
+                          {% thumbnail chunk.photo "520" as photo_thumb %}
+                          <img alt="Photo {{ chunk.id }}" class="img-responsive psto-photo" src="{{ MEDIA_URL }}{{ photo_thumb }}">
                           {% endthumbnail %}
                         {% endif %}
                       </a>
@@ -87,8 +87,8 @@
                             <img alt="Photo {{ chunk.id }}" class="img-responsive img-full" src="{{ MEDIA_URL }}{{ photo_thumb }}">
                           {% endthumbnail %}
                         {% else %}
-                          {% thumbnail chunk.photoRight "450x300" as photo_thumb %}
-                            <img alt="Photo {{ chunk.id }}" class="img-responsive" src="{{ MEDIA_URL }}{{ photo_thumb }}">
+                          {% thumbnail chunk.photoRight "520" as photo_thumb %}
+                            <img alt="Photo {{ chunk.id }}" class="img-responsive psto-photo" src="{{ MEDIA_URL }}{{ photo_thumb }}">
                           {% endthumbnail %}
                         {% endif %}
                       </a>
