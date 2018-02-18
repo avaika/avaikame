@@ -63,7 +63,7 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
     }
     fieldsets = (
         ('Technical', {'fields': ('author', 'created', 'draft',)}),
-        ('Titles', {'fields': ('title', 'slug', 'country', 'cities', 'tags', )}),
+        ('Titles', {'fields': ('title', 'slug', 'country', 'tags', )}),
         ('Post', {'fields': ('headImage', 'headImage_tag', 'titleImage',
                              'titleImage_tag', 'mapDirections', 'sources', )}),
         ('Meta', {'fields': ('metaTitle', 'metaDesc', )}),
