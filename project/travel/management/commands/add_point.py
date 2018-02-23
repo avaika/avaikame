@@ -25,7 +25,7 @@ class Command(BaseCommand):
         point_title_en = point_en['title'][:-13].encode('utf-8')
         point_url_en = point_en['href'].encode('utf-8')
         point, _ = PostLinks.objects.get_or_create(post=post,
-                                                   url_ru=point_url_ru,
+                                                   url_ru=options['url'][0],
                                                    url_en=point_url_en,
                                                    description_ru=point_title_ru,
                                                    description_en=point_title_en)
