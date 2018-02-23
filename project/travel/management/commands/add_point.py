@@ -15,7 +15,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         point_url_ru = Request(options['url'][0])
-        post_id = Request(options['post'][0])
+        post_id = options['post'][0]
         post = Post.objects.get(id=post_id)
 
         optionsPage = urlopen(point_url_ru)
