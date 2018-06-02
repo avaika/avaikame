@@ -22,7 +22,6 @@ urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/base/img/favicon.ico', permanent=True)),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
-    url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^comments/', include('fluent_comments.urls')),
     url(r'^tags_input/', include('tags_input.urls', namespace='tags_input')),

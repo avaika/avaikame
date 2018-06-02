@@ -76,8 +76,6 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.template.context_processors.request",
                 "django.template.context_processors.media",
-                'social.apps.django_app.context_processors.backends',
-                'social.apps.django_app.context_processors.login_redirect',
                 "project.travel.context_processors.site_processor",
                 "project.travel.context_processors.debug_processor",
                 ],
@@ -93,7 +91,6 @@ TEMPLATES = [
 INSTALLED_APPS = (
     'timezones',
     'sorl.thumbnail',
-    'social.apps.django_app.default',
     'tags_input',
     'crispy_forms',
     'modeltranslation',
@@ -160,9 +157,6 @@ MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-    'social.backends.facebook.FacebookOAuth2',
-    'social.backends.twitter.TwitterOAuth',
 )
 
 
