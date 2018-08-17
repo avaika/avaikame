@@ -120,8 +120,6 @@ class Post(models.Model):
     slug = models.SlugField(max_length=150, verbose_name=_("Slug"))
     country = models.ForeignKey(Country, verbose_name=_("Country"))
     tags = models.ManyToManyField(Tag, blank=True, verbose_name=_("Tags"))
-    metaTitle = models.CharField(max_length=150, blank=True,
-                                 verbose_name=_("Meta title"))
     metaDesc = models.CharField(max_length=150, blank=True,
                                 verbose_name=_("Meta description"))
     draft = models.BooleanField(default=True, blank=True,

@@ -66,7 +66,7 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
         ('Titles', {'fields': ('title', 'slug', 'country', 'tags', )}),
         ('Post', {'fields': ('headImage', 'headImage_tag', 'titleImage',
                              'titleImage_tag', 'mapDirections', 'sources', )}),
-        ('Meta', {'fields': ('metaTitle', 'metaDesc', )}),
+        ('Meta', {'fields': ('metaDesc', )}),
     )
     readonly_fields = ('headImage_tag', 'titleImage_tag')
 

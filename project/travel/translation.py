@@ -4,7 +4,7 @@ from .models import Post, PostPhoto, Tag, PostLinks
 
 
 class PostTranslationOptions(TranslationOptions):
-        fields = ('title', 'metaTitle', 'metaDesc', 'sources', )
+        fields = ('title', 'metaDesc', 'sources', )
 translator.register(Post, PostTranslationOptions)
 
 
