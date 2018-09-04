@@ -194,6 +194,17 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        # 3rd party
+        'raven': {
+            'level': 'WARNING',
+            'handlers': ['console'],
+            'propagate': True,
+        },
+        'sentry.errors': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
     }
 }
 
