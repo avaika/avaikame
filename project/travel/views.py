@@ -24,7 +24,9 @@ class TagView(TemplateView):
     def dispatch(self, *args, **kwargs):
         # Remove spaces and convert to lower
         if " " in str(kwargs['tag']) or str(kwargs['tag']) != str(kwargs['tag']).lower():
-            return redirect('tag_list', str(kwargs['tag']).lower().replace(" ", "_"))
+            return redirect('tag_list', str(kwargs['tag']).lower().replace(" ", "-"))
+        if "_" in str(kwargs['tag']):
+            return redirect('tag_list', str(kwargs['tag']).lower().replace("_", "-"))
         return super(TagView, self).dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
