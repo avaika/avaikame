@@ -51,7 +51,7 @@ def get_flag_current(item, first, last):
 
 @register.assignment_tag()
 def flags(page_posts):
-    posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('created', 'country__value', 'country__flag', 'country__code')
+    posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('created', 'country__value', 'country__flag')
     first = page_posts[0]
     last = page_posts[len(page_posts) - 1]
     flags = []
