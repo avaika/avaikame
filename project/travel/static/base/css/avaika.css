@@ -237,6 +237,7 @@ footer p {
     display: inline-block;
     height: 30px;
     padding: 0px; 
+    vertical-align: middle;
 }
 .flag-h2 {
     height: 18px;
