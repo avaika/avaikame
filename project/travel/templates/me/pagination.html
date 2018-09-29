@@ -1,12 +1,15 @@
 {% load i18n %}
 {% if is_paginated and page_obj %}
+  <div class="clearfix"></div>
   <div class="pagination_bg text-center">
     <ul class="pagination">
     <li {% if not page_obj.has_previous %}class="disabled"{% endif %}><a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% else %}#{% endif %}">{% trans "Back" %}</a></li>
       {% if page_obj.has_previous %}
           {% if page_obj.number > 2 %}
             <li {% if not page_obj.has_previous %}class="disabled"{% endif %}><a href="?page=1">1</a></li>
-          <li><span>...</span></li>
+          {% if page_obj.number > 3 %}
+            <li><span>...</span></li>
+          {% endif %}
         {% endif %}
         <li><a href="?page={{ page_obj.previous_page_number }}" >{{ page_obj.previous_page_number }}</a>
       {% endif %}
