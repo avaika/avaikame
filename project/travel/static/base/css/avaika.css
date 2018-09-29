@@ -290,6 +290,10 @@ footer p {
     }
     ul.pager > li.previous { float: left; }
     ul.pager > li.next { float: right; }
+    .psto-photo { 
+      max-height: 345px; 
+      padding-bottom: 3px;
+    }
 }
 
 @font-face {
