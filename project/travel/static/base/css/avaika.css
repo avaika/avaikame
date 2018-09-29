@@ -360,11 +360,11 @@ footer p {
 .flags {
 	white-space: nowrap;
 	overflow: hidden;
-	padding: 0 0 0 30px;
+	padding: 0 32px 0 32px;
 }
 .flag-thumb {
 	display: inline-block;
-	height: 30px;
+	height: 32px;
 	padding: 1px;
 }
 

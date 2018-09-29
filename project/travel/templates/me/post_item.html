@@ -10,9 +10,7 @@
     <div class="photo_desc photo_multi">
       <p>
       {% if post.country.flag %}
-        {% thumbnail post.country.flag "73" format="PNG" as im %}
-          <img class="flag-title" alt="Flag {{ post.country }}" title="{{ post.country }}" src="{{ im.url }}" />
-        {% endthumbnail %}
+        <i class="icon icon48-{{ post.country.value|lower }}"></i>
       {% endif %}
       {{ post.title }} 
       </p>
