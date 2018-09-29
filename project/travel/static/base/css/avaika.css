@@ -363,7 +363,7 @@ footer p {
 .flags {
 	white-space: nowrap;
 	overflow: hidden;
-	padding: 0 32px 0 32px;
+	padding: 0 24px 0 24px;
 }
 .flag-thumb {
 	display: inline-block;
@@ -381,8 +381,9 @@ footer p {
 	display: inline-block;
 	background-color: #fff;
 	border: 1px solid #ddd;
-	border-radius: 2px;
-	padding: 4px 5px;
+	border-radius: 0px;
+	padding: 6px 5px 5px 5px;
+    vertical-align: middle;
 }
 .owl-next:hover, .owl-prev:hover { background-color: #eee; }
 
