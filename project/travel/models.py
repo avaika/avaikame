@@ -72,6 +72,9 @@ class Country(models.Model):
         verbose_name = _("Country")
         verbose_name_plural = _("Countries")
 
+    def code(self):
+        return self.value.replace(' ', '-').lower()
+
     def __unicode__(self):
         return self.value
 

@@ -101,6 +101,8 @@ footer p {
 .avaika-share .avaika-share-item.tw { background-position: -150px 0; }
 .avaika-share .avaika-share-item.gp { background-position: -200px 0; }
 
+.flag-title { vertical-align: middle; }
+
 
 @media screen and (min-width: 768px) {
 

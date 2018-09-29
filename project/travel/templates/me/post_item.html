@@ -1,7 +1,7 @@
 {% load static i18n thumbnail me_tags %}
 <div class="col-sm-4 photo_dark">
   <div class="wrapper">
-  <a href="{% url 'page_redirect' post.id %}">
+  <a href="{% url 'page_display' post.id post.slug %}">
     {% thumbnail post.titleImage "500x300" as im %}
       <img class="img-responsive" src="{{ im.url }}" alt="Image for {{ post.title }}">
     {% empty %}
@@ -10,7 +10,7 @@
     <div class="photo_desc photo_multi">
       <p>
       {% if post.country.flag %}
-        <i class="icon icon48-{{ post.country.value|lower }}"></i>
+        <i class="icon icon48-{{ post.country.code }} flag-title"></i>
       {% endif %}
       {{ post.title }} 
       </p>

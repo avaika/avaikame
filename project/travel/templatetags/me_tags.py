@@ -40,15 +40,6 @@ def travel_count_posts():
     return Post.objects.filter(draft=False).count()
 
 
-def get_flag_current(item, first, last):
-    if item['created'] <= first.created and item['created'] >= last.created:
-        item['current'] = True
-    else:
-        item['current'] = False
-    item['flag_url'] = item['country__value'].lower().replace(" ", "-")
-    return item
-
-
 @register.assignment_tag()
 def flags(page_posts):
     posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('created', 'country__value', 'country__flag')
@@ -56,13 +47,10 @@ def flags(page_posts):
     last = page_posts[len(page_posts) - 1]
     flags = []
     for item in posts:
+        item['country__code'] = item['country__value'].replace(' ', '-').lower()
         if len(flags) > 0:
             if flags[-1]['country__value'] == item['country__value']:
-                # needed in case flag already popped up on prev page
-                if not flags[-1]['current']:
-                    flags[-1] = get_flag_current(item, first, last)
                 continue
-        item = get_flag_current(item, first, last)
         flags.append(item)
     return flags
 
@@ -72,7 +60,7 @@ def uniq_flags(first=False, last=False):
     posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('country__value', 'country__flag', 'country__ball')
     flags = []
     for item in posts:
-        item['flag_url'] = item['country__value'].lower().replace(" ", "-")
+        item['country__code'] = item['country__value'].lower().replace(" ", "-")
         if item not in flags:
             flags.append(item)
     return flags

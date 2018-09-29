@@ -23,7 +23,7 @@
                   <div class="photo_desc photo_head hidden-xs">
                     <p>
                     {% if post.country.flag %}
-                      <img class="flag-title" alt="Flag {{ post.country }}" title="{{ post.country }}" src="{{ MEDIA_URL }}{{ post.country.flag }}" />
+                      <i class="icon icon48-{{ post.country.code }} flag-title"></i>
                     {% endif %}
                       {{ post.title }}
                     </p>
