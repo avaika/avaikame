@@ -66,7 +66,7 @@
           <br />
           {% uniq_flags as post_flags %}
           {% for flag in post_flags %}
-          <a href="{% url "tag_list" flag.flag_url %}">
+          <a href="{% url "tag_list" flag.country__code %}">
           {% if flag.country__ball %}
             {% thumbnail flag.country__ball "x73" format="PNG" as im %}
               <img alt="flag {{ flag.country__value }}" title="{{ flag.country__value }}" src="{{ im.url }}" />
