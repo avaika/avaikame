@@ -23,10 +23,10 @@ class TagAdmin(TranslationAdmin):
 
 
 class CountryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'value', 'worky', 'ready')
+    list_display = ('id', 'slug', 'worky', 'ready')
     list_editable = ('worky', 'ready')
     list_filter = ('worky', 'ready')
-    search_fields = ['value']
+    search_fields = ['slug', 'title']
 
 
 class PostPhotoAdmin(TranslationStackedInline):

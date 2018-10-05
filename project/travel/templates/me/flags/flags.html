@@ -4,8 +4,8 @@
   <div class="flags">
   {% flags posts as post_flags %}
   {% for flag in post_flags %}
-    <a href="{% url "tag_list" flag.country__code %}" data-toggle="tooltip" title="{{ flag.country__value }}" class="item">
-      <i class="icon icon48-{{ flag.country__code }}"></i>
+    <a href="{% url "tag_list" flag.country__slug %}" data-toggle="tooltip" title="{{ flag.country__title}}" class="item">
+      <i class="icon icon48-{{ flag.country__slug }}"></i>
     </a>
   {% endfor %}
   </div>

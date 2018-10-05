@@ -42,14 +42,11 @@ def travel_count_posts():
 
 @register.assignment_tag()
 def flags(page_posts):
-    posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('created', 'country__value', 'country__flag')
-    first = page_posts[0]
-    last = page_posts[len(page_posts) - 1]
+    posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('country__slug', 'country__title')
     flags = []
     for item in posts:
-        item['country__code'] = item['country__value'].replace(' ', '-').lower()
         if len(flags) > 0:
-            if flags[-1]['country__value'] == item['country__value']:
+            if flags[-1]['country__slug'] == item['country__slug']:
                 continue
         flags.append(item)
     return flags
@@ -57,10 +54,9 @@ def flags(page_posts):
 
 @register.assignment_tag()
 def uniq_flags(first=False, last=False):
-    posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('country__value', 'country__flag', 'country__ball')
+    posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('country__slug', 'country__title', 'country__ball')
     flags = []
     for item in posts:
-        item['country__code'] = item['country__value'].lower().replace(" ", "-")
         if item not in flags:
             flags.append(item)
     return flags

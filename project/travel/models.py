@@ -42,7 +42,8 @@ def imagePath(instance, filename):
 
 
 class Country(models.Model):
-    value = models.CharField(max_length=150, verbose_name=_("Title"))
+    slug = models.CharField(max_length=150, verbose_name=_("Slug"))
+    title = models.CharField(max_length=150, verbose_name=_("Title"))
     flag = models.ImageField(upload_to='flags/', height_field=None,
                              blank=True, null=True,
                              width_field=None, max_length=100,
@@ -57,8 +58,6 @@ class Country(models.Model):
                                 verbose_name="Example")
     psdfile = models.FileField(upload_to='ball_psd/', blank=True, null=True,
                                max_length=100, verbose_name="PSD file")
-    description = models.TextField(blank=True, null=True,
-                                   verbose_name=_("Description"))
     worky = models.BooleanField(default=False, blank=True,
                                 verbose_name=_("Scheduled?"))
     ready = models.BooleanField(default=False, blank=True,
@@ -66,17 +65,14 @@ class Country(models.Model):
 
     @staticmethod
     def autocomplete_search_fields():
-        return ("id__iexact", "value__icontains",)
+        return ("id__iexact", "slug__icontains",)
 
     class Meta:
         verbose_name = _("Country")
         verbose_name_plural = _("Countries")
 
-    def code(self):
-        return self.value.replace(' ', '-').lower()
-
     def __unicode__(self):
-        return self.value
+        return self.title
 
 
 class Tag(models.Model):
