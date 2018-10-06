@@ -2,9 +2,10 @@
 
 <div class="col-lg-12">
   <div class="flags">
+  {% get_current_language as lang %}
   {% flags posts as post_flags %}
   {% for flag in post_flags %}
-    <a href="{% url "tag_list" flag.country__slug %}" data-toggle="tooltip" title="{{ flag.country__title}}" class="item">
+    <a href="{% url "tag_list" flag.country__slug %}" data-toggle="tooltip" title="{% if lang == "ru" %}{{ flag.country__title_ru }}{% else %}{{ flag.country__title_en }}{% endif %}" class="item">
       <i class="icon icon48-{{ flag.country__slug }}"></i>
     </a>
   {% endfor %}

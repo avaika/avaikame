@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-31 23:30+0300\n"
+"POT-Creation-Date: 2018-10-07 01:34+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru\n"
@@ -319,27 +319,27 @@ msgstr ""
 "<strong>Подсказка</strong>: вы всё ещё можете <a href=\"%(email_url)s"
 "\">заменить email адрес</a>."
 
-#: base.html:34
+#: base.html:35
 msgid "Toggle navigation"
 msgstr "Переключить навигацию"
 
-#: base.html:46
+#: base.html:47
 msgid "blog"
 msgstr "блог"
 
-#: base.html:47
+#: base.html:48
 msgid "travel"
 msgstr "Поездки"
 
-#: base.html:48
+#: base.html:49
 msgid "books"
 msgstr "книги"
 
-#: base.html:50
+#: base.html:51
 msgid "Exit"
 msgstr "Выход"
 
-#: base.html:79
+#: base.html:80
 msgid "Blog source on <a href='//github.com/avaika/avaikame'>github</a>."
 msgstr "Исходники на <a href='//github.com/avaika/avaikame'>гитхабе</a>."
 
@@ -521,9 +521,33 @@ msgstr "Последние записи"
 msgid "Visited and posted:"
 msgstr "Побывал и записал:"
 
-#: index.html:85
+#: index.html:82
 msgid "Visited but not posted yet:"
 msgstr "Побывал, но всё ещё не записал:"
+
+#: index.html:85
+msgid "Lithuania"
+msgstr "Литва"
+
+#: index.html:88
+msgid "Finland"
+msgstr "Финляндия"
+
+#: index.html:91
+msgid "Sweden"
+msgstr "Швеция"
+
+#: index.html:94
+msgid "Latvia"
+msgstr "Латвия"
+
+#: index.html:97
+msgid "Belarus"
+msgstr "Беларусь"
+
+#: index.html:100
+msgid "United Arab Emirates"
+msgstr "Арабские Эмираты"
 
 #~ msgid "Don't have an account?"
 #~ msgstr "Нет аккаунта?"

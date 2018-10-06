@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from modeltranslation.translator import translator, TranslationOptions
-from .models import Post, PostPhoto, Tag, PostLinks
+from .models import Post, PostPhoto, Tag, PostLinks, Country
 
 
 class PostTranslationOptions(TranslationOptions):
@@ -21,3 +21,7 @@ translator.register(PostLinks, PostLinksTranslationOptions)
 class TagTranslationOptions(TranslationOptions):
         fields = ('value', )
 translator.register(Tag, TagTranslationOptions)
+
+class CountryTranslationOptions(TranslationOptions):
+        fields = ('title', )
+translator.register(Country, CountryTranslationOptions)

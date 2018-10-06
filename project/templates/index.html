@@ -69,7 +69,7 @@
           <a href="{% url "tag_list" flag.country__slug %}">
           {% if flag.country__ball %}
             {% thumbnail flag.country__ball "x73" format="PNG" as im %}
-              <img alt="flag {{ flag.country__title }}" title="{{ flag.country__title }}" src="{{ im.url }}" />
+              <img alt="flag {{ flag.country__title }}" title="{% if lang == "ru" %}{{ flag.country__title_ru }}{% else %}{{ flag.country__title_en }}{% endif %}" src="{{ im.url }}" />
             {% endthumbnail %}
           {% else %}
             <i class="icon icon48-{{ post.country__slug }} flag-title"></i>
@@ -80,26 +80,23 @@
       <div class="col-lg-12">
         {% blocktrans %}Visited but not posted yet:{% endblocktrans %}
         <br />
-        {% thumbnail "balls/ru.png" "x73" format="PNG" as im %}
-          <img alt="flag Russia" title="" src="{{ im.url }}" />
-        {% endthumbnail %}
         {% thumbnail "balls/li.png" "x73" format="PNG" as im %}
-          <img alt="flag Lithuania" title="" src="{{ im.url }}" />
+          <img alt="flag Lithuania" title="{% trans "Lithuania" %}" src="{{ im.url }}" />
         {% endthumbnail %}
         {% thumbnail "balls/fi.png" "x73" format="PNG" as im %}
-          <img alt="flag Finlandia" title="" src="{{ im.url }}" />
+          <img alt="flag Finland" title="{% trans "Finland" %}" src="{{ im.url }}" />
         {% endthumbnail %}
         {% thumbnail "balls/swd.png" "x73" format="PNG" as im %}
-          <img alt="flag Sweden" title="" src="{{ im.url }}" />
+          <img alt="flag Sweden" title="{% trans "Sweden" %}" src="{{ im.url }}" />
         {% endthumbnail %}
         {% thumbnail "balls/lt.png" "x73" format="PNG" as im %}
-          <img alt="flag Latvia" title="" src="{{ im.url }}" />
+          <img alt="flag Latvia" title="{% trans "Latvia" %}" src="{{ im.url }}" />
         {% endthumbnail %}
         {% thumbnail "balls/be.png" "x73" format="PNG" as im %}
-          <img alt="flag Belarus" title="Belarus" src="{{ im.url }}" />
+          <img alt="flag Belarus" title="{% trans "Belarus" %}" src="{{ im.url }}" />
         {% endthumbnail %}
         {% thumbnail "balls/uae.png" "x73" format="PNG" as im %}
-          <img alt="flag United Arab Emirates" title="United Arab Emirates" src="{{ im.url }}" />
+          <img alt="flag United Arab Emirates" title="{% trans "United Arab Emirates" %}" src="{{ im.url }}" />
         {% endthumbnail %}
       </div>
     </div>

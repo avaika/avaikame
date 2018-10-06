@@ -23,7 +23,7 @@ class TagAdmin(TranslationAdmin):
 
 
 class CountryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'slug', 'worky', 'ready')
+    list_display = ('id', 'slug', 'title_en', 'title_en', 'worky', 'ready')
     list_editable = ('worky', 'ready')
     list_filter = ('worky', 'ready')
     search_fields = ['slug', 'title']

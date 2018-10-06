@@ -42,7 +42,10 @@ def travel_count_posts():
 
 @register.assignment_tag()
 def flags(page_posts):
-    posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('country__slug', 'country__title')
+    posts = Post.objects.filter(draft=False, country__flag__isnull=False).\
+        order_by('-created').values('country__slug',
+                                    'country__title_en',
+                                    'country__title_ru')
     flags = []
     for item in posts:
         if len(flags) > 0:
@@ -54,7 +57,11 @@ def flags(page_posts):
 
 @register.assignment_tag()
 def uniq_flags(first=False, last=False):
-    posts = Post.objects.filter(draft=False, country__flag__isnull=False).order_by('-created').values('country__slug', 'country__title', 'country__ball')
+    posts = Post.objects.filter(draft=False, country__flag__isnull=False).\
+        order_by('-created').values('country__slug',
+                                    'country__title_en',
+                                    'country__title_ru',
+                                    'country__ball')
     flags = []
     for item in posts:
         if item not in flags:
