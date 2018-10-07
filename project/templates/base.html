@@ -49,8 +49,6 @@
                     <li class="hidden-sm"><a href="{% url 'books' %}"><span class="icon-paw"></span>{% trans "books" %}</a> </li>
                     {% if user.is_authenticated %}
                       <li><a href="{% url 'account_logout' %}"><span class="icon-paw"></span> {% trans "Exit" %}</a> </li>
-                    {% else %}
-                      <li><a href="{% url 'account_login' %}"><span class="icon-paw"></span><span class="hidden-md hidden-lg">Avaika</span></a></li>
                     {% endif %}
                     {% for lang_code, lang_name in languages %}
                       <li class="pull-rght">
