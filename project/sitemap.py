@@ -1,7 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 from project.travel.models import Post as TravelPost, Tag as TravelTag
-from project.blog.models import Post as BlogPost, Tag as BlogTag
 
 
 class StaticSitemap(Sitemap):
@@ -38,26 +37,3 @@ class TravelTagSitemap(Sitemap):
 
     def items(self):
         return TravelTag.objects.all()
-
-
-class BlogPostSitemap(Sitemap):
-    changefreq = "weekly"
-    protocol = 'https'
-    priority = 0.5
-    i18n = True
-
-    def items(self):
-        return BlogPost.objects.filter(draft=False)
-
-    def lastmod(self, obj):
-        return obj.updated
-
-
-class BlogTagSitemap(Sitemap):
-    changefreq = "monthly"
-    protocol = 'https'
-    priority = 0.5
-    i18n = True
-
-    def items(self):
-        return BlogTag.objects.all()

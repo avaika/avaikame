@@ -44,11 +44,10 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/{{ lang }}/">avaika.me</a> </li>
-                    <li class="hidden-sm"><a href="{% url 'blog_all_posts' %}"><span class="icon-paw"></span>{% trans "blog" %}</a> </li>
+                    <li class="hidden-sm"><a href="{% url 'lists_all' %}"><span class="icon-paw"></span>{% trans "Lists" %}</a> </li>
                     <li><a href="{% url 'travel_list' %}"><span class="icon-paw"></span>{% trans "travel" %}</a> </li>
-                    <li class="hidden-sm"><a href="{% url 'books' %}"><span class="icon-paw"></span>{% trans "books" %}</a> </li>
                     {% if user.is_authenticated %}
-                      <li><a href="{% url 'account_logout' %}"><span class="icon-paw"></span> {% trans "Exit" %}</a> </li>
+                      <li><a href="{% url 'account_logout' %}"><span class="icon-paw"></span>{% trans "Exit" %}</a> </li>
                     {% endif %}
                     {% for lang_code, lang_name in languages %}
                       <li class="pull-rght">

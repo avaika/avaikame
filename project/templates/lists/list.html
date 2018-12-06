@@ -1,0 +1,66 @@
+{% extends 'base.html' %}{% load static i18n thumbnail %}
+
+{% block title %}{% trans "Lists" %}{% endblock %}
+{% block postscript %}
+  <link rel="stylesheet" type="text/css" href="{% static "base/css/theme.default.css" %}" />
+{% endblock postscript %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="box">
+      <div class="col-lg-12">
+        <h2 class="intro-text text-center">{% trans "Awesome lists" %}</h2>
+        <hr>
+      </div>
+      <div class="col-lg-12 text-center">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          {% for list in lists %}
+            {% if forloop.first %}
+              {% get_current_language as lang %}
+              <p>{% blocktrans %}Value judged, but awesome lists of things I liked (or didn't like), was impresses by or just decided to take a not to find out later what the thing really is.{% endblocktrans %}</p>
+              <hr />
+              <div class="list-group">
+                <a href="{% url 'books' %}" class="list-group-item list-group-item-action flex-column align-items-start col-lg-6">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">{% trans "books" %}</h5>
+                </div>
+                <p class="mb-1">Книги, которые я прочитал или только собираюсь</p>
+              </a>
+            {% endif %}
+              <a href="{{ list.slug }}" class="list-group-item list-group-item-action flex-column align-items-start col-lg-6">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">{{ list.name }}</h5>
+                </div>
+                <p class="mb-1">{{ list.description }}</p>
+              </a>
+            {% if forloop.last %}
+              </div>
+              <div class="clearfix"></div>
+            {% endif %}
+          {% endfor %}
+          </div>
+          {% if is_paginated and page_obj %}
+            {% if page_obj.has_previous or page_obj.has_next %}
+              <div class="col-lg-12 text-center">
+                <ul class="pager">
+                  {% if page_obj.has_previous %}
+                    <li class="previous"><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">&larr; {% trans "Back" %}</a></li>
+                    <li><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}" class="select">{{ page_obj.previous_page_number }}</a></li>
+                  {% endif %}
+                  <li><a href="#" onclick="return false;" class="select">{{ page_obj.number }}</a></li>
+                  {% if page_obj.has_next %}
+                    <li><a href="{{ request.path }}?page={{ page_obj.next_page_number }}" class="select">{{ page_obj.next_page_number }}</a></li>
+                    <li class="next"><a href="{{ request.path }}?page={{ page_obj.next_page_number }}">{% trans "Forward" %} &rarr;</a></li>
+                  {% endif %}
+                </ul>
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

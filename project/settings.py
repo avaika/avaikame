@@ -107,7 +107,7 @@ INSTALLED_APPS = (
     # partner installed apps
     'project.travel',
     'project.books',
-    'project.blog',
+    'project.lists',
     # end partner installed apps
     # Need to put apps below in the end
     # to be able to override static from it
@@ -140,9 +140,6 @@ TAGS_INPUT_MAPPINGS = {
     },
     'travel.AllTag': {
         'field': 'value', 'create_missing': True,
-    },
-    'blog.Tag': {
-        'field': 'slug', 'create_missing': True,
     },
 }
 TAGS_INPUT_INCLUDE_JQUERY = True

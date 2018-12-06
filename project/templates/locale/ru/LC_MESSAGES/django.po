@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-07 01:34+0300\n"
+"POT-Creation-Date: 2018-12-07 00:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru\n"
@@ -324,8 +324,8 @@ msgid "Toggle navigation"
 msgstr "Переключить навигацию"
 
 #: base.html:47
-msgid "blog"
-msgstr "блог"
+msgid "lists"
+msgstr ""
 
 #: base.html:48
 msgid "travel"
@@ -339,11 +339,11 @@ msgstr "книги"
 msgid "Exit"
 msgstr "Выход"
 
-#: base.html:80
+#: base.html:78
 msgid "Blog source on <a href='//github.com/avaika/avaikame'>github</a>."
 msgstr "Исходники на <a href='//github.com/avaika/avaikame'>гитхабе</a>."
 
-#: books/list.html:3 index.html:45
+#: books/list.html:3 index.html:38
 msgid "Books"
 msgstr "Книги"
 
@@ -379,11 +379,11 @@ msgstr "Прочитано?"
 msgid "Recommend?"
 msgstr "Рекомендую?"
 
-#: books/list.html:76
+#: books/list.html:76 lists/list.html:43
 msgid "Back"
 msgstr "Назад"
 
-#: books/list.html:82
+#: books/list.html:82 lists/list.html:49
 msgid "Forward"
 msgstr "Вперёд"
 
@@ -513,47 +513,56 @@ msgstr "Блог"
 msgid "Travels"
 msgstr "Поездки"
 
-#: index.html:57
+#: index.html:50
 msgid "Latest posts"
 msgstr "Последние записи"
 
-#: index.html:66
+#: index.html:59
 msgid "Visited and posted:"
 msgstr "Побывал и записал:"
 
-#: index.html:82
+#: index.html:75
 msgid "Visited but not posted yet:"
 msgstr "Побывал, но всё ещё не записал:"
 
-#: index.html:85
+#: index.html:78
 msgid "Lithuania"
 msgstr "Литва"
 
-#: index.html:88
+#: index.html:81
 msgid "Finland"
 msgstr "Финляндия"
 
-#: index.html:91
+#: index.html:84
 msgid "Sweden"
 msgstr "Швеция"
 
-#: index.html:94
+#: index.html:87
 msgid "Latvia"
 msgstr "Латвия"
 
-#: index.html:97
+#: index.html:90
 msgid "Belarus"
 msgstr "Беларусь"
 
-#: index.html:100
+#: index.html:93
 msgid "United Arab Emirates"
 msgstr "Арабские Эмираты"
 
-#~ msgid "Don't have an account?"
-#~ msgstr "Нет аккаунта?"
+#: lists/list.html:3
+msgid "Lists"
+msgstr "Списки"
 
-#~ msgid "Register"
-#~ msgstr "Регистрация"
+#: lists/list.html:13
+msgid "Awesome lists"
+msgstr "Крутые списки"
 
-#~ msgid "Description"
-#~ msgstr "Описание"
+#: lists/list.html:22
+msgid ""
+"Value judged, but awesome lists of things I liked (or didn't like), was "
+"impresses by or just decided to take a not to find out later what the thing "
+"really is."
+msgstr ""
+"Абсолютно субъективные, но крутые списки того, что мне понравилось (или не "
+"понравилось), впечатлило или просто захотелось сохранить, чтобы потом "
+"неожиданно вспомнить."

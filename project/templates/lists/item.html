@@ -1,0 +1,93 @@
+{% extends 'base.html' %}{% load static i18n thumbnail %}
+
+{% block title %}{% trans "Books" %}{% endblock %}
+{% block postscript %}
+  <link rel="stylesheet" type="text/css" href="{% static "base/css/theme.default.css" %}" />
+  <script type="text/javascript" src="{% static "base/js/jquery.tablesorter.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "base/js/jquery.tablesorter.widgets.min.js" %}"></script>
+  <script>{# function to sort table contents #}
+  $(document).ready(function(){
+      $(function(){
+          $("#books").tablesorter(
+              { theme : 'default', 
+                headerTemplate : '{content}{icon}',
+                widgets : ["columns"],
+                widgetOptions : { columns : [ "read", "author" ] }
+                });
+          });
+      });
+  </script>
+{% endblock postscript %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="box">
+      <div class="col-lg-12">
+        <h2 class="intro-text text-center">{% trans "Books list" %}</h2>
+        <hr>
+      </div>
+      <div class="col-lg-12 text-center">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          {% for book in books %}
+            {% if forloop.first %}
+              <table class="table table-bordered table-striped table-hover table-heading table-datatable" id="books">
+                <thead>
+                  <tr>
+                    <th data-field="id">{% trans "Book" %}</th>
+                    <th data-field="author">{% trans "Author" %}</th>
+                    <th data-field="year">{% trans "Year" %}</th>
+                    <th data-field="genre">{% trans "Genre" %}</th>
+                    <th data-field="desc">{% trans "Impression" %}</th>
+                    <th data-field="read">{% trans "Read?" %}</th>
+                    <th data-field="read">{% trans "Recommend?" %}</th>
+                  </tr>
+                </thead>
+            {% endif %}
+                <tr>
+                  <td>
+                    {% if book.wiki_url %}<a href="{{ book.wiki_url }}">{% endif %}{{ book.title }}{% if book.wiki_url %}</a>{% endif %} 
+                  </td>
+                  <td>
+                  {% for author in  book.author.all %}
+                    {% if author.wiki_url %}<a href="{{ author.wiki_url }}">{% endif %}{{ author }}{% if author.wiki_url %}</a>{% endif %}
+                    {% if not forloop.last %},{% endif %}
+                  {% endfor %}
+                  </td>
+                  <td>{{ book.year }}</td>
+                  <td>
+                    {% for genre in  book.genre.all %}{{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                  </td>
+                  <td>{% if book.about %}{{ book.about|safe }}{% endif %}</td>
+                  <td>{{ book.read|yesno:"&#10003;, &times;"|safe }}</td>
+                  <td>{% if book.read %}{{ book.recommend|yesno:"&#10003;, &times;"|safe }} {% endif %}</td>
+                </tr>
+              {% if forloop.last %}
+              </table>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% if is_paginated and page_obj %}
+            {% if page_obj.has_previous or page_obj.has_next %}
+              <div class="col-lg-12 text-center">
+                <ul class="pager">
+                  {% if page_obj.has_previous %}
+                    <li class="previous"><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">&larr; {% trans "Back" %}</a></li>
+                    <li><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}" class="select">{{ page_obj.previous_page_number }}</a></li>
+                  {% endif %}
+                  <li><a href="#" onclick="return false;" class="select">{{ page_obj.number }}</a></li>
+                  {% if page_obj.has_next %}
+                    <li><a href="{{ request.path }}?page={{ page_obj.next_page_number }}" class="select">{{ page_obj.next_page_number }}</a></li>
+                    <li class="next"><a href="{{ request.path }}?page={{ page_obj.next_page_number }}">{% trans "Forward" %} &rarr;</a></li>
+                  {% endif %}
+                </ul>
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
