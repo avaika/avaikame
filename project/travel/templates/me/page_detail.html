@@ -117,7 +117,7 @@
         <hr />
         {% for link in links %}
           {% if forloop.first %}<ul class="pager">{% endif %}
-          <li><a href="{{ link.url }}">{{ link.description }}</a></li>
+          <li><a href="{{ link.url }}" target="_blank">{{ link.description }}</a></li>
           {% if forloop.last %}</ul>{% endif %}
         {% endfor %}
         {% if post.mapDirections %}
