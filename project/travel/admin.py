@@ -33,7 +33,7 @@ class PostPhotoAdmin(TranslationStackedInline):
     model = PostPhoto
     extra = 2
     fieldsets = (
-        ('Text', {'fields': ('text', )}),
+        ('Text', {'fields': ('text', 'comment', )}),
         ('Photo', {'fields': ('photo', 'photo_tag', 'panorama', 'source')}),
         ('Photo Right', {'fields': ('photoRight', 'photoRight_tag', 'panoramaRight', 'sourceRight')}),
     )
@@ -50,8 +50,10 @@ class PostLinksAdmin(TranslationStackedInline):
 
 
 class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
-    list_display = ('id', 'title', 'slug', 'created', 'updated', 'draft')
+    list_display = ('id', 'title', 'slug', 'created', 'updated', 'draft',
+                    'checked')
     list_editable = ('title', 'slug', 'draft')
+    list_filter = ('checked', 'draft')
     search_fields = ['id', 'title', ]
     prepopulated_fields = {'slug': ['title']}
     readonly_fields = ('updated')
@@ -62,7 +64,7 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
         'fk': ['country'],
     }
     fieldsets = (
-        ('Technical', {'fields': ('author', 'created', 'draft',)}),
+        ('Technical', {'fields': ('author', 'created', 'draft', 'checked')}),
         ('Titles', {'fields': ('title', 'slug', 'country', 'tags', )}),
         ('Post', {'fields': ('headImage', 'headImage_tag', 'titleImage',
                              'titleImage_tag', 'mapDirections', 'sources', )}),

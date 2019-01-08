@@ -123,6 +123,8 @@ class Post(models.Model):
                                 verbose_name=_("Meta description"))
     draft = models.BooleanField(default=True, blank=True,
                                 verbose_name=_("Is draft"))
+    checked = models.BooleanField(default=False, blank=True,
+                                verbose_name=_("Verified by editor"))
     sources = models.TextField(blank=True, null=True, verbose_name=_("Sources"))
     mapDirections = models.TextField(blank=True, null=True,
                                      verbose_name=_("Map link"))
@@ -162,6 +164,7 @@ class Post(models.Model):
 class PostPhoto(models.Model):
     post = models.ForeignKey(Post)
     text = models.TextField(blank=True, null=True, verbose_name=_("Post body"))
+    comment = models.TextField(blank=True, null=True, verbose_name=_("Editor comment"))
     photo = models.ImageField(upload_to=imagePath, blank=True,
                               height_field=None, width_field=None,
                               max_length=100)

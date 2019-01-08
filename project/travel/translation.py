@@ -9,7 +9,7 @@ translator.register(Post, PostTranslationOptions)
 
 
 class PostPhotoTranslationOptions(TranslationOptions):
-        fields = ('text', )
+        fields = ('text', 'comment',)
 translator.register(PostPhoto, PostPhotoTranslationOptions)
 
 
