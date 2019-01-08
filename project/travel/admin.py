@@ -39,6 +39,14 @@ class PostPhotoAdmin(TranslationStackedInline):
     )
     readonly_fields = ('photo_tag', 'photoRight_tag')
 
+    def get_readonly_fields(self, request, obj=None):
+        if not request.user.is_superuser:
+            return ('photo', 'photoRight', 'photo_tag', 'photoRight_tag',
+                    'text_ru', 'text_en', 'panorama', 'panoramaRight',
+                    'source', 'sourceRight')
+        else:
+            return super(PostPhotoAdmin, self).get_readonly_fields(request, obj)
+
 
 class PostLinksAdmin(TranslationStackedInline):
     model = PostLinks
@@ -71,6 +79,18 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
         ('Meta', {'fields': ('metaDesc', )}),
     )
     readonly_fields = ('headImage_tag', 'titleImage_tag')
+
+    def get_readonly_fields(self, request, obj=None):
+        if not request.user.is_superuser:
+            return ('author', 'created', 'draft',
+                    'country', 'tags', 'headImage', 'titleImage',
+                    'mapDirections', 'sources_en', 'sources_ru',
+                    'title_en',
+                    'headImage_tag', 'titleImage_tag',
+                    'metaDesc_ru', 'metaDesc_en')
+        else:
+            return super(PostAdmin, self).get_readonly_fields(request, obj)
+
 
 admin.site.register(User, ProfileUserAdmin)
 admin.site.register(Tag, TagAdmin)
