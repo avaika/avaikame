@@ -6,7 +6,6 @@ from django.db import models
 class List(models.Model):
     name = models.CharField(max_length=150, verbose_name=_("Name"))
     slug = models.CharField(max_length=150, verbose_name=_("List url"))
-    parent = models.ForeignKey('self', blank=True, null=True)
     description = models.TextField(blank=True, null=True,
                                    verbose_name=_("List description"))
     published = models.BooleanField(default=False, blank=True,
@@ -15,6 +14,8 @@ class List(models.Model):
                                   height_field=None, width_field=None,
                                   max_length=100, verbose_name="Title image")
     fields = models.TextField(verbose_name=_("Fields"))
+    template = models.CharField(max_length=150, blank=True, null=True,
+                                verbose_name=_("List template"))
 
     class Meta:
         verbose_name = _("List")
