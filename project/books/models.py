@@ -37,6 +37,10 @@ class Book(models.Model):
     genre = models.ManyToManyField(Genre, blank=True, verbose_name=_("Genre"))
     recommend = models.BooleanField(default=False, blank=True, verbose_name=_("Do you recommend?"))
     read = models.BooleanField(default=False, blank=True, verbose_name=_("Did you read?"))
+    source = models.TextField(blank=True, null=True, verbose_name=_("Where I found the book from?"))
+    down_url = models.TextField(blank=True, null=True, verbose_name=_("Download url"))
+    country = models.CharField(max_length=250, blank=True, null=True, verbose_name=_("Country"))
+    active = models.BooleanField(default=False, blank=True, verbose_name=_("Is active?"))
 
     class Meta:
         verbose_name = _("Book")

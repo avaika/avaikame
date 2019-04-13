@@ -14,5 +14,5 @@ translator.register(Genre, GenreTranslationOptions)
 
 
 class BookTranslationOptions(TranslationOptions):
-        fields = ('title', 'wiki_url', 'about')
+        fields = ('title', 'wiki_url', 'about', 'down_url')
 translator.register(Book, BookTranslationOptions)
