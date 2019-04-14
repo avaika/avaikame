@@ -127,7 +127,7 @@ TAGS_INPUT_MAPPINGS = {
         'field': 'slug', 'create_missing': True,
     },
     'travel.Country': {
-        'field': 'value', 'create_missing': True,
+        'field': 'slug', 'create_missing': False,
     },
     'travel.City': {
         'field': 'value', 'create_missing': True,

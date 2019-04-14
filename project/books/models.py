@@ -2,6 +2,7 @@
 from django.utils.translation import ugettext_lazy as _
 # from django.core.urlresolvers import reverse
 from django.db import models
+from ..travel.models import Country
 
 
 class Author(models.Model):
@@ -39,7 +40,7 @@ class Book(models.Model):
     read = models.BooleanField(default=False, blank=True, verbose_name=_("Did you read?"))
     source = models.TextField(blank=True, null=True, verbose_name=_("Where I found the book from?"))
     down_url = models.TextField(blank=True, null=True, verbose_name=_("Download url"))
-    country = models.CharField(max_length=250, blank=True, null=True, verbose_name=_("Country"))
+    countries = models.ManyToManyField(Country, blank=True, verbose_name=_("Country"))
     active = models.BooleanField(default=False, blank=True, verbose_name=_("Is active?"))
 
     class Meta:

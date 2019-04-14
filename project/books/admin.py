@@ -17,8 +17,8 @@ class GenreAdmin(TranslationAdmin):
 
 
 class BookAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
-    list_display = ('id', 'title', 'wiki_url', 'read')
-    list_editable = ('title', 'wiki_url', 'read')
+    list_display = ('id', 'active', 'title', 'wiki_url', 'read')
+    list_editable = ('active', 'title', 'wiki_url', 'read')
     search_fields = ['id', 'title']
 
 admin.site.register(Author, AuthorAdmin)
