@@ -79,6 +79,10 @@ class Tag(models.Model):
     value = models.CharField(max_length=150, blank=True, null=True,
                              verbose_name=_("Title"))
     slug = models.CharField(max_length=150, verbose_name=_("Tag url"))
+    country = models.ForeignKey(Country, blank=True, null=True,
+                                verbose_name=_("Country"))
+    description = models.TextField(blank=True, null=True,
+                                   verbose_name=_("Sources"))
 
     class Meta:
         verbose_name = _("Tag")

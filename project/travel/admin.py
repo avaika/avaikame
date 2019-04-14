@@ -17,7 +17,7 @@ class ProfileUserAdmin(UserAdmin):
 
 
 class TagAdmin(TranslationAdmin):
-    list_display = ('id', 'value', 'slug')
+    list_display = ('id', 'value', 'slug', 'country')
     list_editable = ('value', 'slug')
     search_fields = ['id', 'value', 'slug']
 
