@@ -229,6 +229,7 @@ footer p {
 .carousel-inner { padding-bottom: 5px; }
 
 .panel-heading { padding: 3px 5px; }
+.panel-heading>p { padding: 3px 5px; margin: 0px; }
 
 @media screen and (min-width: 768px) {
     .brand {
@@ -249,7 +250,6 @@ footer p {
       float: left;
       margin-right: 20px;
     }
-    .panel-heading>p { padding: 3px 5px; }
 
     .address-bar {
       display: inherit;
