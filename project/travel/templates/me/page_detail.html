@@ -70,10 +70,10 @@
           <div class="panel-heading">
               {% for chunk in text_chunks %}
                 {% if chunk.text %}<p>{{ chunk.text|safe }}</p>{% endif %}
-                {% if chunk.photo or chunk.photoRight %}<p>
+                {% if chunk.photo or chunk.photoRight %}
                   {% if chunk.photo %}{% include "me/post_photo.html" with photo=chunk.photo panorama=chunk.panorama %}{% endif %}
                   {% if chunk.photoRight %}{% include "me/post_photo.html" with photo=chunk.photoRight panorama=chunk.panoramaRight %}{% endif %}
-                </p>{% endif %}
+                {% endif %}
               {% endfor %}
           {# Social #}
           <hr />
