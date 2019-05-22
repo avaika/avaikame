@@ -105,8 +105,6 @@ class Tag(models.Model):
 
 
 class Post(models.Model):
-    author = models.ForeignKey(User, related_name='post_author',
-                               verbose_name=_("Author"))
     created = models.DateTimeField(editable=True, blank=True,
                                    verbose_name=_("Creation time"))
     updated = models.DateTimeField(auto_now=True, blank=True,
