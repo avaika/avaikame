@@ -231,6 +231,7 @@ footer p {
 
 .panel-heading { padding: 3px 5px; }
 .panel-heading>p { padding: 3px 5px; margin: 0px; }
+.img-responsive { display: inline; }
 
 @media screen and (min-width: 768px) {
     .brand {
@@ -374,9 +375,6 @@ footer p {
         display: inline-block;
         height: 50px;
         padding: 0px;
-    }
-    .img-responsive {
-            display: inline;
     }
 }
 
