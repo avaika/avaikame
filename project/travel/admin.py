@@ -72,7 +72,7 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
         'fk': ['country'],
     }
     fieldsets = (
-        ('Technical', {'fields': ('author', 'created', 'draft', 'checked')}),
+        ('Technical', {'fields': ('created', 'draft', 'checked')}),
         ('Titles', {'fields': ('title', 'slug', 'country', 'tags', )}),
         ('Post', {'fields': ('headImage', 'headImage_tag', 'titleImage',
                              'titleImage_tag', 'mapDirections', 'sources', )}),
@@ -82,7 +82,7 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
 
     def get_readonly_fields(self, request, obj=None):
         if not request.user.is_superuser:
-            return ('author', 'created', 'draft',
+            return ('created', 'draft',
                     'country', 'tags', 'headImage', 'titleImage',
                     'mapDirections', 'sources_en', 'sources_ru',
                     'title_en',
