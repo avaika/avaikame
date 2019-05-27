@@ -102,6 +102,7 @@ footer p {
 .avaika-share .avaika-share-item.gp { background-position: -200px 0; }
 
 .flag-title { vertical-align: middle; }
+.flag-gray { filter: grayscale(100%); }
 
 .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4 { padding-left: 5px; padding-right: 5px; }
 .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8 { padding-left: 5px; padding-right: 5px; }
