@@ -10,6 +10,8 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   letter-spacing: 3px;
   font-weight: 400;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 p {
@@ -57,8 +59,8 @@ hr {
 .box {
   background: #fff;
   background: rgba(255,255,255,0.9);
-  margin-bottom: 10px;
-  padding: 20px 5px;
+  margin-bottom: 5px;
+  padding: 5px 5px;
 }
 
 .intro-text {
@@ -107,6 +109,7 @@ footer p {
 .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4 { padding-left: 5px; padding-right: 5px; }
 .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8 { padding-left: 5px; padding-right: 5px; }
 .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 { padding-left: 5px; padding-right: 5px; }
+.pagination { margin: 5px 0; }
 
 
 @font-face {
