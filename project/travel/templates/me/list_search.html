@@ -26,7 +26,6 @@
         {% include 'me/post_item.html' %}
           {% if forloop.counter|divisibleby:"3" %}
             <div class="clearfix"></div>
-            <h2></h2>
           {% endif %}
       {% endfor %}
       {% if is_paginated and page_obj %}
