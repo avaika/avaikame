@@ -239,6 +239,7 @@ footer p {
 .panel-heading { padding: 3px 5px; }
 .panel-heading>p { padding: 3px 5px; margin: 0px; }
 .img-responsive { display: inline; }
+.world-map { height: 475px; margin-bottom: 5px; }
 
 @media screen and (min-width: 768px) {
     .brand {
@@ -424,4 +425,5 @@ footer p {
       max-height: 345px;
       padding-bottom: 3px;
     }
+    .world-map { height: 275px; }
 }
