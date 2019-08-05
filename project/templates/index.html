@@ -3,7 +3,58 @@
 {% block addlink %}
   <link href="{% static "base/css/lightbox.css" %}" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="{% static "fluent_comments/css/ajaxcomments.css" %}" />
+  <link rel="stylesheet" href="{% static "base/world/jquery-jvectormap-2.0.3.css" %}" type="text/css" media="screen"/>
 {% endblock %}
+{% block postscript %}
+  <script src="{% static "base/world/jquery-jvectormap-2.0.3.min.js" %}"></script>
+  <script src="{% static "base/world/mill.js" %}"></script>
+  <script>
+    $(function(){
+      $('#world-map').vectorMap({
+        map: 'world_mill',
+        scaleColors: ['#C8EEFF', '#0071A4'],
+        normalizeFunction: 'polynomial',
+        hoverOpacity: 0.5,
+        hoverColor: false,
+        markerStyle: {
+          initial: {
+            fill: '#99ffbb',
+            stroke: '#383f47'
+          }
+        },
+        backgroundColor: '#515151',
+        series: {
+          regions: [{
+            scale: {
+              been: '#99ffbb',
+              want: '#ffeb99'
+            },
+            attribute: 'fill',
+            values: {
+              "AE" : "been", "AM" : "been", "AT" : "been", "AZ" : "been", "BA" : "been",
+              "BE" : "been", "BG" : "been", "BY" : "been", "CH" : "been", "CN" : "been",
+              "CZ" : "been", "DE" : "been", "DK" : "been", "ES" : "been", "FI" : "been",
+              "GB" : "been", "GE" : "been", "HR" : "been", "IE" : "been", "IN" : "been",
+              "JP" : "been", "KR" : "been", "KZ" : "been", "LT" : "been", "LU" : "been",
+              "LV" : "been", "ME" : "been", "NL" : "been", "PL" : "been", "RS" : "been",
+              "RU" : "been", "SI" : "been", "SK" : "been", "TR" : "been", "US" : "been",
+              "SE" : "been",
+              "FR" : "want"
+            },
+            legend: {
+              horizontal: true,
+              title: 'Countries'
+            }
+          }]
+        },
+        markers: [
+          {latLng: [47.14, 9.52], name: 'Liechtenstein'}
+        ]
+      });
+    });
+  </script>
+{% endblock %}
+
 {% block content %}
 <div class="container">
   {# Post #}
@@ -54,7 +105,7 @@
       {% for post in posts %}
         {% include 'me/post_item.html' %}
       {% endfor %}
-      <div class="clearfix"></div><br />
+      <div class="clearfix"></div>
       <div class="col-lg-12">
         {# Visited and posted #}
         {% uniq_flags as post_flags %}
@@ -91,6 +142,9 @@
       </div>
     </div>
   </div>
+
+  {# World map #}
+        <div id="world-map" class="row world-map"></div>
 
 </div>
 {% endblock %}
