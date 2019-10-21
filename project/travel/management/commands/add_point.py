@@ -33,10 +33,14 @@ class Command(BaseCommand):
             break
 
         lang_info = json.load(lang_info_raw)
-        for langs in lang_info['query']['pages'][page]['langlinks']:
-            if langs['lang'] == 'ru':
-                point_title_ru = langs['*']
-                point_url_ru = langs['url']
+        if 'langlinks' in lang_info['query']['pages'][page]:
+            for langs in lang_info['query']['pages'][page]['langlinks']:
+                if langs['lang'] == 'ru':
+                    point_title_ru = langs['*']
+                    point_url_ru = langs['url']
+        else:
+            point_title_ru = point_title_en + ' (en)'
+            point_url_ru = point_url_en
         point, _ = PostLinks.objects.get_or_create(post=post,
                                                    url_ru=point_url_ru,
                                                    url_en=point_url_en,
