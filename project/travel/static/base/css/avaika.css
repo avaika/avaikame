@@ -350,7 +350,7 @@ footer p {
     .comment-text{ font-size:110% }
     .controls>input { width:50% }
     .photos>img { margin: 3px; margin-top: 5px; }
-    .heading-image { max-height: 300px; margin-bottom: 5px; }
+    .heading-image { max-height: 300px; margin-bottom: 40px; }
 
     .flag-thumb {
         display: inline-block;
