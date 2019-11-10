@@ -19,7 +19,6 @@
   {% endthumbnail %}
 {% endblock %}
 {% block addlink %}
-<link href="{% static "base/css/lightbox.css" %}" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="{% static "fluent_comments/css/ajaxcomments.css" %}" />
 {% endblock %}
 {% block postscript %}
@@ -30,7 +29,7 @@
   _theframe.contentWindow.location.href = _theframe.src;
 </script>
 {% endif %}
-<script src="{% static "base/js/lightbox.min.js" %}"></script>
+<script src="{% static "base/js/fslightbox.js" %}"></script>
 <script type="text/javascript" src="{% static "fluent_comments/js/ajaxcomments.js" %}"></script>
 <script type="text/javascript" src="{% static "base/js/share_buttons.js" %}"></script>
 {% endblock %}
