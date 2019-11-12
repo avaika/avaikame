@@ -47,7 +47,7 @@
             {% endif %}
                 <tr class="{% if ball.ready == True %}success{% else %}warning{% endif %}">
                   <td>
-                     {{ ball.value }}
+                     {{ ball.title }}
                   </td>
                   <td>
                     <img src="{{ MEDIA_URL }}{{ ball.flag }}" alt="{{ ball.value }}" height="50px" />
