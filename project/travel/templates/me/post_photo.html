@@ -8,7 +8,7 @@
         <img alt="Photo {{ chunk.id }}" class="img-responsive img-full" src="{{ MEDIA_URL }}{{ photo_thumb }}">
         {% endthumbnail %}
       {% else %}
-        {% thumbnail photo "520" as photo_thumb %}
+        {% thumbnail photo "x333" as photo_thumb %}
         <img alt="Photo {{ chunk.id }}" class="img-responsive psto-photo" src="{{ MEDIA_URL }}{{ photo_thumb }}">
         {% endthumbnail %}
       {% endif %}
