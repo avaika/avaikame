@@ -116,7 +116,7 @@
             <img alt="flag {{ flag.country__title }}" title="{% if lang == "ru" %}{{ flag.country__title_ru }}{% else %}{{ flag.country__title_en }}{% endif %}" src="{{ im.url }}" />
           {% endthumbnail %}
         {% else %}
-          <i class="icon icon48-{{ post.country__slug }} flag-title"></i>
+          <i class="icon icon48-{{ flag.country__slug }} flag-title"></i>
         {% endif %}
         </a>
         {% endfor %}
