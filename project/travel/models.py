@@ -48,6 +48,7 @@ class Country(models.Model):
                              blank=True, null=True,
                              width_field=None, max_length=100,
                              verbose_name="Country flag")
+    flag_url = models.CharField(max_length=256, verbose_name=_("Flag URL"))
     ball = models.ImageField(upload_to='balls/', height_field=None,
                              blank=True, null=True,
                              width_field=None, max_length=100,
@@ -62,6 +63,8 @@ class Country(models.Model):
                                 verbose_name=_("Scheduled?"))
     ready = models.BooleanField(default=False, blank=True,
                                 verbose_name=_("Ready?"))
+    comment = models.TextField(blank=True, null=True,
+                               verbose_name=_("Comment ball work details"))
 
     @staticmethod
     def autocomplete_search_fields():

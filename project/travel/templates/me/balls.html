@@ -51,6 +51,7 @@
                   </td>
                   <td>
                     <img src="{{ MEDIA_URL }}{{ ball.flag }}" alt="{{ ball.value }}" height="50px" />
+                    {% if ball.flagUrl %}<a download="{{ ball.title_en }}.png" href="{{ ball.flagURL }}" title="ImageName">Скачать</a>{% endif %}
                   </td>
                   <td>
                     {% if ball.example %}<img src="{{ MEDIA_URL }}{{ ball.example }}" alt="{{ ball.value }}" height="100px" />{% endif %}
