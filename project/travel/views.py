@@ -110,6 +110,12 @@ class BallsListView(ListView):
     context_object_name = "balls"
     template_name = 'me/balls.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(BallsListView, self).get_context_data(**kwargs)
+        context['ready_balls'] = Country.objects.filter(ready=True)
+        return context
+
+
 balls = BallsListView.as_view()
 
 
