@@ -8,6 +8,7 @@
   <meta property="og:url" content="https://avaika.me{{ request.get_full_path }}" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="avaika.me" />
+  <meta property="article:tg_instant" />
   {% thumbnail post.titleImage "x400" as im %}
     <meta property="og:image:secure_url" content="https://avaika.me{{ im.url }}" />
   {% endthumbnail %}
@@ -35,6 +36,7 @@
 {% endblock %}
 {% block content %}
 <div class="container">
+  <article>
 
   {# Post #}
   <div class="row">
@@ -119,13 +121,16 @@
           {% if forloop.last %}</ul>{% endif %}
         {% endfor %}
         {% if post.mapDirections %}
+          <div class="map">
           <iframe src="{{ post.mapDirections|safe }}" id="map" frameborder="0" height="420px" scrolling="no" frameborder="0" style="border:0" allowfullscreen width="100%"></iframe>
+          </div>
         {% endif %}
       </div>
       <div class="clearfix"></div>
     </div>
   </div>
   {% endif %}
+  <article>
 
   {# Yeah, I know, that hardcode is bad thing #}
   {# But doesn't look I will enable comments back again #}
