@@ -39,24 +39,11 @@
   <article>
 
   {# Post #}
-  <div class="row">
+  <div class="row main-text">
     <div class="box">
       <div class="col-lg-12">
         <h2 class="intro-text text-center">
-          {{ post.title }} 
-
-            {% if post.country.ball %}
-              {% comment %}{#
-              {% thumbnail post.country.ball "x73" format="PNG" as im %}
-                <img alt="flag {{ post.country.title }}" title="{{ post.country.title }}" src="{{ im.url }}" />
-              {% endthumbnail %}
-              #}{% endcomment %}
-              <i class="icon icon48-{{ post.country.slug }} flag-title"></i>
-            {% else %}
-              <i class="icon icon48-{{ post.country.slug }} flag-title"></i>
-            {% endif %}
-
-          {{ post.created|date:"d.m.Y" }}
+          {{ post.title }} <i class="icon icon48-{{ post.country.slug }} flag-title"></i> {{ post.created|date:"d.m.Y" }}
         </h2>
         <hr>
       </div>
@@ -110,7 +97,7 @@
 
   {# Links #}
   {% if post.mapDirections or links|length > 0 %}
-  <div class="row">
+  <div class="row map">
     <div class="box">
       <div class="col-lg-12">
         <h2 class="intro-text text-center">{% trans "Points of interest and source links" %}</h2>
@@ -130,13 +117,12 @@
     </div>
   </div>
   {% endif %}
-  <article>
 
   {# Yeah, I know, that hardcode is bad thing #}
   {# But doesn't look I will enable comments back again #}
   {% if post.id < 889 %}
   {# Comments #}
-  <div class="row">
+  <div class="row comments">
     <div class="box">
       <div class="col-lg-12">
         <h2 class="intro-text text-center">{% trans "Comments" %}</h2>
@@ -148,7 +134,7 @@
   {% endif %}
 
   {# Random posts #}
-  <div class="row">
+  <div class="row random">
     <div class="box">
       <div class="col-lg-12">
         <h2 class="intro-text text-center">{% trans "Random posts" %}</h2>
@@ -161,5 +147,6 @@
     </div>
   </div>
 
+  <article>
 </div>
 {% endblock %}
