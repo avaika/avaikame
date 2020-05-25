@@ -39,8 +39,8 @@ def latest_posts():
 @register.assignment_tag()
 def day_posts():
     now = datetime.now()
-    day = now.day()
-    month = now.month()
+    day = now.day
+    month = now.month
     return Post.objects.filter(draft=False, created__month=month,
                                created__day=day)
 
