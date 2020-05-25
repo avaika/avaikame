@@ -2,6 +2,7 @@ from django.template import Library
 from django.core.urlresolvers import resolve, reverse
 from django.utils.translation import activate, get_language
 from ..models import Post
+from datetime import datetime
 
 register = Library()
 
@@ -33,6 +34,15 @@ def change_lang(context, lang=None, *args, **kwargs):
 @register.assignment_tag()
 def latest_posts():
     return Post.objects.filter(draft=False).order_by('-created')[:3]
+
+
+@register.assignment_tag()
+def day_posts():
+    now = datetime.now()
+    day = now.day()
+    month = now.month()
+    return Post.objects.filter(draft=False, created__month=month,
+                               created__day=day)
 
 
 @register.simple_tag()
