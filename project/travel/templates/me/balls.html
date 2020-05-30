@@ -10,10 +10,10 @@
       $(function(){
           $("#books").tablesorter(
               { theme : 'default', 
-                sortList : [[1,0],[5,1]],
+                sortList : [[6,0],[0,0]],
                 headerTemplate : '{content}{icon}',
                 widgets : ["columns"],
-                widgetOptions : { columns : [ "read", "author" ] }
+                widgetOptions : { columns : [ "ready", "country" ] }
                 });
           });
       });
@@ -36,12 +36,13 @@
               <table class="table table-bordered table-striped table-hover table-heading table-datatable" id="books">
                 <thead>
                   <tr>
-                    <th data-field="id">Страна</th>
-                    <th data-field="author">Флаг</th>
-                    <th data-field="year">Пример</th>
-                    <th data-field="genre">Комментарий</th>
-                    <th data-field="desc">Результат</th>
-                    <th data-field="read">Готово?</th>
+                    <th data-field="country">Страна</th>
+                    <th data-field="flag">Флаг</th>
+                    <th data-field="flag_down">Скачать флаг</th>
+                    <th data-field="example">Пример</th>
+                    <th data-field="comment">Комментарий</th>
+                    <th data-field="done">Результат</th>
+                    <th data-field="ready">Готово?</th>
                   </tr>
                 </thead>
             {% endif %}
@@ -51,14 +52,18 @@
                   </td>
                   <td>
                     <img src="{{ MEDIA_URL }}{{ ball.flag }}" alt="{{ ball.value }}" height="50px" />
-                    {% if ball.flagUrl %}<a download="{{ ball.title_en }}.png" href="{{ ball.flagURL }}" title="ImageName">Скачать</a>{% endif %}
                   </td>
                   <td>
-                    {% if ball.example %}<img src="{{ MEDIA_URL }}{{ ball.example }}" alt="{{ ball.value }}" height="100px" />{% endif %}
-                    <a download="{{ ball.value }}.jpg" href="{{ MEDIA_URL }}{{ ball.example }}" title="ImageName">Скачать</a>
+			  {% if ball.flag_url %}<a download="{{ ball.title_en }}.svg" href="{{ ball.flag_url }}?download" title="{{ ball.title_en }}">Скачать</a>{% endif %}
                   </td>
                   <td>
-                    {{ ball.description }}
+                    {% if ball.example %}
+		      <img src="{{ MEDIA_URL }}{{ ball.example }}" alt="{{ ball.value }}" height="100px" />
+		      <a download="{{ ball.title_en }}.jpg" href="{{ MEDIA_URL }}{{ ball.example }}" title="{{ ball.title_en }}">Скачать</a>
+		    {% endif %}
+                  </td>
+                  <td>
+		    {% if ball.comment %}{{ ball.comment }}{% endif %}
                   </td>
                   <td>
                     {% if ball.ball %}<img src="{{ MEDIA_URL }}{{ ball.ball }}" alt="{{ ball.value }}" height="100px" />{% endif %}
@@ -72,7 +77,7 @@
           </div>
               <div class="col-lg-12 text-center">
           {% for ball in ready_balls %}
-	  {% if ball.ball %}<img src="{{ MEDIA_URL }}{{ ball.ball }}" alt="{{ ball.value }}" height="100px" /> + <a href="{{ MEDIA_URL }}{{ ball.psdfile }}">PSD</a> {% endif %}
+	  {% if ball.ball %}<img src="{{ MEDIA_URL }}{{ ball.ball }}" alt="{{ ball.value }}" height="100px" /> {# + <a href="{{ MEDIA_URL }}{{ ball.psdfile }}">PSD</a> ||#} {% endif %}
 	  {% endfor %}
 
               </div>
