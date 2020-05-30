@@ -30,21 +30,34 @@
       <div class="col-lg-12 text-center">
         <div class="panel panel-default">
           <div class="panel-heading">
+              {% get_current_language as lang %}
+              {% blocktrans %}
+              Reading is amazing. It's always hard to find a good book, so do not hesitate to recommend me one :)<br />
+              I find it helpful to have a list like this available online, as my memory doesn't serve me well enough already.<br /><br />
+              PS. A few places I occasionally check for ideas on what to read:
+              {% endblocktrans %}
+              <ol>
+                <li><a href="https://ayearofreadingtheworld.com/thelist/">A year of reading the world</a></li>
+                <li><a href="https://www.reddit.com/r/suggestmeabook/">reddit: suggest me a book</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Lists_of_100_best_books">Lists: top 100</a></li>
+              </ol>
+          </div>
+          <div class="panel-heading">
           {% for book in books %}
             {% if forloop.first %}
               <table class="table table-bordered table-striped table-hover table-heading table-datatable" id="books">
                 <thead>
                   <tr>
+                    <th data-field="read">{% trans "Recommend?" %}</th>
                     <th data-field="id">{% trans "Book" %}</th>
                     <th data-field="author">{% trans "Author" %}</th>
                     <th data-field="year">{% trans "Year" %}</th>
                     <th data-field="desc">{% trans "Impression" %}</th>
-                    <th data-field="read">{% trans "Read?" %}</th>
-                    <th data-field="read">{% trans "Recommend?" %}</th>
                   </tr>
                 </thead>
             {% endif %}
                 <tr>
+                  <td>{% if book.read %}{{ book.recommend|yesno:"&#10003;, &times;"|safe }} {% endif %}</td>
                   <td>
                     {% if book.wiki_url %}<a href="{{ book.wiki_url }}">{% endif %}{{ book.title }}{% if book.wiki_url %}</a>{% endif %} 
                   </td>
@@ -56,8 +69,6 @@
                   </td>
                   <td>{{ book.year }}</td>
                   <td>{% if book.about %}{{ book.about|safe }}{% endif %}</td>
-                  <td>{{ book.read|yesno:"&#10003;, &times;"|safe }}</td>
-                  <td>{% if book.read %}{{ book.recommend|yesno:"&#10003;, &times;"|safe }} {% endif %}</td>
                 </tr>
               {% if forloop.last %}
               </table>
