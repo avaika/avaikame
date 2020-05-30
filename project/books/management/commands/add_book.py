@@ -25,7 +25,7 @@ class Command(BaseCommand):
         except:
             book_genre = 'default'
         try:
-            book_year = soup.find('span', attrs={'data-wikidata-property-id': 'P577'}).text
+            book_year = int(soup.find('span', attrs={'data-wikidata-property-id': 'P577'}).text)
         except:
             book_year = 0
         book_en = soup.find('li', attrs={'class': 'interlanguage-link interwiki-en'}).contents[0]
@@ -39,7 +39,7 @@ class Command(BaseCommand):
         result = BeautifulSoup(author_en)
         author_en_raw = result.find('li', attrs={'class': 'interlanguage-link interwiki-en'}).contents[0]
         author_name_en = author_en_raw['title'][:-13].encode('utf-8')
-        author_link_en = author_en_raw['href']
+        author_link_en = author_en_raw['href'].encode('utf-8')
         author, _ = Author.objects.get_or_create(value_ru=author_name_ru,
                                                  wiki_url_ru=author_link_ru,
                                                  value_en=author_name_en,
