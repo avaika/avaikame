@@ -59,8 +59,8 @@
               {% for chunk in text_chunks %}
                 {% if chunk.text %}<p>{{ chunk.text|safe }}</p>{% endif %}
                 {% if chunk.photo or chunk.photoRight %}
-                  {% if chunk.photo %}{% include "me/post_photo.html" with photo=chunk.photo panorama=chunk.panorama %}{% endif %}
-                  {% if chunk.photoRight %}{% include "me/post_photo.html" with photo=chunk.photoRight panorama=chunk.panoramaRight %}{% endif %}
+                  {% if chunk.photo %}{% include "me/post_photo.html" with photo=chunk.photo photo_source=chunk.source panorama=chunk.panorama %}{% endif %}
+                  {% if chunk.photoRight %}{% include "me/post_photo.html" with photo=chunk.photoRight photo_source=chunk.sourceRight panorama=chunk.panoramaRight %}{% endif %}
                 {% endif %}
               {% endfor %}
           {# Social #}

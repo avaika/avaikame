@@ -2,6 +2,7 @@
 {% if photo %}
   {% thumbnail photo "x1200" as photo_big %}
   <div class="psto-block">
+    <figure class="figure">
     <a class="photos" data-fslightbox href="{{ MEDIA_URL }}{{ photo_big }}">
       {% if panorama %}
         {% thumbnail photo "x400" as photo_thumb %}
@@ -13,6 +14,10 @@
         {% endthumbnail %}
       {% endif %}
     </a>
+    <figcaption class="text-right">
+      {% if photo_source %}(c) by {{ photo_source|safe }}{% else %}(cc) by Rushan{% endif %}
+    </figcaption>
+    </figure>
   </div>
   {% endthumbnail %}
 {% endif %}
