@@ -426,4 +426,5 @@ footer p {
       padding-bottom: 3px;
     }
     .world-map { height: 275px; }
+    .box { padding: 1px 1px; }
 }
