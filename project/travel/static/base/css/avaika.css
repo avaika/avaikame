@@ -42,8 +42,7 @@ hr {
 
 .img-full { min-width: 100%; }
 .psto-photo { max-height: 345px; }
-.psto-block { display: inline; }
-.psto-photo-credits { display:block; text-align:right; }
+.psto-block { display: inline-block; }
 
 .brand-name {
   font-weight: 700;
@@ -423,7 +422,7 @@ footer p {
     ul.pager > li.next { float: right; }
     .psto-photo {
       max-height: 345px;
-      padding-bottom: 3px;
+      padding-bottom: 2px;
     }
     .world-map { height: 275px; }
     .box { padding: 1px 1px; }
