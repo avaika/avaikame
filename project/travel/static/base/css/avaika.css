@@ -43,7 +43,10 @@ hr {
 .img-full { min-width: 100%; }
 .psto-photo { max-height: 345px; }
 .psto-block { display: inline-block; }
-.psto-block figcaption { margin-right: 3px; }
+.psto-block figcaption {
+  margin-right: 3px;
+  font-size: 75%;
+}
 
 .brand-name {
   font-weight: 700;
@@ -425,7 +428,10 @@ footer p {
       max-height: 345px;
       padding-bottom: 2px;
     }
-    .psto-block figcaption { margin-right: 0px; }
+    .psto-block figcaption {
+      margin-right: 0px;
+      font-size: 75%;
+    }
     .world-map { height: 275px; }
     .box { padding: 1px 1px; }
 }
