@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-31 01:26+0300\n"
+"POT-Creation-Date: 2020-08-07 02:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru\n"
@@ -323,7 +323,7 @@ msgstr ""
 msgid "Toggle navigation"
 msgstr "Переключить навигацию"
 
-#: base.html:47 index.html:81 lists/list.html:3
+#: base.html:47 index.html:80 lists/list.html:3
 msgid "Lists"
 msgstr "Списки"
 
@@ -339,7 +339,7 @@ msgstr "Выход"
 msgid "Blog source on <a href='//github.com/avaika/avaikame'>github</a>."
 msgstr "Исходники на <a href='//github.com/avaika/avaikame'>гитхабе</a>."
 
-#: books/list.html:3 index.html:89 lists/item.html:3
+#: books/list.html:3 index.html:88 lists/item.html:3
 msgid "Books"
 msgstr "Книги"
 
@@ -359,10 +359,10 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"              Чтение прекрсно. Но найти хорошую книку часто бывает непросто,"
+"              Чтение прекрасно. Но найти хорошую книuу часто бывает непросто,"
 "так что не бойся посоветовать что-нибудь интересное :)<br />\n"
-"              Память у меня никакая, поэтому список прочитанного в онлайне"
-" очень мне помогает.<br /><br />\n"
+"              Память у меня никакая, поэтому список прочитанного в онлайне "
+"очень мне помогает.<br /><br />\n"
 "              PS. Несколько мест в интернетах, где всегда можно найти пару "
 "книг на почитать:\n"
 "              "
@@ -487,69 +487,81 @@ msgid "Avaika home"
 msgstr "Главная авайки"
 
 #: index.html:67
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "                Hi, I'm Rush (read as Roosh) which is a short version for "
+#| "Rushan.<br />\n"
+#| "                As you're here I bet we already know each other and you "
+#| "have an idea what you might find here.<br />\n"
+#| "                Otherwise welcome and enjoy. It's just yet another home "
+#| "page with some travel notes and some boring stuff in the blog I'd like to "
+#| "share.<br /> <br />\n"
+#| "                To get in touch with me feel free to email to site ( at ) "
+#| "avaika.me. <br /> <br />\n"
+#| "                And have a nice day (:\n"
+#| "            "
 msgid ""
 "\n"
-"                Hi, I'm Rush (read as Roosh) which is a short version for "
+"                Hey, I'm Rush (read as Roosh) which is a short version for "
 "Rushan.<br />\n"
-"                As you're here I bet we already know each other and you have "
-"an idea what you might find here.<br />\n"
-"                Otherwise welcome and enjoy. It's just yet another home page "
-"with some travel notes and some boring stuff in the blog I'd like to share."
-"<br /> <br />\n"
-"                To get in touch with me feel free to email to site ( at ) "
-"avaika.me. <br /> <br />\n"
-"                And have a nice day (:\n"
+"                I do enjoy travel and I thought it would be nice to share "
+"some photos with friends. I do my best uploading stuff here as quick as "
+"possible, but sometimes I delay for a month or so.<br /><br />\n"
+"                For more up-to-date state feel free to follow <a href="
+"\"https://t.me/avaika\">my telegram channel</a><br /><br />\n"
+"                PS. If you want to contact me just email to site (at) avaika "
+"(dot) me.\n"
 "            "
 msgstr ""
 "\n"
 "               Привет, я Руш<br />\n"
-"               Раз ты тут, скорее всего мы знакомы и ты представляешь что к "
-"чему.<br />\n"
-"               Если нет - не расстраивайся. Это самая обычная домашняя "
-"страничка с парой записок из моих путешествий и скучным блогом про всё на "
-"свете.<br /><br />\n"
-"               Если ты хочешь со мной связаться, попробуй написать на site "
-"( at ) avaika.me. <br /> <br />\n"
-"               Хорошего дня :)\n"
+"               Мне показалось хорошей идеей поделиться фотографиями из "
+"своих путешествий. Стараюсь их сюда выкладывать максимально оперативно,"
+" но могу иногда отставать на месяц другой.<br /><br />\n"
+"               Самая свежая информация всегда есть в <a href="
+"\"https://t.me/avaika\">моём канале в телеге</a><br /><br />\n"
+"               PS. Если ты хочешь со мной связаться, попробуй написать на site "
+"(at) avaika (точка) me. <br /> <br />\n"
 "            "
 
-#: index.html:85
+#: index.html:84
 msgid "Travels"
 msgstr "Поездки"
 
-#: index.html:101
+#: index.html:100
 msgid "Latest posts"
 msgstr "Последние записи"
 
-#: index.html:125
+#: index.html:124
 msgid "Lithuania"
 msgstr "Литва"
 
-#: index.html:128
+#: index.html:127
 msgid "Finland"
 msgstr "Финляндия"
 
-#: index.html:131
+#: index.html:130
 msgid "Sweden"
 msgstr "Швеция"
 
-#: index.html:134
+#: index.html:133
 msgid "Latvia"
 msgstr "Латвия"
 
-#: index.html:137
+#: index.html:136
 msgid "Belarus"
 msgstr "Беларусь"
 
-#: index.html:140
+#: index.html:139
 msgid "United Arab Emirates"
 msgstr "Арабские Эмираты"
 
-#: index.html:153
+#: index.html:152
 msgid "This day years ago"
 msgstr "В этот день в прошлые годы"
 
-#: index.html:161
+#: index.html:160
 msgid ""
 "Oops, no trips for this days yet, huh? I probably should keep traveling :)"
 msgstr ""
