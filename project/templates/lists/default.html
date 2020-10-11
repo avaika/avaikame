@@ -1,6 +1,6 @@
 {% extends 'base.html' %}{% load static i18n thumbnail %}
 
-{% block title %}{% trans "Books" %}{% endblock %}
+{% block title %}{% trans "Lists" %}: {{ current_list.name }}{% endblock %}
 {% block postscript %}
   <link rel="stylesheet" type="text/css" href="{% static "base/css/theme.default.css" %}" />
   <script type="text/javascript" src="{% static "base/js/jquery.tablesorter.min.js" %}"></script>
@@ -8,7 +8,7 @@
   <script>{# function to sort table contents #}
   $(document).ready(function(){
       $(function(){
-          $("#books").tablesorter(
+          $("#items").tablesorter(
               { theme : 'default', 
                 headerTemplate : '{content}{icon}',
                 widgets : ["columns"],
@@ -24,44 +24,41 @@
   <div class="row">
     <div class="box">
       <div class="col-lg-12">
-        <h2 class="intro-text text-center">{% trans "Books list" %}</h2>
+          <h2 class="intro-text text-center">{% trans "Lists" %}: {{ current_list.name }}</h2>
         <hr>
       </div>
       <div class="col-lg-12 text-center">
         <div class="panel panel-default">
           <div class="panel-heading">
-          {% for book in books %}
+          {% for item in items %}
             {% if forloop.first %}
-              <table class="table table-bordered table-striped table-hover table-heading table-datatable" id="books">
+              <table class="table table-bordered table-striped table-hover table-heading table-datatable" id="items">
                 <thead>
                   <tr>
-                    <th data-field="id">{% trans "Book" %}</th>
-                    <th data-field="author">{% trans "Author" %}</th>
-                    <th data-field="year">{% trans "Year" %}</th>
-                    <th data-field="genre">{% trans "Genre" %}</th>
-                    <th data-field="desc">{% trans "Impression" %}</th>
-                    <th data-field="read">{% trans "Read?" %}</th>
-                    <th data-field="read">{% trans "Recommend?" %}</th>
+                    {% if item.item %}<th data-field="id">{% trans "What?" %}</th>{% endif %}
+                    {% if item.link %}
+                      <th data-field="link">{% trans "Where?" %}</th>
+                    {% elif item.value %}
+                      <th data-field="link">{% trans "Item" %}</th>
+                    {% endif %}
+                    {% if item.comment %}<th data-field="comment">{% trans "Comment" %}</th>{% endif %}
+                    {% if item.itemImage %}<th data-field="image">{% trans "Image" %}</th>{% endif %}
                   </tr>
                 </thead>
             {% endif %}
                 <tr>
-                  <td>
-                    {% if book.wiki_url %}<a href="{{ book.wiki_url }}">{% endif %}{{ book.title }}{% if book.wiki_url %}</a>{% endif %} 
-                  </td>
-                  <td>
-                  {% for author in  book.author.all %}
-                    {% if author.wiki_url %}<a href="{{ author.wiki_url }}">{% endif %}{{ author }}{% if author.wiki_url %}</a>{% endif %}
-                    {% if not forloop.last %},{% endif %}
-                  {% endfor %}
-                  </td>
-                  <td>{{ book.year }}</td>
-                  <td>
-                    {% for genre in  book.genre.all %}{{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}
-                  </td>
-                  <td>{% if book.about %}{{ book.about|safe }}{% endif %}</td>
-                  <td>{{ book.read|yesno:"&#10003;, &times;"|safe }}</td>
-                  <td>{% if book.read %}{{ book.recommend|yesno:"&#10003;, &times;"|safe }} {% endif %}</td>
+                    {% if item.item %}<td>{{ item.item }}</td>{% endif %}
+                    {% if item.link %}
+                        <td><a href="{{ item.link }}">{{item.value }}</a></td>
+                    {% elif item.value %}
+                      <td>{{ item.value }}</td>
+                    {% endif %}
+                    {% if item.comment %}<td>{{ item.comment }}</td>{% endif %}
+                    {% if item.itemImage %}<td>
+                    {% thumbnail item.itemImage "x400" as photo_thumb %}
+                    <img alt="Photo {{ chunk.id }}" class="img-responsive img-full" src="{{ MEDIA_URL }}{{ photo_thumb }}">
+                    {% endthumbnail %}
+                    </td>{% endif %}
                 </tr>
               {% if forloop.last %}
               </table>

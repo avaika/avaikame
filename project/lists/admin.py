@@ -7,7 +7,7 @@ from modeltranslation.admin import TranslationAdmin
 class ListAdmin(TranslationAdmin):
     list_display = ('id', 'name', 'slug')
     list_editable = ('name', 'slug')
-    search_fields = ['id', 'name', 'slug', 'description', 'fields']
+    search_fields = ['id', 'name', 'slug', 'description']
 
 
 class EntryAdmin(TranslationAdmin):

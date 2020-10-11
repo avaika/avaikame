@@ -4,7 +4,7 @@ from .models import List, Entry
 
 
 class ListTranslationOptions(TranslationOptions):
-        fields = ('name', 'description', 'fields')
+        fields = ('name', 'description')
 
 
 translator.register(List, ListTranslationOptions)
