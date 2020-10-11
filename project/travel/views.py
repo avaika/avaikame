@@ -5,14 +5,11 @@ from models import Post, PostPhoto, Tag, Country, PostLinks
 
 
 class CategoryListView(ListView):
+    queryset = Post.objects.filter(draft=False)
     model = Post
     paginate_by = 10
     context_object_name = "posts"
     template_name = "me/list.html"
-
-    def get_queryset(self):
-        qs = super(CategoryListView, self).get_queryset()
-        return qs.filter(draft=False)
 
 category = CategoryListView.as_view()
 
