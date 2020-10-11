@@ -17,33 +17,27 @@
         <div class="panel panel-default">
           <div class="panel-heading">
           {% get_current_language as lang %}
-          <p>{% blocktrans %}Value judged, but awesome lists of things I liked (or didn't like), was impresses by or just decided to take a not to find out later what the thing really is.{% endblocktrans %}</p>
-          <hr />
-              <div class="list-group">
-                <a href="{% url 'books' %}" class="list-group-item list-group-item-action flex-column align-items-start col-lg-6">
+            <p>{% blocktrans %}Value judged, but awesome lists of things I liked (or didn't like), was impresses by or just decided to take a not to find out later what the thing really is.{% endblocktrans %}</p>
+            <hr />
+            <div class="list-group">
+              {# moved temporary until books app won't be merged to lists #}
+              <a href="{% url 'books' %}" class="list-group-item list-group-item-action flex-column align-items-start col-lg-6">
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1">{% trans "books" %}</h5>
                 </div>
                 <p class="mb-1">Книги, которые я прочитал или только собираюсь</p>
               </a>
-          {# moved temporary until books app won't be merged to lists #}
-          {% for list in lists %}
-            {% if forloop.first %}
-            {% endif %}
-          {# moved temporary until books app won't be merged to lists #}
+              {# moved temporary until books app won't be merged to lists #}
+              {% for list in lists %}
               <a href="{{ list.slug }}" class="list-group-item list-group-item-action flex-column align-items-start col-lg-6">
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1">{{ list.name }}</h5>
                 </div>
                 <p class="mb-1">{{ list.description }}</p>
               </a>
-              </div>
-              <div class="clearfix"></div>
-          {# moved temporary until books app won't be merged to lists #}
-            {% if forloop.last %}
-          {# moved temporary until books app won't be merged to lists #}
-            {% endif %}
-          {% endfor %}
+              {% endfor %}
+            </div>
+	    <div class="clearfix"></div>
           </div>
           {% if is_paginated and page_obj %}
             {% if page_obj.has_previous or page_obj.has_next %}

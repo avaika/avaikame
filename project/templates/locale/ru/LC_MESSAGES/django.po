@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-07 02:52+0300\n"
+"POT-Creation-Date: 2020-10-12 00:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru\n"
@@ -323,7 +323,8 @@ msgstr ""
 msgid "Toggle navigation"
 msgstr "Переключить навигацию"
 
-#: base.html:47 index.html:80 lists/list.html:3
+#: base.html:47 index.html:80 lists/default.html:3 lists/default.html:27
+#: lists/list.html:3
 msgid "Lists"
 msgstr "Списки"
 
@@ -339,11 +340,11 @@ msgstr "Выход"
 msgid "Blog source on <a href='//github.com/avaika/avaikame'>github</a>."
 msgstr "Исходники на <a href='//github.com/avaika/avaikame'>гитхабе</a>."
 
-#: books/list.html:3 index.html:88 lists/item.html:3
+#: books/list.html:3 index.html:88
 msgid "Books"
 msgstr "Книги"
 
-#: books/list.html:27 lists/item.html:27
+#: books/list.html:27
 msgid "Books list"
 msgstr "Список книг"
 
@@ -367,31 +368,31 @@ msgstr ""
 "книг на почитать:\n"
 "              "
 
-#: books/list.html:51 lists/item.html:44
+#: books/list.html:51
 msgid "Recommend?"
 msgstr "Советую?"
 
-#: books/list.html:52 lists/item.html:38
+#: books/list.html:52
 msgid "Book"
 msgstr "Книга"
 
-#: books/list.html:53 lists/item.html:39
+#: books/list.html:53
 msgid "Author"
 msgstr "Автор"
 
-#: books/list.html:54 lists/item.html:40
+#: books/list.html:54
 msgid "Year"
 msgstr "Год"
 
-#: books/list.html:55 lists/item.html:42
+#: books/list.html:55
 msgid "Impression"
 msgstr "Впечатление"
 
-#: books/list.html:83 lists/item.html:76 lists/list.html:53
+#: books/list.html:83 lists/default.html:73 lists/list.html:47
 msgid "Back"
 msgstr "Назад"
 
-#: books/list.html:89 lists/item.html:82 lists/list.html:59
+#: books/list.html:89 lists/default.html:79 lists/list.html:53
 msgid "Forward"
 msgstr "Вперёд"
 
@@ -553,13 +554,25 @@ msgid ""
 msgstr ""
 "Ой, похоже в этот день не было поездок. Мне нужно больше путешествовать :)"
 
-#: lists/item.html:41
-msgid "Genre"
-msgstr "Жанр"
+#: lists/default.html:38
+msgid "What?"
+msgstr "Что?"
 
-#: lists/item.html:43
-msgid "Read?"
-msgstr "Прочитано?"
+#: lists/default.html:40
+msgid "Where?"
+msgstr "Где?"
+
+#: lists/default.html:42
+msgid "Item"
+msgstr "Запись"
+
+#: lists/default.html:44
+msgid "Comment"
+msgstr "Комментарий"
+
+#: lists/default.html:45
+msgid "Image"
+msgstr "Картинка"
 
 #: lists/list.html:13
 msgid "Awesome lists"
@@ -575,6 +588,6 @@ msgstr ""
 "понравилось), впечатлило или просто захотелось сохранить, чтобы потом "
 "неожиданно вспомнить."
 
-#: lists/list.html:25
+#: lists/list.html:26
 msgid "books"
 msgstr "книги"
