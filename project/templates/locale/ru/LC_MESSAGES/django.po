@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-12 00:52+0300\n"
+"POT-Creation-Date: 2020-10-12 01:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru\n"
@@ -575,19 +575,21 @@ msgid "Image"
 msgstr "Картинка"
 
 #: lists/list.html:13
-msgid "Awesome lists"
-msgstr "Крутые списки"
+msgid "Awesome lists by Rushan"
+msgstr "Замечательные списки"
 
 #: lists/list.html:20
 msgid ""
-"Value judged, but awesome lists of things I liked (or didn't like), was "
-"impresses by or just decided to take a not to find out later what the thing "
-"really is."
+"Awesome lists of things I like or don't like, find helpful or simply put "
+"here to rediscover in a while."
 msgstr ""
-"Абсолютно субъективные, но крутые списки того, что мне понравилось (или не "
-"понравилось), впечатлило или просто захотелось сохранить, чтобы потом "
-"неожиданно вспомнить."
+"Здесь списки вещей, которые мне нравятся (или не очень), что показалось "
+"полезным или просто записал, чтобы когда-нибудь снова вспомнить"
 
 #: lists/list.html:26
 msgid "books"
 msgstr "книги"
+
+#: lists/list.html:28
+msgid "which I've read"
+msgstr "которые я прочитал"
