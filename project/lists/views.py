@@ -3,12 +3,11 @@ from models import List, Entry
 
 
 class AllListsView(ListView):
-    List.objects.filter(published=True).order_by('-created')
+    queryset = List.objects.filter(published=True)
     model = List
     paginate_by = 100
     context_object_name = "lists"
     template_name = 'lists/list.html'
-
 
 lists_all = AllListsView.as_view()
 
@@ -23,7 +22,7 @@ class ListDetailView(ListView):
         qs = super(ListDetailView, self).get_queryset()
         return qs.filter(listItem__slug=self.kwargs['list_name'],
                 listItem__published=True,
-                published=True)
+                published=True).order_by('-created')
 
     def get_context_data(self, **kwargs):
         context = super(ListDetailView, self).get_context_data(**kwargs)

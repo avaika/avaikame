@@ -13,6 +13,7 @@ class ListAdmin(TranslationAdmin):
 class EntryAdmin(TranslationAdmin):
     list_display = ('id', 'listItem', 'item', 'created', 'published')
     search_fields = ['id', 'item', 'value']
+    list_filter = ('listItem', 'published')
 
 
 admin.site.register(List, ListAdmin)
