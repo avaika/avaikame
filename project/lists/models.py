@@ -38,6 +38,7 @@ class Entry(models.Model):
     itemImage = models.ImageField(upload_to="lists/", blank=True, null=True,
                                   height_field=None, width_field=None,
                                   max_length=100, verbose_name="Title image")
+    ImageSource = models.TextField(blank=True, null=True, verbose_name=_("Image source"))
 
     class Meta:
         verbose_name = _("Entry")

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-12 01:03+0300\n"
+"POT-Creation-Date: 2020-11-01 03:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru\n"
@@ -388,11 +388,11 @@ msgstr "Год"
 msgid "Impression"
 msgstr "Впечатление"
 
-#: books/list.html:83 lists/default.html:73 lists/list.html:47
+#: books/list.html:83 lists/default.html:78 lists/list.html:47
 msgid "Back"
 msgstr "Назад"
 
-#: books/list.html:89 lists/default.html:79 lists/list.html:53
+#: books/list.html:89 lists/default.html:84 lists/list.html:53
 msgid "Forward"
 msgstr "Вперёд"
 
@@ -552,23 +552,19 @@ msgstr "В этот день в прошлые годы"
 msgid ""
 "Oops, no trips for this days yet, huh? I probably should keep traveling :)"
 msgstr ""
-"Ой, похоже в этот день не было поездок. Мне нужно больше путешествовать :)"
+"Ой, похоже в этот день я ещё нигде не был. Мне нужно больше путешествовать :)"
 
 #: lists/default.html:38
 msgid "What?"
 msgstr "Что?"
 
 #: lists/default.html:40
-msgid "Where?"
-msgstr "Где?"
+msgid "Source"
+msgstr "Источник"
 
 #: lists/default.html:42
 msgid "Item"
 msgstr "Запись"
-
-#: lists/default.html:44
-msgid "Comment"
-msgstr "Комментарий"
 
 #: lists/default.html:45
 msgid "Image"

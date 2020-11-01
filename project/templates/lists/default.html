@@ -37,12 +37,12 @@
                   <tr>
                     {% if item.item %}<th data-field="id">{% trans "What?" %}</th>{% endif %}
                     {% if item.link %}
-                      <th data-field="link">{% trans "Where?" %}</th>
+                      <th data-field="link">{% trans "Source" %}</th>
                     {% elif item.value %}
                       <th data-field="link">{% trans "Item" %}</th>
                     {% endif %}
-                    {% if item.comment %}<th data-field="comment">{% trans "Comment" %}</th>{% endif %}
-                    {% if item.itemImage %}<th data-field="image">{% trans "Image" %}</th>{% endif %}
+                    {% if item.comment %}<th data-field="comment">-</th>{% endif %}
+                    {% if item.itemImage %}<th style="width:25%; max-width: 25%;" data-field="image">{% trans "Image" %}</th>{% endif %}
                   </tr>
                 </thead>
             {% endif %}
@@ -56,7 +56,12 @@
                     {% if item.comment %}<td>{{ item.comment }}</td>{% endif %}
                     {% if item.itemImage %}<td>
                     {% thumbnail item.itemImage "x400" as photo_thumb %}
-                    <img alt="Photo {{ chunk.id }}" class="img-responsive img-full" src="{{ MEDIA_URL }}{{ photo_thumb }}">
+                    <figure class="figure">
+                      <img alt="Photo {{ chunk.id }}" class="img-responsive img-full" src="{{ MEDIA_URL }}{{ photo_thumb }}">
+                      <figcaption class="text-right">
+                        {% if item.ImageSource %}(c) by {{ item.ImageSource|safe }}{% else %}(cc) by Rushan{% endif %}
+                      </figcaption>
+                    </figure>
                     {% endthumbnail %}
                     </td>{% endif %}
                 </tr>
