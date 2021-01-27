@@ -30,6 +30,7 @@ class Genre(models.Model):
 
 class Book(models.Model):
     created = models.DateTimeField(auto_now=True, verbose_name=_("Creation time"))
+    finished = models.DateTimeField(null=True, verbose_name=_("Read time"))
     title = models.CharField(max_length=250, null=True, verbose_name=_("Title"))
     year = models.PositiveIntegerField(verbose_name=_("Year"))
     wiki_url = models.TextField(blank=True, null=True, verbose_name=_("Wikipedia url"))
