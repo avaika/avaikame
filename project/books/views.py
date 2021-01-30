@@ -10,6 +10,6 @@ class BookListView(ListView):
 
     def get_queryset(self):
         qs = super(BookListView, self).get_queryset()
-        return qs.filter(active=True).order_by('-created')
+        return qs.filter(active=True).order_by('-finished')
 
 book_main = BookListView.as_view()
