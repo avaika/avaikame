@@ -74,7 +74,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                  <p>Copyleft {% now "Y" %}. {% trans "Blog source on <a href='//github.com/avaika/avaikame'>github</a>." %}</p>
+                  <p>Copyleft {% now "Y" %}. {% trans "Blog source on <a href='https://github.com/avaika/avaikame'>github</a>." %}</p>
                 </div>
             </div>
         </div>
@@ -85,12 +85,6 @@
     <script src="{% static "base/js/jquery-1.12.3.min.js" %}"></script>
     <script src="{% static "base/js/bootstrap.min.js" %}"></script>
     {% block postscript %}{% endblock %}
-    {% if not debug %}
-    <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101272041);</script>
-    <script async src="//static.getclicky.com/js"></script>
-    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101272041ns.gif" /></p></noscript>
-    {% endif %}
-
 
 </body>
 </html>{% endspaceless %}
