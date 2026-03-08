@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from models import Book, Author, Genre
+from .models import Book, Author, Genre
 from tags_input import admin as tags_input_admin
 from modeltranslation.admin import TranslationAdmin
 

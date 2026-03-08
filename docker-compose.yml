@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: avaika
+      POSTGRES_USER: avaika
+      POSTGRES_PASSWORD: avaika
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    volumes:
+      - .:/app/avaika.me
+      - media_data:/app/avaika.me/project/media
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_SETTINGS_MODULE: project.settings
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
+  media_data:

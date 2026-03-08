@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.utils.translation import ugettext_lazy as _
-# from django.core.urlresolvers import reverse
+from django.utils.translation import gettext_lazy as _
 from django.db import models
 from ..travel.models import Country
 
@@ -13,7 +12,7 @@ class Author(models.Model):
         verbose_name = _("Author")
         verbose_name_plural = _("Authors")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.value
 
 
@@ -24,7 +23,7 @@ class Genre(models.Model):
         verbose_name = _("Genre")
         verbose_name_plural = _("Genres")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.value
 
 
@@ -49,5 +48,5 @@ class Book(models.Model):
         verbose_name_plural = _("Books")
         ordering = ('-finished',)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title

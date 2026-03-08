@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import RedirectView, TemplateView, DetailView, ListView
-from models import Post, PostPhoto, Tag, Country, PostLinks
+from .models import Post, PostPhoto, Tag, Country, PostLinks
 
 
 class CategoryListView(ListView):
@@ -116,7 +116,7 @@ class BallsListView(ListView):
 balls = BallsListView.as_view()
 
 
-def error404(request, template='404.html'):
+def error404(request, exception, template='404.html'):
     return render(request, template, status=404)
 
 

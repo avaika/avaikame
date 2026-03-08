@@ -24,7 +24,6 @@
       <h5>
         {% if comment.name %}{{ comment.name }}{% else %}{% trans "Anonymous" %}{% endif %}
         ({{ comment.submit_date|date:"d/m/Y h:i" }})
-        {% if USE_THREADEDCOMMENTS and not preview and user.is_authenticated %}<a href="#c{{ comment.id }}" data-comment-id="{{ comment.id }}" class="comment-reply-link">{% trans "ответить" %}</a>{% endif %}
       </h5>
       {% if comment.user.is_superuser %}
         {{ comment.comment|safe|linebreaksbr }}

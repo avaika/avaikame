@@ -281,7 +281,7 @@ def copy_field(apps, schema_editor):
                 country.title_ru = c[1]
                 country.save()
         if not country.title_ru:
-            print country.title
+            print(country.title)
 
 
 def copy_reversed(apps, schema_editor):

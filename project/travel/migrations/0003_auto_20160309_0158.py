@@ -52,7 +52,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='post',
             name='country',
-            field=models.ForeignKey(default=1, verbose_name='Country', to='travel.Country'),
+            field=models.ForeignKey(default=1, verbose_name='Country', to='travel.Country', on_delete=models.CASCADE),
             preserve_default=False,
         ),
         # migrations.RunPython(load_fixture),

@@ -1,4 +1,4 @@
-{% load comments i18n crispy_forms_tags fluent_comments_tags %}
+{% load comments i18n crispy_forms_tags %}
 
 {% if not user.is_authenticated %}
   <div class="text-center">
@@ -6,13 +6,10 @@
 
     <div class="login_btn">
       <a href="{% url 'account_login' %}"><span class="icon-paw" title="{% trans "Login via avaika" %}"></span></a>
-      <a href="{% url 'social:begin' "facebook" %}"><span class="icon-facebook" title="{% trans "Login via facebook" %}"></span></a>
-      <a href="{% url 'social:begin' "twitter" %}"><span class="icon-twitter" title="{% trans "Login via twitter" %}"></span></a>
     </div>
   </div>
 {% else %}
-    <form action="{% comment_form_target %}" method="post" class="js-comments-form comments-form form-horizontal"
-          data-ajax-action="{% url 'comments-post-comment-ajax' %}">{% csrf_token %}
+    <form action="{% comment_form_target %}" method="post" class="comments-form form-horizontal">{% csrf_token %}
       {% if next %}<div><input type="hidden" name="next" value="{{ next }}" /></div>{% endif %}
       <div class="comment_wrapper">
         {{ form|crispy }}
@@ -21,6 +18,5 @@
           <input type="submit" name="preview" class="btn" value="{% trans "Preview" %}" />
         </div>
       </div>
-      {% ajax_comment_tags for object %}
     </form>
 {% endif %}

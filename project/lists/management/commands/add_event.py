@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 from project.lists.models import List, Entry
-try:
-        from urllib.request import Request, urlopen  # Python 3
-except:
-        from urllib2 import Request, urlopen  # Python 2
+from urllib.request import Request, urlopen
 
 
 class Command(BaseCommand):
@@ -16,14 +13,14 @@ class Command(BaseCommand):
         page_en_url = options['url'][0]
         page_en = Request(page_en_url)
         optionsPage = urlopen(page_en)
-        soup = BeautifulSoup(optionsPage)
-        event_name_en = soup.find('title').contents[0][:-12].encode('utf-8')
+        soup = BeautifulSoup(optionsPage, 'html.parser')
+        event_name_en = soup.find('title').contents[0][:-12]
         source_ru = 'wikipedia'
         source_en = 'wikipedia'
         try:
           page_ru = soup.find('li', attrs={'class': 'interlanguage-link interwiki-ru'}).contents[0]
           page_ru_url = page_ru['href']
-          event_name_ru = page_ru['title'][:-13].encode('utf-8')
+          event_name_ru = page_ru['title'][:-13]
         except:
           page_ru_url = page_en_url
           source_ru = 'wikipedia (en)'

@@ -46,25 +46,24 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    #  'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # Developers options
-    #  'debug_toolbar.middleware.DebugToolbarMiddleware',
-)
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
 
 ROOT_URLCONF = 'project.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'project.wsgi.application'
-FLUENT_COMMENTS_EXCLUDE_FIELDS = ('title', 'name', 'email', 'url')
-COMMENTS_APP = 'fluent_comments'
+COMMENTS_APP = 'threadedcomments'
 
 TEMPLATES = [
     {
@@ -74,6 +73,7 @@ TEMPLATES = [
             'context_processors': [
                 # Already defined
                 "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
                 "django.template.context_processors.request",
                 "django.template.context_processors.media",
                 "project.travel.context_processors.site_processor",
@@ -88,17 +88,16 @@ TEMPLATES = [
     },
 ]
 
-INSTALLED_APPS = (
-    'timezones',
+INSTALLED_APPS = [
     'sorl.thumbnail',
     'tags_input',
     'crispy_forms',
+    'crispy_bootstrap3',
     'modeltranslation',
     'django.contrib.auth',
     'django.contrib.sessions',
-    # 'django.contrib.messages',
+    'django.contrib.messages',
     'django_comments',
-    'fluent_comments',
     'threadedcomments',
     'django.contrib.sites',
     'django.contrib.sitemaps',
@@ -119,8 +118,7 @@ INSTALLED_APPS = (
     'allauth',
     'allauth.account',
     'django_social_share',
-    'raven.contrib.django.raven_compat',
-)
+]
 
 TAGS_INPUT_MAPPINGS = {
     'travel.Tag': {
@@ -162,6 +160,8 @@ AUTHENTICATION_BACKENDS = (
 # the site admins on every HTTP 500 error when DEBUG=False.
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -171,10 +171,6 @@ LOGGING = {
         }
     },
     'handlers': {
-        'sentry': {
-            'level': 'WARNING',
-            'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
-        },
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
@@ -191,24 +187,13 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-        # 3rd party
-        'raven': {
-            'level': 'WARNING',
-            'handlers': ['console'],
-            'propagate': True,
-        },
-        'sentry.errors': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-            'propagate': False,
-        },
     }
 }
 
 # Source local settings
 # Note these values will overwrite original from here
 try:
-    from local_settings import *
+    from project.local_settings import *
 except ImportError:
     pass
 

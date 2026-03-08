@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.db import models
 
 
@@ -20,12 +20,12 @@ class List(models.Model):
         verbose_name = _("List")
         verbose_name_plural = _("Lists")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
 class Entry(models.Model):
-    listItem = models.ForeignKey(List)
+    listItem = models.ForeignKey(List, on_delete=models.CASCADE)
     published = models.BooleanField(default=False, blank=True,
                                     verbose_name=_("Published?"))
     created = models.DateTimeField(auto_now=True,
@@ -45,5 +45,5 @@ class Entry(models.Model):
         verbose_name_plural = _("Entries")
         ordering = ('created',)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.item

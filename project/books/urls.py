@@ -1,6 +1,6 @@
 from project.books import views
-from django.conf.urls import url
+from django.urls import re_path
 
 urlpatterns = [
-    url(r'^$', views.book_main, name="books"),
+    re_path(r'^$', views.book_main, name="books"),
 ]

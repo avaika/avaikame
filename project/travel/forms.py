@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.contrib.auth.models import User
 from datetime import datetime, time
 from django import forms
 from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm as DefaultPasswordResetForm, SetPasswordForm as DefaultSetPasswordForm
 from allauth.account.forms import SignupForm
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from crispy_forms.helper import FormHelper, Layout
 from crispy_forms.layout import Submit, Field, Div

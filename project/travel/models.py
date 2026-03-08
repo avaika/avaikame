@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractUser
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
+from django.utils.html import format_html
 from sorl.thumbnail import get_thumbnail
 from datetime import datetime
 import uuid
@@ -23,8 +24,8 @@ class User(AbstractUser):
         ordering = ('-registered', 'id')
         get_latest_by = 'registered'
 
-    def __unicode__(self):
-        return unicode(self.username)
+    def __str__(self):
+        return self.username
 
 
 def headImagePath(instance, filename):
@@ -74,7 +75,7 @@ class Country(models.Model):
         verbose_name = _("Country")
         verbose_name_plural = _("Countries")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
 
@@ -83,6 +84,7 @@ class Tag(models.Model):
                              verbose_name=_("Title"))
     slug = models.CharField(max_length=150, verbose_name=_("Tag url"))
     country = models.ForeignKey(Country, blank=True, null=True,
+                                on_delete=models.SET_NULL,
                                 verbose_name=_("Country"))
     description = models.TextField(blank=True, null=True,
                                    verbose_name=_("Sources"))
@@ -91,7 +93,7 @@ class Tag(models.Model):
         verbose_name = _("Tag")
         verbose_name_plural = _("Tags")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.slug
 
     def get_absolute_url(self):
@@ -122,7 +124,8 @@ class Post(models.Model):
                                    verbose_name="Title image 1980x1315")
     title = models.CharField(max_length=150, verbose_name=_("Title"))
     slug = models.SlugField(max_length=150, verbose_name=_("Slug"))
-    country = models.ForeignKey(Country, verbose_name=_("Country"))
+    country = models.ForeignKey(Country, on_delete=models.PROTECT,
+                                verbose_name=_("Country"))
     tags = models.ManyToManyField(Tag, blank=True, verbose_name=_("Tags"))
     metaDesc = models.CharField(max_length=150, blank=True,
                                 verbose_name=_("Meta description"))
@@ -139,7 +142,7 @@ class Post(models.Model):
         verbose_name_plural = _("Posts")
         ordering = ('-created',)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     def get_absolute_url(self):
@@ -147,27 +150,21 @@ class Post(models.Model):
 
     def headImage_tag(self):
         if self.headImage:
-            return u'<img src="%s" height="100px" />' % (get_thumbnail(self.headImage,
-                                                                       "150x150",
-                                                                       quality=95).url)
-        else:
-            return
+            return format_html('<img src="{}" height="100px" />',
+                               get_thumbnail(self.headImage, "150x150", quality=95).url)
+        return ''
     headImage_tag.short_description = 'Image'
-    headImage_tag.allow_tags = True
 
     def titleImage_tag(self):
         if self.titleImage:
-            return u'<img src="%s" height="100px" />' % (get_thumbnail(self.titleImage,
-                                                                       "150x150",
-                                                                       quality=95).url)
-        else:
-            return
+            return format_html('<img src="{}" height="100px" />',
+                               get_thumbnail(self.titleImage, "150x150", quality=95).url)
+        return ''
     titleImage_tag.short_description = 'Image'
-    titleImage_tag.allow_tags = True
 
 
 class PostPhoto(models.Model):
-    post = models.ForeignKey(Post)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     text = models.TextField(blank=True, null=True, verbose_name=_("Post body"))
     comment = models.TextField(blank=True, null=True, verbose_name=_("Editor comment"))
     photo = models.ImageField(upload_to=imagePath, blank=True,
@@ -187,27 +184,21 @@ class PostPhoto(models.Model):
 
     def photo_tag(self):
         if self.photo:
-            return u'<img src="%s" height="100px" />' % (get_thumbnail(self.photo,
-                                                                       "150x150",
-                                                                       quality=95).url)
-        else:
-            return
+            return format_html('<img src="{}" height="100px" />',
+                               get_thumbnail(self.photo, "150x150", quality=95).url)
+        return ''
     photo_tag.short_description = 'Image'
-    photo_tag.allow_tags = True
 
     def photoRight_tag(self):
         if self.photoRight:
-            return u'<img src="%s" height="100px" />' % (get_thumbnail(self.photoRight,
-                                                                       "150x150",
-                                                                       quality=95).url)
-        else:
-            return
+            return format_html('<img src="{}" height="100px" />',
+                               get_thumbnail(self.photoRight, "150x150", quality=95).url)
+        return ''
     photoRight_tag.short_description = 'Image'
-    photoRight_tag.allow_tags = True
 
 
 class PostLinks(models.Model):
-    post = models.ForeignKey(Post)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     url = models.CharField(max_length=1000, verbose_name=_("Link"))
     description = models.CharField(max_length=256,
                                    verbose_name=_("Link description"))

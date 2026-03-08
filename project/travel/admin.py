@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from models import User, Post, Tag, PostPhoto, Country, PostLinks
-from forms import UserCreationForm
+from .models import User, Post, Tag, PostPhoto, Country, PostLinks
+from .forms import UserCreationForm
 from tags_input import admin as tags_input_admin
 from modeltranslation.admin import TranslationStackedInline, TranslationAdmin
 
@@ -64,7 +64,6 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
     list_filter = ('checked', 'draft')
     search_fields = ['id', 'title', ]
     prepopulated_fields = {'slug': ['title']}
-    readonly_fields = ('updated')
     save_as = True
     inlines = [PostPhotoAdmin, PostLinksAdmin, ]
     raw_id_fields = ('country',)

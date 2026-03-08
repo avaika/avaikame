@@ -79,8 +79,8 @@ class Migration(migrations.Migration):
                 ('draft', models.BooleanField(default=True, verbose_name='Is draft')),
                 ('mapSize', models.IntegerField(null=True, blank=True)),
                 ('sources', models.TextField(null=True, verbose_name='Sources', blank=True)),
-                ('author', models.ForeignKey(related_name='post_author', verbose_name='Author', to=settings.AUTH_USER_MODEL)),
-                ('category', models.ForeignKey(verbose_name='Category', to='travel.Category')),
+                ('author', models.ForeignKey(related_name='post_author', verbose_name='Author', to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
+                ('category', models.ForeignKey(verbose_name='Category', to='travel.Category', on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ('-created',),
@@ -94,7 +94,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('place', models.CharField(max_length=150, verbose_name='Place')),
                 ('order', models.IntegerField(null=True, blank=True)),
-                ('post', models.ForeignKey(verbose_name='Post', to='travel.Post')),
+                ('post', models.ForeignKey(verbose_name='Post', to='travel.Post', on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ('order', '-id'),
@@ -113,7 +113,7 @@ class Migration(migrations.Migration):
                 ('photoRight', models.ImageField(upload_to=project.travel.models.imagePath, blank=True)),
                 ('panoramaRight', models.BooleanField(default=False, verbose_name='Is panorama')),
                 ('privateRight', models.BooleanField(default=False, verbose_name='Is private')),
-                ('post', models.ForeignKey(to='travel.Post')),
+                ('post', models.ForeignKey(to='travel.Post', on_delete=models.CASCADE)),
             ],
         ),
         migrations.CreateModel(
@@ -121,7 +121,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('value', models.CharField(max_length=150, verbose_name='Title')),
-                ('category', models.ForeignKey(verbose_name='Category', to='travel.Category')),
+                ('category', models.ForeignKey(verbose_name='Category', to='travel.Category', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'Tag',

@@ -1,5 +1,5 @@
 from django.views.generic import ListView
-from models import List, Entry
+from .models import List, Entry
 
 
 class AllListsView(ListView):

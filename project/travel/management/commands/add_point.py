@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 from project.travel.models import Post, PostLinks
 import json
-try:
-        from urllib.request import urlopen  # Python 3
-except:
-        from urllib2 import urlopen  # Python 2
+from urllib.request import urlopen
 
 
 class Command(BaseCommand):

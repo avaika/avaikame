@@ -1,7 +1,7 @@
 from project.lists import views
-from django.conf.urls import url
+from django.urls import re_path
 
 urlpatterns = [
-    url(r'^$', views.lists_all, name="lists_all"),
-    url(r'(?P<list_name>.*)/$', views.list_detail, name="list_detail"),
+    re_path(r'^$', views.lists_all, name="lists_all"),
+    re_path(r'(?P<list_name>.*)/$', views.list_detail, name="list_detail"),
 ]
