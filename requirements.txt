@@ -18,3 +18,4 @@ crispy-bootstrap3>=2024.1
 django-dbbackup>=4.1
 django-threadedcomments>=2.0
 Pillow
+gunicorn
