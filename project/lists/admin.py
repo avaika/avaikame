@@ -2,15 +2,16 @@
 from django.contrib import admin
 from .models import List, Entry
 from modeltranslation.admin import TranslationAdmin
+from unfold.admin import ModelAdmin as UnfoldModelAdmin
 
 
-class ListAdmin(TranslationAdmin):
+class ListAdmin(TranslationAdmin, UnfoldModelAdmin):
     list_display = ('id', 'name', 'slug')
     list_editable = ('name', 'slug')
     search_fields = ['id', 'name', 'slug', 'description']
 
 
-class EntryAdmin(TranslationAdmin):
+class EntryAdmin(TranslationAdmin, UnfoldModelAdmin):
     list_display = ('id', 'listItem', 'item', 'created', 'published')
     search_fields = ['id', 'item', 'value']
     list_filter = ('listItem', 'published')

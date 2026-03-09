@@ -3,20 +3,21 @@ from django.contrib import admin
 from .models import Book, Author, Genre
 from tags_input import admin as tags_input_admin
 from modeltranslation.admin import TranslationAdmin
+from unfold.admin import ModelAdmin as UnfoldModelAdmin
 
 
-class AuthorAdmin(TranslationAdmin):
+class AuthorAdmin(TranslationAdmin, UnfoldModelAdmin):
     list_display = ('id', 'value', 'wiki_url')
     list_editable = ('value', 'wiki_url')
     search_fields = ['id', 'value']
 
 
-class GenreAdmin(TranslationAdmin):
+class GenreAdmin(TranslationAdmin, UnfoldModelAdmin):
     list_display = ('id', 'value')
     search_fields = ['id', 'value']
 
 
-class BookAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
+class BookAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin, UnfoldModelAdmin):
     list_display = ('id', 'active', 'title', 'wiki_url', 'read')
     list_editable = ('active', 'title', 'wiki_url', 'read')
     search_fields = ['id', 'title']

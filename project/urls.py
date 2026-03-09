@@ -14,8 +14,7 @@ sitemaps = {
 }
 
 urlpatterns = [
-    re_path(r'^grappelli/', include('grappelli.urls')),
-    re_path(r'^favicon\.ico$',
+re_path(r'^favicon\.ico$',
         RedirectView.as_view(url='/static/base/img/favicon.ico',
                              permanent=True)),
     re_path(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt',

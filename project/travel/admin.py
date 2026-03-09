@@ -5,9 +5,10 @@ from .models import User, Post, Tag, PostPhoto, Country, PostLinks
 from .forms import UserCreationForm
 from tags_input import admin as tags_input_admin
 from modeltranslation.admin import TranslationStackedInline, TranslationAdmin
+from unfold.admin import ModelAdmin as UnfoldModelAdmin, StackedInline as UnfoldStackedInline
 
 
-class ProfileUserAdmin(UserAdmin):
+class ProfileUserAdmin(UserAdmin, UnfoldModelAdmin):
     list_display = ('id', 'username', 'first_name', 'last_name', 'notifyEmail')
     search_fields = ['id', 'username', 'first_name', 'last_name', 'notifyEmail']
     fieldsets = UserAdmin.fieldsets + (
@@ -16,20 +17,20 @@ class ProfileUserAdmin(UserAdmin):
     add_form = UserCreationForm
 
 
-class TagAdmin(TranslationAdmin):
+class TagAdmin(TranslationAdmin, UnfoldModelAdmin):
     list_display = ('id', 'value', 'slug', 'country')
     list_editable = ('value', 'slug')
     search_fields = ['id', 'value', 'slug']
 
 
-class CountryAdmin(admin.ModelAdmin):
+class CountryAdmin(UnfoldModelAdmin):
     list_display = ('id', 'slug', 'title_en', 'title_en', 'worky', 'ready')
     list_editable = ('worky', 'ready')
     list_filter = ('worky', 'ready')
     search_fields = ['slug', 'title']
 
 
-class PostPhotoAdmin(TranslationStackedInline):
+class PostPhotoAdmin(TranslationStackedInline, UnfoldStackedInline):
     model = PostPhoto
     extra = 2
     fieldsets = (
@@ -48,7 +49,7 @@ class PostPhotoAdmin(TranslationStackedInline):
             return super(PostPhotoAdmin, self).get_readonly_fields(request, obj)
 
 
-class PostLinksAdmin(TranslationStackedInline):
+class PostLinksAdmin(TranslationStackedInline, UnfoldStackedInline):
     model = PostLinks
     extra = 2
     fieldsets = (
@@ -57,7 +58,7 @@ class PostLinksAdmin(TranslationStackedInline):
     )
 
 
-class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
+class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin, UnfoldModelAdmin):
     list_display = ('id', 'title', 'slug', 'created', 'updated', 'draft',
                     'checked')
     list_editable = ('title', 'slug', 'draft')
@@ -67,9 +68,6 @@ class PostAdmin(tags_input_admin.TagsInputAdmin, TranslationAdmin):
     save_as = True
     inlines = [PostPhotoAdmin, PostLinksAdmin, ]
     raw_id_fields = ('country',)
-    autocomplete_lookup_fields = {
-        'fk': ['country'],
-    }
     fieldsets = (
         ('Technical', {'fields': ('created', 'draft', 'checked')}),
         ('Titles', {'fields': ('title', 'slug', 'country', 'tags', )}),

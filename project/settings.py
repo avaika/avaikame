@@ -35,7 +35,10 @@ STATIC_URL = '/static/'
 
 ACCOUNT_ACTIVATION_DAYS = 7
 AUTH_USER_MODEL = 'travel.User'
-GRAPPELLI_ADMIN_TITLE = u'avaika_me'
+UNFOLD = {
+    "SITE_TITLE": "avaika.me",
+    "SITE_HEADER": "avaika.me",
+}
 
 STATICFILES_DIRS = (
     # os.path.join(PROJECT_ROOT, '/main/static'),
@@ -111,8 +114,8 @@ INSTALLED_APPS = [
     # Need to put apps below in the end
     # to be able to override static from it
     # with own one
-    'grappelli',
     'django_extensions',
+    'unfold',
     'django.contrib.admin',
     'dbbackup',
     'allauth',
