@@ -7,6 +7,7 @@ DEBUG = False
 SECRET_KEY = 'just_a_secret_key_to_replace_my_boy'
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://avaika.me']
 SITE_ID = 1
 
 TIME_ZONE = 'Europe/Moscow'
